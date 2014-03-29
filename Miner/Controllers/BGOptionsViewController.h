@@ -1,0 +1,18 @@
+//
+//  BGOptionsViewController.h
+//  Miner
+//
+//  Created by AndrewShmig on 3/15/14.
+//  Copyright (c) 2014 Bleeding Games. All rights reserved.
+//
+
+@import UIKit;
+
+
+@interface BGOptionsViewController : UIViewController
+
+@property (nonatomic, weak) IBOutlet UIButton *backButton;
+
+- (IBAction)back:(id)sender;
+
+@end

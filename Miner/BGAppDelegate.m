@@ -7,6 +7,8 @@
 //
 
 #import "BGAppDelegate.h"
+#import "BGMinerField.h"
+
 
 @implementation BGAppDelegate
 
