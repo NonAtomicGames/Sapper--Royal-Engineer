@@ -7,6 +7,7 @@
 //
 
 @import UIKit;
+@import SpriteKit;
 
 
 @interface BGViewController : UIViewController

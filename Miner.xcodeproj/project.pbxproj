@@ -206,6 +206,13 @@
 			path = Sounds;
 			sourceTree = "<group>";
 		};
+		1A9A0E33D40FDF01F76C9C4C /* Sprites */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Sprites;
+			sourceTree = "<group>";
+		};
 		1A9A0E5796A6A29EEE70C28C /* Leaderboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -220,6 +227,7 @@
 			children = (
 				1A9A0FB180E25D72FE6AAFC2 /* main_background.jpg */,
 				1A9A081AC55B83B0B32AD572 /* Buttons */,
+				1A9A0E33D40FDF01F76C9C4C /* Sprites */,
 			);
 			path = Images;
 			sourceTree = "<group>";

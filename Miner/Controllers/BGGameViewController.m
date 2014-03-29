@@ -11,11 +11,50 @@
 #import "BGSettingsManager.h"
 
 
+// -----------------------------------------------------------------------------
+// --------- BGGameScene ---------
+// -----------------------------------------------------------------------------
+
+// дочерний класс для обработки цикла обновления игрового поля
+@interface BGGameScene : SKScene
+@end
+
+@implementation BGGameScene
+
+- (void)update:(NSTimeInterval)currentTime
+{
+//    NSLog(@"%s", __FUNCTION__);
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    NSLog(@"%s", __FUNCTION__);
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    NSLog(@"%s", __FUNCTION__);
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    NSLog(@"%s", __FUNCTION__);
+}
+
+@end
+
+
+// -----------------------------------------------------------------------------
+// --------- BGGameViewController ---------
+// -----------------------------------------------------------------------------
+
 // приватные методы
 @interface BGGameViewController (Private)
 
 - (void)fillGameSceneField;
+
 - (void)coverGameSceneField;
+
 - (void)startGameTimer;
 
 @end
@@ -40,6 +79,16 @@
     _field = [[BGMinerField alloc] initWithRows:rows
                                            cols:cols
                                           bombs:bombs];
+
+//    добавляем сцену на SKView
+    BGGameScene *scene = [[BGGameScene alloc]
+                                       initWithSize:self.skView.bounds.size];
+    [self.skView presentScene:scene];
+
+    self.skView.showsDrawCount = YES;
+    self.skView.showsFPS = YES;
+    self.skView.showsNodeCount = YES;
+    self.skView.showsPhysics = YES;
 
 //    заполняем SKView спрайтами с бомбами, цифрами и пустые
     [self fillGameSceneField];

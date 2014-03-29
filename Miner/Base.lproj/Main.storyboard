@@ -128,7 +128,7 @@
                     <navigationItem key="navigationItem" id="0hP-7E-NMy"/>
                     <connections>
                         <outlet property="finishGameButton" destination="Mbf-7d-cMW" id="IHp-wf-p7W"/>
-                        <outlet property="skScene" destination="2F1-ab-zog" id="ROE-1d-uMo"/>
+                        <outlet property="skView" destination="2F1-ab-zog" id="ROE-1d-uMo"/>
                         <outlet property="startNewGameButton" destination="Iyx-uX-Lwi" id="MuH-wa-gVR"/>
                     </connections>
                 </viewController>
