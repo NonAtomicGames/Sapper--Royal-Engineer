@@ -46,7 +46,8 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dir-65-VUE">
                                 <rect key="frame" x="74" y="254" width="175" height="63"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Играть">
+                                <state key="normal" title="Play">
+                                    <color key="titleColor" red="0.050980396568775177" green="0.023529414087533951" blue="0.011764707043766975" alpha="1" colorSpace="deviceRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -56,7 +57,8 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O0l-JG-b4Z">
                                 <rect key="frame" x="74" y="306" width="175" height="63"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Настройки">
+                                <state key="normal" title="Settings">
+                                    <color key="titleColor" red="0.058823533356189728" green="0.027450982481241226" blue="0.015686275437474251" alpha="1" colorSpace="deviceRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -66,7 +68,8 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xkQ-xx-kib">
                                 <rect key="frame" x="72" y="359" width="175" height="66"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Рекорды">
+                                <state key="normal" title="Records">
+                                    <color key="titleColor" red="0.058823533356189728" green="0.027450982481241226" blue="0.015686275437474251" alpha="1" colorSpace="deviceRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -102,21 +105,11 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mbf-7d-cMW">
                                 <rect key="frame" x="20" y="11" width="80" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Завершить">
+                                <state key="normal" title="Menu">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="finishGame:" destination="Lau-77-p0J" eventType="touchUpInside" id="xdV-7N-119"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iyx-uX-Lwi">
-                                <rect key="frame" x="240" y="11" width="53" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Заново">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="startNewGame:" destination="Lau-77-p0J" eventType="touchUpInside" id="eRn-AF-yeT"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -126,14 +119,13 @@
                     <connections>
                         <outlet property="finishGameButton" destination="Mbf-7d-cMW" id="IHp-wf-p7W"/>
                         <outlet property="skView" destination="2F1-ab-zog" id="ROE-1d-uMo"/>
-                        <outlet property="startNewGameButton" destination="Iyx-uX-Lwi" id="MuH-wa-gVR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lau-77-p0J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1053" y="-382"/>
         </scene>
-        <!--Leaderboard View Controller - Рекорды-->
+        <!--Leaderboard View Controller-->
         <scene sceneID="d2w-ed-dDH">
             <objects>
                 <viewController id="eZl-5G-d9z" customClass="BGLeaderboardViewController" sceneMemberID="viewController">
@@ -148,7 +140,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MBS-xI-eeY">
                                 <rect key="frame" x="14" y="7" width="45" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Назад">
+                                <state key="normal" title="Menu">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -177,9 +169,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Рекорды" id="d2M-Yr-OMQ">
-                        <barButtonItem key="backBarButtonItem" title="Назад" id="KOt-3D-w6T"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="d2M-Yr-OMQ"/>
                     <connections>
                         <outlet property="backButton" destination="MBS-xI-eeY" id="rUs-Jb-RNV"/>
                         <outlet property="tableView" destination="u1C-nd-Esa" id="Jh6-3E-7Qm"/>
@@ -189,7 +179,7 @@
             </objects>
             <point key="canvasLocation" x="1029" y="579"/>
         </scene>
-        <!--Options View Controller - Настройки-->
+        <!--Options View Controller-->
         <scene sceneID="v4U-lL-P8O">
             <objects>
                 <viewController id="Uzu-Tl-DeP" customClass="BGOptionsViewController" sceneMemberID="viewController">
@@ -213,29 +203,50 @@
                                 <rect key="frame" x="12" y="175" width="288" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
-                                    <segment title="Начальный"/>
-                                    <segment title="Средний"/>
-                                    <segment title="Высокий"/>
+                                    <segment title="Low"/>
+                                    <segment title="Average"/>
+                                    <segment title="High"/>
                                 </segments>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dzW-Kn-Qs3">
                                 <rect key="frame" x="20" y="13" width="45" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Назад">
+                                <state key="normal" title="Menu">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="back:" destination="my6-KR-pHd" eventType="touchUpInside" id="Uo1-be-1z4"/>
+                                    <action selector="back:" destination="Uzu-Tl-DeP" eventType="touchUpInside" id="qiV-nE-FQr"/>
                                 </connections>
                             </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DgH-XO-Cb9">
+                                <rect key="frame" x="104" y="245" width="51" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </switch>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sound" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dWm-Aq-sbe">
+                                <rect key="frame" x="30" y="255" width="51" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ads" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PDM-C7-oTG">
+                                <rect key="frame" x="30" y="318" width="30" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uyb-FM-SKF">
+                                <rect key="frame" x="104" y="308" width="51" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Настройки" id="nQe-VY-s4c">
-                        <barButtonItem key="backBarButtonItem" title="Назад" id="Lxz-Mc-fZf"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="nQe-VY-s4c"/>
                     <connections>
+                        <outlet property="adsSwitch" destination="uyb-FM-SKF" id="Kxy-0U-eWz"/>
                         <outlet property="backButton" destination="dzW-Kn-Qs3" id="NAc-ir-JeZ"/>
+                        <outlet property="soundSwitch" destination="DgH-XO-Cb9" id="4yZ-dq-1oM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="my6-KR-pHd" userLabel="First Responder" sceneMemberID="firstResponder"/>
