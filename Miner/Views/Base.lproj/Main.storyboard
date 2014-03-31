@@ -215,11 +215,15 @@
                                 <rect key="frame" x="12" y="94" width="288" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
-                                    <segment title="26x16"/>
-                                    <segment title="13x8"/>
+                                    <segment title="12x9"/>
+                                    <segment title="9x6"/>
+                                    <segment title="6x3"/>
                                 </segments>
+                                <connections>
+                                    <action selector="fieldSizeChanged" destination="Uzu-Tl-DeP" eventType="valueChanged" id="Ysd-Xo-5s3"/>
+                                </connections>
                             </segmentedControl>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Qn4-jL-TXb">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="Qn4-jL-TXb">
                                 <rect key="frame" x="12" y="175" width="288" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
@@ -227,6 +231,9 @@
                                     <segment title="Average"/>
                                     <segment title="High"/>
                                 </segments>
+                                <connections>
+                                    <action selector="levelChanged" destination="Uzu-Tl-DeP" eventType="valueChanged" id="xU2-dh-Hnd"/>
+                                </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dzW-Kn-Qs3">
                                 <rect key="frame" x="20" y="13" width="45" height="30"/>
@@ -241,6 +248,9 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DgH-XO-Cb9">
                                 <rect key="frame" x="104" y="245" width="51" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="soundStatusChanged" destination="Uzu-Tl-DeP" eventType="valueChanged" id="ag0-Wl-Ytg"/>
+                                </connections>
                             </switch>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sound" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dWm-Aq-sbe">
                                 <rect key="frame" x="30" y="255" width="51" height="21"/>
@@ -258,6 +268,9 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uyb-FM-SKF">
                                 <rect key="frame" x="104" y="308" width="51" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="adsStatusChanged" destination="Uzu-Tl-DeP" eventType="valueChanged" id="SnA-Ys-Q04"/>
+                                </connections>
                             </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -266,6 +279,8 @@
                     <connections>
                         <outlet property="adsSwitch" destination="uyb-FM-SKF" id="Kxy-0U-eWz"/>
                         <outlet property="backButton" destination="dzW-Kn-Qs3" id="NAc-ir-JeZ"/>
+                        <outlet property="fieldSizeSegmentedControl" destination="Izn-ZC-NdS" id="Idl-LZ-M6o"/>
+                        <outlet property="levelSegmentedControl" destination="Qn4-jL-TXb" id="zgq-Cb-p6L"/>
                         <outlet property="soundSwitch" destination="DgH-XO-Cb9" id="4yZ-dq-1oM"/>
                     </connections>
                 </viewController>

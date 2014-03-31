@@ -11,9 +11,7 @@
 #import "BGSettingsManager.h"
 
 
-// -----------------------------------------------------------------------------
-// --------- BGGameScene ---------
-// -----------------------------------------------------------------------------
+#pragma mark - BGGameScene
 
 // дочерний класс для обработки цикла обновления игрового поля
 @interface BGGameScene : SKScene
@@ -44,9 +42,7 @@
 @end
 
 
-// -----------------------------------------------------------------------------
-// --------- BGGameViewController ---------
-// -----------------------------------------------------------------------------
+#pragma mark - BGGameViewController
 
 // приватные методы
 @interface BGGameViewController (Private)
@@ -85,10 +81,12 @@
                                        initWithSize:self.skView.bounds.size];
     [self.skView presentScene:scene];
 
+#ifdef DEBUG
     self.skView.showsDrawCount = YES;
     self.skView.showsFPS = YES;
     self.skView.showsNodeCount = YES;
     self.skView.showsPhysics = YES;
+#endif
 
 //    заполняем SKView спрайтами с бомбами, цифрами и пустые
     [self fillGameSceneField];
