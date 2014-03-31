@@ -14,4 +14,42 @@
 
 
 @implementation BGViewController
+
+#pragma mark - iAd Delegate
+
+- (void)bannerViewWillLoadAd:(ADBannerView *)banner
+{
+    NSLog(@"%s", __FUNCTION__);
+//    TODO    
+}
+
+- (void)bannerViewDidLoadAd:(ADBannerView *)banner
+{
+    NSLog(@"%s", __FUNCTION__);
+    self.adBannerView.hidden = NO;
+}
+
+- (void)bannerViewActionDidFinish:(ADBannerView *)banner
+{
+    NSLog(@"%s", __FUNCTION__);
+//    TODO
+}
+
+- (void)bannerView:(ADBannerView *)banner
+didFailToReceiveAdWithError:(NSError *)error
+{
+    NSLog(@"%s", __FUNCTION__);
+    NSLog(@"Error: %@", error);
+    
+    self.adBannerView.hidden = YES;
+}
+
+- (BOOL)bannerViewActionShouldBegin:(ADBannerView *)banner
+               willLeaveApplication:(BOOL)willLeave
+{
+    NSLog(@"%s", __FUNCTION__);
+    
+    return YES;
+}
+
 @end

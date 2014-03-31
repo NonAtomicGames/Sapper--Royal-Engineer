@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="i72-1Q-rCP">
     <dependencies>
+        <deployment version="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
@@ -39,47 +40,66 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ceY-sN-bT9">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="miner_main.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="ceY-sN-bT9">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" none="YES" image="YES" notEnabled="YES"/>
+                                </accessibility>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dir-65-VUE">
-                                <rect key="frame" x="74" y="254" width="175" height="63"/>
+                                <rect key="frame" x="60" y="229" width="198" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Play">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="button_play.png">
                                     <color key="titleColor" red="0.050980396568775177" green="0.023529414087533951" blue="0.011764707043766975" alpha="1" colorSpace="deviceRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="highlighted" image="button_play_down.png"/>
                                 <connections>
                                     <segue destination="62f-Wz-oM0" kind="push" identifier="GameSegue" id="MHq-sw-7dY"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O0l-JG-b4Z">
-                                <rect key="frame" x="74" y="306" width="175" height="63"/>
+                                <rect key="frame" x="60" y="294" width="198" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Settings">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="button_options.png">
                                     <color key="titleColor" red="0.058823533356189728" green="0.027450982481241226" blue="0.015686275437474251" alpha="1" colorSpace="deviceRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="highlighted" image="button_options_down.png"/>
                                 <connections>
                                     <segue destination="Uzu-Tl-DeP" kind="push" identifier="OptionsSegue" id="xZ1-SH-bvB"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xkQ-xx-kib">
-                                <rect key="frame" x="72" y="359" width="175" height="66"/>
+                                <rect key="frame" x="60" y="360" width="198" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Records">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="button_scores.png">
                                     <color key="titleColor" red="0.058823533356189728" green="0.027450982481241226" blue="0.015686275437474251" alpha="1" colorSpace="deviceRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="highlighted" image="button_scores_down.png"/>
                                 <connections>
                                     <segue destination="eZl-5G-d9z" kind="push" identifier="LeaderboardSegue" id="asp-Q5-wZH"/>
                                 </connections>
                             </button>
+                            <adBannerView hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xGJ-OI-mQY">
+                                <rect key="frame" x="0.0" y="518" width="320" height="50"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="gab-HH-5bJ" id="YaX-Ye-nYX"/>
+                                </connections>
+                            </adBannerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="rvP-dh-chP"/>
+                    <connections>
+                        <outlet property="adBannerView" destination="xGJ-OI-mQY" id="iDp-Vq-exC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GxD-n6-ntH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -254,6 +274,15 @@
             <point key="canvasLocation" x="1409" y="189"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="button_options.png" width="198" height="47"/>
+        <image name="button_options_down.png" width="198" height="47"/>
+        <image name="button_play.png" width="198" height="47"/>
+        <image name="button_play_down.png" width="198" height="47"/>
+        <image name="button_scores.png" width="198" height="47"/>
+        <image name="button_scores_down.png" width="198" height="47"/>
+        <image name="miner_main.jpg" width="320" height="568"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
