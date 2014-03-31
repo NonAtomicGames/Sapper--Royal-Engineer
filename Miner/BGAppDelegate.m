@@ -14,7 +14,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    NSLog(@"settings===>%@", [[NSUserDefaults standardUserDefaults]
+    NSLog(@"settings: %@", [[NSUserDefaults standardUserDefaults]
                                               valueForKey:@"BGSettingsManager"]);
 
     // Override point for customization after application launch.
