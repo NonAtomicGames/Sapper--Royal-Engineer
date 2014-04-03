@@ -10,17 +10,4 @@
 
 
 @interface BGOptionsViewController : UIViewController
-
-@property (nonatomic, weak) IBOutlet UIButton *backButton;
-@property (nonatomic, weak) IBOutlet UISwitch *soundSwitch;
-@property (nonatomic, weak) IBOutlet UISwitch *adsSwitch;
-@property (nonatomic, weak) IBOutlet UISegmentedControl *levelSegmentedControl;
-@property (nonatomic, weak) IBOutlet UISegmentedControl *fieldSizeSegmentedControl;
-
-- (IBAction)back:(id)sender; // go to main screen
-- (IBAction)adsStatusChanged;
-- (IBAction)soundStatusChanged;
-- (IBAction)levelChanged;
-- (IBAction)fieldSizeChanged;
-
 @end

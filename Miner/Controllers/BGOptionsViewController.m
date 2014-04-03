@@ -7,84 +7,80 @@
 //
 
 #import "BGOptionsViewController.h"
+#import "BGUISwitch.h"
 #import "BGSettingsManager.h"
 
 
 @interface BGOptionsViewController ()
+@property (nonatomic) UIImageView *backgroundImageView;
+@property (nonatomic) BGUISwitch *soundSwitch;
+@property (nonatomic) BGUISwitch *adsSwitch;
 @end
 
 
 @implementation BGOptionsViewController
 
-#pragma mark - View load process
+#pragma mark - View
 
 - (void)viewDidLoad
 {
-//    loads settings from NSUserDefaults
-    self.soundSwitch.on = [BGSettingsManager sharedManager].soundStatus == BGMinerSoundStatusOn ? YES : NO;
-    self.adsSwitch.on = [BGSettingsManager sharedManager].adsStatus == BGMinerAdsStatusOn ? YES : NO;
-    self.levelSegmentedControl.selectedSegmentIndex = ([BGSettingsManager sharedManager].level - 1);
+//    создаем фоновую вьюху и устанавливаем фоновое изображение для экрана
+    self.backgroundImageView = [[UIImageView alloc]
+                                             initWithFrame:[UIScreen mainScreen].bounds];
+    self.backgroundImageView.image = [UIImage imageNamed:@"miner_config.jpg"];
 
-    if([BGSettingsManager sharedManager].cols == 12)
-        self.fieldSizeSegmentedControl.selectedSegmentIndex = 0;
-    else if([BGSettingsManager sharedManager].cols == 9)
-        self.fieldSizeSegmentedControl.selectedSegmentIndex = 1;
-    else
-        self.fieldSizeSegmentedControl.selectedSegmentIndex = 2;
+    [self.view addSubview:self.backgroundImageView];
+
+//    создаем переключатель для звука
+    self.soundSwitch = [[BGUISwitch alloc]
+                                    initWithPosition:CGPointMake(10, 10)
+                                             onImage:[UIImage imageNamed:@"switch_1.png"]
+                                            offImage:[UIImage imageNamed:@"switch_0.png"]];
+    self.soundSwitch.on = ([BGSettingsManager sharedManager].soundStatus == BGMinerSoundStatusOn);
+    [self.soundSwitch addTarget:self
+                         action:@selector(soundButtonTapped:)
+               forControlEvents:UIControlEventTouchUpInside];
+
+    [self.view addSubview:self.soundSwitch];
+
+//    создаем переключатель для рекламы
+    self.adsSwitch = [[BGUISwitch alloc] initWithPosition:CGPointMake(200, 200)
+                                                  onImage:[UIImage imageNamed:@"switch_1.png"]
+                                                 offImage:[UIImage imageNamed:@"switch_0.png"]];
+    self.adsSwitch.on = ([BGSettingsManager sharedManager].adsStatus == BGMinerAdsStatusOn);
+    [self.adsSwitch addTarget:self
+                       action:@selector(adsButtonTapped:)
+             forControlEvents:UIControlEventTouchUpInside];
+
+    [self.view addSubview:self.adsSwitch];
 }
 
-#pragma mark - IBActions
+#pragma mark - Target actions
 
-- (IBAction)back:(id)sender
+- (void)soundButtonTapped:(id)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
-}
+    NSLog(@"%s", __FUNCTION__);
 
-- (IBAction)adsStatusChanged
-{
-    if ([BGSettingsManager sharedManager].adsStatus == BGMinerAdsStatusOn)
-        [BGSettingsManager sharedManager].adsStatus = BGMinerAdsStatusOff;
-    else
-        [BGSettingsManager sharedManager].adsStatus = BGMinerAdsStatusOn;
-}
+//    при переключении тумблера звука меняем настройки
+    BGMinerSoundStatus soundStatus = [BGSettingsManager sharedManager].soundStatus;
 
-- (IBAction)soundStatusChanged
-{
-    if ([BGSettingsManager sharedManager].soundStatus == BGMinerSoundStatusOn)
+    if (soundStatus == BGMinerSoundStatusOn)
         [BGSettingsManager sharedManager].soundStatus = BGMinerSoundStatusOff;
     else
         [BGSettingsManager sharedManager].soundStatus = BGMinerSoundStatusOn;
 }
 
-- (IBAction)levelChanged
+- (void)adsButtonTapped:(id)sender
 {
-    NSInteger selectedIndex = self.levelSegmentedControl.selectedSegmentIndex;
-    [BGSettingsManager sharedManager].level = (BGMinerLevel) (selectedIndex + 1);
-}
+    NSLog(@"%s", __FUNCTION__);
 
-- (IBAction)fieldSizeChanged
-{
-    NSInteger selectedIndex = self.fieldSizeSegmentedControl.selectedSegmentIndex;
+//    при переключении тумблера показа рекламы сохраним настройки
+    BGMinerAdsStatus adsStatus = [BGSettingsManager sharedManager].adsStatus;
 
-    switch(selectedIndex){
-        case 0:
-            [BGSettingsManager sharedManager].cols = 12;
-            [BGSettingsManager sharedManager].rows = 9;
-            break;
-
-        case 1:
-            [BGSettingsManager sharedManager].cols = 9;
-            [BGSettingsManager sharedManager].rows = 6;
-            break;
-
-        case 2:
-            [BGSettingsManager sharedManager].cols = 6;
-            [BGSettingsManager sharedManager].rows = 3;
-            break;
-
-        default:
-            break;
-    }
+    if (adsStatus == BGMinerAdsStatusOn)
+        [BGSettingsManager sharedManager].adsStatus = BGMinerAdsStatusOff;
+    else
+        [BGSettingsManager sharedManager].adsStatus = BGMinerAdsStatusOn;
 }
 
 @end
