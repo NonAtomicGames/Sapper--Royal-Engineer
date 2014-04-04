@@ -11,6 +11,10 @@
 #import "BGSettingsManager.h"
 
 
+static AVAudioPlayer *onSwitchPlayer;
+static AVAudioPlayer *offSwitchPlayer;
+
+
 @interface BGOptionsViewController ()
 @property (nonatomic) UIImageView *backgroundImageView;
 @property (nonatomic) BGUISwitch *soundSwitch;
@@ -19,6 +23,32 @@
 
 
 @implementation BGOptionsViewController
+
++ (void)initialize
+{
+    //  подгрузка аудио файлов
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^
+    {
+        //    настраиваем звуки
+        //    аудио файлы
+        NSString *onSound = [[NSBundle mainBundle]
+                                       pathForResource:@"switchON"
+                                                ofType:@"mp3"];
+        NSString *offSound = [[NSBundle mainBundle]
+                                        pathForResource:@"switchOFF"
+                                                 ofType:@"mp3"];
+
+        onSwitchPlayer = [[AVAudioPlayer alloc]
+                                         initWithData:[NSData dataWithContentsOfFile:onSound]
+                                                error:nil];
+        offSwitchPlayer = [[AVAudioPlayer alloc]
+                                          initWithData:[NSData dataWithContentsOfFile:offSound]
+                                                 error:nil];
+
+        [onSwitchPlayer prepareToPlay];
+        [offSwitchPlayer prepareToPlay];
+    });
+}
 
 #pragma mark - View
 
@@ -64,10 +94,13 @@
 //    при переключении тумблера звука меняем настройки
     BGMinerSoundStatus soundStatus = [BGSettingsManager sharedManager].soundStatus;
 
-    if (soundStatus == BGMinerSoundStatusOn)
+    if (soundStatus == BGMinerSoundStatusOn && self.soundSwitch.activeRegion == BGUISwitchLeftRegion) {
         [BGSettingsManager sharedManager].soundStatus = BGMinerSoundStatusOff;
-    else
+        [offSwitchPlayer play];
+    } else if (soundStatus == BGMinerSoundStatusOff && self.soundSwitch.activeRegion == BGUISwitchRightRegion) {
         [BGSettingsManager sharedManager].soundStatus = BGMinerSoundStatusOn;
+        [onSwitchPlayer play];
+    }
 }
 
 - (void)adsButtonTapped:(id)sender
@@ -77,10 +110,13 @@
 //    при переключении тумблера показа рекламы сохраним настройки
     BGMinerAdsStatus adsStatus = [BGSettingsManager sharedManager].adsStatus;
 
-    if (adsStatus == BGMinerAdsStatusOn)
+    if (adsStatus == BGMinerAdsStatusOn) {
         [BGSettingsManager sharedManager].adsStatus = BGMinerAdsStatusOff;
-    else
+        [offSwitchPlayer play];
+    } else {
         [BGSettingsManager sharedManager].adsStatus = BGMinerAdsStatusOn;
+        [onSwitchPlayer play];
+    }
 }
 
 @end

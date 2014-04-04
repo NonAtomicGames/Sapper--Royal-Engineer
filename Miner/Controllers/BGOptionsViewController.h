@@ -7,7 +7,8 @@
 //
 
 @import UIKit;
+@import AVFoundation;
 
 
-@interface BGOptionsViewController : UIViewController
+@interface BGOptionsViewController : UIViewController <AVAudioPlayerDelegate>
 @end
