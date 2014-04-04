@@ -11,10 +11,6 @@
 #import "BGSettingsManager.h"
 
 
-static AVAudioPlayer *onSwitchPlayer;
-static AVAudioPlayer *offSwitchPlayer;
-
-
 @interface BGOptionsViewController ()
 @property (nonatomic) UIImageView *backgroundImageView;
 @property (nonatomic) BGUISwitch *soundSwitch;
@@ -24,36 +20,18 @@ static AVAudioPlayer *offSwitchPlayer;
 
 @implementation BGOptionsViewController
 
-+ (void)initialize
-{
-    //  подгрузка аудио файлов
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^
-    {
-        //    настраиваем звуки
-        //    аудио файлы
-        NSString *onSound = [[NSBundle mainBundle]
-                                       pathForResource:@"switchON"
-                                                ofType:@"mp3"];
-        NSString *offSound = [[NSBundle mainBundle]
-                                        pathForResource:@"switchOFF"
-                                                 ofType:@"mp3"];
-
-        onSwitchPlayer = [[AVAudioPlayer alloc]
-                                         initWithData:[NSData dataWithContentsOfFile:onSound]
-                                                error:nil];
-        offSwitchPlayer = [[AVAudioPlayer alloc]
-                                          initWithData:[NSData dataWithContentsOfFile:offSound]
-                                                 error:nil];
-
-        [onSwitchPlayer prepareToPlay];
-        [offSwitchPlayer prepareToPlay];
-    });
-}
-
 #pragma mark - View
 
 - (void)viewDidLoad
 {
+//    звуки переключателей
+    NSData *onSound = [NSData dataWithContentsOfFile:[[NSBundle mainBundle]
+                                                                pathForResource:@"switchON"
+                                                                         ofType:@"mp3"]];
+    NSData *offSound = [NSData dataWithContentsOfFile:[[NSBundle mainBundle]
+                                                                 pathForResource:@"switchOFF"
+                                                                          ofType:@"mp3"]];
+
 //    создаем фоновую вьюху и устанавливаем фоновое изображение для экрана
     self.backgroundImageView = [[UIImageView alloc]
                                              initWithFrame:[UIScreen mainScreen].bounds];
@@ -66,6 +44,8 @@ static AVAudioPlayer *offSwitchPlayer;
                                     initWithPosition:CGPointMake(10, 10)
                                              onImage:[UIImage imageNamed:@"switch_1.png"]
                                             offImage:[UIImage imageNamed:@"switch_0.png"]];
+    self.soundSwitch.onSound = onSound;
+    self.soundSwitch.offSound = offSound;
     self.soundSwitch.on = ([BGSettingsManager sharedManager].soundStatus == BGMinerSoundStatusOn);
     [self.soundSwitch addTarget:self
                          action:@selector(soundButtonTapped:)
@@ -77,6 +57,8 @@ static AVAudioPlayer *offSwitchPlayer;
     self.adsSwitch = [[BGUISwitch alloc] initWithPosition:CGPointMake(200, 200)
                                                   onImage:[UIImage imageNamed:@"switch_1.png"]
                                                  offImage:[UIImage imageNamed:@"switch_0.png"]];
+    self.adsSwitch.onSound = onSound;
+    self.adsSwitch.offSound = offSound;
     self.adsSwitch.on = ([BGSettingsManager sharedManager].adsStatus == BGMinerAdsStatusOn);
     [self.adsSwitch addTarget:self
                        action:@selector(adsButtonTapped:)
@@ -96,10 +78,8 @@ static AVAudioPlayer *offSwitchPlayer;
 
     if (soundStatus == BGMinerSoundStatusOn && self.soundSwitch.activeRegion == BGUISwitchLeftRegion) {
         [BGSettingsManager sharedManager].soundStatus = BGMinerSoundStatusOff;
-        [offSwitchPlayer play];
     } else if (soundStatus == BGMinerSoundStatusOff && self.soundSwitch.activeRegion == BGUISwitchRightRegion) {
         [BGSettingsManager sharedManager].soundStatus = BGMinerSoundStatusOn;
-        [onSwitchPlayer play];
     }
 }
 
@@ -112,10 +92,8 @@ static AVAudioPlayer *offSwitchPlayer;
 
     if (adsStatus == BGMinerAdsStatusOn) {
         [BGSettingsManager sharedManager].adsStatus = BGMinerAdsStatusOff;
-        [offSwitchPlayer play];
     } else {
         [BGSettingsManager sharedManager].adsStatus = BGMinerAdsStatusOn;
-        [onSwitchPlayer play];
     }
 }
 
