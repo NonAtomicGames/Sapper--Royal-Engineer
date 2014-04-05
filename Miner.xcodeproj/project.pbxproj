@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1A9A0128DC7A49DE5B283C8D /* BGUISwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A0244A773F871EF0B4F99 /* BGUISwitch.m */; };
+		1A9A025D7218E57009C00B32 /* BGUISwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A06E1C8C18EE3BCA24FA8 /* BGUISwitch.m */; };
 		1A9A02DCC2837700B6A191CF /* BGGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A0673C2D94B6C826B69A4 /* BGGameViewController.m */; };
+		1A9A02E36FF23270FEC10CC8 /* BGAudioPreloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A0D8241BD943D88289715 /* BGAudioPreloader.m */; };
 		1A9A031D3D0EFEBC84A17D6C /* BGNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A0BAAF5CD8C67041CF99B /* BGNavigationViewController.m */; };
 		1A9A04436954BBD988CC47E5 /* switchON.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A089200A1C5BB1D879138 /* switchON.mp3 */; };
 		1A9A0580D42674BC5E726470 /* BGLeaderboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A041463914040C964BE95 /* BGLeaderboardViewController.m */; };
@@ -57,17 +58,18 @@
 /* Begin PBXFileReference section */
 		1A9A00AC67B68FA11C11D15D /* BGViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGViewController.m; sourceTree = "<group>"; };
 		1A9A01CF425102AEFCB8FBEE /* BGLeaderboardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGLeaderboardManager.h; sourceTree = "<group>"; };
-		1A9A0244A773F871EF0B4F99 /* BGUISwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGUISwitch.m; sourceTree = "<group>"; };
+		1A9A02B204C3068D230AF4B4 /* BGAudioPreloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGAudioPreloader.h; sourceTree = "<group>"; };
 		1A9A041463914040C964BE95 /* BGLeaderboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGLeaderboardViewController.m; sourceTree = "<group>"; };
 		1A9A051D8F3EC973B9A7B2B5 /* miner_config.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = miner_config.jpg; sourceTree = "<group>"; };
+		1A9A0535D639111F86ACEEF1 /* BGUISwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGUISwitch.h; sourceTree = "<group>"; };
 		1A9A058668908407B77DB063 /* BGLeaderboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGLeaderboardViewController.h; sourceTree = "<group>"; };
 		1A9A05D7FA35DF620DFFAEBC /* BGOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGOptionsViewController.m; sourceTree = "<group>"; };
 		1A9A05FC9BD951BD7EE5B84F /* BGSettingsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGSettingsManager.m; sourceTree = "<group>"; };
 		1A9A0673C2D94B6C826B69A4 /* BGGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGGameViewController.m; sourceTree = "<group>"; };
+		1A9A06E1C8C18EE3BCA24FA8 /* BGUISwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGUISwitch.m; sourceTree = "<group>"; };
 		1A9A06FC52931E41A20A4053 /* BGNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGNavigationViewController.h; sourceTree = "<group>"; };
 		1A9A07AA52C65A1D9067D1D3 /* BGMinerField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGMinerField.h; sourceTree = "<group>"; };
 		1A9A089200A1C5BB1D879138 /* switchON.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = switchON.mp3; sourceTree = "<group>"; };
-		1A9A0896ACA82145E2823FAB /* BGUISwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGUISwitch.h; sourceTree = "<group>"; };
 		1A9A08B1B606DF3F4CB5D23D /* BGViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGViewController.h; sourceTree = "<group>"; };
 		1A9A0A46F498E9336A24C1C5 /* switchOFF.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = switchOFF.mp3; sourceTree = "<group>"; };
 		1A9A0AE117A4A76D2111CC65 /* BGSettingsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGSettingsManager.h; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 		1A9A0BCD8A9200728D794515 /* BGGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGGameViewController.h; sourceTree = "<group>"; };
 		1A9A0CDA1968F9777666743E /* BGLeaderboardManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGLeaderboardManager.m; sourceTree = "<group>"; };
 		1A9A0D5426C089C702BADF62 /* BGMinerField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGMinerField.m; sourceTree = "<group>"; };
+		1A9A0D8241BD943D88289715 /* BGAudioPreloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGAudioPreloader.m; sourceTree = "<group>"; };
 		1A9A0EB1FD1B9BF3EF2ACFFA /* BGOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGOptionsViewController.h; sourceTree = "<group>"; };
 		D521FED218E8B4BC000D52C8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ru; path = ru.lproj/button_play.png; sourceTree = "<group>"; };
 		D521FED518E8B4D1000D52C8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ru; path = ru.lproj/button_play_down.png; sourceTree = "<group>"; };
@@ -141,13 +144,13 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		1A9A031E6049097722C06EE6 /* BGUILibrary */ = {
+		1A9A01FBC29E1D83ED899F11 /* BGAudioPreloader */ = {
 			isa = PBXGroup;
 			children = (
-				1A9A0896ACA82145E2823FAB /* BGUISwitch.h */,
-				1A9A0244A773F871EF0B4F99 /* BGUISwitch.m */,
+				1A9A02B204C3068D230AF4B4 /* BGAudioPreloader.h */,
+				1A9A0D8241BD943D88289715 /* BGAudioPreloader.m */,
 			);
-			path = BGUILibrary;
+			path = BGAudioPreloader;
 			sourceTree = "<group>";
 		};
 		1A9A0464FCE9216D1855DD76 /* Resources */ = {
@@ -165,6 +168,8 @@
 				1A9A072EE47C46A78078EAFE /* MinerField */,
 				1A9A0E5796A6A29EEE70C28C /* Leaderboard */,
 				1A9A06FB0185D11E5684C224 /* SettingsManager */,
+				1A9A0DE37730459B1F36E142 /* BGUILibrary */,
+				1A9A01FBC29E1D83ED899F11 /* BGAudioPreloader */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -236,6 +241,15 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		1A9A0DE37730459B1F36E142 /* BGUILibrary */ = {
+			isa = PBXGroup;
+			children = (
+				1A9A0535D639111F86ACEEF1 /* BGUISwitch.h */,
+				1A9A06E1C8C18EE3BCA24FA8 /* BGUISwitch.m */,
+			);
+			path = BGUILibrary;
+			sourceTree = "<group>";
+		};
 		1A9A0E5796A6A29EEE70C28C /* Leaderboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -298,7 +312,6 @@
 				1A9A05927CCE9B4DF9AF9CFF /* Views */,
 				1A9A0107D436124DA0693232 /* Models */,
 				1A9A0464FCE9216D1855DD76 /* Resources */,
-				1A9A031E6049097722C06EE6 /* BGUILibrary */,
 			);
 			path = Miner;
 			sourceTree = "<group>";
@@ -363,6 +376,13 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Bleeding Games";
 				TargetAttributes = {
+					D5D6493D18D46B5100854518 = {
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+						};
+					};
 					D5D6495E18D46B5100854518 = {
 						TestTargetID = D5D6493D18D46B5100854518;
 					};
@@ -439,7 +459,8 @@
 				1A9A0E83283237D53CB75F15 /* BGMinerField.m in Sources */,
 				1A9A0CDBEDC1622A826D9534 /* BGLeaderboardManager.m in Sources */,
 				1A9A0DEEE879D61BB8D19973 /* BGSettingsManager.m in Sources */,
-				1A9A0128DC7A49DE5B283C8D /* BGUISwitch.m in Sources */,
+				1A9A025D7218E57009C00B32 /* BGUISwitch.m in Sources */,
+				1A9A02E36FF23270FEC10CC8 /* BGAudioPreloader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,6 +10,7 @@
 #import "BGOptionsViewController.h"
 #import "BGUISwitch.h"
 #import "BGSettingsManager.h"
+#import "BGAudioPreloader.h"
 
 
 @interface BGOptionsViewController ()
@@ -26,14 +27,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-//    звуки переключателей
-    NSData *onSound = [NSData dataWithContentsOfFile:[[NSBundle mainBundle]
-                                                                pathForResource:@"switchON"
-                                                                         ofType:@"mp3"]];
-    NSData *offSound = [NSData dataWithContentsOfFile:[[NSBundle mainBundle]
-                                                                 pathForResource:@"switchOFF"
-                                                                          ofType:@"mp3"]];
 
 //    создаем фоновую вьюху и устанавливаем фоновое изображение для экрана
     self.backgroundImageView = [[UIImageView alloc]
@@ -58,8 +51,6 @@
                                     initWithPosition:CGPointMake(40, 415)
                                              onImage:[UIImage imageNamed:@"switch_1.png"]
                                             offImage:[UIImage imageNamed:@"switch_0.png"]];
-    self.soundSwitch.onSound = onSound;
-    self.soundSwitch.offSound = offSound;
     self.soundSwitch.on = ([BGSettingsManager sharedManager].soundStatus == BGMinerSoundStatusOn);
     [self.soundSwitch addTarget:self
                          action:@selector(soundButtonTapped:)
@@ -71,14 +62,25 @@
     self.adsSwitch = [[BGUISwitch alloc] initWithPosition:CGPointMake(200, 415)
                                                   onImage:[UIImage imageNamed:@"switch_1.png"]
                                                  offImage:[UIImage imageNamed:@"switch_0.png"]];
-    self.adsSwitch.onSound = onSound;
-    self.adsSwitch.offSound = offSound;
     self.adsSwitch.on = ([BGSettingsManager sharedManager].adsStatus == BGMinerAdsStatusOn);
     [self.adsSwitch addTarget:self
                        action:@selector(adsButtonTapped:)
              forControlEvents:UIControlEventTouchUpInside];
 
     [self.originalContentView addSubview:self.adsSwitch];
+
+//    звуки переключателей
+    AVAudioPlayer *onSound = [[BGAudioPreloader shared]
+                                                playerForResource:@"switchON"
+                                                           ofType:@"mp3"];
+    AVAudioPlayer *offSound = [[BGAudioPreloader shared]
+                                                 playerForResource:@"switchOFF"
+                                                            ofType:@"mp3"];
+
+    self.soundSwitch.onSound = onSound;
+    self.adsSwitch.onSound = onSound;
+    self.soundSwitch.offSound = offSound;
+    self.adsSwitch.offSound = offSound;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -114,8 +116,10 @@
 
     if (adsStatus == BGMinerAdsStatusOn) {
         [BGSettingsManager sharedManager].adsStatus = BGMinerAdsStatusOff;
+        self.canDisplayBannerAds = NO;
     } else {
         [BGSettingsManager sharedManager].adsStatus = BGMinerAdsStatusOn;
+        self.canDisplayBannerAds = YES;
     }
 }
 

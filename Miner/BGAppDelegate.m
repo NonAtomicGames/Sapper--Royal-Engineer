@@ -8,19 +8,28 @@
 
 #import "BGAppDelegate.h"
 #import "BGSettingsManager.h"
+#import "BGAudioPreloader.h"
 
 
 @implementation BGAppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+- (BOOL)          application:(UIApplication *)application
+didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     NSLog(@"settings: %@", [[NSUserDefaults standardUserDefaults]
-                                              valueForKey:@"BGSettingsManager"]);
+                                            valueForKey:@"BGSettingsManager"]);
+
+//    предзагрузка звуков в фоновом режиме для избежания затормаживания при
+//    переключении тумблеров
+    [[BGAudioPreloader shared] preloadResource:@"switchON"
+                                        ofType:@"mp3"];
+    [[BGAudioPreloader shared] preloadResource:@"switchOFF"
+                                        ofType:@"mp3"];
 
     // Override point for customization after application launch.
     return YES;
 }
-							
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
