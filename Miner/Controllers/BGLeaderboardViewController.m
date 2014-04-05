@@ -6,8 +6,10 @@
 //  Copyright (c) 2014 Bleeding Games. All rights reserved.
 //
 
+#import <iAd/iAd.h>
 #import "BGLeaderboardViewController.h"
 #import "BGLeaderboardManager.h"
+#import "BGSettingsManager.h"
 
 
 #define BG_NUMBER_OF_SECTIONS 1
@@ -21,19 +23,12 @@
 
 #pragma mark - View
 
-- (void)viewDidLoad
+- (void)viewWillAppear:(BOOL)animated
 {
-    NSLog(@"%s", __FUNCTION__);
+    [super viewWillAppear:animated];
 
-    [[BGLeaderboardManager sharedManager] removeAll];
-
-    for (NSUInteger i=0; i<10; i++) {
-        [[BGLeaderboardManager sharedManager]
-                addNewRecordForRows:i
-                               cols:i
-                              level:i*2
-                               time:i*3];
-    }
+    //    разрешаем на этом экране отображаться рекламе
+    self.canDisplayBannerAds = ([BGSettingsManager sharedManager].adsStatus == BGMinerAdsStatusOn);
 }
 
 #pragma mark - UITableViewDelegate
@@ -47,13 +42,14 @@
 
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RecordCellIdentifier"];
 
-    if(cell == nil) {
+    if (cell == nil) {
         cell = [[UITableViewCell alloc]
-                initWithStyle:UITableViewCellStyleValue1
-              reuseIdentifier:@"RecordCellIdentifier"];
+                                 initWithStyle:UITableViewCellStyleValue1
+                               reuseIdentifier:@"RecordCellIdentifier"];
     }
 
-    cell.textLabel.text = [NSString stringWithFormat:@"%@", [BGLeaderboardManager sharedManager].records[(NSUInteger)indexPath.row][@"level"]];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@",
+                                                     [BGLeaderboardManager sharedManager].records[(NSUInteger) indexPath.row][@"level"]];
 
     return cell;
 }

@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Bleeding Games. All rights reserved.
 //
 
+#import <iAd/iAd.h>
 #import "BGOptionsViewController.h"
 #import "BGUISwitch.h"
 #import "BGSettingsManager.h"
@@ -24,6 +25,8 @@
 
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
+
 //    звуки переключателей
     NSData *onSound = [NSData dataWithContentsOfFile:[[NSBundle mainBundle]
                                                                 pathForResource:@"switchON"
@@ -37,11 +40,22 @@
                                              initWithFrame:[UIScreen mainScreen].bounds];
     self.backgroundImageView.image = [UIImage imageNamed:@"miner_config.jpg"];
 
-    [self.view addSubview:self.backgroundImageView];
+    [self.originalContentView addSubview:self.backgroundImageView];
+
+    //    кнопка назад
+    UIButton *back = [[UIButton alloc]
+                                initWithFrame:CGRectMake(0, 0, 100, 100)];
+    back.titleLabel.text = @"Back";
+    back.backgroundColor = [UIColor blueColor];
+    [back addTarget:self
+             action:@selector(back:)
+   forControlEvents:UIControlEventTouchUpInside];
+
+    [self.view addSubview:back];
 
 //    создаем переключатель для звука
     self.soundSwitch = [[BGUISwitch alloc]
-                                    initWithPosition:CGPointMake(10, 10)
+                                    initWithPosition:CGPointMake(40, 415)
                                              onImage:[UIImage imageNamed:@"switch_1.png"]
                                             offImage:[UIImage imageNamed:@"switch_0.png"]];
     self.soundSwitch.onSound = onSound;
@@ -54,7 +68,7 @@
     [self.view addSubview:self.soundSwitch];
 
 //    создаем переключатель для рекламы
-    self.adsSwitch = [[BGUISwitch alloc] initWithPosition:CGPointMake(200, 200)
+    self.adsSwitch = [[BGUISwitch alloc] initWithPosition:CGPointMake(200, 415)
                                                   onImage:[UIImage imageNamed:@"switch_1.png"]
                                                  offImage:[UIImage imageNamed:@"switch_0.png"]];
     self.adsSwitch.onSound = onSound;
@@ -64,7 +78,15 @@
                        action:@selector(adsButtonTapped:)
              forControlEvents:UIControlEventTouchUpInside];
 
-    [self.view addSubview:self.adsSwitch];
+    [self.originalContentView addSubview:self.adsSwitch];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+
+    //    данный контроллер может работать с рекламой
+    self.canDisplayBannerAds = ([BGSettingsManager sharedManager].adsStatus == BGMinerAdsStatusOn);
 }
 
 #pragma mark - Target actions
@@ -95,6 +117,11 @@
     } else {
         [BGSettingsManager sharedManager].adsStatus = BGMinerAdsStatusOn;
     }
+}
+
+- (void)back:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

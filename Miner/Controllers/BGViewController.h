@@ -8,10 +8,7 @@
 
 @import UIKit;
 @import SpriteKit;
-@import iAd;
 
-@interface BGViewController : UIViewController <ADBannerViewDelegate>
 
-@property (nonatomic, weak) IBOutlet ADBannerView *adBannerView;
-
+@interface BGViewController : UIViewController
 @end
