@@ -128,10 +128,10 @@
 
     UIImageView *segment = [[UIImageView alloc] initWithImage:image];
 
-    CGFloat x = METAL_BORDER_WIDTH + _selectedSegments.count * (image.size.width / 2);
+    CGFloat x = METAL_BORDER_WIDTH + _selectedSegments.count * image.size.width;
     CGFloat y = METAL_BORDER_WIDTH;
 
-    segment.frame = CGRectMake(x, y, image.size.width / 2, image.size.height / 2);
+    segment.frame = CGRectMake(x, y, image.size.width, image.size.height);
     segment.hidden = YES;
 
     [_selectedSegments addObject:segment];
