@@ -40,7 +40,7 @@
     UIImage *backNormal = [UIImage imageNamed:@"back"];
     UIImage *backHighlighted = [UIImage imageNamed:@"back_down"];
     UIButton *back = [[UIButton alloc]
-            initWithFrame:CGRectMake(14, 22, backNormal.size.width, backNormal.size.height)];
+                                initWithFrame:CGRectMake(14, 22, backNormal.size.width, backNormal.size.height)];
     [back setImage:backNormal forState:UIControlStateNormal];
     [back setImage:backHighlighted forState:UIControlStateHighlighted];
     [back addTarget:self
@@ -51,7 +51,7 @@
 
 //    создаем подпись к элементу изменения размера поля
     UIImageView *fieldSizeImageView = [[UIImageView alloc]
-            initWithImage:[UIImage imageNamed:@"field_size"]];
+                                                    initWithImage:[UIImage imageNamed:@"field_size"]];
     CGRect fieldSizeRect = fieldSizeImageView.bounds;
     fieldSizeImageView.frame = CGRectMake(88, 70, fieldSizeRect.size.width, fieldSizeRect.size.height);
 
@@ -81,7 +81,7 @@
 
 //    создаем подпись к элементу изменения сложности игры
     UIImageView *difficultyImageView = [[UIImageView alloc]
-            initWithImage:[UIImage imageNamed:@"difficulty"]];
+                                                     initWithImage:[UIImage imageNamed:@"difficulty"]];
     CGRect difficultyRect = difficultyImageView.bounds;
     difficultyImageView.frame = CGRectMake(102, 169, difficultyRect.size.width, difficultyRect.size.height);
 
@@ -111,9 +111,9 @@
 
 //    создаем подпись к переключателю звука
     UIImageView *soundImageView = [[UIImageView alloc]
-            initWithImage:[UIImage imageNamed:@"sounds"]];
+                                                initWithImage:[UIImage imageNamed:@"sounds"]];
     CGRect soundsBounds = soundImageView.bounds;
-    soundImageView.frame = CGRectMake(60, 372.5, soundsBounds.size.width, soundsBounds.size.height);
+    soundImageView.frame = CGRectMake(55.5, 372.5, soundsBounds.size.width, soundsBounds.size.height);
 
     [self.originalContentView addSubview:soundImageView];
 
@@ -130,7 +130,7 @@
 
 //    создаем подпись к переключателю рекламы
     UIImageView *adsImageView = [[UIImageView alloc]
-            initWithImage:[UIImage imageNamed:@"ads"]];
+                                              initWithImage:[UIImage imageNamed:@"ads"]];
     CGRect adsBounds = adsImageView.bounds;
     adsImageView.frame = CGRectMake(208, 372.5, adsBounds.size.width, adsBounds.size.height);
 

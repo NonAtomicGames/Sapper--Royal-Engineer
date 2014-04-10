@@ -40,7 +40,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="miner_main.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="ceY-sN-bT9">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="miner_main.png" translatesAutoresizingMaskIntoConstraints="NO" id="ceY-sN-bT9">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration">
@@ -108,7 +108,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2F1-ab-zog" customClass="SKView">
-                                <rect key="frame" x="0.0" y="58" width="320" height="510"/>
+                                <rect key="frame" x="0.0" y="88" width="320" height="480"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             </view>
@@ -210,13 +210,13 @@
         </scene>
     </scenes>
     <resources>
-        <image name="button_options.png" width="395" height="94"/>
-        <image name="button_options_down.png" width="395" height="94"/>
-        <image name="button_play.png" width="395" height="94"/>
-        <image name="button_play_down.png" width="395" height="94"/>
-        <image name="button_scores.png" width="395" height="94"/>
-        <image name="button_scores_down.png" width="395" height="94"/>
-        <image name="miner_main.jpg" width="640" height="1136"/>
+        <image name="button_options.png" width="197" height="47"/>
+        <image name="button_options_down.png" width="197" height="47"/>
+        <image name="button_play.png" width="197" height="47"/>
+        <image name="button_play_down.png" width="197" height="47"/>
+        <image name="button_scores.png" width="197" height="47"/>
+        <image name="button_scores_down.png" width="197" height="47"/>
+        <image name="miner_main.png" width="320" height="568"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
