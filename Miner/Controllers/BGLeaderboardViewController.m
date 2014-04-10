@@ -10,6 +10,7 @@
 #import "BGLeaderboardViewController.h"
 #import "BGLeaderboardManager.h"
 #import "BGSettingsManager.h"
+#import "BGLog.h"
 
 
 #define BG_NUMBER_OF_SECTIONS 1
@@ -38,7 +39,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"%s", __FUNCTION__);
+    BGLog(@"%s", __FUNCTION__);
 
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RecordCellIdentifier"];
 
@@ -57,14 +58,14 @@
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"%s", __FUNCTION__);
+    BGLog(@"%s", __FUNCTION__);
 
     return [BGLeaderboardManager sharedManager].records.count;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    NSLog(@"%s", __FUNCTION__);
+    BGLog(@"%s", __FUNCTION__);
 
     return BG_NUMBER_OF_SECTIONS;
 }

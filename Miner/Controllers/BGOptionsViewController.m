@@ -12,6 +12,7 @@
 #import "BGSettingsManager.h"
 #import "BGAudioPreloader.h"
 #import "BGUISegmentedControl.h"
+#import "BGLog.h"
 
 
 @interface BGOptionsViewController ()
@@ -172,7 +173,7 @@
 
 - (void)levelChanged:(id)newlySelectedIndexNumber
 {
-    NSLog(@"%s", __FUNCTION__);
+    BGLog(@"%s", __FUNCTION__);
 
     NSUInteger selected = [((NSNumber *) newlySelectedIndexNumber) unsignedIntegerValue] + 1;
     BGMinerLevel newLevel = (BGMinerLevel) selected;
@@ -182,7 +183,7 @@
 
 - (void)fieldSizeChanged:(id)newlySelectedIndexNumber
 {
-    NSLog(@"%s", __FUNCTION__);
+    BGLog(@"%s", __FUNCTION__);
 
     NSUInteger selected = [((NSNumber *) newlySelectedIndexNumber) unsignedIntegerValue];
     NSUInteger cols;
@@ -213,7 +214,7 @@
 
 - (void)soundButtonTapped:(id)sender
 {
-    NSLog(@"%s", __FUNCTION__);
+    BGLog(@"%s", __FUNCTION__);
 
 //    при переключении тумблера звука меняем настройки
     BGMinerSoundStatus soundStatus = [BGSettingsManager sharedManager].soundStatus;
@@ -227,7 +228,7 @@
 
 - (void)adsButtonTapped:(id)sender
 {
-    NSLog(@"%s", __FUNCTION__);
+    BGLog(@"%s", __FUNCTION__);
 
 //    при переключении тумблера показа рекламы сохраним настройки
     BGMinerAdsStatus adsStatus = [BGSettingsManager sharedManager].adsStatus;

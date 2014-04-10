@@ -18,6 +18,7 @@
 //
 
 #import "BGUISegmentedControl.h"
+#import "BGLog.h"
 
 
 #define METAL_BORDER_WIDTH 4.5
@@ -57,14 +58,14 @@
 
 - (void)addNewSegmentImage:(UIImage *)segmentImage
 {
-    NSLog(@"%s", __FUNCTION__);
+    BGLog(@"%s", __FUNCTION__);
 
     [self BGPrivate_addNewSegmentImage:segmentImage];
 }
 
 - (void)setSelectedSegmentIndex:(NSUInteger)selectedSegmentIndex
 {
-    NSLog(@"%s", __FUNCTION__);
+    BGLog(@"%s", __FUNCTION__);
 
     _selectedSegmentIndex = selectedSegmentIndex;
 
@@ -124,7 +125,7 @@
 
 - (void)BGPrivate_addNewSegmentImage:(UIImage *)image
 {
-    NSLog(@"%s", __FUNCTION__);
+    BGLog(@"%s", __FUNCTION__);
 
     UIImageView *segment = [[UIImageView alloc] initWithImage:image];
 

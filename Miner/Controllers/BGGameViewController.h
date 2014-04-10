@@ -13,10 +13,5 @@
 @interface BGGameViewController : UIViewController
 
 @property (nonatomic, weak) IBOutlet SKView *skView;
-@property (nonatomic, weak) IBOutlet UIButton *finishGameButton;
-@property (nonatomic, weak) IBOutlet UIButton *startNewGameButton;
-
-- (IBAction)finishGame:(id)sender;
-- (IBAction)startNewGame:(id)sender;
 
 @end
