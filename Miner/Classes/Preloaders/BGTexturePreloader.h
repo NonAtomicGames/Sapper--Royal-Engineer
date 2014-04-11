@@ -17,11 +17,19 @@
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
+@import SpriteKit;
 
 
 @interface BGTexturePreloader : NSObject
 
-+ (void)preloadAllTextures;
+// атлас с текстурами для поля
+@property (nonatomic, strong, readonly) SKTextureAtlas *tilesAtlas;
+
+// уникальный экземпляр
++ (instancetype)shared;
+
+// метод осуществляет предзагрузку текстур в память
+- (void)preloadAllAtlases;
 
 @end

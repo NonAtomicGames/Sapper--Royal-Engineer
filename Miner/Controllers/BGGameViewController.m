@@ -10,12 +10,19 @@
 #import "BGMinerField.h"
 #import "BGSettingsManager.h"
 #import "BGLog.h"
+#import "BGTexturePreloader.h"
 
 
 // полезные константы тегов для вьюх
 static const NSInteger kBGTimerViewTag = 1;
 static const NSInteger kBGMinesCountViewTag = 2;
+static const NSInteger kBGStatusImageDefaultViewTag = 3;
+static const NSInteger kBGStatusImageFailedViewTag = 4;
+static const NSInteger kBGStatusImageWonViewTag = 5;
 
+//    переменная-хак для удаления "общей" (содержащей слой с травой и землей) ноды,
+//    которая при создании новой игры будет находится под только что сгенерированным полем
+static NSInteger compoundNodeZPosition = 0;
 
 // игровое поле
 BGMinerField *_field;
@@ -35,24 +42,6 @@ NSUInteger flaggedMines;
 
 #pragma mark - BGGameViewController
 
-// приватные методы
-@interface BGGameViewController (Private)
-- (void)startNewGame;
-
-- (void)fillGameSceneField;
-
-- (void)startGameTimer;
-
-- (void)destroyGameTimer;
-
-- (void)animateExplosionOnCellWithCol:(NSUInteger)col row:(NSUInteger)row;
-
-- (void)openCellsFromCellWithCol:(NSUInteger)col row:(NSUInteger)row;
-
-- (void)openCellsWithBombs;
-@end
-
-
 // основная реализация
 @implementation BGGameViewController
 
@@ -61,60 +50,6 @@ NSUInteger flaggedMines;
 - (void)viewDidLoad
 {
     BGLog(@"%s", __FUNCTION__);
-
-    [self startNewGame];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    BGLog();
-
-    [self startGameTimer];
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-    BGLog();
-
-    [self destroyGameTimer];
-}
-
-#pragma mark - Game & Private
-
-- (void)startGameTimer
-{
-    BGLog();
-
-//    запускаем таймер игры
-    if (self.timer == nil) {
-        _timer = [NSTimer scheduledTimerWithTimeInterval:1.0
-                                                  target:self
-                                                selector:@selector(updateTimerLabel:)
-                                                userInfo:nil
-                                                 repeats:YES];
-    }
-}
-
-- (void)destroyGameTimer
-{
-    //    убираем таймер
-    [_timer invalidate];
-    _timer = nil;
-}
-
-- (void)startNewGame
-{
-    //    нет отмеченных бомб
-    flaggedMines = 0;
-
-//    генерируем поле
-    NSUInteger rows = [BGSettingsManager sharedManager].rows;
-    NSUInteger cols = [BGSettingsManager sharedManager].cols;
-    NSUInteger bombs = [BGSettingsManager sharedManager].bombs;
-
-    _field = [[BGMinerField alloc] initWithCols:cols
-                                           rows:rows
-                                          bombs:bombs];
 
 //    добавляем изображение верхней панели
     UIImage *topPanelImage = [UIImage imageNamed:@"top_game"];
@@ -152,6 +87,24 @@ NSUInteger flaggedMines;
 
     [self.view addSubview:minesCountLabel];
 
+//  вьюха статуса игры
+//  для отслеживания нажатия, проще без кнопки обойтись
+    UIImage *defaultImage = [UIImage imageNamed:@"game_button_default"];
+
+    UIImageView *statusImageView = [[UIImageView alloc]
+                                                 initWithImage:defaultImage];
+    statusImageView.frame = CGRectMake(137, 22, defaultImage.size.width, defaultImage.size.height);
+    statusImageView.userInteractionEnabled = YES;
+    statusImageView.tag = kBGStatusImageDefaultViewTag;
+
+    UITapGestureRecognizer *statusImageViewGestureRecognizer = [[UITapGestureRecognizer alloc]
+                                                                                        initWithTarget:self
+                                                                                                action:@selector(statusImageViewTap:)];
+    statusImageViewGestureRecognizer.numberOfTouchesRequired = 1;
+    statusImageViewGestureRecognizer.numberOfTapsRequired = 1;
+    [statusImageView addGestureRecognizer:statusImageViewGestureRecognizer];
+
+    [self.view addSubview:statusImageView];
 
 //    добавляем кнопку "Назад"
     UIImage *backNormal = [UIImage imageNamed:@"back"];
@@ -196,9 +149,89 @@ NSUInteger flaggedMines;
     self.skView.showsPhysics = YES;
 #endif
 
+//    запускаем игру
+    [self startNewGame];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    BGLog();
+
+    [self startGameTimer];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    BGLog();
+
+    [self destroyGameTimer];
+}
+
+#pragma mark - Game & Private
+
+- (void)startGameTimer
+{
+    BGLog();
+
+//    запускаем таймер игры
+    if (self.timer == nil) {
+        _timer = [NSTimer scheduledTimerWithTimeInterval:1.0
+                                                  target:self
+                                                selector:@selector(updateTimerLabel:)
+                                                userInfo:nil
+                                                 repeats:YES];
+    }
+}
+
+- (void)destroyGameTimer
+{
+    //    убираем таймер
+    [_timer invalidate];
+    _timer = nil;
+}
+
+- (void)stopGameTimer
+{
+    [_timer invalidate];
+}
+
+- (void)startNewGame
+{
+//    нет отмеченных бомб
+    flaggedMines = 0;
+
+//    генерируем поле
+    NSUInteger rows = [BGSettingsManager sharedManager].rows;
+    NSUInteger cols = [BGSettingsManager sharedManager].cols;
+    NSUInteger bombs = [BGSettingsManager sharedManager].bombs;
+
+    _field = [[BGMinerField alloc] initWithCols:cols
+                                           rows:rows
+                                          bombs:bombs];
+//    сбрасываем старый таймер
+    [self destroyGameTimer];
+
+//    сбрасываем значение надписи таймера
+    [self resetTimerLabel];
+
+//    обновим надпись с кол-вом бомб
+    [self updateMinesCountLabel];
+
 //    заполняем SKView спрайтами с бомбами, цифрами и пустыми полями
 //    потом накладываем на них траву
     [self fillGameSceneField];
+
+//    разрешаем пользователю взаимодействовать с полем
+    [self enableFieldInteraction];
+
+//    удалим старый игровой слой
+    [self.skView.scene enumerateChildNodesWithName:@"compoundNode"
+                                        usingBlock:^(SKNode *node, BOOL *stop)
+                                        {
+                                            if (node.zPosition != compoundNodeZPosition) {
+                                                [node removeFromParent];
+                                            }
+                                        }];
 
 //    запускаем таймер
     [self startGameTimer];
@@ -209,6 +242,7 @@ NSUInteger flaggedMines;
     //    нода для хранения слоёв - заднего и переднего
     SKNode *compoundNode = [SKNode node];
     compoundNode.name = @"compoundNode";
+    compoundNode.zPosition = (compoundNodeZPosition == 0 ? (compoundNodeZPosition = 1) : (compoundNodeZPosition = 0));
 
 //    нода для хранения первого слоя
     SKNode *layer1 = [SKNode node];
@@ -217,9 +251,6 @@ NSUInteger flaggedMines;
 //    нода для хранения второго слоя
     SKNode *layer2 = [SKNode node];
     layer2.name = @"grassTiles";
-
-//    текстура с травой
-    SKTexture *grassTexture = [SKTexture textureWithImageNamed:@"grass"];
 
 //    заполняем первый слой - цифры, земля и сами бомбы
     for (NSUInteger indexCol = 0; indexCol < _field.cols; indexCol++) {
@@ -230,16 +261,16 @@ NSUInteger flaggedMines;
 
             switch (fieldValue) {
                 case BGFieldBomb: // бомба
-                    texture = [SKTexture textureWithImageNamed:@"mine"];
+                    texture = [[BGTexturePreloader shared].tilesAtlas textureNamed:@"mine"];
                     break;
 
                 case BGFieldEmpty: // земля
-                    texture = [SKTexture textureWithImageNamed:@"earth"];
+                    texture = [[BGTexturePreloader shared].tilesAtlas textureNamed:@"earth"];
                     break;
 
                 default:
-                    texture = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"earth%d",
-                                                                                          fieldValue]];
+                    texture = [[BGTexturePreloader shared].tilesAtlas textureNamed:[NSString stringWithFormat:@"earth%d",
+                                                                                                              fieldValue]];
                     break;
             }
 
@@ -265,6 +296,7 @@ NSUInteger flaggedMines;
             [layer1 addChild:tile];
 
 //            накладываем слой с травой
+            SKTexture *grassTexture = [[BGTexturePreloader shared].tilesAtlas textureNamed:@"grass"];
             SKSpriteNode *grassTile = [SKSpriteNode spriteNodeWithTexture:grassTexture];
             grassTile.position = tile.position;
             grassTile.size = tile.size;
@@ -375,7 +407,45 @@ NSUInteger flaggedMines;
 //    TODO
 }
 
+- (BOOL)isGameFinished
+{
+    BGLog();
+
+    SKNode *grassTilesNode = [[self.skView.scene childNodeWithName:@"compoundNode"]
+                                                 childNodeWithName:@"grassTiles"];
+    __block BOOL isGameFinished = YES;
+
+    [grassTilesNode enumerateChildNodesWithName:@"*"
+                                     usingBlock:^(SKNode *node, BOOL *stop)
+                                     {
+                                         NSUInteger col = [node.userData[@"col"] unsignedIntegerValue];
+                                         NSUInteger row = [node.userData[@"row"] unsignedIntegerValue];
+
+                                         NSInteger value = [_field valueForCol:col
+                                                                           row:row];
+
+                                         if (value == BGFieldBomb) {}
+                                         else {
+                                             *stop = YES;
+                                             isGameFinished = NO;
+                                         }
+                                     }];
+
+    return isGameFinished;
+}
+
 #pragma mark - Actions
+
+- (void)statusImageViewTap:(UIGestureRecognizer *)gestureRecognizer
+{
+    BGLog();
+
+//    обновляем кнопку со статусом
+    [self updateStatusImageViewWithStatus:kBGStatusImageDefaultViewTag];
+
+//    начинаем игру заново
+    [self startNewGame];
+}
 
 - (void)back:(id)sender
 {
@@ -408,21 +478,32 @@ NSUInteger flaggedMines;
                                           row:row];
 
         switch (value) {
-            case BGFieldBomb:
+            case BGFieldBomb: {
+                [self stopGameTimer];
+                [self updateStatusImageViewWithStatus:kBGStatusImageFailedViewTag];
+                [self disableFieldInteraction];
                 [self animateExplosionOnCellWithCol:col
                                                 row:row];
                 [self openCellsWithBombs];
+            }
 
                 break;
 
-            case BGFieldEmpty:
+            case BGFieldEmpty: {
                 [self openCellsFromCellWithCol:col
                                            row:row];
+            }
 
-                break;
-
-            default:
+            default: {
 //                ничего не делаем
+                BOOL userWon = [self isGameFinished];
+
+                if (userWon) {
+                    [self stopGameTimer];
+                    [self disableFieldInteraction];
+                    [self updateStatusImageViewWithStatus:kBGStatusImageWonViewTag];
+                }
+            }
                 break;
         }
     }
@@ -445,7 +526,8 @@ NSUInteger flaggedMines;
 
         if (touchedNode.userData != nil && minesRemainedToOpen != 0) {
 //        устанавливаем
-            SKSpriteNode *flagTile = [SKSpriteNode spriteNodeWithImageNamed:@"flag"];
+            SKTexture *flagTexture = [[BGTexturePreloader shared].tilesAtlas textureNamed:@"flag"];
+            SKSpriteNode *flagTile = [SKSpriteNode spriteNodeWithTexture:flagTexture];
             flagTile.name = @"flag";
             flagTile.anchorPoint = CGPointZero;
             flagTile.size = ((SKSpriteNode *) touchedNode).size;
@@ -477,6 +559,49 @@ NSUInteger flaggedMines;
     timerValue++;
 
     timerLabel.text = [NSString stringWithFormat:@"%04d", timerValue];
+}
+
+- (void)resetTimerLabel
+{
+    BGLog();
+
+    UILabel *timerLabel = (UILabel *) [self.view viewWithTag:kBGTimerViewTag];
+    timerLabel.text = [NSString stringWithFormat:@"%04d", 0];
+}
+
+- (void)updateMinesCountLabel
+{
+    UILabel *minesCountLabel = (UILabel *) [self.view viewWithTag:kBGMinesCountViewTag];
+    minesCountLabel.text = [NSString stringWithFormat:@"%04d", _field.bombs];
+}
+
+- (void)updateStatusImageViewWithStatus:(NSInteger)statusTag
+{
+    UIImageView *imageView = (UIImageView *) [self.view viewWithTag:kBGStatusImageDefaultViewTag];
+
+    switch (statusTag) {
+        case kBGStatusImageFailedViewTag:
+            imageView.image = [UIImage imageNamed:@"game_button_failed"];
+            break;
+
+        case kBGStatusImageWonViewTag:
+            imageView.image = [UIImage imageNamed:@"game_button_win"];
+            break;
+
+        default:
+            imageView.image = [UIImage imageNamed:@"game_button_default"];
+            break;
+    }
+}
+
+- (void)disableFieldInteraction
+{
+    self.skView.userInteractionEnabled = NO;
+}
+
+- (void)enableFieldInteraction
+{
+    self.skView.userInteractionEnabled = YES;
 }
 
 @end

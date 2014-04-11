@@ -19,18 +19,39 @@
 
 #import <SpriteKit/SpriteKit.h>
 #import "BGTexturePreloader.h"
+#import "BGLog.h"
 
 
 @implementation BGTexturePreloader
 
+#pragma mark - Class
+
++ (id)shared
+{
+    static dispatch_once_t once;
+    static BGTexturePreloader *shared;
+
+    dispatch_once(&once, ^
+    {
+        shared = [[self alloc] init];
+    });
+
+    return shared;
+}
+
 #pragma mark - Preloading
 
-+ (void)preloadAllTextures
+- (void)preloadAllAtlases
 {
-    [SKTexture preloadTextures:@[[SKTexture textureWithImageNamed:@"Tiles"]]
-         withCompletionHandler:^
-         {
-         }];
+    BGLog();
+
+    SKTextureAtlas *tilesAtlas = [SKTextureAtlas atlasNamed:@"Tiles"];
+    _tilesAtlas = tilesAtlas;
+
+    [SKTextureAtlas preloadTextureAtlases:@[tilesAtlas]
+                    withCompletionHandler:^
+                    {
+                    }];
 }
 
 @end

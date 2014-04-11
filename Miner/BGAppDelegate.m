@@ -25,7 +25,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
                                         ofType:@"mp3"];
 
 //    подгружаем текстуры для ускорения заполнения игрового поля
-    [BGTexturePreloader preloadAllTextures];
+    [[BGTexturePreloader shared] preloadAllAtlases];
 
 //    предзагрузка дефайлтов
     [BGSettingsManager sharedManager];
