@@ -212,35 +212,39 @@ NSUInteger flaggedMines;
 
 //    нода для хранения первого слоя
     SKNode *layer1 = [SKNode node];
-    layer1.zPosition = 0;
     layer1.userInteractionEnabled = NO;
 
 //    нода для хранения второго слоя
     SKNode *layer2 = [SKNode node];
-    layer2.zPosition = 1;
     layer2.name = @"grassTiles";
+
+//    текстура с травой
+    SKTexture *grassTexture = [SKTexture textureWithImageNamed:@"grass"];
 
 //    заполняем первый слой - цифры, земля и сами бомбы
     for (NSUInteger indexCol = 0; indexCol < _field.cols; indexCol++) {
         for (NSUInteger indexRow = 0; indexRow < _field.rows; indexRow++) {
             NSInteger fieldValue = [_field valueForCol:indexCol
                                                    row:indexRow];
-            SKSpriteNode *tile;
+            SKTexture *texture;
 
             switch (fieldValue) {
                 case BGFieldBomb: // бомба
-                    tile = [SKSpriteNode spriteNodeWithImageNamed:@"mine"];
+                    texture = [SKTexture textureWithImageNamed:@"mine"];
                     break;
 
                 case BGFieldEmpty: // земля
-                    tile = [SKSpriteNode spriteNodeWithImageNamed:@"earth"];
+                    texture = [SKTexture textureWithImageNamed:@"earth"];
                     break;
 
                 default:
-                    tile = [SKSpriteNode spriteNodeWithImageNamed:[NSString stringWithFormat:@"earth%d",
-                                                                                             fieldValue]];
+                    texture = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"earth%d",
+                                                                                          fieldValue]];
                     break;
             }
+
+//            спрайт
+            SKSpriteNode *tile = [SKSpriteNode spriteNodeWithTexture:texture];
 
 //            устанавливаем размеры спрайта
             if ([BGSettingsManager sharedManager].cols == 12)
@@ -255,12 +259,13 @@ NSUInteger flaggedMines;
             CGFloat x = indexRow * tile.size.width;
             CGFloat y = indexCol * tile.size.height;
             tile.position = CGPointMake(x, y);
+            tile.zPosition = 0;
 
 //            добавляем на слой
             [layer1 addChild:tile];
 
 //            накладываем слой с травой
-            SKSpriteNode *grassTile = [SKSpriteNode spriteNodeWithImageNamed:@"grass"];
+            SKSpriteNode *grassTile = [SKSpriteNode spriteNodeWithTexture:grassTexture];
             grassTile.position = tile.position;
             grassTile.size = tile.size;
             grassTile.anchorPoint = CGPointZero;
@@ -268,9 +273,10 @@ NSUInteger flaggedMines;
                     @"col" : @(indexCol),
                     @"row" : @(indexRow)
             } mutableCopy];
-            grassTile.name = [NSString stringWithFormat:@"%@.%@",
-                                                        @(indexCol),
-                                                        @(indexRow)];
+            grassTile.zPosition = 0;
+            grassTile.name = [NSString stringWithFormat:@"%d.%d",
+                                                        indexCol,
+                                                        indexRow];
 
             [layer2 addChild:grassTile];
         }
@@ -289,7 +295,7 @@ NSUInteger flaggedMines;
 - (void)animateExplosionOnCellWithCol:(NSUInteger)col
                                   row:(NSUInteger)row
 {
-    BGLog(@"%s", __FUNCTION__);
+    BGLog();
 
 //    TODO
 }
@@ -297,7 +303,7 @@ NSUInteger flaggedMines;
 - (void)openCellsFromCellWithCol:(NSUInteger)col
                              row:(NSUInteger)row
 {
-    BGLog(@"%s", __FUNCTION__);
+    BGLog();
 
 //    определяем все ячейки, которые необходимо открыть
     NSMutableSet *usedCells = [NSMutableSet new];
@@ -307,9 +313,7 @@ NSUInteger flaggedMines;
 
     [queue addObject:@(col)];
     [queue addObject:@(row)];
-    [usedCells addObject:[NSString stringWithFormat:@"%@.%@",
-                                                    @(col),
-                                                    @(row)]];
+    [usedCells addObject:[NSString stringWithFormat:@"%d.%d", col, row]];
 
     while (queue.count > 0) {
         NSUInteger currentCol = [queue[0] unsignedIntegerValue];
@@ -319,9 +323,9 @@ NSUInteger flaggedMines;
         [queue removeObjectAtIndex:0];
 
 //        удаляем с верхнего слоя тайл с травой
-        NSString *nodeName = [NSString stringWithFormat:@"%@.%@",
-                                                        @(currentCol),
-                                                        @(currentRow)];
+        NSString *nodeName = [NSString stringWithFormat:@"%d.%d",
+                                                        currentCol,
+                                                        currentRow];
         SKNode *grassNodeToRemoveFromParent = [[[self.skView.scene childNodeWithName:@"compoundNode"]
                                                                    childNodeWithName:@"grassTiles"]
                                                                    childNodeWithName:nodeName];
@@ -347,9 +351,9 @@ NSUInteger flaggedMines;
             NSInteger newRow = currentRow + [x[k] integerValue];
 
             if (newCol >= 0 && newRow >= 0 && newCol < _field.cols && newRow < _field.rows) {
-                NSString *cellName = [NSString stringWithFormat:@"%@.%@",
-                                                                @(newCol),
-                                                                @(newRow)];
+                NSString *cellName = [NSString stringWithFormat:@"%d.%d",
+                                                                newCol,
+                                                                newRow];
 
 //                добавляем еще неиспользованную клетку, если она пустая
                 if ([_field valueForCol:(NSUInteger) newCol

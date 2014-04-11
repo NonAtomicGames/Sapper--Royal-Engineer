@@ -9,6 +9,7 @@
 #import "BGAppDelegate.h"
 #import "BGSettingsManager.h"
 #import "BGAudioPreloader.h"
+#import "BGTexturePreloader.h"
 
 
 @implementation BGAppDelegate
@@ -16,9 +17,6 @@
 - (BOOL)          application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    NSLog(@"settings: %@", [[NSUserDefaults standardUserDefaults]
-                                            valueForKey:@"BGSettingsManager"]);
-
 //    предзагрузка звуков в фоновом режиме для избежания затормаживания при
 //    переключении тумблеров
     [[BGAudioPreloader shared] preloadResource:@"switchON"
@@ -26,7 +24,10 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
     [[BGAudioPreloader shared] preloadResource:@"switchOFF"
                                         ofType:@"mp3"];
 
-//    предзапрос к дефайлтам
+//    подгружаем текстуры для ускорения заполнения игрового поля
+    [BGTexturePreloader preloadAllTextures];
+
+//    предзагрузка дефайлтов
     [BGSettingsManager sharedManager];
 
     // Override point for customization after application launch.

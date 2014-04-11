@@ -12,11 +12,12 @@
 
 @implementation BGViewController
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
+#pragma mark - View
 
-    //    разрешаем на этом экране отображаться рекламе
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+
     self.canDisplayBannerAds = ([BGSettingsManager sharedManager].adsStatus == BGMinerAdsStatusOn);
 }
 
