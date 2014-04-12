@@ -10,7 +10,7 @@
 #import "BGMinerField.h"
 #import "BGSettingsManager.h"
 #import "BGLog.h"
-#import "BGTexturePreloader.h"
+#import "BGSKView.h"
 
 
 // полезные константы тегов для вьюх
@@ -28,16 +28,6 @@ static NSInteger compoundNodeZPosition = 0;
 BGMinerField *_field;
 // кол-во отмеченых бомб
 NSUInteger flaggedMines;
-
-
-#pragma mark - BGGameScene
-
-// дочерний класс для обработки цикла обновления игрового поля
-@interface BGGameScene : SKScene
-@end
-
-@implementation BGGameScene
-@end
 
 
 #pragma mark - BGGameViewController
@@ -81,7 +71,7 @@ NSUInteger flaggedMines;
                                                 green:198
                                                  blue:0
                                                 alpha:1];
-    minesCountLabel.text = [NSString stringWithFormat:@"%04d", _field.bombs];
+    minesCountLabel.text = [NSString stringWithFormat:@"%04d", 0];
     minesCountLabel.frame = CGRectMake(237, 36, 100, 50);
     minesCountLabel.tag = kBGMinesCountViewTag;
 
@@ -120,8 +110,6 @@ NSUInteger flaggedMines;
     [self.view addSubview:back];
 
 //    добавляем сцену на SKView
-//    BGGameScene *scene = [[BGGameScene alloc]
-//                                       initWithSize:self.skView.bounds.size];
     SKScene *scene = [[SKScene alloc] initWithSize:self.skView.frame.size];
     scene.userInteractionEnabled = NO;
     [self.skView presentScene:scene];
@@ -165,6 +153,7 @@ NSUInteger flaggedMines;
     BGLog();
 
     [self destroyGameTimer];
+    [self resetMinesCountLabel];
 }
 
 #pragma mark - Game & Private
@@ -259,25 +248,25 @@ NSUInteger flaggedMines;
         for (NSUInteger indexRow = 0; indexRow < _field.rows; indexRow++) {
             NSInteger fieldValue = [_field valueForCol:indexCol
                                                    row:indexRow];
-            SKTexture *texture;
+            SKSpriteNode *tile;
 
             switch (fieldValue) {
                 case BGFieldBomb: // бомба
-                    texture = [BGTexturePreloader shared].tilesTextures[@"mine"];
+                    tile = [((BGSKView *) self.skView).tileSprites[@"mine"] copy];
                     break;
 
                 case BGFieldEmpty: // земля
-                    texture = [BGTexturePreloader shared].tilesTextures[@"earth"];
+                    tile = [((BGSKView *) self.skView).tileSprites[@"earth"] copy];
                     break;
 
-                default:
-                    texture = [BGTexturePreloader shared].tilesTextures[[NSString stringWithFormat:@"earth%d",
-                                                                                                   fieldValue]];
+                default: {
+                    NSString *spriteName = [NSString stringWithFormat:@"earth%d",
+                                                                      fieldValue];
+                    tile = [((BGSKView *) self.skView).tileSprites[spriteName] copy];
+
                     break;
+                }
             }
-
-//            спрайт
-            SKSpriteNode *tile = [SKSpriteNode spriteNodeWithTexture:texture];
 
 //            устанавливаем размеры спрайта
             if ([BGSettingsManager sharedManager].cols == 12)
@@ -298,8 +287,7 @@ NSUInteger flaggedMines;
             [layer1 addChild:tile];
 
 //            накладываем слой с травой
-            SKTexture *grassTexture = [BGTexturePreloader shared].tilesTextures[@"grass"];
-            SKSpriteNode *grassTile = [SKSpriteNode spriteNodeWithTexture:grassTexture];
+            SKSpriteNode *grassTile = [((BGSKView *) self.skView).tileSprites[@"grass"] copy];
 
             grassTile.position = tile.position;
             grassTile.size = tile.size;
@@ -523,40 +511,39 @@ NSUInteger flaggedMines;
 {
     BGLog();
 
-////    получаем ноду, которая была нажата
-//    CGPoint touchPointGlobal = [sender locationInView:self.skView];
-//    CGPoint touchPoint = [self.skView convertPoint:touchPointGlobal
-//                                           toScene:self.skView.scene];
-//    SKNode *touchedNode = [self.skView.scene nodeAtPoint:touchPoint];
-//
-////    не обрабатываем начало длинного нажатия, нам нужно только "завершение"
-//    if (sender.state == UIGestureRecognizerStateBegan) {
-//        UILabel *minesCountLabel = (UILabel *) [self.view viewWithTag:kBGMinesCountViewTag];
-//        NSInteger minesRemainedToOpen = _field.bombs - flaggedMines;
-//
-//        if (touchedNode.userData != nil && minesRemainedToOpen != 0) {
-////        устанавливаем
-//            SKTexture *flagTexture = [[BGTexturePreloader shared].tilesAtlas textureNamed:@"flag"];
-//            SKSpriteNode *flagTile = [SKSpriteNode spriteNodeWithTexture:flagTexture];
-//            flagTile.name = @"flag";
-//            flagTile.anchorPoint = CGPointZero;
-//            flagTile.size = ((SKSpriteNode *) touchedNode).size;
-//
-//            [touchedNode addChild:flagTile];
-//
-////            обновляем значение кол-ва бомб
-//            flaggedMines++;
-//        } else if ([touchedNode.name isEqualToString:@"flag"]) {
-////        снимаем
-//            [touchedNode removeFromParent];
-//
-////            обновляем значение кол-ва бомб
-//            flaggedMines--;
-//        }
-//
-//        minesCountLabel.text = [NSString stringWithFormat:@"%04d",
-//                                                          _field.bombs - flaggedMines];
-//    }
+//    получаем ноду, которая была нажата
+    CGPoint touchPointGlobal = [sender locationInView:self.skView];
+    CGPoint touchPoint = [self.skView convertPoint:touchPointGlobal
+                                           toScene:self.skView.scene];
+    SKNode *touchedNode = [self.skView.scene nodeAtPoint:touchPoint];
+
+//    не обрабатываем начало длинного нажатия, нам нужно только "завершение"
+    if (sender.state == UIGestureRecognizerStateBegan) {
+        UILabel *minesCountLabel = (UILabel *) [self.view viewWithTag:kBGMinesCountViewTag];
+        NSInteger minesRemainedToOpen = _field.bombs - flaggedMines;
+
+        if (touchedNode.userData != nil && minesRemainedToOpen != 0) {
+//        устанавливаем
+            SKSpriteNode *flagTile = [((BGSKView *) self.skView).tileSprites[@"flag"] copy];
+            flagTile.name = @"flag";
+            flagTile.anchorPoint = CGPointZero;
+            flagTile.size = ((SKSpriteNode *) touchedNode).size;
+
+            [touchedNode addChild:flagTile];
+
+//            обновляем значение кол-ва бомб
+            flaggedMines++;
+        } else if ([touchedNode.name isEqualToString:@"flag"]) {
+//        снимаем
+            [touchedNode removeFromParent];
+
+//            обновляем значение кол-ва бомб
+            flaggedMines--;
+        }
+
+        minesCountLabel.text = [NSString stringWithFormat:@"%04d",
+                                                          _field.bombs - flaggedMines];
+    }
 }
 
 - (void)updateTimerLabel:(id)sender
@@ -583,6 +570,12 @@ NSUInteger flaggedMines;
 {
     UILabel *minesCountLabel = (UILabel *) [self.view viewWithTag:kBGMinesCountViewTag];
     minesCountLabel.text = [NSString stringWithFormat:@"%04d", _field.bombs];
+}
+
+- (void)resetMinesCountLabel
+{
+    UILabel *minesCountLabel = (UILabel *) [self.view viewWithTag:kBGMinesCountViewTag];
+    minesCountLabel.text = [NSString stringWithFormat:@"%04d", 0];
 }
 
 - (void)updateStatusImageViewWithStatus:(NSInteger)statusTag

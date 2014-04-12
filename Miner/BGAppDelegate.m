@@ -9,7 +9,6 @@
 #import "BGAppDelegate.h"
 #import "BGSettingsManager.h"
 #import "BGAudioPreloader.h"
-#import "BGTexturePreloader.h"
 
 
 @implementation BGAppDelegate
@@ -23,9 +22,6 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
                                         ofType:@"mp3"];
     [[BGAudioPreloader shared] preloadResource:@"switchOFF"
                                         ofType:@"mp3"];
-
-//    подгружаем текстуры для ускорения заполнения игрового поля
-    [[BGTexturePreloader shared] preloadAllAtlases];
 
 //    предзагрузка дефайлтов
     [BGSettingsManager sharedManager];
