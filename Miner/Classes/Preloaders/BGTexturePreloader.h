@@ -25,6 +25,8 @@
 
 // атлас с текстурами для поля
 @property (nonatomic, strong, readonly) SKTextureAtlas *tilesAtlas;
+// словарь с сильными ссылками на все текстуры
+@property (nonatomic, strong, readonly) NSMutableDictionary *tilesTextures;
 
 // уникальный экземпляр
 + (instancetype)shared;

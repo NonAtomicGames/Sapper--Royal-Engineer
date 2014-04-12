@@ -120,8 +120,9 @@ NSUInteger flaggedMines;
     [self.view addSubview:back];
 
 //    добавляем сцену на SKView
-    BGGameScene *scene = [[BGGameScene alloc]
-                                       initWithSize:self.skView.bounds.size];
+//    BGGameScene *scene = [[BGGameScene alloc]
+//                                       initWithSize:self.skView.bounds.size];
+    SKScene *scene = [[SKScene alloc] initWithSize:self.skView.frame.size];
     scene.userInteractionEnabled = NO;
     [self.skView presentScene:scene];
 
@@ -148,15 +149,14 @@ NSUInteger flaggedMines;
     self.skView.showsNodeCount = YES;
     self.skView.showsPhysics = YES;
 #endif
-
-//    запускаем игру
-    [self startNewGame];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     BGLog();
 
+//    запускаем игру
+    [self startNewGame];
     [self startGameTimer];
 }
 
@@ -239,7 +239,7 @@ NSUInteger flaggedMines;
 
 - (void)fillGameSceneField
 {
-    //    нода для хранения слоёв - заднего и переднего
+//    нода для хранения слоёв - заднего и переднего
     SKNode *compoundNode = [SKNode node];
     compoundNode.name = @"compoundNode";
     compoundNode.zPosition = (compoundNodeZPosition == 0 ? (compoundNodeZPosition = 1) : (compoundNodeZPosition = 0));
@@ -247,10 +247,12 @@ NSUInteger flaggedMines;
 //    нода для хранения первого слоя
     SKNode *layer1 = [SKNode node];
     layer1.userInteractionEnabled = NO;
+    layer1.zPosition = 0;
 
 //    нода для хранения второго слоя
     SKNode *layer2 = [SKNode node];
     layer2.name = @"grassTiles";
+    layer2.zPosition = 1;
 
 //    заполняем первый слой - цифры, земля и сами бомбы
     for (NSUInteger indexCol = 0; indexCol < _field.cols; indexCol++) {
@@ -261,16 +263,16 @@ NSUInteger flaggedMines;
 
             switch (fieldValue) {
                 case BGFieldBomb: // бомба
-                    texture = [[BGTexturePreloader shared].tilesAtlas textureNamed:@"mine"];
+                    texture = [BGTexturePreloader shared].tilesTextures[@"mine"];
                     break;
 
                 case BGFieldEmpty: // земля
-                    texture = [[BGTexturePreloader shared].tilesAtlas textureNamed:@"earth"];
+                    texture = [BGTexturePreloader shared].tilesTextures[@"earth"];
                     break;
 
                 default:
-                    texture = [[BGTexturePreloader shared].tilesAtlas textureNamed:[NSString stringWithFormat:@"earth%d",
-                                                                                                              fieldValue]];
+                    texture = [BGTexturePreloader shared].tilesTextures[[NSString stringWithFormat:@"earth%d",
+                                                                                                   fieldValue]];
                     break;
             }
 
@@ -296,8 +298,9 @@ NSUInteger flaggedMines;
             [layer1 addChild:tile];
 
 //            накладываем слой с травой
-            SKTexture *grassTexture = [[BGTexturePreloader shared].tilesAtlas textureNamed:@"grass"];
+            SKTexture *grassTexture = [BGTexturePreloader shared].tilesTextures[@"grass"];
             SKSpriteNode *grassTile = [SKSpriteNode spriteNodeWithTexture:grassTexture];
+
             grassTile.position = tile.position;
             grassTile.size = tile.size;
             grassTile.anchorPoint = CGPointZero;
@@ -413,23 +416,30 @@ NSUInteger flaggedMines;
 
     SKNode *grassTilesNode = [[self.skView.scene childNodeWithName:@"compoundNode"]
                                                  childNodeWithName:@"grassTiles"];
-    __block BOOL isGameFinished = YES;
+    NSInteger remainedGrassTiles = [grassTilesNode.children count];
+    __block BOOL isGameFinished;
 
-    [grassTilesNode enumerateChildNodesWithName:@"*"
-                                     usingBlock:^(SKNode *node, BOOL *stop)
-                                     {
-                                         NSUInteger col = [node.userData[@"col"] unsignedIntegerValue];
-                                         NSUInteger row = [node.userData[@"row"] unsignedIntegerValue];
+    if (remainedGrassTiles == _field.bombs) {
+        isGameFinished = YES;
 
-                                         NSInteger value = [_field valueForCol:col
-                                                                           row:row];
+        [grassTilesNode enumerateChildNodesWithName:@"*"
+                                         usingBlock:^(SKNode *node, BOOL *stop)
+                                         {
+                                             NSUInteger col = [node.userData[@"col"] unsignedIntegerValue];
+                                             NSUInteger row = [node.userData[@"row"] unsignedIntegerValue];
 
-                                         if (value == BGFieldBomb) {}
-                                         else {
-                                             *stop = YES;
-                                             isGameFinished = NO;
-                                         }
-                                     }];
+                                             NSInteger value = [_field valueForCol:col
+                                                                               row:row];
+
+                                             if (value == BGFieldBomb) {}
+                                             else {
+                                                 *stop = YES;
+                                                 isGameFinished = NO;
+                                             }
+                                         }];
+    } else {
+        isGameFinished = NO;
+    }
 
     return isGameFinished;
 }
@@ -495,7 +505,7 @@ NSUInteger flaggedMines;
             }
 
             default: {
-//                ничего не делаем
+//                проверим, если игра завершена
                 BOOL userWon = [self isGameFinished];
 
                 if (userWon) {
@@ -513,40 +523,40 @@ NSUInteger flaggedMines;
 {
     BGLog();
 
-//    получаем ноду, которая была нажата
-    CGPoint touchPointGlobal = [sender locationInView:self.skView];
-    CGPoint touchPoint = [self.skView convertPoint:touchPointGlobal
-                                           toScene:self.skView.scene];
-    SKNode *touchedNode = [self.skView.scene nodeAtPoint:touchPoint];
-
-//    не обрабатываем начало длинного нажатия, нам нужно только "завершение"
-    if (sender.state == UIGestureRecognizerStateBegan) {
-        UILabel *minesCountLabel = (UILabel *) [self.view viewWithTag:kBGMinesCountViewTag];
-        NSInteger minesRemainedToOpen = _field.bombs - flaggedMines;
-
-        if (touchedNode.userData != nil && minesRemainedToOpen != 0) {
-//        устанавливаем
-            SKTexture *flagTexture = [[BGTexturePreloader shared].tilesAtlas textureNamed:@"flag"];
-            SKSpriteNode *flagTile = [SKSpriteNode spriteNodeWithTexture:flagTexture];
-            flagTile.name = @"flag";
-            flagTile.anchorPoint = CGPointZero;
-            flagTile.size = ((SKSpriteNode *) touchedNode).size;
-
-            [touchedNode addChild:flagTile];
-
-//            обновляем значение кол-ва бомб
-            flaggedMines++;
-        } else if ([touchedNode.name isEqualToString:@"flag"]) {
-//        снимаем
-            [touchedNode removeFromParent];
-
-//            обновляем значение кол-ва бомб
-            flaggedMines--;
-        }
-
-        minesCountLabel.text = [NSString stringWithFormat:@"%04d",
-                                                          _field.bombs - flaggedMines];
-    }
+////    получаем ноду, которая была нажата
+//    CGPoint touchPointGlobal = [sender locationInView:self.skView];
+//    CGPoint touchPoint = [self.skView convertPoint:touchPointGlobal
+//                                           toScene:self.skView.scene];
+//    SKNode *touchedNode = [self.skView.scene nodeAtPoint:touchPoint];
+//
+////    не обрабатываем начало длинного нажатия, нам нужно только "завершение"
+//    if (sender.state == UIGestureRecognizerStateBegan) {
+//        UILabel *minesCountLabel = (UILabel *) [self.view viewWithTag:kBGMinesCountViewTag];
+//        NSInteger minesRemainedToOpen = _field.bombs - flaggedMines;
+//
+//        if (touchedNode.userData != nil && minesRemainedToOpen != 0) {
+////        устанавливаем
+//            SKTexture *flagTexture = [[BGTexturePreloader shared].tilesAtlas textureNamed:@"flag"];
+//            SKSpriteNode *flagTile = [SKSpriteNode spriteNodeWithTexture:flagTexture];
+//            flagTile.name = @"flag";
+//            flagTile.anchorPoint = CGPointZero;
+//            flagTile.size = ((SKSpriteNode *) touchedNode).size;
+//
+//            [touchedNode addChild:flagTile];
+//
+////            обновляем значение кол-ва бомб
+//            flaggedMines++;
+//        } else if ([touchedNode.name isEqualToString:@"flag"]) {
+////        снимаем
+//            [touchedNode removeFromParent];
+//
+////            обновляем значение кол-ва бомб
+//            flaggedMines--;
+//        }
+//
+//        minesCountLabel.text = [NSString stringWithFormat:@"%04d",
+//                                                          _field.bombs - flaggedMines];
+//    }
 }
 
 - (void)updateTimerLabel:(id)sender

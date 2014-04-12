@@ -26,10 +26,11 @@
 
 #pragma mark - Class
 
+static BGTexturePreloader *shared;
+
 + (id)shared
 {
     static dispatch_once_t once;
-    static BGTexturePreloader *shared;
 
     dispatch_once(&once, ^
     {
@@ -45,12 +46,17 @@
 {
     BGLog();
 
-    SKTextureAtlas *tilesAtlas = [SKTextureAtlas atlasNamed:@"Tiles"];
-    _tilesAtlas = tilesAtlas;
+    _tilesAtlas = [SKTextureAtlas atlasNamed:@"Tiles"];
+    _tilesTextures = [NSMutableDictionary new];
+    __weak typeof (shared) weakSelf = self;
 
-    [SKTextureAtlas preloadTextureAtlases:@[tilesAtlas]
+    [SKTextureAtlas preloadTextureAtlases:@[_tilesAtlas]
                     withCompletionHandler:^
                     {
+                        for (NSString *textureFullName in weakSelf.tilesAtlas.textureNames) {
+                            NSString *textureName = [textureFullName componentsSeparatedByString:@"@"][0];
+                            weakSelf.tilesTextures[textureName] = [SKTexture textureWithImageNamed:textureName];
+                        }
                     }];
 }
 

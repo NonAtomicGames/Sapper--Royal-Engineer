@@ -25,6 +25,10 @@
         <string>1.0</string>
         <key>LSRequiresIPhoneOS</key>
         <true/>
+        <key>UIAppFonts</key>
+        <array>
+            <string>Digital.ttf</string>
+        </array>
         <key>UIMainStoryboardFile</key>
         <string>Main</string>
         <key>UIRequiredDeviceCapabilities</key>
@@ -33,10 +37,6 @@
         </array>
         <key>UIStatusBarHidden</key>
         <true/>
-        <key>UIAppFonts</key>
-        <array>
-            <string>Digital.ttf</string>
-        </array>
         <key>UISupportedInterfaceOrientations</key>
         <array>
             <string>UIInterfaceOrientationPortrait</string>
