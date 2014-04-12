@@ -11,4 +11,7 @@
 
 
 @interface BGViewController : UIViewController
+
+- (IBAction)playButtonTapped:(id)sender;
+
 @end

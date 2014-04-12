@@ -12,7 +12,9 @@
 
 @interface BGGameViewController : UIViewController
 
-@property (nonatomic, weak) IBOutlet SKView *skView;
+@property (nonatomic, strong) SKView *skView;
+
+// таймер игровой
 @property (nonatomic, strong, readonly) NSTimer *timer;
 
 @end

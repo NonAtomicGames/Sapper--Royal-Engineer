@@ -9,6 +9,8 @@
 #import "BGAppDelegate.h"
 #import "BGSettingsManager.h"
 #import "BGAudioPreloader.h"
+#import "BGSKView.h"
+#import "BGGameViewController.h"
 
 
 @implementation BGAppDelegate
@@ -22,6 +24,12 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
                                         ofType:@"mp3"];
     [[BGAudioPreloader shared] preloadResource:@"switchOFF"
                                         ofType:@"mp3"];
+
+//    предзагрузка спрайтов
+    [BGSKView shared];
+
+//  предсоздание игрового экрана для ускорения перехода на него с главного
+    [BGSKView shared].gameViewController = [[BGGameViewController alloc] init];
 
 //    предзагрузка дефайлтов
     [BGSettingsManager sharedManager];
@@ -56,6 +64,9 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     [[BGSettingsManager sharedManager] save];
+
+//    останавливаем обновление сцены в фоновом режиме
+    [BGSKView shared].paused = YES;
 }
 
 @end

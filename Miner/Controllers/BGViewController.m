@@ -9,6 +9,10 @@
 #import <iAd/iAd.h>
 #import "BGViewController.h"
 #import "BGSettingsManager.h"
+#import "BGSKView.h"
+#import "BGGameViewController.h"
+#import "BGLog.h"
+
 
 @implementation BGViewController
 
@@ -16,9 +20,20 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    BGLog();
+
     [super viewDidAppear:animated];
 
+//    разрешаем на этом экране работать рекламе
     self.canDisplayBannerAds = ([BGSettingsManager sharedManager].adsStatus == BGMinerAdsStatusOn);
+}
+
+#pragma mark - Actions
+
+- (IBAction)playButtonTapped:(id)sender
+{
+    [self.navigationController pushViewController:[BGSKView shared].gameViewController
+                                         animated:YES];
 }
 
 @end

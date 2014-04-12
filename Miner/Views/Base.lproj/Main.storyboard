@@ -57,7 +57,7 @@
                                 </state>
                                 <state key="highlighted" image="button_play_down.png"/>
                                 <connections>
-                                    <segue destination="62f-Wz-oM0" kind="push" identifier="GameSegue" id="MHq-sw-7dY"/>
+                                    <action selector="playButtonTapped:" destination="GxD-n6-ntH" eventType="touchUpInside" id="y4T-Ty-AEO"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O0l-JG-b4Z">
@@ -82,10 +82,10 @@
             </objects>
             <point key="canvasLocation" x="441" y="56"/>
         </scene>
-        <!--Game View Controller-->
+        <!--View Controller-->
         <scene sceneID="kbL-xL-iaT">
             <objects>
-                <viewController id="62f-Wz-oM0" customClass="BGGameViewController" sceneMemberID="viewController">
+                <viewController id="62f-Wz-oM0" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NAR-j4-d2X"/>
                         <viewControllerLayoutGuide type="bottom" id="NC8-rd-hhr"/>
@@ -93,19 +93,9 @@
                     <view key="view" contentMode="scaleToFill" id="zDx-ef-RFY">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2F1-ab-zog" customClass="BGSKView">
-                                <rect key="frame" x="0.0" y="88" width="320" height="480"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="0hP-7E-NMy"/>
-                    <connections>
-                        <outlet property="skView" destination="2F1-ab-zog" id="ROE-1d-uMo"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lau-77-p0J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

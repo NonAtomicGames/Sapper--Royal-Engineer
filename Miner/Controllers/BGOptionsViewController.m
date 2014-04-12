@@ -13,6 +13,7 @@
 #import "BGAudioPreloader.h"
 #import "BGUISegmentedControl.h"
 #import "BGLog.h"
+#import "BGSKView.h"
 
 
 @interface BGOptionsViewController ()
@@ -210,6 +211,9 @@
 
     [BGSettingsManager sharedManager].cols = cols;
     [BGSettingsManager sharedManager].rows = rows;
+
+//    обновим поле
+    [[BGSKView shared] startNewGame];
 }
 
 - (void)soundButtonTapped:(id)sender
