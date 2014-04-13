@@ -70,6 +70,7 @@
                                 </state>
                                 <state key="highlighted" image="button_options_down.png"/>
                                 <connections>
+                                    <action selector="configButtonTapped:" destination="gab-HH-5bJ" eventType="touchUpInside" id="LAE-PH-c8N"/>
                                     <segue destination="Uzu-Tl-DeP" kind="push" identifier="OptionsSegue" id="xZ1-SH-bvB"/>
                                 </connections>
                             </button>

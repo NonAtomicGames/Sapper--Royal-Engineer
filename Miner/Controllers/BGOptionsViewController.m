@@ -147,19 +147,6 @@
                        action:@selector(adsButtonTapped:)];
 
     [self.originalContentView addSubview:self.adsSwitch];
-
-//    звуки переключателей
-    AVAudioPlayer *onSound = [[BGAudioPreloader shared]
-                                                playerForResource:@"switchON"
-                                                           ofType:@"mp3"];
-    AVAudioPlayer *offSound = [[BGAudioPreloader shared]
-                                                 playerForResource:@"switchOFF"
-                                                            ofType:@"mp3"];
-
-    self.soundSwitch.onSound = onSound;
-    self.adsSwitch.onSound = onSound;
-    self.soundSwitch.offSound = offSound;
-    self.adsSwitch.offSound = offSound;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -174,8 +161,9 @@
 
 - (void)levelChanged:(id)newlySelectedIndexNumber
 {
-    BGLog(@"%s", __FUNCTION__);
+    BGLog();
 
+//    изменяем сложность игры
     NSUInteger selected = [((NSNumber *) newlySelectedIndexNumber) unsignedIntegerValue] + 1;
     BGMinerLevel newLevel = (BGMinerLevel) selected;
 
@@ -184,8 +172,9 @@
 
 - (void)fieldSizeChanged:(id)newlySelectedIndexNumber
 {
-    BGLog(@"%s", __FUNCTION__);
+    BGLog();
 
+//    изменяем размеры поля
     NSUInteger selected = [((NSNumber *) newlySelectedIndexNumber) unsignedIntegerValue];
     NSUInteger cols;
     NSUInteger rows;
@@ -218,7 +207,7 @@
 
 - (void)soundButtonTapped:(id)sender
 {
-    BGLog(@"%s", __FUNCTION__);
+    BGLog();
 
 //    при переключении тумблера звука меняем настройки
     BGMinerSoundStatus soundStatus = [BGSettingsManager sharedManager].soundStatus;
@@ -232,7 +221,7 @@
 
 - (void)adsButtonTapped:(id)sender
 {
-    BGLog(@"%s", __FUNCTION__);
+    BGLog();
 
 //    при переключении тумблера показа рекламы сохраним настройки
     BGMinerAdsStatus adsStatus = [BGSettingsManager sharedManager].adsStatus;
@@ -248,6 +237,9 @@
 
 - (void)back:(id)sender
 {
+    [[[BGAudioPreloader shared] playerForResource:@"button_tap"
+                                           ofType:@"mp3"] play];
+
     [self.navigationController popViewControllerAnimated:YES];
 }
 

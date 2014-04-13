@@ -20,10 +20,20 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 //    предзагрузка звуков в фоновом режиме для избежания затормаживания при
 //    переключении тумблеров
-    [[BGAudioPreloader shared] preloadResource:@"switchON"
-                                        ofType:@"mp3"];
-    [[BGAudioPreloader shared] preloadResource:@"switchOFF"
-                                        ofType:@"mp3"];
+    NSArray *audioResources = @[@"switchON.mp3",
+                                @"switchOFF.mp3",
+                                @"flag_tap.mp3",
+                                @"grass_tap.mp3",
+                                @"button_tap.mp3"];
+
+    for (NSString *audioName in audioResources) {
+        NSArray *parts = [audioName componentsSeparatedByString:@"."];
+        NSString *name = parts[0];
+        NSString *type = parts[1];
+
+        [[BGAudioPreloader shared] preloadResource:name
+                                            ofType:type];
+    }
 
 //    предзагрузка спрайтов
     [BGSKView shared];

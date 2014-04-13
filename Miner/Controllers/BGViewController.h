@@ -14,4 +14,6 @@
 
 - (IBAction)playButtonTapped:(id)sender;
 
+- (IBAction)configButtonTapped:(id)sender;
+
 @end

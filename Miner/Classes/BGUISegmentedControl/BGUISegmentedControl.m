@@ -19,6 +19,7 @@
 
 #import "BGUISegmentedControl.h"
 #import "BGLog.h"
+#import "BGAudioPreloader.h"
 
 
 #define METAL_BORDER_WIDTH 4.5
@@ -65,7 +66,7 @@
 
 - (void)setSelectedSegmentIndex:(NSUInteger)selectedSegmentIndex
 {
-    BGLog(@"%s", __FUNCTION__);
+    BGLog();
 
     _selectedSegmentIndex = selectedSegmentIndex;
 
@@ -114,7 +115,17 @@
         CGRect rect = ((UIImageView *) _selectedSegments[i]).frame;
 
         if (CGRectContainsPoint(rect, touchPoint)) {
+
+            if (self.selectedSegmentIndex != i) {
+                //    проигрываем звук нажатия - единожды и только на новом
+//                значении
+                [[[BGAudioPreloader shared]
+                                    playerForResource:@"button_tap"
+                                               ofType:@"mp3"] play];
+            }
+
             self.selectedSegmentIndex = i;
+
             break;
         }
     }

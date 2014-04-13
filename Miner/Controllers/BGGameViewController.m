@@ -10,6 +10,7 @@
 #import "BGMinerField.h"
 #import "BGLog.h"
 #import "BGSKView.h"
+#import "BGAudioPreloader.h"
 
 
 // полезные константы тегов для вьюх
@@ -209,6 +210,10 @@ static const NSInteger kBGStatusImageWonViewTag = 5;
 {
     BGLog();
 
+//    проигрываем нажатие на кнопку
+    [[[BGAudioPreloader shared] playerForResource:@"button_tap"
+                                           ofType:@"mp3"] play];
+
     //    обновляем кнопку со статусом
     [self updateStatusImageViewWithStatus:kBGStatusImageDefaultViewTag];
 
@@ -232,6 +237,10 @@ static const NSInteger kBGStatusImageWonViewTag = 5;
     //    останавливаем обновление сцены
     [BGSKView shared].paused = YES;
 
+//    проигрываем нажатие на кнопку
+    [[[BGAudioPreloader shared] playerForResource:@"button_tap"
+                                           ofType:@"mp3"] play];
+
     //    возвращаемся на главный экран
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -250,6 +259,10 @@ static const NSInteger kBGStatusImageWonViewTag = 5;
 
     //    смотрим, что находится под нодой
     if (touchedNode.userData != nil && touchedNode.children.count == 0) {
+
+//    проигрываем откапывание ячейки
+        [[[BGAudioPreloader shared] playerForResource:@"grass_tap"
+                                               ofType:@"mp3"] play];
 
         //        проверим значение, которое на поле
         NSUInteger col = [touchedNode.userData[@"col"] unsignedIntegerValue];
@@ -284,6 +297,7 @@ static const NSInteger kBGStatusImageWonViewTag = 5;
                 break;
         }
     }
+
 }
 
 - (void)longPress:(UIGestureRecognizer *)sender
@@ -302,6 +316,10 @@ static const NSInteger kBGStatusImageWonViewTag = 5;
         NSInteger minesRemainedToOpen = [BGSKView shared].field.bombs - [BGSKView shared].flaggedMines;
 
         if (touchedNode.userData != nil && minesRemainedToOpen != 0) {
+            //    проигрываем установку флажка
+            [[[BGAudioPreloader shared] playerForResource:@"flag_tap"
+                                                   ofType:@"mp3"] play];
+
             //        устанавливаем
             SKSpriteNode *flagTile = [((BGSKView *) self.skView).tileSprites[@"flag"] copy];
             flagTile.name = @"flag";
