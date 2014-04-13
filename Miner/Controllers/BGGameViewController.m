@@ -249,8 +249,7 @@ static const NSInteger kBGStatusImageWonViewTag = 5;
     SKNode *touchedNode = [self.skView.scene nodeAtPoint:touchPoint];
 
     //    смотрим, что находится под нодой
-    if (touchedNode.userData != nil) {
-        [touchedNode removeFromParent];
+    if (touchedNode.userData != nil && touchedNode.children.count == 0) {
 
         //        проверим значение, которое на поле
         NSUInteger col = [touchedNode.userData[@"col"] unsignedIntegerValue];
@@ -265,17 +264,14 @@ static const NSInteger kBGStatusImageWonViewTag = 5;
                 [[BGSKView shared] disableFieldInteraction];
                 [[BGSKView shared] animateExplosionOnCellWithCol:col
                                                              row:row];
-                [[BGSKView shared] openCellsWithBombs];
             }
-
                 break;
 
-            case BGFieldEmpty: {
+            default: {
+//                открываем клетки
                 [[BGSKView shared] openCellsFromCellWithCol:col
                                                         row:row];
-            }
 
-            default: {
                 //                проверим, если игра завершена
                 BOOL userWon = [[BGSKView shared] isGameFinished];
 
@@ -331,8 +327,6 @@ static const NSInteger kBGStatusImageWonViewTag = 5;
 
 - (void)updateTimerLabel:(id)sender
 {
-    BGLog();
-
     UILabel *timerLabel = (UILabel *) [self.view viewWithTag:kBGTimerViewTag];
     NSInteger timerValue = [timerLabel.text integerValue];
 
