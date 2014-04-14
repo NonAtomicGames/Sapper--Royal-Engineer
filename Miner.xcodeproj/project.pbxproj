@@ -66,6 +66,7 @@
 		D5D6498318D47A2C00854518 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5D6498218D47A2C00854518 /* SpriteKit.framework */; };
 		D5E39CBB18E7EDB300F25012 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5E39CBD18E7EDB300F25012 /* Main.storyboard */; };
 		D5E39CDF18E7F87A00F25012 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D5E39CE118E7F87A00F25012 /* Localizable.strings */; };
+		D5E46DA018FBCC8B001EEED6 /* Explosion.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D5E46D9F18FBCC8B001EEED6 /* Explosion.atlas */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -180,6 +181,7 @@
 		D5E39CE018E7F87A00F25012 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D5E39CE218E7F88200F25012 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D5E39CE318E7F88400F25012 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D5E46D9F18FBCC8B001EEED6 /* Explosion.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Explosion.atlas; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -246,6 +248,7 @@
 		1A9A04A7024507BBA549AF28 /* GameViewController */ = {
 			isa = PBXGroup;
 			children = (
+				D5E46D9F18FBCC8B001EEED6 /* Explosion.atlas */,
 				D595434D18F9C2A000E67E6C /* MineAnimation.atlas */,
 				D595434B18F9C28E00E67E6C /* GrassAnimation.atlas */,
 				1A9A0D6737DC972CE8CAB6E3 /* StatusButton */,
@@ -622,6 +625,7 @@
 				1A9A0D3576852EF36505139A /* button_down_2416@2x.png in Resources */,
 				1A9A09748B0A70C911ED13DF /* field_deafult@2x.png in Resources */,
 				1A9A0A75560204CC10EECF0A /* Digital.ttf in Resources */,
+				D5E46DA018FBCC8B001EEED6 /* Explosion.atlas in Resources */,
 				D595434E18F9C2A000E67E6C /* MineAnimation.atlas in Resources */,
 				1A9A00C2A54782CE35955BE3 /* back_down@2x.png in Resources */,
 				1A9A0916B0E1C88C738D3F90 /* back@2x.png in Resources */,

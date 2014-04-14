@@ -125,6 +125,7 @@
                                              onImage:[UIImage imageNamed:@"switch_1"]
                                             offImage:[UIImage imageNamed:@"switch_0"]];
     self.soundSwitch.on = ([BGSettingsManager sharedManager].soundStatus == BGMinerSoundStatusOn);
+    self.soundSwitch.tag = kBGUISwitchSoundTag;
     [self.soundSwitch addTarget:self
                          action:@selector(soundButtonTapped:)];
 
@@ -143,6 +144,7 @@
                                                   onImage:[UIImage imageNamed:@"switch_1"]
                                                  offImage:[UIImage imageNamed:@"switch_0"]];
     self.adsSwitch.on = ([BGSettingsManager sharedManager].adsStatus == BGMinerAdsStatusOn);
+    self.adsSwitch.tag = kBGUISwitchAdTag;
     [self.adsSwitch addTarget:self
                        action:@selector(adsButtonTapped:)];
 
@@ -168,6 +170,9 @@
     BGMinerLevel newLevel = (BGMinerLevel) selected;
 
     [BGSettingsManager sharedManager].level = newLevel;
+
+//    обновим поле
+    [[BGSKView shared] startNewGame];
 }
 
 - (void)fieldSizeChanged:(id)newlySelectedIndexNumber
@@ -237,8 +242,8 @@
 
 - (void)back:(id)sender
 {
-    [[[BGAudioPreloader shared] playerForResource:@"button_tap"
-                                           ofType:@"mp3"] play];
+    [[[BGAudioPreloader shared] playerFromGameConfigForResource:@"button_tap"
+                                                         ofType:@"mp3"] play];
 
     [self.navigationController popViewControllerAnimated:YES];
 }

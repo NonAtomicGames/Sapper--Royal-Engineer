@@ -119,6 +119,7 @@ static const NSInteger kBGStatusImageWonViewTag = 5;
                                                                                                   initWithTarget:self
                                                                                                           action:@selector(longPress:)];
         longPressGestureRecognizer.numberOfTouchesRequired = 1;
+        longPressGestureRecognizer.minimumPressDuration = 0.3;
 
         [self.skView addGestureRecognizer:longPressGestureRecognizer];
 
@@ -171,7 +172,6 @@ static const NSInteger kBGStatusImageWonViewTag = 5;
     [self resetMinesCountLabel];
 
 //    обновляем поле на новое
-    [BGSKView shared].paused = NO;
     [[BGSKView shared] startNewGame];
     [self updateMinesCountLabel];
 }
@@ -211,8 +211,8 @@ static const NSInteger kBGStatusImageWonViewTag = 5;
     BGLog();
 
 //    проигрываем нажатие на кнопку
-    [[[BGAudioPreloader shared] playerForResource:@"button_tap"
-                                           ofType:@"mp3"] play];
+    [[[BGAudioPreloader shared] playerFromGameConfigForResource:@"button_tap"
+                                                         ofType:@"mp3"] play];
 
     //    обновляем кнопку со статусом
     [self updateStatusImageViewWithStatus:kBGStatusImageDefaultViewTag];
@@ -225,6 +225,7 @@ static const NSInteger kBGStatusImageWonViewTag = 5;
     //    обновляем поле на новое
     [BGSKView shared].paused = NO;
     [[BGSKView shared] startNewGame];
+
     [self updateMinesCountLabel];
 
     [self startGameTimer];
@@ -238,8 +239,8 @@ static const NSInteger kBGStatusImageWonViewTag = 5;
     [BGSKView shared].paused = YES;
 
 //    проигрываем нажатие на кнопку
-    [[[BGAudioPreloader shared] playerForResource:@"button_tap"
-                                           ofType:@"mp3"] play];
+    [[[BGAudioPreloader shared] playerFromGameConfigForResource:@"button_tap"
+                                                         ofType:@"mp3"] play];
 
     //    возвращаемся на главный экран
     [self.navigationController popViewControllerAnimated:YES];
@@ -261,8 +262,9 @@ static const NSInteger kBGStatusImageWonViewTag = 5;
     if (touchedNode.userData != nil && touchedNode.children.count == 0) {
 
 //    проигрываем откапывание ячейки
-        [[[BGAudioPreloader shared] playerForResource:@"grass_tap"
-                                               ofType:@"mp3"] play];
+        [[[BGAudioPreloader shared] playerFromGameConfigForResource:@"grass_tap"
+                                                             ofType:@"mp3"]
+                            play];
 
         //        проверим значение, которое на поле
         NSUInteger col = [touchedNode.userData[@"col"] unsignedIntegerValue];
@@ -317,8 +319,9 @@ static const NSInteger kBGStatusImageWonViewTag = 5;
 
         if (touchedNode.userData != nil && minesRemainedToOpen != 0) {
             //    проигрываем установку флажка
-            [[[BGAudioPreloader shared] playerForResource:@"flag_tap"
-                                                   ofType:@"mp3"] play];
+            [[[BGAudioPreloader shared]
+                                playerFromGameConfigForResource:@"flag_tap"
+                                                         ofType:@"mp3"] play];
 
             //        устанавливаем
             SKSpriteNode *flagTile = [((BGSKView *) self.skView).tileSprites[@"flag"] copy];
@@ -345,12 +348,15 @@ static const NSInteger kBGStatusImageWonViewTag = 5;
 
 - (void)updateTimerLabel:(id)sender
 {
+    BGLog();
+
     UILabel *timerLabel = (UILabel *) [self.view viewWithTag:kBGTimerViewTag];
     NSInteger timerValue = [timerLabel.text integerValue];
-
     timerValue++;
 
-    timerLabel.text = [NSString stringWithFormat:@"%04d", timerValue];
+    NSString *newValue = [NSString stringWithFormat:@"%04d", timerValue];
+
+    timerLabel.text = newValue;
 }
 
 - (void)resetTimerLabel
@@ -363,6 +369,8 @@ static const NSInteger kBGStatusImageWonViewTag = 5;
 
 - (void)updateMinesCountLabel
 {
+    BGLog();
+
     UILabel *minesCountLabel = (UILabel *) [self.view viewWithTag:kBGMinesCountViewTag];
     minesCountLabel.text = [NSString stringWithFormat:@"%04d",
                                                       [BGSKView shared].field.bombs];
@@ -370,12 +378,16 @@ static const NSInteger kBGStatusImageWonViewTag = 5;
 
 - (void)resetMinesCountLabel
 {
+    BGLog();
+
     UILabel *minesCountLabel = (UILabel *) [self.view viewWithTag:kBGMinesCountViewTag];
     minesCountLabel.text = [NSString stringWithFormat:@"%04d", 0];
 }
 
 - (void)updateStatusImageViewWithStatus:(NSInteger)statusTag
 {
+    BGLog();
+
     UIImageView *imageView = (UIImageView *) [self.view viewWithTag:kBGStatusImageDefaultViewTag];
 
     switch (statusTag) {

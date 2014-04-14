@@ -11,6 +11,7 @@
 #import "BGAudioPreloader.h"
 #import "BGSKView.h"
 #import "BGGameViewController.h"
+#import "BGLog.h"
 
 
 @implementation BGAppDelegate
@@ -18,6 +19,9 @@
 - (BOOL)          application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+//  предсоздание игрового экрана для ускорения перехода на него с главного
+    [BGSKView shared].gameViewController = [[BGGameViewController alloc] init];
+
 //    предзагрузка звуков в фоновом режиме для избежания затормаживания при
 //    переключении тумблеров
     NSArray *audioResources = @[@"switchON.mp3",
@@ -38,9 +42,6 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 //    предзагрузка спрайтов
     [BGSKView shared];
 
-//  предсоздание игрового экрана для ускорения перехода на него с главного
-    [BGSKView shared].gameViewController = [[BGGameViewController alloc] init];
-
 //    предзагрузка дефайлтов
     [BGSettingsManager sharedManager];
 
@@ -56,8 +57,10 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    [[BGSettingsManager sharedManager] save];
+
+//    останавливаем обновление сцены в фоновом режиме
+    [BGSKView shared].paused = YES;
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -67,6 +70,8 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
+    BGLog();
+
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 
@@ -74,9 +79,6 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     [[BGSettingsManager sharedManager] save];
-
-//    останавливаем обновление сцены в фоновом режиме
-    [BGSKView shared].paused = YES;
 }
 
 @end

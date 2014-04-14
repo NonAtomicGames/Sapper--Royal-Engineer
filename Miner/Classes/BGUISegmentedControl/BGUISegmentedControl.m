@@ -120,8 +120,9 @@
                 //    проигрываем звук нажатия - единожды и только на новом
 //                значении
                 [[[BGAudioPreloader shared]
-                                    playerForResource:@"button_tap"
-                                               ofType:@"mp3"] play];
+                                    playerFromGameConfigForResource:@"button_tap"
+                                                             ofType:@"mp3"]
+                                    play];
             }
 
             self.selectedSegmentIndex = i;
