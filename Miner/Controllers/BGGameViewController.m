@@ -16,20 +16,12 @@
 // полезные константы тегов для вьюх
 static const NSInteger kBGTimerViewTag = 1;
 static const NSInteger kBGMinesCountViewTag = 2;
-static const NSInteger kBGStatusImageDefaultViewTag = 3;
-static const NSInteger kBGStatusImageFailedViewTag = 4;
-static const NSInteger kBGStatusImageWonViewTag = 5;
 
 
 @interface BGSKSprite : SKSpriteNode
 @end
 
 @implementation BGSKSprite
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    [super touchesBegan:touches withEvent:event];
-    [self removeFromParent];
-}
 @end
 
 
@@ -88,24 +80,19 @@ static const NSInteger kBGStatusImageWonViewTag = 5;
 
         [self.view addSubview:minesCountLabel];
 
-        //  вьюха статуса игры
-        //  для отслеживания нажатия, проще без кнопки обойтись
-        UIImage *defaultImage = [UIImage imageNamed:@"game_button_default"];
+//        кнопка старта новой игры
+        UIImage *newGameButtonImageOn = [UIImage imageNamed:@"game_button_on"];
+        UIImage *newGameButtonImageOff = [UIImage imageNamed:@"game_button_off"];
+        UIButton *newGame = [UIButton buttonWithType:UIButtonTypeCustom];
+        newGame.frame = CGRectMake(137, 22, newGameButtonImageOn.size.width, newGameButtonImageOn.size.height);
+        [newGame setImage:newGameButtonImageOn forState:UIControlStateNormal];
+        [newGame setImage:newGameButtonImageOff
+                 forState:UIControlStateHighlighted];
+        [newGame addTarget:self
+                    action:@selector(statusImageViewTap:)
+          forControlEvents:UIControlEventTouchUpInside];
 
-        UIImageView *statusImageView = [[UIImageView alloc]
-                                                     initWithImage:defaultImage];
-        statusImageView.frame = CGRectMake(137, 22, defaultImage.size.width, defaultImage.size.height);
-        statusImageView.userInteractionEnabled = YES;
-        statusImageView.tag = kBGStatusImageDefaultViewTag;
-
-        UITapGestureRecognizer *statusImageViewGestureRecognizer = [[UITapGestureRecognizer alloc]
-                                                                                            initWithTarget:self
-                                                                                                    action:@selector(statusImageViewTap:)];
-        statusImageViewGestureRecognizer.numberOfTouchesRequired = 1;
-        statusImageViewGestureRecognizer.numberOfTapsRequired = 1;
-        [statusImageView addGestureRecognizer:statusImageViewGestureRecognizer];
-
-        [self.view addSubview:statusImageView];
+        [self.view addSubview:newGame];
 
         //    добавляем кнопку "Назад"
         UIImage *backNormal = [UIImage imageNamed:@"back"];
@@ -172,9 +159,6 @@ static const NSInteger kBGStatusImageWonViewTag = 5;
 {
     BGLog();
 
-    //    обновляем кнопку со статусом
-    [self updateStatusImageViewWithStatus:kBGStatusImageDefaultViewTag];
-
     //    запускаем игровой таймер
     [self startGameTimer];
 }
@@ -182,9 +166,6 @@ static const NSInteger kBGStatusImageWonViewTag = 5;
 - (void)viewDidDisappear:(BOOL)animated
 {
     BGLog();
-
-    //    обновляем кнопку со статусом
-    [self updateStatusImageViewWithStatus:kBGStatusImageDefaultViewTag];
 
     //    обновляем поле
     //  сбрасываем старые значения
@@ -227,16 +208,13 @@ static const NSInteger kBGStatusImageWonViewTag = 5;
 
 #pragma mark - Actions
 
-- (void)statusImageViewTap:(UIGestureRecognizer *)gestureRecognizer
+- (void)statusImageViewTap:(id)sender
 {
     BGLog();
 
     //    проигрываем нажатие на кнопку
     [[[BGAudioPreloader shared] playerFromGameConfigForResource:@"buttonTap"
                                                          ofType:@"mp3"] play];
-
-    //    обновляем кнопку со статусом
-    [self updateStatusImageViewWithStatus:kBGStatusImageDefaultViewTag];
 
     //  сбрасываем старые значения
     [self destroyGameTimer];
@@ -305,7 +283,6 @@ static const NSInteger kBGStatusImageWonViewTag = 5;
         switch (value) {
             case BGFieldBomb: {
                 [self stopGameTimer];
-                [self updateStatusImageViewWithStatus:kBGStatusImageFailedViewTag];
                 [[BGSKView shared] disableFieldInteraction];
                 [[BGSKView shared] animateExplosionOnCellWithCol:col
                                                              row:row];
@@ -322,7 +299,6 @@ static const NSInteger kBGStatusImageWonViewTag = 5;
 
                 if (userWon) {
                     [self stopGameTimer];
-                    [self updateStatusImageViewWithStatus:kBGStatusImageWonViewTag];
                     [[BGSKView shared] disableFieldInteraction];
                 }
             }
@@ -344,6 +320,7 @@ static const NSInteger kBGStatusImageWonViewTag = 5;
 
     //    не обрабатываем начало длинного нажатия, нам нужно только "завершение"
     if (sender.state == UIGestureRecognizerStateBegan) {
+
         UILabel *minesCountLabel = (UILabel *) [self.view viewWithTag:kBGMinesCountViewTag];
         NSInteger minesRemainedToOpen = [BGSKView shared].field.bombs - [BGSKView shared].flaggedMines;
 
@@ -417,27 +394,6 @@ static const NSInteger kBGStatusImageWonViewTag = 5;
 
     UILabel *minesCountLabel = (UILabel *) [self.view viewWithTag:kBGMinesCountViewTag];
     minesCountLabel.text = [NSString stringWithFormat:@"%04d", 0];
-}
-
-- (void)updateStatusImageViewWithStatus:(NSInteger)statusTag
-{
-    BGLog();
-
-    UIImageView *imageView = (UIImageView *) [self.view viewWithTag:kBGStatusImageDefaultViewTag];
-
-    switch (statusTag) {
-        case kBGStatusImageFailedViewTag:
-            imageView.image = [UIImage imageNamed:@"game_button_failed"];
-            break;
-
-        case kBGStatusImageWonViewTag:
-            imageView.image = [UIImage imageNamed:@"game_button_win"];
-            break;
-
-        default:
-            imageView.image = [UIImage imageNamed:@"game_button_default"];
-            break;
-    }
 }
 
 @end
