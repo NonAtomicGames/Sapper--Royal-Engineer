@@ -21,6 +21,18 @@ static const NSInteger kBGStatusImageFailedViewTag = 4;
 static const NSInteger kBGStatusImageWonViewTag = 5;
 
 
+@interface BGSKSprite : SKSpriteNode
+@end
+
+@implementation BGSKSprite
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [super touchesBegan:touches withEvent:event];
+    [self removeFromParent];
+}
+@end
+
+
 #pragma mark - BGGameViewController
 
 // основная реализация
@@ -138,12 +150,14 @@ static const NSInteger kBGStatusImageWonViewTag = 5;
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    BGLog();
+
     [super viewWillAppear:animated];
 
-//    обновляем надпись с кол-вом мин
+    //    обновляем надпись с кол-вом мин
     [self updateMinesCountLabel];
 
-//    запускаем обновление сцены
+    //    запускаем обновление сцены
     [BGSKView shared].paused = NO;
 }
 
@@ -151,10 +165,10 @@ static const NSInteger kBGStatusImageWonViewTag = 5;
 {
     BGLog();
 
-//    обновляем кнопку со статусом
+    //    обновляем кнопку со статусом
     [self updateStatusImageViewWithStatus:kBGStatusImageDefaultViewTag];
 
-//    запускаем игровой таймер
+    //    запускаем игровой таймер
     [self startGameTimer];
 }
 
@@ -165,13 +179,13 @@ static const NSInteger kBGStatusImageWonViewTag = 5;
     //    обновляем кнопку со статусом
     [self updateStatusImageViewWithStatus:kBGStatusImageDefaultViewTag];
 
-//    обновляем поле
-//  сбрасываем старые значения
+    //    обновляем поле
+    //  сбрасываем старые значения
     [self destroyGameTimer];
     [self resetTimerLabel];
     [self resetMinesCountLabel];
 
-//    обновляем поле на новое
+    //    обновляем поле на новое
     [[BGSKView shared] startNewGame];
     [self updateMinesCountLabel];
 }
@@ -210,8 +224,8 @@ static const NSInteger kBGStatusImageWonViewTag = 5;
 {
     BGLog();
 
-//    проигрываем нажатие на кнопку
-    [[[BGAudioPreloader shared] playerFromGameConfigForResource:@"button_tap"
+    //    проигрываем нажатие на кнопку
+    [[[BGAudioPreloader shared] playerFromGameConfigForResource:@"buttonTap"
                                                          ofType:@"mp3"] play];
 
     //    обновляем кнопку со статусом
@@ -238,8 +252,8 @@ static const NSInteger kBGStatusImageWonViewTag = 5;
     //    останавливаем обновление сцены
     [BGSKView shared].paused = YES;
 
-//    проигрываем нажатие на кнопку
-    [[[BGAudioPreloader shared] playerFromGameConfigForResource:@"button_tap"
+    //    проигрываем нажатие на кнопку
+    [[[BGAudioPreloader shared] playerFromGameConfigForResource:@"buttonTap"
                                                          ofType:@"mp3"] play];
 
     //    возвращаемся на главный экран
@@ -256,13 +270,13 @@ static const NSInteger kBGStatusImageWonViewTag = 5;
                                            toScene:self.skView.scene];
 
     //    получаем ноду, которая находится в точке нажатия
-    SKNode *touchedNode = [self.skView.scene nodeAtPoint:touchPoint];
+    SKSpriteNode *touchedNode = (SKSpriteNode *) [self.skView.scene nodeAtPoint:touchPoint];
 
     //    смотрим, что находится под нодой
     if (touchedNode.userData != nil && touchedNode.children.count == 0) {
 
-//    проигрываем откапывание ячейки
-        [[[BGAudioPreloader shared] playerFromGameConfigForResource:@"grass_tap"
+        //    проигрываем откапывание ячейки
+        [[[BGAudioPreloader shared] playerFromGameConfigForResource:@"grassTap"
                                                              ofType:@"mp3"]
                             play];
 
@@ -283,7 +297,7 @@ static const NSInteger kBGStatusImageWonViewTag = 5;
                 break;
 
             default: {
-//                открываем клетки
+                //                открываем клетки
                 [[BGSKView shared] openCellsFromCellWithCol:col
                                                         row:row];
 
@@ -310,31 +324,40 @@ static const NSInteger kBGStatusImageWonViewTag = 5;
     CGPoint touchPointGlobal = [sender locationInView:self.skView];
     CGPoint touchPoint = [self.skView convertPoint:touchPointGlobal
                                            toScene:self.skView.scene];
-    SKNode *touchedNode = [self.skView.scene nodeAtPoint:touchPoint];
+    SKSpriteNode *touchedNode = (SKSpriteNode *) [self.skView.scene nodeAtPoint:touchPoint];
 
     //    не обрабатываем начало длинного нажатия, нам нужно только "завершение"
     if (sender.state == UIGestureRecognizerStateBegan) {
         UILabel *minesCountLabel = (UILabel *) [self.view viewWithTag:kBGMinesCountViewTag];
         NSInteger minesRemainedToOpen = [BGSKView shared].field.bombs - [BGSKView shared].flaggedMines;
 
-        if (touchedNode.userData != nil && minesRemainedToOpen != 0) {
+        NSLog(@"touchedNode.children.count: %d", touchedNode.children.count);
+        NSLog(@"touchedNode.userData: %@", touchedNode.userData);
+        NSLog(@"minesRemainedToOpen: %d", minesRemainedToOpen);
+
+        if (touchedNode.children.count == 0 && touchedNode.userData != nil && minesRemainedToOpen != 0) {
             //    проигрываем установку флажка
             [[[BGAudioPreloader shared]
-                                playerFromGameConfigForResource:@"flag_tap"
-                                                         ofType:@"mp3"] play];
+                    playerFromGameConfigForResource:@"flagTapOn"
+                                             ofType:@"mp3"] play];
 
-            //        устанавливаем
+            //        устанавливаем флаг
             SKSpriteNode *flagTile = [((BGSKView *) self.skView).tileSprites[@"flag"] copy];
-            flagTile.name = @"flag";
             flagTile.anchorPoint = CGPointZero;
-            flagTile.size = ((SKSpriteNode *) touchedNode).size;
+            flagTile.size = touchedNode.size;
+            flagTile.name = @"flag";
 
             [touchedNode addChild:flagTile];
 
             //            обновляем значение кол-ва бомб
             [BGSKView shared].flaggedMines++;
         } else if ([touchedNode.name isEqualToString:@"flag"]) {
-            //        снимаем
+            //    проигрываем снятие флажка
+            [[[BGAudioPreloader shared]
+                                playerFromGameConfigForResource:@"flagTapOff"
+                                                         ofType:@"mp3"] play];
+
+            //        снимаем флаг
             [touchedNode removeFromParent];
 
             //            обновляем значение кол-ва бомб
@@ -348,7 +371,7 @@ static const NSInteger kBGStatusImageWonViewTag = 5;
 
 - (void)updateTimerLabel:(id)sender
 {
-    BGLog();
+    //    BGLog();
 
     UILabel *timerLabel = (UILabel *) [self.view viewWithTag:kBGTimerViewTag];
     NSInteger timerValue = [timerLabel.text integerValue];

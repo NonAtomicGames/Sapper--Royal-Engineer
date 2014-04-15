@@ -59,7 +59,7 @@
 
 - (void)addNewSegmentImage:(UIImage *)segmentImage
 {
-    BGLog(@"%s", __FUNCTION__);
+    BGLog();
 
     [self BGPrivate_addNewSegmentImage:segmentImage];
 }
@@ -120,7 +120,7 @@
                 //    проигрываем звук нажатия - единожды и только на новом
 //                значении
                 [[[BGAudioPreloader shared]
-                                    playerFromGameConfigForResource:@"button_tap"
+                                    playerFromGameConfigForResource:@"buttonTap"
                                                              ofType:@"mp3"]
                                     play];
             }

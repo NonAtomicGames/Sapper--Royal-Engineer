@@ -26,9 +26,10 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 //    переключении тумблеров
     NSArray *audioResources = @[@"switchON.mp3",
                                 @"switchOFF.mp3",
-                                @"flag_tap.mp3",
-                                @"grass_tap.mp3",
-                                @"button_tap.mp3"];
+                                @"flagTapOn.mp3",
+                                @"grassTap.mp3",
+                                @"buttonTap.mp3",
+                                @"flagTapOff.mp3"];
 
     for (NSString *audioName in audioResources) {
         NSArray *parts = [audioName componentsSeparatedByString:@"."];
