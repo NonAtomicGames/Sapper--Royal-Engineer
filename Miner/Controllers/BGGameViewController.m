@@ -37,6 +37,9 @@ static const NSInteger kBGStatusImageWonViewTag = 5;
 
 // основная реализация
 @implementation BGGameViewController
+{
+    BOOL _firstTapPerformed;
+}
 
 #pragma mark - Init
 
@@ -154,6 +157,10 @@ static const NSInteger kBGStatusImageWonViewTag = 5;
 
     [super viewWillAppear:animated];
 
+    //        было ли первое нажатие по полю, используется для того, чтобы _только_
+    //        после первого нажатия генерировать игровое поле
+    _firstTapPerformed = NO;
+
     //    обновляем надпись с кол-вом мин
     [self updateMinesCountLabel];
 
@@ -239,6 +246,7 @@ static const NSInteger kBGStatusImageWonViewTag = 5;
     //    обновляем поле на новое
     [BGSKView shared].paused = NO;
     [[BGSKView shared] startNewGame];
+    _firstTapPerformed = NO;
 
     [self updateMinesCountLabel];
 
@@ -274,6 +282,14 @@ static const NSInteger kBGStatusImageWonViewTag = 5;
 
     //    смотрим, что находится под нодой
     if (touchedNode.userData != nil && touchedNode.children.count == 0) {
+
+        if (!_firstTapPerformed) {
+//            первое нажатие - генерируем поле
+            [[BGSKView shared]
+                       fillEarthWithTilesExcludingBombAtCellWithCol:[touchedNode.userData[@"col"] unsignedIntegerValue]
+                                                            cellRow:[touchedNode.userData[@"row"] unsignedIntegerValue]];
+            _firstTapPerformed = YES;
+        }
 
         //    проигрываем откапывание ячейки
         [[[BGAudioPreloader shared] playerFromGameConfigForResource:@"grassTap"
@@ -330,10 +346,6 @@ static const NSInteger kBGStatusImageWonViewTag = 5;
     if (sender.state == UIGestureRecognizerStateBegan) {
         UILabel *minesCountLabel = (UILabel *) [self.view viewWithTag:kBGMinesCountViewTag];
         NSInteger minesRemainedToOpen = [BGSKView shared].field.bombs - [BGSKView shared].flaggedMines;
-
-        NSLog(@"touchedNode.children.count: %d", touchedNode.children.count);
-        NSLog(@"touchedNode.userData: %@", touchedNode.userData);
-        NSLog(@"minesRemainedToOpen: %d", minesRemainedToOpen);
 
         if (touchedNode.children.count == 0 && touchedNode.userData != nil && minesRemainedToOpen != 0) {
             //    проигрываем установку флажка
