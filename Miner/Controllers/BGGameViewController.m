@@ -261,11 +261,16 @@ static const NSInteger kBGMinesCountViewTag = 2;
     //    смотрим, что находится под нодой
     if (touchedNode.userData != nil && touchedNode.children.count == 0) {
 
+        NSUInteger col = [touchedNode.userData[@"col"] unsignedIntegerValue];
+        NSUInteger row = [touchedNode.userData[@"row"] unsignedIntegerValue];
+        NSInteger value = [[BGSKView shared].field valueForCol:col
+                                                           row:row];
+
         if (!_firstTapPerformed) {
 //            первое нажатие - генерируем поле
             [[BGSKView shared]
-                       fillEarthWithTilesExcludingBombAtCellWithCol:[touchedNode.userData[@"col"] unsignedIntegerValue]
-                                                            cellRow:[touchedNode.userData[@"row"] unsignedIntegerValue]];
+                    fillEarthWithTilesExcludingBombAtCellWithCol:col
+                                                             row:row];
             _firstTapPerformed = YES;
         }
 
@@ -275,11 +280,6 @@ static const NSInteger kBGMinesCountViewTag = 2;
                             play];
 
         //        проверим значение, которое на поле
-        NSUInteger col = [touchedNode.userData[@"col"] unsignedIntegerValue];
-        NSUInteger row = [touchedNode.userData[@"row"] unsignedIntegerValue];
-        NSInteger value = [[BGSKView shared].field valueForCol:col
-                                                           row:row];
-
         switch (value) {
             case BGFieldBomb: {
                 [self stopGameTimer];
