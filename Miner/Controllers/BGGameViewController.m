@@ -185,6 +185,8 @@ static const NSInteger kBGMinesCountViewTag = 2;
 
     //    обновляем поле на новое
     [self.skView startNewGame];
+
+//    TODO: нужен ли здесь этот апдейт, если в viewWillAppear уже происходит обновление?
     [self updateMinesCountLabel];
 }
 
@@ -229,6 +231,8 @@ static const NSInteger kBGMinesCountViewTag = 2;
     //  сбрасываем старые значения
     [self destroyGameTimer];
     [self resetTimerLabel];
+
+//    TODO: зачем здесь это, если чуть дальше идет создание нового поля и установка нового значения кол-ва бомб?
     [self resetMinesCountLabel];
 
     //    обновляем поле на новое
@@ -289,9 +293,8 @@ static const NSInteger kBGMinesCountViewTag = 2;
 
         if (!_firstTapPerformed) {
 //            первое нажатие - генерируем реальное поле
-            [self.skView
-                    fillEarthWithTilesExcludingBombAtCellWithCol:col
-                                                             row:row];
+            [self.skView fillEarthWithTilesExcludingBombAtCellWithCol:col
+                                                                  row:row];
             _firstTapPerformed = YES;
         }
 

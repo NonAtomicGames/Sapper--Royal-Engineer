@@ -19,8 +19,7 @@
 - (BOOL)          application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-//    предзагрузка звуков в фоновом режиме для избежания затормаживания при
-//    переключении тумблеров
+//    предзагрузка звуков в фоновом режиме для избежания затормаживания
     NSArray *audioResources = @[@"switchON.mp3",
                                 @"switchOFF.mp3",
                                 @"flagTapOn.mp3",
@@ -37,10 +36,10 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
                                             ofType:type];
     }
 
-//    создание игрового экрана
+//    предсоздание игрового экрана
     [BGGameViewController shared];
 
-//    предзагрузка дефайлтов
+//    предзагрузка дефолтов
     [BGSettingsManager sharedManager];
 
     // Override point for customization after application launch.
@@ -68,8 +67,6 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    BGLog();
-
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 

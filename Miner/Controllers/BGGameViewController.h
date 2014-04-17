@@ -12,7 +12,7 @@
 
 @class BGSKView;
 
-
+// TODO: добавить комментарии
 @interface BGGameViewController : UIViewController
 
 @property (nonatomic, strong) BGSKView *skView;
