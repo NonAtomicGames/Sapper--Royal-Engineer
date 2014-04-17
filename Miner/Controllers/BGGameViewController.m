@@ -18,13 +18,6 @@ static const NSInteger kBGTimerViewTag = 1;
 static const NSInteger kBGMinesCountViewTag = 2;
 
 
-@interface BGSKSprite : SKSpriteNode
-@end
-
-@implementation BGSKSprite
-@end
-
-
 #pragma mark - BGGameViewController
 
 // основная реализация
@@ -258,8 +251,6 @@ static const NSInteger kBGMinesCountViewTag = 2;
     //    получаем ноду, которая находится в точке нажатия
     SKSpriteNode *touchedNode = (SKSpriteNode *) [self.skView.scene nodeAtPoint:touchPoint];
 
-    NSLog(@"touchedNode: %@", touchedNode);
-
 //    если "слой" на котором находится указанная нода заблокирован для взаимодействия - завершаем
     if (![touchedNode parent].userInteractionEnabled) {
         return;
@@ -268,11 +259,10 @@ static const NSInteger kBGMinesCountViewTag = 2;
 //    удаляем картинку по тапу, чтобы была возможность рассмотреть поле и расстановку бомб
     if ([touchedNode.name isEqualToString:@"smile"]) {
         [touchedNode removeFromParent];
-
         return;
     }
 
-    //    смотрим, что находится под нодой
+    //    если нажатие произошло на ноде с травой - обрабатываем
     if (touchedNode.userData != nil && touchedNode.children.count == 0) {
 
         NSUInteger col = [touchedNode.userData[@"col"] unsignedIntegerValue];
@@ -281,7 +271,7 @@ static const NSInteger kBGMinesCountViewTag = 2;
                                                            row:row];
 
         if (!_firstTapPerformed) {
-//            первое нажатие - генерируем поле
+//            первое нажатие - генерируем реальное поле
             [[BGSKView shared]
                     fillEarthWithTilesExcludingBombAtCellWithCol:col
                                                              row:row];
@@ -331,6 +321,11 @@ static const NSInteger kBGMinesCountViewTag = 2;
     CGPoint touchPoint = [self.skView convertPoint:touchPointGlobal
                                            toScene:self.skView.scene];
     SKSpriteNode *touchedNode = (SKSpriteNode *) [self.skView.scene nodeAtPoint:touchPoint];
+
+//    если слой заблокирован для взаимодействия - завершаем выполнение
+    if (!touchedNode.parent.userInteractionEnabled) {
+        return;
+    }
 
     //    не обрабатываем начало длинного нажатия, нам нужно только "завершение"
     if (sender.state == UIGestureRecognizerStateBegan) {
