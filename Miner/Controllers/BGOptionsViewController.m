@@ -14,6 +14,7 @@
 #import "BGUISegmentedControl.h"
 #import "BGLog.h"
 #import "BGSKView.h"
+#import "BGGameViewController.h"
 
 
 @interface BGOptionsViewController ()
@@ -172,7 +173,7 @@
     [BGSettingsManager sharedManager].level = newLevel;
 
 //    обновим поле
-    [[BGSKView shared] startNewGame];
+    [[BGGameViewController shared].skView startNewGame];
 }
 
 - (void)fieldSizeChanged:(id)newlySelectedIndexNumber
@@ -207,7 +208,7 @@
     [BGSettingsManager sharedManager].rows = rows;
 
 //    обновим поле
-    [[BGSKView shared] startNewGame];
+    [[BGGameViewController shared].skView startNewGame];
 }
 
 - (void)soundButtonTapped:(id)sender

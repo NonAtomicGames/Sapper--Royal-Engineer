@@ -19,9 +19,6 @@
 - (BOOL)          application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-//  предсоздание игрового экрана для ускорения перехода на него с главного
-    [BGSKView shared].gameViewController = [[BGGameViewController alloc] init];
-
 //    предзагрузка звуков в фоновом режиме для избежания затормаживания при
 //    переключении тумблеров
     NSArray *audioResources = @[@"switchON.mp3",
@@ -40,8 +37,8 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
                                             ofType:type];
     }
 
-//    предзагрузка спрайтов
-    [BGSKView shared];
+//    создание игрового экрана
+    [BGGameViewController shared];
 
 //    предзагрузка дефайлтов
     [BGSettingsManager sharedManager];
@@ -61,7 +58,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
     [[BGSettingsManager sharedManager] save];
 
 //    останавливаем обновление сцены в фоновом режиме
-    [BGSKView shared].paused = YES;
+    [BGGameViewController shared].skView.scene.paused = YES;
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application

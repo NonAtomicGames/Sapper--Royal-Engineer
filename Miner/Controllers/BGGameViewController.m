@@ -49,11 +49,6 @@ static const NSInteger kBGMinesCountViewTag = 2;
     self = [super init];
 
     if (self) {
-        //    добавляем на экран SKView
-        self.skView = [[BGSKView alloc]
-                                 initWithFrame:CGRectMake(<#(CGFloat)x#>, <#(CGFloat)y#>, <#(CGFloat)width#>, <#(CGFloat)height#>)];
-        [self.view addSubview:self.skView];
-
         //    добавляем изображение верхней панели
         UIImage *topPanelImage = [UIImage imageNamed:@"top_game"];
         UIImageView *topPanelImageView = [[UIImageView alloc]
@@ -61,6 +56,11 @@ static const NSInteger kBGMinesCountViewTag = 2;
         topPanelImageView.frame = CGRectMake(0, 0, topPanelImage.size.width, topPanelImage.size.height);
 
         [self.view addSubview:topPanelImageView];
+
+        //    добавляем на экран SKView
+        CGRect gameViewFrame = CGRectMake(0, topPanelImage.size.height, 320, 480);
+        self.skView = [[BGSKView alloc] initWithFrame:gameViewFrame];
+        [self.view addSubview:self.skView];
 
         //    на панель изображения накладываем надпись с кол-вом прошедшего времени
         UILabel *gameTimerLabel = [[UILabel alloc] init];
@@ -353,11 +353,11 @@ static const NSInteger kBGMinesCountViewTag = 2;
         if (touchedNode.children.count == 0 && touchedNode.userData != nil && minesRemainedToOpen != 0) {
             //    проигрываем установку флажка
             [[[BGAudioPreloader shared]
-                    playerFromGameConfigForResource:@"flagTapOn"
-                                             ofType:@"mp3"] play];
+                                playerFromGameConfigForResource:@"flagTapOn"
+                                                         ofType:@"mp3"] play];
 
             //        устанавливаем флаг
-            SKSpriteNode *flagTile = [((BGSKView *) self.skView).tileSprites[@"flag"] copy];
+            SKSpriteNode *flagTile = [self.skView.tileSprites[@"flag"] copy];
             flagTile.anchorPoint = CGPointZero;
             flagTile.size = touchedNode.size;
             flagTile.name = @"flag";
