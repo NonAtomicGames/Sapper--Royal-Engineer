@@ -10,7 +10,12 @@
 @import SpriteKit;
 
 
+@class BGGameViewController;
+
+
 @interface BGViewController : UIViewController
+
+@property (nonatomic, strong) BGGameViewController *gameViewController;
 
 - (IBAction)playButtonTapped:(id)sender;
 

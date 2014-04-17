@@ -10,11 +10,13 @@
 @import SpriteKit;
 
 
+@class BGSKView;
+
+
 @interface BGGameViewController : UIViewController
 
-@property (nonatomic, strong) SKView *skView;
+@property (nonatomic, strong) BGSKView *skView;
 
-// таймер игровой
-@property (nonatomic, strong, readonly) NSTimer *timer;
++ (instancetype)shared;
 
 @end

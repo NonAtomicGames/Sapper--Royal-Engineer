@@ -9,15 +9,23 @@
 #import <iAd/iAd.h>
 #import "BGViewController.h"
 #import "BGSettingsManager.h"
-#import "BGSKView.h"
-#import "BGGameViewController.h"
 #import "BGLog.h"
 #import "BGAudioPreloader.h"
+#import "BGGameViewController.h"
 
 
 @implementation BGViewController
 
 #pragma mark - View
+
+- (void)viewDidLoad
+{
+    BGLog();
+
+    [super viewDidLoad];
+
+    self.gameViewController = [BGGameViewController shared];
+}
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -37,7 +45,7 @@
     [[[BGAudioPreloader shared] playerFromGameConfigForResource:@"button_tap"
                                                          ofType:@"mp3"] play];
 
-    [self.navigationController pushViewController:[BGSKView shared].gameViewController
+    [self.navigationController pushViewController:self.gameViewController
                                          animated:YES];
 }
 

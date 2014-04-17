@@ -24,6 +24,22 @@ static const NSInteger kBGMinesCountViewTag = 2;
 @implementation BGGameViewController
 {
     BOOL _firstTapPerformed;
+    NSTimer *_timer;
+}
+
+#pragma mark - Class methods
+
++ (instancetype)shared
+{
+    static dispatch_once_t once;
+    static BGGameViewController *shared;
+
+    dispatch_once(&once, ^
+    {
+        shared = [[self alloc] init];
+    });
+
+    return shared;
 }
 
 #pragma mark - Init
@@ -34,7 +50,8 @@ static const NSInteger kBGMinesCountViewTag = 2;
 
     if (self) {
         //    добавляем на экран SKView
-        self.skView = [BGSKView shared];
+        self.skView = [[BGSKView alloc]
+                                 initWithFrame:CGRectMake(<#(CGFloat)x#>, <#(CGFloat)y#>, <#(CGFloat)width#>, <#(CGFloat)height#>)];
         [self.view addSubview:self.skView];
 
         //    добавляем изображение верхней панели
@@ -145,7 +162,7 @@ static const NSInteger kBGMinesCountViewTag = 2;
     [self updateMinesCountLabel];
 
     //    запускаем обновление сцены
-    [BGSKView shared].paused = NO;
+    self.skView.paused = NO;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -167,7 +184,7 @@ static const NSInteger kBGMinesCountViewTag = 2;
     [self resetMinesCountLabel];
 
     //    обновляем поле на новое
-    [[BGSKView shared] startNewGame];
+    [self.skView startNewGame];
     [self updateMinesCountLabel];
 }
 
@@ -178,7 +195,7 @@ static const NSInteger kBGMinesCountViewTag = 2;
     BGLog();
 
     //    запускаем таймер игры
-    if (self.timer == nil) {
+    if (_timer == nil) {
         _timer = [NSTimer scheduledTimerWithTimeInterval:1.0
                                                   target:self
                                                 selector:@selector(updateTimerLabel:)
@@ -215,8 +232,8 @@ static const NSInteger kBGMinesCountViewTag = 2;
     [self resetMinesCountLabel];
 
     //    обновляем поле на новое
-    [BGSKView shared].paused = NO;
-    [[BGSKView shared] startNewGame];
+    self.skView.paused = NO;
+    [self.skView startNewGame];
     _firstTapPerformed = NO;
 
     [self updateMinesCountLabel];
@@ -229,7 +246,7 @@ static const NSInteger kBGMinesCountViewTag = 2;
     BGLog();
 
     //    останавливаем обновление сцены
-    [BGSKView shared].paused = YES;
+    self.skView.paused = YES;
 
     //    проигрываем нажатие на кнопку
     [[[BGAudioPreloader shared] playerFromGameConfigForResource:@"buttonTap"
@@ -267,12 +284,12 @@ static const NSInteger kBGMinesCountViewTag = 2;
 
         NSUInteger col = [touchedNode.userData[@"col"] unsignedIntegerValue];
         NSUInteger row = [touchedNode.userData[@"row"] unsignedIntegerValue];
-        NSInteger value = [[BGSKView shared].field valueForCol:col
-                                                           row:row];
+        NSInteger value = [self.skView.field valueForCol:col
+                                                     row:row];
 
         if (!_firstTapPerformed) {
 //            первое нажатие - генерируем реальное поле
-            [[BGSKView shared]
+            [self.skView
                     fillEarthWithTilesExcludingBombAtCellWithCol:col
                                                              row:row];
             _firstTapPerformed = YES;
@@ -287,23 +304,23 @@ static const NSInteger kBGMinesCountViewTag = 2;
         switch (value) {
             case BGFieldBomb: {
                 [self stopGameTimer];
-                [[BGSKView shared] disableFieldInteraction];
-                [[BGSKView shared] animateExplosionOnCellWithCol:col
-                                                             row:row];
+                [self.skView disableFieldInteraction];
+                [self.skView animateExplosionOnCellWithCol:col
+                                                       row:row];
             }
                 break;
 
             default: {
                 //                открываем клетки
-                [[BGSKView shared] openCellsFromCellWithCol:col
-                                                        row:row];
+                [self.skView openCellsFromCellWithCol:col
+                                                  row:row];
 
                 //                проверим, если игра завершена
-                BOOL userWon = [[BGSKView shared] isGameFinished];
+                BOOL userWon = [self.skView isGameFinished];
 
                 if (userWon) {
                     [self stopGameTimer];
-                    [[BGSKView shared] disableFieldInteraction];
+                    [self.skView disableFieldInteraction];
                 }
             }
                 break;
@@ -323,7 +340,7 @@ static const NSInteger kBGMinesCountViewTag = 2;
     SKSpriteNode *touchedNode = (SKSpriteNode *) [self.skView.scene nodeAtPoint:touchPoint];
 
 //    если слой заблокирован для взаимодействия - завершаем выполнение
-    if (!touchedNode.parent.userInteractionEnabled) {
+    if (![touchedNode.name isEqualToString:@"flag"] && !touchedNode.parent.userInteractionEnabled) {
         return;
     }
 
@@ -331,7 +348,7 @@ static const NSInteger kBGMinesCountViewTag = 2;
     if (sender.state == UIGestureRecognizerStateBegan) {
 
         UILabel *minesCountLabel = (UILabel *) [self.view viewWithTag:kBGMinesCountViewTag];
-        NSInteger minesRemainedToOpen = [BGSKView shared].field.bombs - [BGSKView shared].flaggedMines;
+        NSInteger minesRemainedToOpen = self.skView.field.bombs - self.skView.flaggedMines;
 
         if (touchedNode.children.count == 0 && touchedNode.userData != nil && minesRemainedToOpen != 0) {
             //    проигрываем установку флажка
@@ -348,7 +365,7 @@ static const NSInteger kBGMinesCountViewTag = 2;
             [touchedNode addChild:flagTile];
 
             //            обновляем значение кол-ва бомб
-            [BGSKView shared].flaggedMines++;
+            self.skView.flaggedMines++;
         } else if ([touchedNode.name isEqualToString:@"flag"]) {
             //    проигрываем снятие флажка
             [[[BGAudioPreloader shared]
@@ -359,11 +376,11 @@ static const NSInteger kBGMinesCountViewTag = 2;
             [touchedNode removeFromParent];
 
             //            обновляем значение кол-ва бомб
-            [BGSKView shared].flaggedMines--;
+            self.skView.flaggedMines--;
         }
 
         minesCountLabel.text = [NSString stringWithFormat:@"%04d",
-                                                          [BGSKView shared].field.bombs - [BGSKView shared].flaggedMines];
+                                                          self.skView.field.bombs - self.skView.flaggedMines];
     }
 }
 
@@ -394,7 +411,7 @@ static const NSInteger kBGMinesCountViewTag = 2;
 
     UILabel *minesCountLabel = (UILabel *) [self.view viewWithTag:kBGMinesCountViewTag];
     minesCountLabel.text = [NSString stringWithFormat:@"%04d",
-                                                      [BGSKView shared].field.bombs];
+                                                      self.skView.field.bombs];
 }
 
 - (void)resetMinesCountLabel
