@@ -343,6 +343,7 @@ static const NSInteger kBGMinesCountViewTag = 2;
     SKSpriteNode *touchedNode = (SKSpriteNode *) [self.skView.scene nodeAtPoint:touchPoint];
 
 //    если слой заблокирован для взаимодействия - завершаем выполнение
+//    TODO: сделать так, чтобы после выигрыша нельзя было снимать флажки с клеток
     if (![touchedNode.name isEqualToString:@"flag"] && !touchedNode.parent.userInteractionEnabled) {
         return;
     }
