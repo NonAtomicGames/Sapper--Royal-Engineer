@@ -258,6 +258,20 @@ static const NSInteger kBGMinesCountViewTag = 2;
     //    получаем ноду, которая находится в точке нажатия
     SKSpriteNode *touchedNode = (SKSpriteNode *) [self.skView.scene nodeAtPoint:touchPoint];
 
+    NSLog(@"touchedNode: %@", touchedNode);
+
+//    если "слой" на котором находится указанная нода заблокирован для взаимодействия - завершаем
+    if (![touchedNode parent].userInteractionEnabled) {
+        return;
+    }
+
+//    удаляем картинку по тапу, чтобы была возможность рассмотреть поле и расстановку бомб
+    if ([touchedNode.name isEqualToString:@"smile"]) {
+        [touchedNode removeFromParent];
+
+        return;
+    }
+
     //    смотрим, что находится под нодой
     if (touchedNode.userData != nil && touchedNode.children.count == 0) {
 
