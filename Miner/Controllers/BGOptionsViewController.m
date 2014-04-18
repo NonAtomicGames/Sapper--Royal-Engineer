@@ -10,7 +10,7 @@
 #import "BGOptionsViewController.h"
 #import "BGUISwitch.h"
 #import "BGSettingsManager.h"
-#import "BGAudioPreloader.h"
+#import "BGResourcePreloader.h"
 #import "BGUISegmentedControl.h"
 #import "BGLog.h"
 #import "BGSKView.h"
@@ -243,8 +243,9 @@
 
 - (void)back:(id)sender
 {
-    [[[BGAudioPreloader shared] playerFromGameConfigForResource:@"buttonTap"
-                                                         ofType:@"mp3"] play];
+    [[[BGResourcePreloader shared] playerFromGameConfigForResource:@"buttonTap"
+                                                            ofType:@"mp3"]
+                           play];
 
     [self.navigationController popViewControllerAnimated:YES];
 }

@@ -19,7 +19,7 @@
 
 #import "BGUISegmentedControl.h"
 #import "BGLog.h"
-#import "BGAudioPreloader.h"
+#import "BGResourcePreloader.h"
 
 
 #define METAL_BORDER_WIDTH 4.5
@@ -119,10 +119,10 @@
             if (self.selectedSegmentIndex != i) {
                 //    проигрываем звук нажатия - единожды и только на новом
 //                значении
-                [[[BGAudioPreloader shared]
-                                    playerFromGameConfigForResource:@"buttonTap"
-                                                             ofType:@"mp3"]
-                                    play];
+                [[[BGResourcePreloader shared]
+                                       playerFromGameConfigForResource:@"buttonTap"
+                                                                ofType:@"mp3"]
+                                       play];
             }
 
             self.selectedSegmentIndex = i;

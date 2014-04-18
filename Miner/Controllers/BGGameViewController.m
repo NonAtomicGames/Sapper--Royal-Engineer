@@ -10,7 +10,7 @@
 #import "BGMinerField.h"
 #import "BGLog.h"
 #import "BGSKView.h"
-#import "BGAudioPreloader.h"
+#import "BGResourcePreloader.h"
 
 
 // полезные константы тегов для вьюх
@@ -185,9 +185,6 @@ static const NSInteger kBGMinesCountViewTag = 2;
 
     //    обновляем поле на новое
     [self.skView startNewGame];
-
-//    TODO: нужен ли здесь этот апдейт, если в viewWillAppear уже происходит обновление?
-    [self updateMinesCountLabel];
 }
 
 #pragma mark - Game & Private
@@ -225,15 +222,12 @@ static const NSInteger kBGMinesCountViewTag = 2;
     BGLog();
 
     //    проигрываем нажатие на кнопку
-    [[[BGAudioPreloader shared] playerFromGameConfigForResource:@"buttonTap"
-                                                         ofType:@"mp3"] play];
+    [[[BGResourcePreloader shared] playerFromGameConfigForResource:@"buttonTap"
+                                                            ofType:@"mp3"] play];
 
     //  сбрасываем старые значения
     [self destroyGameTimer];
     [self resetTimerLabel];
-
-//    TODO: зачем здесь это, если чуть дальше идет создание нового поля и установка нового значения кол-ва бомб?
-    [self resetMinesCountLabel];
 
     //    обновляем поле на новое
     self.skView.paused = NO;
@@ -253,8 +247,8 @@ static const NSInteger kBGMinesCountViewTag = 2;
     self.skView.paused = YES;
 
     //    проигрываем нажатие на кнопку
-    [[[BGAudioPreloader shared] playerFromGameConfigForResource:@"buttonTap"
-                                                         ofType:@"mp3"] play];
+    [[[BGResourcePreloader shared] playerFromGameConfigForResource:@"buttonTap"
+                                                            ofType:@"mp3"] play];
 
     //    возвращаемся на главный экран
     [self.navigationController popViewControllerAnimated:YES];
@@ -299,8 +293,9 @@ static const NSInteger kBGMinesCountViewTag = 2;
         }
 
         //    проигрываем откапывание ячейки
-        [[[BGAudioPreloader shared] playerFromGameConfigForResource:@"grassTap"
-                                                             ofType:@"mp3"]
+        [[[BGResourcePreloader shared]
+                               playerFromGameConfigForResource:@"grassTap"
+                                                        ofType:@"mp3"]
                             play];
 
         //        проверим значение, которое на поле
@@ -343,7 +338,6 @@ static const NSInteger kBGMinesCountViewTag = 2;
     SKSpriteNode *touchedNode = (SKSpriteNode *) [self.skView.scene nodeAtPoint:touchPoint];
 
 //    если слой заблокирован для взаимодействия - завершаем выполнение
-//    TODO: сделать так, чтобы после выигрыша нельзя было снимать флажки с клеток
     if (![touchedNode.name isEqualToString:@"flag"] && !touchedNode.parent.userInteractionEnabled) {
         return;
     }
@@ -356,9 +350,9 @@ static const NSInteger kBGMinesCountViewTag = 2;
 
         if (touchedNode.children.count == 0 && touchedNode.userData != nil && minesRemainedToOpen != 0) {
             //    проигрываем установку флажка
-            [[[BGAudioPreloader shared]
-                                playerFromGameConfigForResource:@"flagTapOn"
-                                                         ofType:@"mp3"] play];
+            [[[BGResourcePreloader shared]
+                                   playerFromGameConfigForResource:@"flagTapOn"
+                                                            ofType:@"mp3"] play];
 
             //        устанавливаем флаг
             SKSpriteNode *flagTile = [self.skView.tileSprites[@"flag"] copy];
@@ -372,9 +366,9 @@ static const NSInteger kBGMinesCountViewTag = 2;
             self.skView.flaggedMines++;
         } else if ([touchedNode.name isEqualToString:@"flag"]) {
             //    проигрываем снятие флажка
-            [[[BGAudioPreloader shared]
-                                playerFromGameConfigForResource:@"flagTapOff"
-                                                         ofType:@"mp3"] play];
+            [[[BGResourcePreloader shared]
+                                   playerFromGameConfigForResource:@"flagTapOff"
+                                                            ofType:@"mp3"] play];
 
             //        снимаем флаг
             [touchedNode removeFromParent];
@@ -395,6 +389,11 @@ static const NSInteger kBGMinesCountViewTag = 2;
     UILabel *timerLabel = (UILabel *) [self.view viewWithTag:kBGTimerViewTag];
     NSInteger timerValue = [timerLabel.text integerValue];
     timerValue++;
+
+//    9999 - конец игры, останавливаем таймер
+    if (timerValue == 9999) {
+        [self stopGameTimer];
+    }
 
     NSString *newValue = [NSString stringWithFormat:@"%04d", timerValue];
 

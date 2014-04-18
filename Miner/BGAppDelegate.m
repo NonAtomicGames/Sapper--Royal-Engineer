@@ -8,7 +8,7 @@
 
 #import "BGAppDelegate.h"
 #import "BGSettingsManager.h"
-#import "BGAudioPreloader.h"
+#import "BGResourcePreloader.h"
 #import "BGSKView.h"
 #import "BGGameViewController.h"
 #import "BGLog.h"
@@ -35,8 +35,8 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
         NSString *name = parts[0];
         NSString *type = parts[1];
 
-        [[BGAudioPreloader shared] preloadResource:name
-                                            ofType:type];
+        [[BGResourcePreloader shared] preloadAudioResource:name
+                                                    ofType:type];
     }
 
 //    предсоздание игрового экрана

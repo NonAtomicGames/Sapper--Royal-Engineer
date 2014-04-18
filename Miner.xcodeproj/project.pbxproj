@@ -11,9 +11,10 @@
 		1A9A0132241BE0A3D2E901D9 /* Tiles.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A03FECFC0BCCCBE9A42F6 /* Tiles.atlas */; };
 		1A9A016CEAF98572B39B837C /* button_play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A0C08F0868B5701886F63 /* button_play@2x.png */; };
 		1A9A01853A0BB677BFCCFB05 /* buttonTap.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A04B0FAB94FABEBB139C9 /* buttonTap.mp3 */; };
+		1A9A023191F3135F269FC87B /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A07EFC895E277B2610D84 /* Default.png */; };
 		1A9A025D7218E57009C00B32 /* BGUISwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A06E1C8C18EE3BCA24FA8 /* BGUISwitch.m */; };
 		1A9A02DCC2837700B6A191CF /* BGGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A0673C2D94B6C826B69A4 /* BGGameViewController.m */; };
-		1A9A02E36FF23270FEC10CC8 /* BGAudioPreloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A0D8241BD943D88289715 /* BGAudioPreloader.m */; };
+		1A9A02E36FF23270FEC10CC8 /* BGResourcePreloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A0D8241BD943D88289715 /* BGResourcePreloader.m */; };
 		1A9A031D3D0EFEBC84A17D6C /* BGNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A0BAAF5CD8C67041CF99B /* BGNavigationViewController.m */; };
 		1A9A04436954BBD988CC47E5 /* switchON.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A089200A1C5BB1D879138 /* switchON.mp3 */; };
 		1A9A063AD699AF425AB759A0 /* button_play_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A0F424BF4EC50A100C684 /* button_play_down@2x.png */; };
@@ -49,6 +50,7 @@
 		D521600E18F3DCB5003247DF /* button_down_norm@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D521601018F3DCB5003247DF /* button_down_norm@2x.png */; };
 		D521601318F3DDD9003247DF /* difficult_default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D521601518F3DDD9003247DF /* difficult_default@2x.png */; };
 		D521FEF618E8C2B3000D52C8 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D521FEF518E8C2B3000D52C8 /* iAd.framework */; };
+		D52B956C1901153D002B5316 /* Explosion.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D52B956B1901153D002B5316 /* Explosion.atlas */; };
 		D538BCFC18F83EA30006FD00 /* BGOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D538BCFB18F83EA30006FD00 /* BGOptionsViewController.m */; };
 		D538BD0C18F9430D0006FD00 /* miner_config@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D538BD0B18F9430D0006FD00 /* miner_config@2x.png */; };
 		D569E04018FEEDFC001A1739 /* failed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D569E04218FEEDFC001A1739 /* failed@2x.png */; };
@@ -69,7 +71,6 @@
 		D5D6498318D47A2C00854518 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5D6498218D47A2C00854518 /* SpriteKit.framework */; };
 		D5E39CBB18E7EDB300F25012 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5E39CBD18E7EDB300F25012 /* Main.storyboard */; };
 		D5E39CDF18E7F87A00F25012 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D5E39CE118E7F87A00F25012 /* Localizable.strings */; };
-		D5E46DA018FBCC8B001EEED6 /* Explosion.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D5E46D9F18FBCC8B001EEED6 /* Explosion.atlas */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,7 +91,7 @@
 		1A9A01E59C54A1F3321A2D52 /* button_down_1510@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_down_1510@2x.png"; sourceTree = "<group>"; };
 		1A9A024EA34A338A74569C56 /* button_down_2416@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_down_2416@2x.png"; sourceTree = "<group>"; };
 		1A9A0287693E9014E3CF70A3 /* game_button_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "game_button_off@2x.png"; sourceTree = "<group>"; };
-		1A9A02B204C3068D230AF4B4 /* BGAudioPreloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGAudioPreloader.h; sourceTree = "<group>"; };
+		1A9A02B204C3068D230AF4B4 /* BGResourcePreloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGResourcePreloader.h; sourceTree = "<group>"; };
 		1A9A02CFAD11E1C9B932566A /* button_down_128@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_down_128@2x.png"; sourceTree = "<group>"; };
 		1A9A02DAD3A958DDAC4B6C96 /* switch_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switch_1@2x.png"; sourceTree = "<group>"; };
 		1A9A03091AAD6EF5472C48A7 /* switch_0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switch_0@2x.png"; sourceTree = "<group>"; };
@@ -107,6 +108,7 @@
 		1A9A06E1C8C18EE3BCA24FA8 /* BGUISwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGUISwitch.m; sourceTree = "<group>"; };
 		1A9A06FC52931E41A20A4053 /* BGNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGNavigationViewController.h; sourceTree = "<group>"; };
 		1A9A07AA52C65A1D9067D1D3 /* BGMinerField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGMinerField.h; sourceTree = "<group>"; };
+		1A9A07EFC895E277B2610D84 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		1A9A08836ECA898D60095E44 /* ru */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ru; path = "Miner/Resources/Images/Buttons/ru.lproj/button_options@2x.png"; sourceTree = SOURCE_ROOT; };
 		1A9A089200A1C5BB1D879138 /* switchON.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = switchON.mp3; sourceTree = "<group>"; };
 		1A9A08B1B606DF3F4CB5D23D /* BGViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGViewController.h; sourceTree = "<group>"; };
@@ -126,7 +128,7 @@
 		1A9A0CEE80CA0004C30D4556 /* grassTap.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = grassTap.mp3; sourceTree = "<group>"; };
 		1A9A0D4D726D2E98B003B766 /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = "Miner/Resources/Images/Buttons/Base.lproj/button_play_down@2x.png"; sourceTree = SOURCE_ROOT; };
 		1A9A0D5426C089C702BADF62 /* BGMinerField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGMinerField.m; sourceTree = "<group>"; };
-		1A9A0D8241BD943D88289715 /* BGAudioPreloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGAudioPreloader.m; sourceTree = "<group>"; };
+		1A9A0D8241BD943D88289715 /* BGResourcePreloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGResourcePreloader.m; sourceTree = "<group>"; };
 		1A9A0E5A1747D614129957D1 /* ru */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ru; path = "Miner/Resources/Images/Buttons/ru.lproj/button_play_down@2x.png"; sourceTree = SOURCE_ROOT; };
 		1A9A0E5C82AA5741A8753008 /* ru */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ru; path = "Miner/Resources/Images/Buttons/ru.lproj/button_play@2x.png"; sourceTree = SOURCE_ROOT; };
 		1A9A0E6B843CFBEFD0404516 /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = "Miner/Resources/Images/Buttons/Base.lproj/button_play@2x.png"; sourceTree = SOURCE_ROOT; };
@@ -160,6 +162,7 @@
 		D521601718F3DDDD003247DF /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = "en.lproj/difficult_default@2x.png"; sourceTree = "<group>"; };
 		D521FEF318E8B5AA000D52C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D521FEF518E8C2B3000D52C8 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		D52B956B1901153D002B5316 /* Explosion.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Explosion.atlas; sourceTree = "<group>"; };
 		D538BCFA18F83EA30006FD00 /* BGOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGOptionsViewController.h; sourceTree = "<group>"; };
 		D538BCFB18F83EA30006FD00 /* BGOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGOptionsViewController.m; sourceTree = "<group>"; };
 		D538BD0B18F9430D0006FD00 /* miner_config@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "miner_config@2x.png"; sourceTree = "<group>"; };
@@ -191,7 +194,6 @@
 		D5E39CE018E7F87A00F25012 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D5E39CE218E7F88200F25012 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D5E39CE318E7F88400F25012 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
-		D5E46D9F18FBCC8B001EEED6 /* Explosion.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Explosion.atlas; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,8 +232,8 @@
 		1A9A01FBC29E1D83ED899F11 /* BGAudioPreloader */ = {
 			isa = PBXGroup;
 			children = (
-				1A9A02B204C3068D230AF4B4 /* BGAudioPreloader.h */,
-				1A9A0D8241BD943D88289715 /* BGAudioPreloader.m */,
+				1A9A02B204C3068D230AF4B4 /* BGResourcePreloader.h */,
+				1A9A0D8241BD943D88289715 /* BGResourcePreloader.m */,
 			);
 			path = BGAudioPreloader;
 			sourceTree = "<group>";
@@ -258,7 +260,7 @@
 		1A9A04A7024507BBA549AF28 /* GameViewController */ = {
 			isa = PBXGroup;
 			children = (
-				D5E46D9F18FBCC8B001EEED6 /* Explosion.atlas */,
+				D52B956B1901153D002B5316 /* Explosion.atlas */,
 				D595434D18F9C2A000E67E6C /* MineAnimation.atlas */,
 				D595434B18F9C28E00E67E6C /* GrassAnimation.atlas */,
 				1A9A04A6BC5099264AC84ACB /* top_game@2x.png */,
@@ -451,6 +453,7 @@
 				1A9A0F91BAD517F99CA391C7 /* DifficultyPanel */,
 				1A9A0D9DA7ABFB6172A52850 /* FieldSizePanel */,
 				1A9A067ADC5563A4AB5EDCD8 /* WinFailImages */,
+				1A9A07EFC895E277B2610D84 /* Default.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -647,7 +650,6 @@
 				1A9A0D3576852EF36505139A /* button_down_2416@2x.png in Resources */,
 				1A9A09748B0A70C911ED13DF /* field_deafult@2x.png in Resources */,
 				1A9A0A75560204CC10EECF0A /* Digital.ttf in Resources */,
-				D5E46DA018FBCC8B001EEED6 /* Explosion.atlas in Resources */,
 				D595434E18F9C2A000E67E6C /* MineAnimation.atlas in Resources */,
 				1A9A00C2A54782CE35955BE3 /* back_down@2x.png in Resources */,
 				1A9A0916B0E1C88C738D3F90 /* back@2x.png in Resources */,
@@ -668,8 +670,10 @@
 				1A9A0F4407B6FDE1F181FC29 /* game_button_off@2x.png in Resources */,
 				1A9A0EA088C8E17583C96EF1 /* game_button_on@2x.png in Resources */,
 				D569E04018FEEDFC001A1739 /* failed@2x.png in Resources */,
+				D52B956C1901153D002B5316 /* Explosion.atlas in Resources */,
 				D569E04518FEEE50001A1739 /* goodjob@2x.png in Resources */,
 				1A9A086CF5F4BE62EDFF9CAD /* explosion.mp3 in Resources */,
+				1A9A023191F3135F269FC87B /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -696,7 +700,7 @@
 				D538BCFC18F83EA30006FD00 /* BGOptionsViewController.m in Sources */,
 				1A9A0DEEE879D61BB8D19973 /* BGSettingsManager.m in Sources */,
 				1A9A025D7218E57009C00B32 /* BGUISwitch.m in Sources */,
-				1A9A02E36FF23270FEC10CC8 /* BGAudioPreloader.m in Sources */,
+				1A9A02E36FF23270FEC10CC8 /* BGResourcePreloader.m in Sources */,
 				1A9A0EDB0E0C80000B12855D /* BGUISegmentedControl.m in Sources */,
 				1A9A0892D9C74B1BA9F50D08 /* BGSKView.m in Sources */,
 			);
@@ -982,6 +986,7 @@
 				SPRITEKIT_TEXTURE_ATLAS_FORMAT = RGBA8888;
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1002,6 +1007,7 @@
 				SPRITEKIT_TEXTURE_ATLAS_FORMAT = RGBA8888;
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
