@@ -131,7 +131,7 @@ static const NSInteger kBGMinesCountViewTag = 2;
                                                                                                   initWithTarget:self
                                                                                                           action:@selector(longPress:)];
         longPressGestureRecognizer.numberOfTouchesRequired = 1;
-        longPressGestureRecognizer.minimumPressDuration = 0.3;
+        longPressGestureRecognizer.minimumPressDuration = 0.2;
 
         [self.skView addGestureRecognizer:longPressGestureRecognizer];
 

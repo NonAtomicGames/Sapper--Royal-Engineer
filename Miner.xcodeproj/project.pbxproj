@@ -20,6 +20,7 @@
 		1A9A079893D5A5C357AFB970 /* BGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A00AC67B68FA11C11D15D /* BGViewController.m */; };
 		1A9A07A0A3CEE8B910E8AED3 /* button_options_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A0C37B949EC97ED5DD45D /* button_options_down@2x.png */; };
 		1A9A08208EDE7592A2AA0F1F /* button_options@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A087A8D650693ADC54D88 /* button_options@2x.png */; };
+		1A9A086CF5F4BE62EDFF9CAD /* explosion.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A0CACF4821802C60EED0A /* explosion.mp3 */; };
 		1A9A0892D9C74B1BA9F50D08 /* BGSKView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A09FF2A24D2606048A0EB /* BGSKView.m */; };
 		1A9A0916B0E1C88C738D3F90 /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A01AEE5D5DFAF737913FC /* back@2x.png */; };
 		1A9A09748B0A70C911ED13DF /* field_deafult@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A09916B7E031897442087 /* field_deafult@2x.png */; };
@@ -120,6 +121,7 @@
 		1A9A0BAAF5CD8C67041CF99B /* BGNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGNavigationViewController.m; sourceTree = "<group>"; };
 		1A9A0BC17E207B24CF3A66EC /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = "Miner/Resources/Images/Buttons/en.lproj/button_options@2x.png"; sourceTree = SOURCE_ROOT; };
 		1A9A0BCD8A9200728D794515 /* BGGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGGameViewController.h; sourceTree = "<group>"; };
+		1A9A0CACF4821802C60EED0A /* explosion.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = explosion.mp3; sourceTree = "<group>"; };
 		1A9A0CDAD8EB581A3C640A26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = "Miner/Resources/Images/Buttons/Base.lproj/button_options@2x.png"; sourceTree = SOURCE_ROOT; };
 		1A9A0CEE80CA0004C30D4556 /* grassTap.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = grassTap.mp3; sourceTree = "<group>"; };
 		1A9A0D4D726D2E98B003B766 /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = "Miner/Resources/Images/Buttons/Base.lproj/button_play_down@2x.png"; sourceTree = SOURCE_ROOT; };
@@ -381,6 +383,7 @@
 				1A9A04B0FAB94FABEBB139C9 /* buttonTap.mp3 */,
 				1A9A0128D8497BDF547C9A5A /* flagTapOn.mp3 */,
 				1A9A0CEE80CA0004C30D4556 /* grassTap.mp3 */,
+				1A9A0CACF4821802C60EED0A /* explosion.mp3 */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -666,6 +669,7 @@
 				1A9A0EA088C8E17583C96EF1 /* game_button_on@2x.png in Resources */,
 				D569E04018FEEDFC001A1739 /* failed@2x.png in Resources */,
 				D569E04518FEEE50001A1739 /* goodjob@2x.png in Resources */,
+				1A9A086CF5F4BE62EDFF9CAD /* explosion.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

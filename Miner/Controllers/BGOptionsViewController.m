@@ -243,7 +243,7 @@
 
 - (void)back:(id)sender
 {
-    [[[BGAudioPreloader shared] playerFromGameConfigForResource:@"button_tap"
+    [[[BGAudioPreloader shared] playerFromGameConfigForResource:@"buttonTap"
                                                          ofType:@"mp3"] play];
 
     [self.navigationController popViewControllerAnimated:YES];

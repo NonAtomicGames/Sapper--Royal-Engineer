@@ -12,11 +12,14 @@
 
 @class BGSKView;
 
-// TODO: добавить комментарии
+
 @interface BGGameViewController : UIViewController
 
+// вьюха для отображения игровой сцены
 @property (nonatomic, strong) BGSKView *skView;
 
+// уникальный объект игрового экрана
+// используется для того, чтобы ускорить загрузку и отображение содержимого сцены
 + (instancetype)shared;
 
 @end

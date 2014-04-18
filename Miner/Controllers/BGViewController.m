@@ -42,7 +42,7 @@
 - (IBAction)playButtonTapped:(id)sender
 {
 //    проигрываем звук нажатия
-    [[[BGAudioPreloader shared] playerFromGameConfigForResource:@"button_tap"
+    [[[BGAudioPreloader shared] playerFromGameConfigForResource:@"buttonTap"
                                                          ofType:@"mp3"] play];
 
     [self.navigationController pushViewController:self.gameViewController
@@ -52,7 +52,7 @@
 - (IBAction)configButtonTapped:(id)sender
 {
     //    проигрываем звук нажатия
-    [[[BGAudioPreloader shared] playerFromGameConfigForResource:@"button_tap"
+    [[[BGAudioPreloader shared] playerFromGameConfigForResource:@"buttonTap"
                                                          ofType:@"mp3"] play];
 }
 

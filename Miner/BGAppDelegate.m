@@ -19,13 +19,16 @@
 - (BOOL)          application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    BGLog();
+
 //    предзагрузка звуков в фоновом режиме для избежания затормаживания
     NSArray *audioResources = @[@"switchON.mp3",
                                 @"switchOFF.mp3",
                                 @"flagTapOn.mp3",
                                 @"grassTap.mp3",
                                 @"buttonTap.mp3",
-                                @"flagTapOff.mp3"];
+                                @"flagTapOff.mp3",
+                                @"explosion.mp3"];
 
     for (NSString *audioName in audioResources) {
         NSArray *parts = [audioName componentsSeparatedByString:@"."];
@@ -54,10 +57,12 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
+    BGLog();
+
     [[BGSettingsManager sharedManager] save];
 
 //    останавливаем обновление сцены в фоновом режиме
-    [BGGameViewController shared].skView.scene.paused = YES;
+//    [BGGameViewController shared].skView.scene.paused = YES;
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -72,6 +77,8 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
+    BGLog();
+
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     [[BGSettingsManager sharedManager] save];
 }
