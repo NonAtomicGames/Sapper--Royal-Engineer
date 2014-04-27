@@ -51,7 +51,8 @@
 {
     UIImageView *background = [[UIImageView alloc]
                                             initWithImage:backgroundImage];
-    CGRect frame = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height);
+    CGRect frame = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size
+            .height);
     background.frame = frame;
 
     [self addSubview:background];
@@ -118,10 +119,9 @@
 
             if (self.selectedSegmentIndex != i) {
                 //    проигрываем звук нажатия - единожды и только на новом
-//                значении
+                //                значении
                 [[[BGResourcePreloader shared]
-                                       playerFromGameConfigForResource:@"buttonTap"
-                                                                ofType:@"mp3"]
+                                       playerFromGameConfigForResource:@"buttonTap.mp3"]
                                        play];
             }
 

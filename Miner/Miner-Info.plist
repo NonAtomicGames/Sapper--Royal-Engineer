@@ -9,6 +9,10 @@
         <string>${PRODUCT_NAME}</string>
         <key>CFBundleExecutable</key>
         <string>${EXECUTABLE_NAME}</string>
+        <key>CFBundleIcons</key>
+        <dict/>
+        <key>CFBundleIcons~ipad</key>
+        <dict/>
         <key>CFBundleIdentifier</key>
         <string>russianbleedinggames.${PRODUCT_NAME:rfc1034identifier}</string>
         <key>CFBundleInfoDictionaryVersion</key>
@@ -31,11 +35,6 @@
         </array>
         <key>UIMainStoryboardFile</key>
         <string>Main</string>
-        <key>UIRequiredDeviceCapabilities</key>
-        <array>
-            <string>armv7</string>
-            <string>armv7s</string>
-        </array>
         <key>UIStatusBarHidden</key>
         <true/>
         <key>UISupportedInterfaceOrientations</key>

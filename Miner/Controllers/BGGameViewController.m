@@ -34,8 +34,7 @@ static const NSInteger kBGMinesCountViewTag = 2;
     static dispatch_once_t once;
     static BGGameViewController *shared;
 
-    dispatch_once(&once, ^
-    {
+    dispatch_once(&once, ^{
         shared = [[self alloc] init];
     });
 
@@ -53,12 +52,14 @@ static const NSInteger kBGMinesCountViewTag = 2;
         UIImage *topPanelImage = [UIImage imageNamed:@"top_game"];
         UIImageView *topPanelImageView = [[UIImageView alloc]
                                                        initWithImage:topPanelImage];
-        topPanelImageView.frame = CGRectMake(0, 0, topPanelImage.size.width, topPanelImage.size.height);
+        topPanelImageView.frame = CGRectMake(0, 0, topPanelImage.size
+                .width, topPanelImage.size.height);
 
         [self.view addSubview:topPanelImageView];
 
         //    добавляем на экран SKView
-        CGRect gameViewFrame = CGRectMake(0, topPanelImage.size.height, 320, 480);
+        CGRect gameViewFrame = CGRectMake(0, topPanelImage.size
+                .height, 320, 480);
         self.skView = [[BGSKView alloc] initWithFrame:gameViewFrame];
         [self.view addSubview:self.skView];
 
@@ -90,11 +91,12 @@ static const NSInteger kBGMinesCountViewTag = 2;
 
         [self.view addSubview:minesCountLabel];
 
-//        кнопка старта новой игры
+        //        кнопка старта новой игры
         UIImage *newGameButtonImageOn = [UIImage imageNamed:@"game_button_on"];
         UIImage *newGameButtonImageOff = [UIImage imageNamed:@"game_button_off"];
         UIButton *newGame = [UIButton buttonWithType:UIButtonTypeCustom];
-        newGame.frame = CGRectMake(137, 22, newGameButtonImageOn.size.width, newGameButtonImageOn.size.height);
+        newGame.frame = CGRectMake(137, 22, newGameButtonImageOn.size
+                .width, newGameButtonImageOn.size.height);
         [newGame setImage:newGameButtonImageOn forState:UIControlStateNormal];
         [newGame setImage:newGameButtonImageOff
                  forState:UIControlStateHighlighted];
@@ -108,7 +110,9 @@ static const NSInteger kBGMinesCountViewTag = 2;
         UIImage *backNormal = [UIImage imageNamed:@"back"];
         UIImage *backHighlighted = [UIImage imageNamed:@"back_down"];
         UIButton *back = [[UIButton alloc]
-                                    initWithFrame:CGRectMake(14, 22, backNormal.size.width, backNormal.size.height)];
+                                    initWithFrame:CGRectMake(14, 22, backNormal
+                                            .size.width, backNormal.size
+                                            .height)];
         [back setImage:backNormal forState:UIControlStateNormal];
         [back setImage:backHighlighted forState:UIControlStateHighlighted];
         [back addTarget:self
@@ -222,8 +226,9 @@ static const NSInteger kBGMinesCountViewTag = 2;
     BGLog();
 
     //    проигрываем нажатие на кнопку
-    [[[BGResourcePreloader shared] playerFromGameConfigForResource:@"buttonTap"
-                                                            ofType:@"mp3"] play];
+    [[[BGResourcePreloader shared]
+                           playerFromGameConfigForResource:@"buttonTap.mp3"]
+                           play];
 
     //  сбрасываем старые значения
     [self destroyGameTimer];
@@ -247,8 +252,9 @@ static const NSInteger kBGMinesCountViewTag = 2;
     self.skView.paused = YES;
 
     //    проигрываем нажатие на кнопку
-    [[[BGResourcePreloader shared] playerFromGameConfigForResource:@"buttonTap"
-                                                            ofType:@"mp3"] play];
+    [[[BGResourcePreloader shared]
+                           playerFromGameConfigForResource:@"buttonTap.mp3"]
+                           play];
 
     //    возвращаемся на главный экран
     [self.navigationController popViewControllerAnimated:YES];
@@ -264,14 +270,15 @@ static const NSInteger kBGMinesCountViewTag = 2;
                                            toScene:self.skView.scene];
 
     //    получаем ноду, которая находится в точке нажатия
-    SKSpriteNode *touchedNode = (SKSpriteNode *) [self.skView.scene nodeAtPoint:touchPoint];
+    SKSpriteNode *touchedNode = (SKSpriteNode *) [self.skView
+            .scene nodeAtPoint:touchPoint];
 
-//    если "слой" на котором находится указанная нода заблокирован для взаимодействия - завершаем
+    //    если "слой" на котором находится указанная нода заблокирован для взаимодействия - завершаем
     if (![touchedNode parent].userInteractionEnabled) {
         return;
     }
 
-//    удаляем картинку по тапу, чтобы была возможность рассмотреть поле и расстановку бомб
+    //    удаляем картинку по тапу, чтобы была возможность рассмотреть поле и расстановку бомб
     if ([touchedNode.name isEqualToString:@"smile"]) {
         [touchedNode removeFromParent];
         return;
@@ -286,7 +293,7 @@ static const NSInteger kBGMinesCountViewTag = 2;
                                                      row:row];
 
         if (!_firstTapPerformed) {
-//            первое нажатие - генерируем реальное поле
+            //            первое нажатие - генерируем реальное поле
             [self.skView fillEarthWithTilesExcludingBombAtCellWithCol:col
                                                                   row:row];
             _firstTapPerformed = YES;
@@ -294,9 +301,8 @@ static const NSInteger kBGMinesCountViewTag = 2;
 
         //    проигрываем откапывание ячейки
         [[[BGResourcePreloader shared]
-                               playerFromGameConfigForResource:@"grassTap"
-                                                        ofType:@"mp3"]
-                            play];
+                               playerFromGameConfigForResource:@"grassTap.mp3"]
+                               play];
 
         //        проверим значение, которое на поле
         switch (value) {
@@ -335,24 +341,29 @@ static const NSInteger kBGMinesCountViewTag = 2;
     CGPoint touchPointGlobal = [sender locationInView:self.skView];
     CGPoint touchPoint = [self.skView convertPoint:touchPointGlobal
                                            toScene:self.skView.scene];
-    SKSpriteNode *touchedNode = (SKSpriteNode *) [self.skView.scene nodeAtPoint:touchPoint];
+    SKSpriteNode *touchedNode = (SKSpriteNode *) [self.skView
+            .scene nodeAtPoint:touchPoint];
 
-//    если слой заблокирован для взаимодействия - завершаем выполнение
-    if (![touchedNode.name isEqualToString:@"flag"] && !touchedNode.parent.userInteractionEnabled) {
+    //    если слой заблокирован для взаимодействия - завершаем выполнение
+    if (![touchedNode.name isEqualToString:@"flag"] && !touchedNode.parent
+            .userInteractionEnabled) {
         return;
     }
 
     //    не обрабатываем начало длинного нажатия, нам нужно только "завершение"
     if (sender.state == UIGestureRecognizerStateBegan) {
 
-        UILabel *minesCountLabel = (UILabel *) [self.view viewWithTag:kBGMinesCountViewTag];
-        NSInteger minesRemainedToOpen = self.skView.field.bombs - self.skView.flaggedMines;
+        UILabel *minesCountLabel = (UILabel *) [self
+                .view viewWithTag:kBGMinesCountViewTag];
+        NSInteger minesRemainedToOpen = self.skView.field.bombs - self.skView
+                .flaggedMines;
 
-        if (touchedNode.children.count == 0 && touchedNode.userData != nil && minesRemainedToOpen != 0) {
+        if (touchedNode.children.count == 0 && touchedNode
+                .userData != nil && minesRemainedToOpen != 0) {
             //    проигрываем установку флажка
             [[[BGResourcePreloader shared]
-                                   playerFromGameConfigForResource:@"flagTapOn"
-                                                            ofType:@"mp3"] play];
+                                   playerFromGameConfigForResource:@"flagTapOn.mp3"]
+                                   play];
 
             //        устанавливаем флаг
             SKSpriteNode *flagTile = [self.skView.tileSprites[@"flag"] copy];
@@ -367,8 +378,8 @@ static const NSInteger kBGMinesCountViewTag = 2;
         } else if ([touchedNode.name isEqualToString:@"flag"]) {
             //    проигрываем снятие флажка
             [[[BGResourcePreloader shared]
-                                   playerFromGameConfigForResource:@"flagTapOff"
-                                                            ofType:@"mp3"] play];
+                                   playerFromGameConfigForResource:@"flagTapOff.mp3"]
+                                   play];
 
             //        снимаем флаг
             [touchedNode removeFromParent];
@@ -378,7 +389,10 @@ static const NSInteger kBGMinesCountViewTag = 2;
         }
 
         minesCountLabel.text = [NSString stringWithFormat:@"%04d",
-                                                          self.skView.field.bombs - self.skView.flaggedMines];
+                                                          self.skView.field
+                                                                  .bombs - self
+                                                                  .skView
+                                                                  .flaggedMines];
     }
 }
 
@@ -390,7 +404,7 @@ static const NSInteger kBGMinesCountViewTag = 2;
     NSInteger timerValue = [timerLabel.text integerValue];
     timerValue++;
 
-//    9999 - конец игры, останавливаем таймер
+    //    9999 - конец игры, останавливаем таймер
     if (timerValue == 9999) {
         [self stopGameTimer];
     }
@@ -412,7 +426,8 @@ static const NSInteger kBGMinesCountViewTag = 2;
 {
     BGLog();
 
-    UILabel *minesCountLabel = (UILabel *) [self.view viewWithTag:kBGMinesCountViewTag];
+    UILabel *minesCountLabel = (UILabel *) [self
+            .view viewWithTag:kBGMinesCountViewTag];
     minesCountLabel.text = [NSString stringWithFormat:@"%04d",
                                                       self.skView.field.bombs];
 }
@@ -421,7 +436,8 @@ static const NSInteger kBGMinesCountViewTag = 2;
 {
     BGLog();
 
-    UILabel *minesCountLabel = (UILabel *) [self.view viewWithTag:kBGMinesCountViewTag];
+    UILabel *minesCountLabel = (UILabel *) [self
+            .view viewWithTag:kBGMinesCountViewTag];
     minesCountLabel.text = [NSString stringWithFormat:@"%04d", 0];
 }
 

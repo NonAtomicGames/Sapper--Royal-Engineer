@@ -33,17 +33,18 @@
 
     [super viewDidAppear:animated];
 
-//    разрешаем на этом экране работать рекламе
-    self.canDisplayBannerAds = ([BGSettingsManager sharedManager].adsStatus == BGMinerAdsStatusOn);
+    //    разрешаем на этом экране работать рекламе
+    self.canDisplayBannerAds = ([BGSettingsManager sharedManager]
+            .adsStatus == BGMinerAdsStatusOn);
 }
 
 #pragma mark - Actions
 
 - (IBAction)playButtonTapped:(id)sender
 {
-//    проигрываем звук нажатия
-    [[[BGResourcePreloader shared] playerFromGameConfigForResource:@"buttonTap"
-                                                            ofType:@"mp3"]
+    //    проигрываем звук нажатия
+    [[[BGResourcePreloader shared]
+                           playerFromGameConfigForResource:@"buttonTap.mp3"]
                            play];
 
     [self.navigationController pushViewController:self.gameViewController
@@ -53,8 +54,8 @@
 - (IBAction)configButtonTapped:(id)sender
 {
     //    проигрываем звук нажатия
-    [[[BGResourcePreloader shared] playerFromGameConfigForResource:@"buttonTap"
-                                                            ofType:@"mp3"]
+    [[[BGResourcePreloader shared]
+                           playerFromGameConfigForResource:@"buttonTap.mp3"]
                            play];
 }
 
