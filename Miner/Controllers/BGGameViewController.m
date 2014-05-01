@@ -11,6 +11,7 @@
 #import "BGLog.h"
 #import "BGSKView.h"
 #import "BGResourcePreloader.h"
+#import "Flurry.h"
 
 
 // полезные константы тегов для вьюх
@@ -173,6 +174,15 @@ static const NSInteger kBGMinesCountViewTag = 2;
 {
     BGLog();
 
+//    засекаем сколько пользователь играет по времени
+    [Flurry logEvent:@"UserIsPlaying"
+      withParameters:@{
+              @"rows"  : @(self.skView.field.rows),
+              @"cols"  : @(self.skView.field.cols),
+              @"bombs" : @(self.skView.field.bombs)
+      }
+               timed:YES];
+
     //    запускаем игровой таймер
     [self startGameTimer];
 }
@@ -180,6 +190,10 @@ static const NSInteger kBGMinesCountViewTag = 2;
 - (void)viewDidDisappear:(BOOL)animated
 {
     BGLog();
+
+//    фиксируем время проведенное пользователем на игровом экране
+    [Flurry endTimedEvent:@"UserIsPlaying"
+           withParameters:nil];
 
     //    обновляем поле
     //  сбрасываем старые значения

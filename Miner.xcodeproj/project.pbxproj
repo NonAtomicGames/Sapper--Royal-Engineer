@@ -17,9 +17,11 @@
 		1A9A02E36FF23270FEC10CC8 /* BGResourcePreloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A0D8241BD943D88289715 /* BGResourcePreloader.m */; };
 		1A9A031D3D0EFEBC84A17D6C /* BGNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A0BAAF5CD8C67041CF99B /* BGNavigationViewController.m */; };
 		1A9A04436954BBD988CC47E5 /* switchON.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A089200A1C5BB1D879138 /* switchON.mp3 */; };
+		1A9A04453A6D01000A900978 /* libFlurry_5.0.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A9A0C1ED78765505DEE2077 /* libFlurry_5.0.0.a */; };
 		1A9A063AD699AF425AB759A0 /* button_play_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A0F424BF4EC50A100C684 /* button_play_down@2x.png */; };
 		1A9A079893D5A5C357AFB970 /* BGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A00AC67B68FA11C11D15D /* BGViewController.m */; };
 		1A9A07A0A3CEE8B910E8AED3 /* button_options_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A0C37B949EC97ED5DD45D /* button_options_down@2x.png */; };
+		1A9A07E1FFD9356FD7278706 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A9A06D4E6DDD557A60903D6 /* Security.framework */; };
 		1A9A08208EDE7592A2AA0F1F /* button_options@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A087A8D650693ADC54D88 /* button_options@2x.png */; };
 		1A9A0892D9C74B1BA9F50D08 /* BGSKView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A09FF2A24D2606048A0EB /* BGSKView.m */; };
 		1A9A0916B0E1C88C738D3F90 /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A01AEE5D5DFAF737913FC /* back@2x.png */; };
@@ -35,6 +37,7 @@
 		1A9A0CD35A743473318BC6F2 /* switch_0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A03091AAD6EF5472C48A7 /* switch_0@2x.png */; };
 		1A9A0CE89ACB0852F8FACA35 /* top_game@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A04A6BC5099264AC84ACB /* top_game@2x.png */; };
 		1A9A0D3576852EF36505139A /* button_down_2416@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A024EA34A338A74569C56 /* button_down_2416@2x.png */; };
+		1A9A0DD29325F19D4F57E583 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A9A03D1DAF6E1BEE5396866 /* SystemConfiguration.framework */; };
 		1A9A0DEEE879D61BB8D19973 /* BGSettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A05FC9BD951BD7EE5B84F /* BGSettingsManager.m */; };
 		1A9A0E83283237D53CB75F15 /* BGMinerField.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A0D5426C089C702BADF62 /* BGMinerField.m */; };
 		1A9A0EA088C8E17583C96EF1 /* game_button_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A00DCCF3C22F4C56F50D7 /* game_button_on@2x.png */; };
@@ -95,6 +98,7 @@
 		1A9A02DAD3A958DDAC4B6C96 /* switch_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switch_1@2x.png"; sourceTree = "<group>"; };
 		1A9A03091AAD6EF5472C48A7 /* switch_0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switch_0@2x.png"; sourceTree = "<group>"; };
 		1A9A0324C9534F54860A89C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = "Miner/Resources/Images/Buttons/Base.lproj/button_options_down@2x.png"; sourceTree = SOURCE_ROOT; };
+		1A9A03D1DAF6E1BEE5396866 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		1A9A03FECFC0BCCCBE9A42F6 /* Tiles.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Tiles.atlas; sourceTree = "<group>"; };
 		1A9A042A0DD59DAA56116AD8 /* back_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back_down@2x.png"; sourceTree = "<group>"; };
 		1A9A04A6BC5099264AC84ACB /* top_game@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "top_game@2x.png"; sourceTree = "<group>"; };
@@ -103,6 +107,7 @@
 		1A9A0535D639111F86ACEEF1 /* BGUISwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGUISwitch.h; sourceTree = "<group>"; };
 		1A9A05FC9BD951BD7EE5B84F /* BGSettingsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGSettingsManager.m; sourceTree = "<group>"; };
 		1A9A0673C2D94B6C826B69A4 /* BGGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGGameViewController.m; sourceTree = "<group>"; };
+		1A9A06D4E6DDD557A60903D6 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		1A9A06E1C8C18EE3BCA24FA8 /* BGUISwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGUISwitch.m; sourceTree = "<group>"; };
 		1A9A06FC52931E41A20A4053 /* BGNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGNavigationViewController.h; sourceTree = "<group>"; };
 		1A9A07AA52C65A1D9067D1D3 /* BGMinerField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGMinerField.h; sourceTree = "<group>"; };
@@ -114,11 +119,13 @@
 		1A9A09FF2A24D2606048A0EB /* BGSKView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGSKView.m; sourceTree = "<group>"; };
 		1A9A0A168097146E939877B5 /* Digital.ttf */ = {isa = PBXFileReference; lastKnownFileType = file.ttf; path = Digital.ttf; sourceTree = "<group>"; };
 		1A9A0A46F498E9336A24C1C5 /* switchOFF.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = switchOFF.mp3; sourceTree = "<group>"; };
+		1A9A0AD891AE52B805469ECE /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
 		1A9A0AE117A4A76D2111CC65 /* BGSettingsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGSettingsManager.h; sourceTree = "<group>"; };
 		1A9A0B11B5D0819DBD1ECD8A /* BGUISegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGUISegmentedControl.h; sourceTree = "<group>"; };
 		1A9A0B6F52422ABC7674658E /* BGSKView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGSKView.h; sourceTree = "<group>"; };
 		1A9A0BAAF5CD8C67041CF99B /* BGNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGNavigationViewController.m; sourceTree = "<group>"; };
 		1A9A0BCD8A9200728D794515 /* BGGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGGameViewController.h; sourceTree = "<group>"; };
+		1A9A0C1ED78765505DEE2077 /* libFlurry_5.0.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_5.0.0.a; sourceTree = "<group>"; };
 		1A9A0CDAD8EB581A3C640A26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = "Miner/Resources/Images/Buttons/Base.lproj/button_options@2x.png"; sourceTree = SOURCE_ROOT; };
 		1A9A0CEE80CA0004C30D4556 /* grassTap.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = grassTap.mp3; sourceTree = "<group>"; };
 		1A9A0D4D726D2E98B003B766 /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = "Miner/Resources/Images/Buttons/Base.lproj/button_play_down@2x.png"; sourceTree = SOURCE_ROOT; };
@@ -191,6 +198,9 @@
 				D5D6494418D46B5100854518 /* CoreGraphics.framework in Frameworks */,
 				D5D6494618D46B5100854518 /* UIKit.framework in Frameworks */,
 				D5D6494218D46B5100854518 /* Foundation.framework in Frameworks */,
+				1A9A07E1FFD9356FD7278706 /* Security.framework in Frameworks */,
+				1A9A0DD29325F19D4F57E583 /* SystemConfiguration.framework in Frameworks */,
+				1A9A04453A6D01000A900978 /* libFlurry_5.0.0.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,6 +217,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A9A000EF5D0781645C8D10F /* Flurry */ = {
+			isa = PBXGroup;
+			children = (
+				1A9A08719032B2C08C765DE3 /* Flurry-iOS-5.0.0 */,
+			);
+			path = Flurry;
+			sourceTree = "<group>";
+		};
 		1A9A0107D436124DA0693232 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -254,6 +272,15 @@
 				1A9A08182AAE973924900A9D /* StatusButton */,
 			);
 			path = GameViewController;
+			sourceTree = "<group>";
+		};
+		1A9A04ABC5CB61B91293D295 /* Flurry */ = {
+			isa = PBXGroup;
+			children = (
+				1A9A0AD891AE52B805469ECE /* Flurry.h */,
+				1A9A0C1ED78765505DEE2077 /* libFlurry_5.0.0.a */,
+			);
+			path = Flurry;
 			sourceTree = "<group>";
 		};
 		1A9A04BE08F821907A92B72F /* BGSKView */ = {
@@ -352,6 +379,14 @@
 				1A9A0F5BB1525A748246513D /* Options */,
 			);
 			path = Buttons;
+			sourceTree = "<group>";
+		};
+		1A9A08719032B2C08C765DE3 /* Flurry-iOS-5.0.0 */ = {
+			isa = PBXGroup;
+			children = (
+				1A9A04ABC5CB61B91293D295 /* Flurry */,
+			);
+			path = "Flurry-iOS-5.0.0";
 			sourceTree = "<group>";
 		};
 		1A9A094AEBFF49A2C58101E2 /* BGLog */ = {
@@ -500,6 +535,8 @@
 				D5D6494318D46B5100854518 /* CoreGraphics.framework */,
 				D5D6494518D46B5100854518 /* UIKit.framework */,
 				D5D6496018D46B5100854518 /* XCTest.framework */,
+				1A9A06D4E6DDD557A60903D6 /* Security.framework */,
+				1A9A03D1DAF6E1BEE5396866 /* SystemConfiguration.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -516,6 +553,7 @@
 				1A9A05927CCE9B4DF9AF9CFF /* Views */,
 				1A9A0107D436124DA0693232 /* Models */,
 				1A9A0464FCE9216D1855DD76 /* Resources */,
+				1A9A000EF5D0781645C8D10F /* Flurry */,
 			);
 			name = Sapper;
 			path = Miner;
@@ -966,7 +1004,12 @@
 				GCC_PREFIX_HEADER = "Miner/Miner-Prefix.pch";
 				INFOPLIST_FILE = "Miner/Miner-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				ONLY_ACTIVE_ARCH = NO;
+				LIBRARY_SEARCH_PATHS = (
+					"\"${PROJECT_DIR}/Miner/Flurry/Flurry iPhone SDK viPhone 5.0.0/Flurry-iOS-5.0.0/Flurry\"/**",
+					"\"${PROJECT_DIR}/Miner/Flurry/Flurry iPhone SDK viPhone 5.0.0/Flurry-iOS-5.0.0/FlurryAds\"/**",
+					"\"${PROJECT_DIR}/Miner/Flurry/Flurry-iOS-5.0.0/Flurry\"/**",
+				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = Miner;
 				PROVISIONING_PROFILE = "";
 				SPRITEKIT_TEXTURE_ATLAS_FORMAT = RGBA8888;
@@ -988,6 +1031,11 @@
 				GCC_PREFIX_HEADER = "Miner/Miner-Prefix.pch";
 				INFOPLIST_FILE = "Miner/Miner-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = (
+					"\"${PROJECT_DIR}/Miner/Flurry/Flurry iPhone SDK viPhone 5.0.0/Flurry-iOS-5.0.0/Flurry\"/**",
+					"\"${PROJECT_DIR}/Miner/Flurry/Flurry iPhone SDK viPhone 5.0.0/Flurry-iOS-5.0.0/FlurryAds\"/**",
+					"\"${PROJECT_DIR}/Miner/Flurry/Flurry-iOS-5.0.0/Flurry\"/**",
+				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = Miner;
 				PROVISIONING_PROFILE = "171C867E-1C55-4584-A8E1-4CD39D1B6D4B";

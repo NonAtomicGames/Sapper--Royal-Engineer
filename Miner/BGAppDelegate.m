@@ -12,6 +12,7 @@
 #import "BGSKView.h"
 #import "BGGameViewController.h"
 #import "BGLog.h"
+#import "Flurry.h"
 
 
 @implementation BGAppDelegate
@@ -20,6 +21,10 @@
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     BGLog();
+
+//    собираем статистику
+    [Flurry setCrashReportingEnabled:YES];
+    [Flurry startSession:@"QMG6WRKZD397MK5N728Q"];
 
 //    предзагрузка звуков в фоновом режиме для избежания затормаживания
     NSArray *audioResources = @[@"switchON.mp3",
