@@ -235,13 +235,13 @@
             .activeRegion == BGUISwitchLeftRegion) {
         [BGSettingsManager sharedManager].soundStatus = BGMinerSoundStatusOff;
 
-//        фиксируем пользователей, которые играют без звука
+        //        фиксируем пользователей, которые играют без звука
         [Flurry logEvent:@"UserTurnsSoundsOff"];
     } else if (soundStatus == BGMinerSoundStatusOff && self.soundSwitch
             .activeRegion == BGUISwitchRightRegion) {
         [BGSettingsManager sharedManager].soundStatus = BGMinerSoundStatusOn;
 
-//        фиксируем пользователей, которые играют со звуком
+        //        фиксируем пользователей, которые играют со звуком
         [Flurry logEvent:@"UserTurnsSoundsOn"];
     }
 }
@@ -257,13 +257,13 @@
         [BGSettingsManager sharedManager].adsStatus = BGMinerAdsStatusOff;
         self.canDisplayBannerAds = NO;
 
-//        фиксируем пользователей, которые выключают рекламу
+        //        фиксируем пользователей, которые выключают рекламу
         [Flurry logEvent:@"UserTurnsAdsOff"];
     } else {
         [BGSettingsManager sharedManager].adsStatus = BGMinerAdsStatusOn;
         self.canDisplayBannerAds = YES;
 
-//        фиксируем пользователей, которые включают рекламу
+        //        фиксируем пользователей, которые включают рекламу
         [Flurry logEvent:@"UserTurnsAdsOn"];
     }
 }

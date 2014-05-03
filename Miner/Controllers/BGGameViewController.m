@@ -6,12 +6,18 @@
 //  Copyright (c) 2014 Bleeding Games. All rights reserved.
 //
 
+#import <GameKit/GameKit.h>
 #import "BGGameViewController.h"
 #import "BGMinerField.h"
 #import "BGLog.h"
 #import "BGSKView.h"
 #import "BGResourcePreloader.h"
 #import "Flurry.h"
+#import "BGSettingsManager.h"
+
+
+#define TIMER_MAX_VALUE 9999
+#define BOMBS_MIN_VALUE 8
 
 
 // полезные константы тегов для вьюх
@@ -177,7 +183,6 @@ static const NSInteger kBGMinesCountViewTag = 2;
 //    засекаем сколько пользователь играет по времени
     [Flurry logEvent:@"UserIsPlaying"
       withParameters:@{
-              @"rows"  : @(self.skView.field.rows),
               @"cols"  : @(self.skView.field.cols),
               @"bombs" : @(self.skView.field.bombs)
       }
@@ -338,6 +343,7 @@ static const NSInteger kBGMinesCountViewTag = 2;
 
                 if (userWon) {
                     [self stopGameTimer];
+                    [self sendUserScoreToGameCenter];
                     [self.skView disableFieldInteraction];
                 }
             }
@@ -453,6 +459,66 @@ static const NSInteger kBGMinesCountViewTag = 2;
     UILabel *minesCountLabel = (UILabel *) [self
             .view viewWithTag:kBGMinesCountViewTag];
     minesCountLabel.text = [NSString stringWithFormat:@"%04d", 0];
+}
+
+- (void)sendUserScoreToGameCenter
+{
+//    если пользователь не авторизован, то нет смысла обрабатывать его счет
+    if (![GKLocalPlayer localPlayer].isAuthenticated)
+        return;
+
+    UILabel *timerLabel = (UILabel *) [self.view viewWithTag:kBGTimerViewTag];
+    NSInteger timerValue = [timerLabel.text integerValue];
+
+//    определяем таблицу лидеров в которую необходимо отправить счет
+    NSMutableString *leaderboardID = [NSMutableString string];
+
+    switch ([BGSettingsManager sharedManager].level) {
+        case BGMinerLevelOne:
+            [leaderboardID appendString:@"easy"];
+            break;
+
+        case BGMinerLevelTwo:
+            [leaderboardID appendString:@"norm"];
+            break;
+
+        case BGMinerLevelThree:
+            [leaderboardID appendString:@"hard"];
+            break;
+
+        default:
+            break;
+    }
+
+    switch ([BGSettingsManager sharedManager].cols) {
+        case kSmallFieldCols:
+            [leaderboardID appendString:@"12x8"];
+            break;
+
+        case kMediumFieldCols:
+            [leaderboardID appendString:@"15x10"];
+            break;
+
+        case kBigFieldCols:
+            [leaderboardID appendString:@"24x16"];
+            break;
+
+        default:
+            break;
+    }
+
+//    создаем объект со счетом
+    GKScore *score = [[GKScore alloc]
+                               initWithLeaderboardIdentifier:leaderboardID];
+    score.value = TIMER_MAX_VALUE * ([BGGameViewController shared].skView.field.bombs - BOMBS_MIN_VALUE) + timerValue;
+
+    [GKScore reportScores:@[score]
+    withCompletionHandler:^(NSError *error)
+    {
+//        отправим сообщение о том, что пользователь отправил свой счет в ГЦ
+//        соберем статистику о тех, у кого ГЦ активен
+        [Flurry logEvent:@"UserSubmittedGameScore"];
+    }];
 }
 
 @end

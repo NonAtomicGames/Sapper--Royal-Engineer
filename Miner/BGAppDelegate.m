@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Bleeding Games. All rights reserved.
 //
 
+#import <GameKit/GameKit.h>
 #import "BGAppDelegate.h"
 #import "BGSettingsManager.h"
 #import "BGResourcePreloader.h"

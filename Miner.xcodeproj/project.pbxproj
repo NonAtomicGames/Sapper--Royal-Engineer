@@ -59,6 +59,7 @@
 		D569E04518FEEE50001A1739 /* goodjob@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D569E04718FEEE50001A1739 /* goodjob@2x.png */; };
 		D595434C18F9C28E00E67E6C /* GrassAnimation.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D595434B18F9C28E00E67E6C /* GrassAnimation.atlas */; };
 		D595434E18F9C2A000E67E6C /* MineAnimation.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D595434D18F9C2A000E67E6C /* MineAnimation.atlas */; };
+		D59F3CB819122A5700E82FCD /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D59F3CB719122A5700E82FCD /* GameKit.framework */; };
 		D5B7A88318FD0E21004B2348 /* flagTapOff.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D5B7A88218FD0E21004B2348 /* flagTapOff.mp3 */; };
 		D5CB454619028833008F59F3 /* game_button_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D5CB454519028833008F59F3 /* game_button_off@2x.png */; };
 		D5D6494218D46B5100854518 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5D6494118D46B5100854518 /* Foundation.framework */; };
@@ -167,6 +168,7 @@
 		D569E04818FEEE53001A1739 /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = "Base.lproj/goodjob@2x.png"; sourceTree = "<group>"; };
 		D595434B18F9C28E00E67E6C /* GrassAnimation.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = GrassAnimation.atlas; sourceTree = "<group>"; };
 		D595434D18F9C2A000E67E6C /* MineAnimation.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = MineAnimation.atlas; sourceTree = "<group>"; };
+		D59F3CB719122A5700E82FCD /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		D5B7A88218FD0E21004B2348 /* flagTapOff.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = flagTapOff.mp3; sourceTree = "<group>"; };
 		D5CB454519028833008F59F3 /* game_button_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "game_button_off@2x.png"; sourceTree = "<group>"; };
 		D5D6493E18D46B5100854518 /* Miner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Miner.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -193,6 +195,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D59F3CB819122A5700E82FCD /* GameKit.framework in Frameworks */,
 				D521FEF618E8C2B3000D52C8 /* iAd.framework in Frameworks */,
 				D5D6498318D47A2C00854518 /* SpriteKit.framework in Frameworks */,
 				D5D6494418D46B5100854518 /* CoreGraphics.framework in Frameworks */,
@@ -529,6 +532,7 @@
 		D5D6494018D46B5100854518 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D59F3CB719122A5700E82FCD /* GameKit.framework */,
 				D521FEF518E8C2B3000D52C8 /* iAd.framework */,
 				D5D6498218D47A2C00854518 /* SpriteKit.framework */,
 				D5D6494118D46B5100854518 /* Foundation.framework */,
@@ -626,7 +630,7 @@
 								enabled = 0;
 							};
 							com.apple.GameCenter = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -1038,7 +1042,7 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = Miner;
-				PROVISIONING_PROFILE = "171C867E-1C55-4584-A8E1-4CD39D1B6D4B";
+				PROVISIONING_PROFILE = "";
 				SPRITEKIT_TEXTURE_ATLAS_FORMAT = RGBA8888;
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				TARGETED_DEVICE_FAMILY = 1;

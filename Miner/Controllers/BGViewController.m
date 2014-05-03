@@ -7,11 +7,13 @@
 //
 
 #import <iAd/iAd.h>
+#import <GameKit/GameKit.h>
 #import "BGViewController.h"
 #import "BGSettingsManager.h"
 #import "BGLog.h"
 #import "BGResourcePreloader.h"
 #import "BGGameViewController.h"
+#import "Flurry.h"
 
 
 @implementation BGViewController
@@ -32,6 +34,9 @@
     BGLog();
 
     [super viewDidAppear:animated];
+
+//    проверяем авторизацию текущего пользователя GameCenter
+    [self authorizeLocalGameCenterPlayer];
 
     //    разрешаем на этом экране работать рекламе
     self.canDisplayBannerAds = ([BGSettingsManager sharedManager]
@@ -57,6 +62,23 @@
     [[[BGResourcePreloader shared]
                            playerFromGameConfigForResource:@"buttonTap.mp3"]
                            play];
+}
+
+#pragma mark - Private
+
+- (void)authorizeLocalGameCenterPlayer
+{
+//        проверим, авторизован ли пользователь в Game Center и, если да, то
+//        опубликуем его счет. Просить авторизоваться не будем.
+    GKLocalPlayer *localPlayer = [GKLocalPlayer localPlayer];
+    __weak GKLocalPlayer *weakLocalPlayer = localPlayer;
+
+    localPlayer.authenticateHandler = ^(UIViewController *view, NSError *error)
+    {
+        if (weakLocalPlayer.isAuthenticated) {
+//            пользователь авторизован, всё хорошо
+        }
+    };
 }
 
 @end
