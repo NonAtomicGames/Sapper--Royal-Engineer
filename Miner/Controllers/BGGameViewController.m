@@ -32,6 +32,8 @@ static const NSInteger kBGMinesCountViewTag = 2;
 {
     BOOL _firstTapPerformed;
     NSTimer *_timer;
+
+    CGPoint _scrollPointPrev;
 }
 
 #pragma mark - Class methods
@@ -41,7 +43,8 @@ static const NSInteger kBGMinesCountViewTag = 2;
     static dispatch_once_t once;
     static BGGameViewController *shared;
 
-    dispatch_once(&once, ^{
+    dispatch_once(&once, ^
+    {
         shared = [[self alloc] init];
     });
 
@@ -145,6 +148,19 @@ static const NSInteger kBGMinesCountViewTag = 2;
         longPressGestureRecognizer.minimumPressDuration = 0.2;
 
         [self.skView addGestureRecognizer:longPressGestureRecognizer];
+
+//        добавляем определитель жестов - зум
+        UIPinchGestureRecognizer *pinchGestureRecognizer = [[UIPinchGestureRecognizer alloc]
+                                                                                      initWithTarget:self
+                                                                                              action:@selector(pinchPress:)];
+        [self.skView addGestureRecognizer:pinchGestureRecognizer];
+
+//        добавляем определитель жестов - скролл
+        UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc]
+                                                                                initWithTarget:self
+                                                                                        action:@selector(scroll:)];
+
+        [self.skView addGestureRecognizer:panGestureRecognizer];
 
 #ifdef DEBUG
         self.skView.showsDrawCount = YES;
@@ -416,6 +432,46 @@ static const NSInteger kBGMinesCountViewTag = 2;
     }
 }
 
+- (void)scroll:(UIPanGestureRecognizer *)sender
+{
+    CGPoint location = [sender locationInView:sender.view];
+
+    SKNode *compoundLayer = [self.skView.scene childNodeWithName:@"compoundLayer"];
+    SKNode *grassLayer = [compoundLayer childNodeWithName:@"grassLayer"];
+    SKNode *earthLayer = [compoundLayer childNodeWithName:@"earthLayer"];
+    CGPoint scenePoint = [self.skView convertPoint:location
+                                           toScene:self.skView.scene];
+
+    if (UIGestureRecognizerStateBegan == sender.state) {
+        _scrollPointPrev = scenePoint;
+    } else if (UIGestureRecognizerStateChanged == sender.state) {
+        CGVector vector = CGVectorMake(scenePoint.x - _scrollPointPrev.x, scenePoint.y - _scrollPointPrev.y);
+        CGFloat dx = vector.dx, dy = vector.dy;
+        CGFloat newX = grassLayer.position.x + dx, newY = grassLayer.position.y + dy;
+        CGFloat minX = 0.0,
+                minY = 0.0,
+                maxX = (grassLayer.calculateAccumulatedFrame.size.width - grassLayer.scene.size.width),
+                maxY = (grassLayer.calculateAccumulatedFrame.size.height - grassLayer.scene.size.height);
+
+        if (newX > minX) newX = minX;
+        else if (newX < -maxX) newX = -maxX;
+
+        if (newY > minY) newY = minY;
+        else if (newY < -maxY) newY = -maxY;
+
+        [grassLayer runAction:[SKAction moveTo:CGPointMake(newX, newY)
+                                      duration:0.0]];
+        [earthLayer runAction:[SKAction moveTo:CGPointMake(newX, newY)
+                                      duration:0.0]];
+    }
+}
+
+- (void)pinchPress:(UIPinchGestureRecognizer *)sender
+{
+//    BGLog();
+//    TODO: реализовать увеличение/уменьшение игрового поля в точке "приложения" пальцев
+}
+
 - (void)updateTimerLabel:(id)sender
 {
     //    BGLog();
@@ -456,8 +512,7 @@ static const NSInteger kBGMinesCountViewTag = 2;
 {
     BGLog();
 
-    UILabel *minesCountLabel = (UILabel *) [self
-            .view viewWithTag:kBGMinesCountViewTag];
+    UILabel *minesCountLabel = (UILabel *) [self.view viewWithTag:kBGMinesCountViewTag];
     minesCountLabel.text = [NSString stringWithFormat:@"%04d", 0];
 }
 
@@ -510,7 +565,7 @@ static const NSInteger kBGMinesCountViewTag = 2;
 //    создаем объект со счетом
     GKScore *score = [[GKScore alloc]
                                initWithLeaderboardIdentifier:leaderboardID];
-    score.value = TIMER_MAX_VALUE * ([BGGameViewController shared].skView.field.bombs - BOMBS_MIN_VALUE) + timerValue;
+    score.value = TIMER_MAX_VALUE * ([BGGameViewController shared].skView.field.bombs - BOMBS_MIN_VALUE + 1) - timerValue;
 
     [GKScore reportScores:@[score]
     withCompletionHandler:^(NSError *error)
