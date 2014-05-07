@@ -122,7 +122,7 @@ static const NSInteger kBGMinesCountViewTag = 2;
         UIButton *back = [[UIButton alloc]
                                     initWithFrame:CGRectMake(14, 22, backNormal
                                             .size.width, backNormal.size
-                                            .height)];
+                                                                     .height)];
         [back setImage:backNormal forState:UIControlStateNormal];
         [back setImage:backHighlighted forState:UIControlStateHighlighted];
         [back addTarget:self
@@ -447,7 +447,6 @@ static const NSInteger kBGMinesCountViewTag = 2;
         CGVector vector = CGVectorMake(scenePoint.x - _scrollPointPrev.x, scenePoint.y - _scrollPointPrev.y);
         CGFloat dx = vector.dx, dy = vector.dy;
 
-//        TODO: вынести код управлениями границами игрового поля в отдельный метод скорее всего хватит использовать его только в update: методе сцены
         CGFloat newX = grassLayer.position.x + dx, newY = grassLayer.position.y + dy;
         CGFloat minX = 0.0,
                 minY = 0.0,
@@ -470,7 +469,35 @@ static const NSInteger kBGMinesCountViewTag = 2;
 - (void)pinchPress:(UIPinchGestureRecognizer *)sender
 {
 //    BGLog();
-//    TODO: реализовать увеличение/уменьшение игрового поля в точке "приложения" пальцев
+    SKNode *compoundNode = [self.skView.scene childNodeWithName:@"compoundLayer"];
+    SKNode *grassLayer = [compoundNode childNodeWithName:@"grassLayer"];
+    SKNode *earthLayer = [compoundNode childNodeWithName:@"earthLayer"];
+
+    CGPoint pinchPoint = [sender locationInView:sender.view];
+    CGPoint scenePinchPoint = [self.skView.scene convertPointFromView:pinchPoint];
+
+    CGPoint anchorPoint = CGPointMake(scenePinchPoint.x - grassLayer.position.x,
+                                      scenePinchPoint.y - grassLayer.position.y);
+    CGVector delta = CGVectorMake(anchorPoint.x - sender.scale * anchorPoint.x,
+                                  anchorPoint.y - sender.scale * anchorPoint.y);
+
+    CGFloat minAllowedScale = [self.skView standardScaleForCols:self.skView.field.cols];
+    CGFloat maxAllowedScale = 2.0;
+
+    if (delta.dx <= 0.0 && delta.dy <= 0.0 && grassLayer.xScale < maxAllowedScale ||
+            grassLayer.xScale > minAllowedScale && delta.dx >= 0.0 && delta.dy >= 0.0) {
+
+        [grassLayer runAction:[SKAction group:@[
+                [SKAction scaleBy:sender.scale duration:0.0],
+                [SKAction moveBy:delta duration:0.0]
+        ]]];
+        [earthLayer runAction:[SKAction group:@[
+                [SKAction scaleBy:sender.scale duration:0.0],
+                [SKAction moveBy:delta duration:0.0]
+        ]]];
+    }
+
+    sender.scale = 1.0;
 }
 
 - (void)updateTimerLabel:(id)sender
