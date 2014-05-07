@@ -381,8 +381,7 @@ static const NSInteger kBGMinesCountViewTag = 2;
             .scene nodeAtPoint:touchPoint];
 
     //    если слой заблокирован для взаимодействия - завершаем выполнение
-    if (![touchedNode.name isEqualToString:@"flag"] && !touchedNode.parent
-            .userInteractionEnabled) {
+    if (![touchedNode.name isEqualToString:@"flag"] && !touchedNode.parent.userInteractionEnabled) {
         return;
     }
 
@@ -447,6 +446,8 @@ static const NSInteger kBGMinesCountViewTag = 2;
     } else if (UIGestureRecognizerStateChanged == sender.state) {
         CGVector vector = CGVectorMake(scenePoint.x - _scrollPointPrev.x, scenePoint.y - _scrollPointPrev.y);
         CGFloat dx = vector.dx, dy = vector.dy;
+
+//        TODO: вынести код управлениями границами игрового поля в отдельный метод скорее всего хватит использовать его только в update: методе сцены
         CGFloat newX = grassLayer.position.x + dx, newY = grassLayer.position.y + dy;
         CGFloat minX = 0.0,
                 minY = 0.0,
