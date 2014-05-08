@@ -433,42 +433,36 @@ static const NSInteger kBGMinesCountViewTag = 2;
 
 - (void)scroll:(UIPanGestureRecognizer *)sender
 {
-    CGPoint location = [sender locationInView:sender.view];
-
-    SKNode *compoundLayer = [self.skView.scene childNodeWithName:@"compoundLayer"];
-    SKNode *grassLayer = [compoundLayer childNodeWithName:@"grassLayer"];
-    SKNode *earthLayer = [compoundLayer childNodeWithName:@"earthLayer"];
-    CGPoint scenePoint = [self.skView convertPoint:location
-                                           toScene:self.skView.scene];
+    CGPoint panPoint = [sender translationInView:sender.view];
+    panPoint = [self.skView.scene convertPointFromView:panPoint];
 
     if (UIGestureRecognizerStateBegan == sender.state) {
-        _scrollPointPrev = scenePoint;
+        _scrollPointPrev = panPoint;
     } else if (UIGestureRecognizerStateChanged == sender.state) {
-        CGVector vector = CGVectorMake(scenePoint.x - _scrollPointPrev.x, scenePoint.y - _scrollPointPrev.y);
-        CGFloat dx = vector.dx, dy = vector.dy;
+        CGVector delta = CGVectorMake(-(_scrollPointPrev.x - panPoint.x),
+                                      -(_scrollPointPrev.y - panPoint.y));
 
-        CGFloat newX = grassLayer.position.x + dx, newY = grassLayer.position.y + dy;
-        CGFloat minX = 0.0,
-                minY = 0.0,
-                maxX = (grassLayer.calculateAccumulatedFrame.size.width - grassLayer.scene.size.width),
-                maxY = (grassLayer.calculateAccumulatedFrame.size.height - grassLayer.scene.size.height);
+        SKNode *compoundLayer = [self.skView.scene childNodeWithName:@"compoundLayer"];
+        SKNode *grassLayer = [compoundLayer childNodeWithName:@"grassLayer"];
+        SKNode *earthLayer = [compoundLayer childNodeWithName:@"earthLayer"];
 
-        if (newX > minX) newX = minX;
-        else if (newX < -maxX) newX = -maxX;
+        CGFloat newXGrassLayerPosition = grassLayer.position.x + delta.dx;
+        CGFloat newYGrassLayerPosition = grassLayer.position.y + delta.dy;
 
-        if (newY > minY) newY = minY;
-        else if (newY < -maxY) newY = -maxY;
+        NSLog(@"%f, %f", newXGrassLayerPosition, newYGrassLayerPosition);
 
-        [grassLayer runAction:[SKAction moveTo:CGPointMake(newX, newY)
-                                      duration:0.0]];
-        [earthLayer runAction:[SKAction moveTo:CGPointMake(newX, newY)
-                                      duration:0.0]];
+//      TODO: реализовать "привязку" игрового поля к границам экрана, чтобы скроллить за пределы экрана нельзя было
+
+        [grassLayer runAction:[SKAction moveBy:delta duration:0.0]];
+        [earthLayer runAction:[SKAction moveBy:delta duration:0.0]];
+
+        _scrollPointPrev = panPoint;
     }
 }
 
 - (void)pinchPress:(UIPinchGestureRecognizer *)sender
 {
-//    BGLog();
+    BGLog();
     SKNode *compoundNode = [self.skView.scene childNodeWithName:@"compoundLayer"];
     SKNode *grassLayer = [compoundNode childNodeWithName:@"grassLayer"];
     SKNode *earthLayer = [compoundNode childNodeWithName:@"earthLayer"];
