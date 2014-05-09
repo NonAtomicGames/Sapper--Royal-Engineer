@@ -22,52 +22,6 @@ static const NSInteger kBGPrime = 1001;
 @end
 
 @implementation BGSKScene
-
-- (void)update:(NSTimeInterval)currentTime
-{
-//    SKNode *compoundLayer = [self childNodeWithName:@"compoundLayer"];
-//    SKNode *grassLayer = [compoundLayer childNodeWithName:@"grassLayer"];
-//    SKNode *earthLayer = [compoundLayer childNodeWithName:@"earthLayer"];
-//
-//    CGFloat newMinX, newMinY;
-//
-//    CGFloat minX = CGRectGetMinX(grassLayer.frame);
-//    CGFloat maxX = grassLayer.position.x + grassLayer.calculateAccumulatedFrame.size.width;
-//    CGFloat minY = CGRectGetMinY(grassLayer.frame);
-//    CGFloat maxY = grassLayer.position.y + grassLayer.calculateAccumulatedFrame.size.height;
-//    CGFloat minAllowedScale = [((BGSKView *) self.view) standardScaleForCols:((BGSKView *) self.view).field.cols];
-//    CGFloat maxAllowedScale = 2.0;
-//
-//    if (minX > 0)
-//        newMinX = 0.0;
-//    else
-//        newMinX = minX;
-//
-//    if (minY > 0)
-//        newMinY = 0.0;
-//    else
-//        newMinY = minY;
-//
-//    TODO: здесь должна быть проверка на выход правого верхнего угла из игрового поля при скейле
-//    if (fabs(minX) + self.size.width < grassLayer.calculateAccumulatedFrame.size.width)
-//        newMinX = -(grassLayer.calculateAccumulatedFrame.size.width - self.size.width);
-//
-//    if (fabs(minY) + self.size.height < grassLayer.calculateAccumulatedFrame.size.height)
-//        newMinY = -(grassLayer.calculateAccumulatedFrame.size.height - self.size.height);
-//
-//    grassLayer.position = CGPointMake(newMinX, newMinY);
-//    earthLayer.position = CGPointMake(newMinX, newMinY);
-//
-//    подгоняем scale к подходящим значениям
-//    if (grassLayer.xScale > maxAllowedScale || grassLayer.yScale > maxAllowedScale) {
-//        [grassLayer setScale:maxAllowedScale];
-//        [earthLayer setScale:maxAllowedScale];
-//    } else if (grassLayer.xScale < minAllowedScale || grassLayer.yScale < minAllowedScale) {
-//        [grassLayer setScale:minAllowedScale];
-//        [earthLayer setScale:minAllowedScale];
-//    }
-}
-
 @end
 
 
@@ -666,16 +620,29 @@ static const NSInteger kBGPrime = 1001;
 
 - (void)resetGameData
 {
-    //    нет отмеченных бомб
+//    нет отмеченных бомб
     self.flaggedMines = 0;
 
-    //    удаляем предыдущие игровые слои
+//    удаляем предыдущие игровые слои
     SKNode *compoundLayer = [self.scene childNodeWithName:@"compoundLayer"];
+    SKNode *grassLayer = [compoundLayer childNodeWithName:@"grassLayer"];
+    SKNode *earthLayer = [compoundLayer childNodeWithName:@"earthLayer"];
+    SKNode *winFailLayer = [compoundLayer childNodeWithName:@"winFailLayer"];
 
-    [[compoundLayer childNodeWithName:@"earthLayer"] removeAllChildren];
-    [[compoundLayer childNodeWithName:@"earthLayer"] removeAllActions];
-    [[compoundLayer childNodeWithName:@"grassLayer"] removeAllChildren];
-    [[compoundLayer childNodeWithName:@"winFailLayer"] removeAllChildren];
+    [grassLayer removeAllActions];
+    [grassLayer removeAllChildren];
+    [earthLayer removeAllActions];
+    [earthLayer removeAllChildren];
+    [winFailLayer removeAllChildren];
+
+//    сбрасываем масштабирование и положение
+    CGFloat defaultScale = [self standardScaleForCols:self.field.cols];
+
+    [grassLayer setScale:defaultScale];
+    grassLayer.position = CGPointMake(0, 0);
+
+    [earthLayer setScale:defaultScale];
+    earthLayer.position = CGPointMake(0, 0);
 }
 
 - (CGFloat)standardScaleForCols:(NSUInteger)cols

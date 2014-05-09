@@ -376,8 +376,7 @@ static const NSInteger kBGMinesCountViewTag = 2;
     CGPoint touchPointGlobal = [sender locationInView:self.skView];
     CGPoint touchPoint = [self.skView convertPoint:touchPointGlobal
                                            toScene:self.skView.scene];
-    SKSpriteNode *touchedNode = (SKSpriteNode *) [self.skView
-            .scene nodeAtPoint:touchPoint];
+    SKSpriteNode *touchedNode = (SKSpriteNode *) [self.skView.scene nodeAtPoint:touchPoint];
 
     //    если слой заблокирован для взаимодействия - завершаем выполнение
     if (![touchedNode.name isEqualToString:@"flag"] && !touchedNode.parent.userInteractionEnabled) {
@@ -387,10 +386,8 @@ static const NSInteger kBGMinesCountViewTag = 2;
     //    не обрабатываем начало длинного нажатия, нам нужно только "завершение"
     if (sender.state == UIGestureRecognizerStateBegan) {
 
-        UILabel *minesCountLabel = (UILabel *) [self
-                .view viewWithTag:kBGMinesCountViewTag];
-        NSInteger minesRemainedToOpen = self.skView.field.bombs - self.skView
-                .flaggedMines;
+        UILabel *minesCountLabel = (UILabel *) [self.view viewWithTag:kBGMinesCountViewTag];
+        NSInteger minesRemainedToOpen = self.skView.field.bombs - self.skView.flaggedMines;
 
         if (touchedNode.children.count == 0 && touchedNode
                 .userData != nil && minesRemainedToOpen != 0) {
@@ -432,6 +429,8 @@ static const NSInteger kBGMinesCountViewTag = 2;
 
 - (void)scroll:(UIPanGestureRecognizer *)sender
 {
+    BGLog();
+
     SKNode *compoundLayer = [self.skView.scene childNodeWithName:@"compoundLayer"];
     SKNode *grassLayer = [compoundLayer childNodeWithName:@"grassLayer"];
     SKNode *earthLayer = [compoundLayer childNodeWithName:@"earthLayer"];
@@ -486,6 +485,11 @@ static const NSInteger kBGMinesCountViewTag = 2;
     SKNode *grassLayer = [compoundNode childNodeWithName:@"grassLayer"];
     SKNode *earthLayer = [compoundNode childNodeWithName:@"earthLayer"];
 
+//    минимальный и максимальный масштабы игрового поля
+    CGFloat minAllowedScale = [self.skView standardScaleForCols:self.skView.field.cols];
+    CGFloat maxAllowedScale = 2.0;
+
+//    точка зум-ина или зум-аута
     CGPoint pinchPoint = [sender locationInView:sender.view];
     CGPoint scenePinchPoint = [self.skView.scene convertPointFromView:pinchPoint];
 
@@ -494,19 +498,7 @@ static const NSInteger kBGMinesCountViewTag = 2;
     CGVector delta = CGVectorMake(anchorPoint.x - sender.scale * anchorPoint.x,
                                   anchorPoint.y - sender.scale * anchorPoint.y);
 
-    CGFloat minAllowedScale = [self.skView standardScaleForCols:self.skView.field.cols];
-    CGFloat maxAllowedScale = 2.0;
-
-    CGFloat minAllowedX = self.skView.scene.size.width - grassLayer.calculateAccumulatedFrame.size.width;
-    CGFloat minAllowedY = self.skView.scene.size.height - grassLayer.calculateAccumulatedFrame.size.height;
-    CGFloat maxAllowedX = 0.0;
-    CGFloat maxAllowedY = 0.0;
-
-    BOOL canZoomOut = minAllowedX <= grassLayer.position.x + delta.dx && grassLayer.position.x + delta.dx <= maxAllowedX &&
-            minAllowedY <= grassLayer.position.y + delta.dy && grassLayer.position.y + delta.dy <= maxAllowedY;
-
-    if (delta.dx <= 0.0 && delta.dy <= 0.0 && grassLayer.xScale < maxAllowedScale ||
-            canZoomOut && grassLayer.xScale > minAllowedScale && delta.dx >= 0.0 && delta.dy >= 0.0) {
+    if (sender.scale > 1.0 && grassLayer.xScale < maxAllowedScale) { // zoom-in
 
         [grassLayer runAction:[SKAction group:@[
                 [SKAction scaleBy:sender.scale duration:0.0],
@@ -516,6 +508,13 @@ static const NSInteger kBGMinesCountViewTag = 2;
                 [SKAction scaleBy:sender.scale duration:0.0],
                 [SKAction moveBy:delta duration:0.0]
         ]]];
+    } else if (sender.scale < 1.0 && grassLayer.xScale > minAllowedScale) { // zoom-out
+
+        [grassLayer setScale:minAllowedScale];
+        grassLayer.position = CGPointMake(0, 0);
+
+        [earthLayer setScale:minAllowedScale];
+        earthLayer.position = CGPointMake(0, 0);
     }
 
     sender.scale = 1.0;
