@@ -13,7 +13,6 @@
 #import "BGLog.h"
 #import "BGResourcePreloader.h"
 #import "BGGameViewController.h"
-#import "Flurry.h"
 
 
 @implementation BGViewController
@@ -23,6 +22,8 @@
 - (void)viewDidLoad
 {
     BGLog();
+
+    //    TODO: реализовать автолэйауты на главном экране
 
     [super viewDidLoad];
 

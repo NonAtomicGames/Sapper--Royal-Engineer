@@ -33,6 +33,8 @@
 {
     [super viewDidLoad];
 
+//    TODO: реализовать автолэйауты на экране настроек
+
     //    создаем фоновую вьюху и устанавливаем фоновое изображение для экрана
     self.backgroundImageView = [[UIImageView alloc]
                                              initWithFrame:[UIScreen mainScreen]

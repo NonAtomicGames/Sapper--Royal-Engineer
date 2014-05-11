@@ -384,6 +384,8 @@ static const NSInteger kBGPrime = 1001;
 {
     BGLog();
 
+//    TODO: реализовать открытие всех мин на поле и отмечать те мины, на которые пользователь выставил флаг
+
     SKNode *grassLayer = [[self.scene childNodeWithName:@"compoundLayer"]
                                       childNodeWithName:@"grassLayer"];
     __weak typeof (self) weakSelf = self;
