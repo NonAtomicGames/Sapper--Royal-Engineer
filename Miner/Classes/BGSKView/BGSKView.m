@@ -384,11 +384,11 @@ static const NSInteger kBGPrime = 1001;
 {
     BGLog();
 
-//    TODO: реализовать открытие всех мин на поле и отмечать те мины, на которые пользователь выставил флаг
-
-    SKNode *grassLayer = [[self.scene childNodeWithName:@"compoundLayer"]
-                                      childNodeWithName:@"grassLayer"];
-    __weak typeof (self) weakSelf = self;
+    __weak BGSKView *weakSelf = self;
+    SKNode *compoundLayer = [self.scene childNodeWithName:@"compoundLayer"];
+    SKNode *grassLayer = [compoundLayer childNodeWithName:@"grassLayer"];
+    SKNode *earthLayer = [compoundLayer childNodeWithName:@"earthLayer"];
+    SKTexture *checkedMineTexture = [SKTexture textureWithImageNamed:@"checked_bomb"];
 
     [grassLayer enumerateChildNodesWithName:@"*"
                                  usingBlock:^(SKNode *node, BOOL *stop)
@@ -399,7 +399,13 @@ static const NSInteger kBGPrime = 1001;
                                      NSInteger value = [weakSelf.field valueForCol:col
                                                                                row:row];
 
-                                     if (value == BGFieldBomb) {
+                                     if (BGFieldBomb == value) {
+                                         if (node.children.count != 0) {
+//                                             мина отмечена флагом, заменим спрайт под травой
+                                             SKSpriteNode *earthNode = (SKSpriteNode *) [earthLayer childNodeWithName:node.name];
+                                             earthNode.texture = checkedMineTexture;
+                                         }
+
                                          [node removeFromParent];
                                      }
                                  }];
