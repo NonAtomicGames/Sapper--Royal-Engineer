@@ -12,6 +12,7 @@
 #import "BGSettingsManager.h"
 #import "BGLog.h"
 #import "BGResourcePreloader.h"
+#import "BGAppDelegate.h"
 #import "BGGameViewController.h"
 
 
@@ -22,20 +23,23 @@
 - (void)viewDidLoad
 {
     BGLog();
-
+    
     [super viewDidLoad];
-
+    
     self.gameViewController = [BGGameViewController shared];
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
     BGLog();
-
-    [super viewDidAppear:animated];
-
-//    проверяем авторизацию текущего пользователя GameCenter
-    [self authorizeLocalGameCenterPlayer];
+    
+    [super viewWillAppear:animated];
+    
+    //    проверяем авторизацию текущего пользователя GameCenter и авторизуем, если надо
+    if ([BGSettingsManager sharedManager].gameCenterStatus == BGMinerGameCenterStatusOn) {
+        BGAppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+        [appDelegate authorizeLocalGameCenterPlayer];
+    }
 
     //    разрешаем на этом экране работать рекламе
     self.canDisplayBannerAds = YES;
@@ -47,9 +51,8 @@
 {
     //    проигрываем звук нажатия
     [[[BGResourcePreloader shared]
-                           playerFromGameConfigForResource:@"buttonTap.mp3"]
-                           play];
-
+      playerFromGameConfigForResource:@"buttonTap.mp3"] play];
+    
     [self.navigationController pushViewController:self.gameViewController
                                          animated:YES];
 }
@@ -58,25 +61,7 @@
 {
     //    проигрываем звук нажатия
     [[[BGResourcePreloader shared]
-                           playerFromGameConfigForResource:@"buttonTap.mp3"]
-                           play];
-}
-
-#pragma mark - Private
-
-- (void)authorizeLocalGameCenterPlayer
-{
-//        проверим, авторизован ли пользователь в Game Center и, если да, то
-//        опубликуем его счет. Просить авторизоваться не будем.
-    GKLocalPlayer *localPlayer = [GKLocalPlayer localPlayer];
-    __weak GKLocalPlayer *weakLocalPlayer = localPlayer;
-
-    localPlayer.authenticateHandler = ^(UIViewController *view, NSError *error)
-    {
-        if (weakLocalPlayer.isAuthenticated) {
-//            пользователь авторизован, всё хорошо
-        }
-    };
+      playerFromGameConfigForResource:@"buttonTap.mp3"] play];
 }
 
 @end

@@ -132,7 +132,7 @@ static NSString *const kNSUserDefaultSettingsKey = @"BGSettingsManager";
 
 - (BGMinerGameCenterStatus)gameCenterStatus
 {
-    BOOL showGameCenter = [_settings[@"gamceCenterStatus"] boolValue];
+    BOOL showGameCenter = [_settings[@"gameCenterStatus"] boolValue];
     return (showGameCenter ? BGMinerGameCenterStatusOn : BGMinerGameCenterStatusOff);
 }
 
