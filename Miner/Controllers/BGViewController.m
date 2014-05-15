@@ -23,8 +23,6 @@
 {
     BGLog();
 
-    //    TODO: реализовать автолэйауты на главном экране
-
     [super viewDidLoad];
 
     self.gameViewController = [BGGameViewController shared];
@@ -40,8 +38,7 @@
     [self authorizeLocalGameCenterPlayer];
 
     //    разрешаем на этом экране работать рекламе
-    self.canDisplayBannerAds = ([BGSettingsManager sharedManager]
-            .adsStatus == BGMinerAdsStatusOn);
+    self.canDisplayBannerAds = YES;
 }
 
 #pragma mark - Actions

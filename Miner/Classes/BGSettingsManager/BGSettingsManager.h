@@ -30,9 +30,9 @@ typedef NS_ENUM(NSUInteger, BGMinerSoundStatus) {
     BGMinerSoundStatusOff
 };
 
-typedef NS_ENUM(NSUInteger, BGMinerAdsStatus) {
-    BGMinerAdsStatusOn,
-    BGMinerAdsStatusOff
+typedef NS_ENUM(NSUInteger, BGMinerGameCenterStatus) {
+    BGMinerGameCenterStatusOn,
+    BGMinerGameCenterStatusOff
 };
 
 
@@ -43,7 +43,7 @@ typedef NS_ENUM(NSUInteger, BGMinerAdsStatus) {
 @property (nonatomic, readwrite) NSUInteger bombs;
 @property (nonatomic, readwrite) BGMinerLevel level;
 @property (nonatomic, readwrite) BGMinerSoundStatus soundStatus;
-@property (nonatomic, readwrite) BGMinerAdsStatus adsStatus;
+@property (nonatomic, readwrite) BGMinerGameCenterStatus gameCenterStatus;
 
 + (instancetype)sharedManager;
 

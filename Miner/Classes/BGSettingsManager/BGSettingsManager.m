@@ -64,7 +64,7 @@ static NSString *const kNSUserDefaultSettingsKey = @"BGSettingsManager";
                     @"cols"        : @(LEVEL_1_COLS),
                     @"level"       : @(BGMinerLevelOne),
                     @"soundStatus" : @YES,
-                    @"adsStatus"   : @YES
+                    @"gameCenterStatus"   : @YES
             }];
         }
     }
@@ -130,15 +130,15 @@ static NSString *const kNSUserDefaultSettingsKey = @"BGSettingsManager";
     _settings[@"soundStatus"] = (soundStatus == BGMinerSoundStatusOn ? @YES : @NO);
 }
 
-- (BGMinerAdsStatus)adsStatus
+- (BGMinerGameCenterStatus)gameCenterStatus
 {
-    BOOL showAds = [_settings[@"adsStatus"] boolValue];
-    return (showAds ? BGMinerAdsStatusOn : BGMinerAdsStatusOff);
+    BOOL showGameCenter = [_settings[@"gamceCenterStatus"] boolValue];
+    return (showGameCenter ? BGMinerGameCenterStatusOn : BGMinerGameCenterStatusOff);
 }
 
-- (void)setAdsStatus:(BGMinerAdsStatus)adsStatus
+- (void)setGameCenterStatus:(BGMinerGameCenterStatus)gameCenterStatus
 {
-    _settings[@"adsStatus"] = (adsStatus == BGMinerAdsStatusOn ? @YES : @NO);
+    _settings[@"gameCenterStatus"] = (gameCenterStatus == BGMinerGameCenterStatusOn ? @YES : @NO);
 }
 
 #pragma mark - Private methods

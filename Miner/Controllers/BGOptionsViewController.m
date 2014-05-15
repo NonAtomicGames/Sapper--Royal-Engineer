@@ -21,7 +21,7 @@
 @interface BGOptionsViewController ()
 @property (nonatomic) UIImageView *backgroundImageView;
 @property (nonatomic) BGUISwitch *soundSwitch;
-@property (nonatomic) BGUISwitch *adsSwitch;
+@property (nonatomic) BGUISwitch *gameCenterSwitch;
 @end
 
 
@@ -33,12 +33,9 @@
 {
     [super viewDidLoad];
 
-//    TODO: реализовать автолэйауты на экране настроек
-
     //    создаем фоновую вьюху и устанавливаем фоновое изображение для экрана
     self.backgroundImageView = [[UIImageView alloc]
-                                             initWithFrame:[UIScreen mainScreen]
-                                                     .bounds];
+                                             initWithFrame:[UIScreen mainScreen].bounds];
     self.backgroundImageView.image = [UIImage imageNamed:@"miner_config"];
 
     [self.originalContentView addSubview:self.backgroundImageView];
@@ -125,8 +122,7 @@
     UIImageView *soundImageView = [[UIImageView alloc]
                                                 initWithImage:[UIImage imageNamed:@"sounds"]];
     CGRect soundsBounds = soundImageView.bounds;
-    soundImageView.frame = CGRectMake(55.5, 372.5, soundsBounds.size
-            .width, soundsBounds.size.height);
+    soundImageView.frame = CGRectMake(55.5, 372.5, soundsBounds.size.width, soundsBounds.size.height);
 
     [self.originalContentView addSubview:soundImageView];
 
@@ -143,26 +139,24 @@
 
     [self.originalContentView addSubview:self.soundSwitch];
 
-    //    создаем подпись к переключателю рекламы
-    UIImageView *adsImageView = [[UIImageView alloc]
-                                              initWithImage:[UIImage imageNamed:@"ads"]];
-    CGRect adsBounds = adsImageView.bounds;
-    adsImageView.frame = CGRectMake(208, 372.5, adsBounds.size.width, adsBounds
-            .size.height);
+    //    создаем подпись к переключателю Game Center
+    UIImageView *gameCenterImageView = [[UIImageView alloc]
+                                              initWithImage:[UIImage imageNamed:@"game_center"]];
+    CGRect gameCenterBounds = gameCenterImageView.bounds;
+    gameCenterImageView.frame = CGRectMake(187.5, 346.5, gameCenterBounds.size.width, gameCenterBounds.size.height);
 
-    [self.originalContentView addSubview:adsImageView];
+    [self.originalContentView addSubview:gameCenterImageView];
 
     //    создаем переключатель для рекламы
-    self.adsSwitch = [[BGUISwitch alloc] initWithPosition:CGPointMake(181, 398)
+    self.gameCenterSwitch = [[BGUISwitch alloc] initWithPosition:CGPointMake(181, 398)
                                                   onImage:[UIImage imageNamed:@"switch_1"]
                                                  offImage:[UIImage imageNamed:@"switch_0"]];
-    self.adsSwitch.on = ([BGSettingsManager sharedManager]
-            .adsStatus == BGMinerAdsStatusOn);
-    self.adsSwitch.tag = kBGUISwitchAdTag;
-    [self.adsSwitch addTarget:self
-                       action:@selector(adsButtonTapped:)];
+    self.gameCenterSwitch.on = ([BGSettingsManager sharedManager].gameCenterStatus == BGMinerGameCenterStatusOn);
+    self.gameCenterSwitch.tag = kBGUISwitchGameCenterTag;
+    [self.gameCenterSwitch addTarget:self
+                       action:@selector(gameCenterButtonTapped:)];
 
-    [self.originalContentView addSubview:self.adsSwitch];
+    [self.originalContentView addSubview:self.gameCenterSwitch];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -170,8 +164,7 @@
     [super viewWillAppear:animated];
 
     //    данный контроллер может работать с рекламой
-    self.canDisplayBannerAds = ([BGSettingsManager sharedManager]
-            .adsStatus == BGMinerAdsStatusOn);
+    self.canDisplayBannerAds = YES;
 }
 
 #pragma mark - Target actions
@@ -248,26 +241,11 @@
     }
 }
 
-- (void)adsButtonTapped:(id)sender
+- (void)gameCenterButtonTapped:(id)sender
 {
     BGLog();
 
-    //    при переключении тумблера показа рекламы сохраним настройки
-    BGMinerAdsStatus adsStatus = [BGSettingsManager sharedManager].adsStatus;
-
-    if (adsStatus == BGMinerAdsStatusOn) {
-        [BGSettingsManager sharedManager].adsStatus = BGMinerAdsStatusOff;
-        self.canDisplayBannerAds = NO;
-
-        //        фиксируем пользователей, которые выключают рекламу
-        [Flurry logEvent:@"UserTurnsAdsOff"];
-    } else {
-        [BGSettingsManager sharedManager].adsStatus = BGMinerAdsStatusOn;
-        self.canDisplayBannerAds = YES;
-
-        //        фиксируем пользователей, которые включают рекламу
-        [Flurry logEvent:@"UserTurnsAdsOn"];
-    }
+//    TODO: реализовать сохранение настроек
 }
 
 - (void)back:(id)sender

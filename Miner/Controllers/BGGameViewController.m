@@ -41,14 +41,13 @@ static const NSInteger kBGMinesCountViewTag = 2;
 + (instancetype)shared
 {
     static dispatch_once_t once;
-    static BGGameViewController *shared;
+    static BGGameViewController *sharedInstance;
 
-    dispatch_once(&once, ^
-    {
-        shared = [[self alloc] init];
+    dispatch_once(&once, ^{
+        sharedInstance = [[self alloc] init];
     });
 
-    return shared;
+    return sharedInstance;
 }
 
 #pragma mark - Init
@@ -62,15 +61,14 @@ static const NSInteger kBGMinesCountViewTag = 2;
         UIImage *topPanelImage = [UIImage imageNamed:@"top_game"];
         UIImageView *topPanelImageView = [[UIImageView alloc]
                                                        initWithImage:topPanelImage];
-        topPanelImageView.frame = CGRectMake(0, 0, topPanelImage.size
-                .width, topPanelImage.size.height);
+        topPanelImageView.frame = CGRectMake(0, 0, topPanelImage.size.width, topPanelImage.size.height);
 
         [self.view addSubview:topPanelImageView];
 
-        //    добавляем на экран SKView
-        CGRect gameViewFrame = CGRectMake(0, topPanelImage.size
-                .height, 320, 480);
+//        //    добавляем на экран SKView
+        CGRect gameViewFrame = CGRectMake(0, topPanelImage.size.height, 320, 480);
         self.skView = [[BGSKView alloc] initWithFrame:gameViewFrame];
+
         [self.view addSubview:self.skView];
 
         //    на панель изображения накладываем надпись с кол-вом прошедшего времени
@@ -122,7 +120,7 @@ static const NSInteger kBGMinesCountViewTag = 2;
         UIButton *back = [[UIButton alloc]
                                     initWithFrame:CGRectMake(14, 22, backNormal
                                             .size.width, backNormal.size
-                                                                     .height)];
+                                            .height)];
         [back setImage:backNormal forState:UIControlStateNormal];
         [back setImage:backHighlighted forState:UIControlStateHighlighted];
         [back addTarget:self
@@ -199,7 +197,7 @@ static const NSInteger kBGMinesCountViewTag = 2;
 //    засекаем сколько пользователь играет по времени
     [Flurry logEvent:@"UserIsPlaying"
       withParameters:@{
-              @"cols"  : @(self.skView.field.cols),
+              @"cols" : @(self.skView.field.cols),
               @"bombs" : @(self.skView.field.bombs)
       }
                timed:YES];
@@ -305,7 +303,8 @@ static const NSInteger kBGMinesCountViewTag = 2;
                                            toScene:self.skView.scene];
 
     //    получаем ноду, которая находится в точке нажатия
-    SKSpriteNode *touchedNode = (SKSpriteNode *) [self.skView.scene nodeAtPoint:touchPoint];
+    SKSpriteNode *touchedNode = (SKSpriteNode *) [self.skView
+            .scene nodeAtPoint:touchPoint];
 
     //    если "слой" на котором находится указанная нода заблокирован для взаимодействия - завершаем
     if (![touchedNode parent].userInteractionEnabled) {
@@ -376,18 +375,22 @@ static const NSInteger kBGMinesCountViewTag = 2;
     CGPoint touchPointGlobal = [sender locationInView:self.skView];
     CGPoint touchPoint = [self.skView convertPoint:touchPointGlobal
                                            toScene:self.skView.scene];
-    SKSpriteNode *touchedNode = (SKSpriteNode *) [self.skView.scene nodeAtPoint:touchPoint];
+    SKSpriteNode *touchedNode = (SKSpriteNode *) [self.skView
+            .scene nodeAtPoint:touchPoint];
 
     //    если слой заблокирован для взаимодействия - завершаем выполнение
-    if (![touchedNode.name isEqualToString:@"flag"] && !touchedNode.parent.userInteractionEnabled) {
+    if (![touchedNode.name isEqualToString:@"flag"] && !touchedNode.parent
+            .userInteractionEnabled) {
         return;
     }
 
     //    не обрабатываем начало длинного нажатия, нам нужно только "завершение"
     if (sender.state == UIGestureRecognizerStateBegan) {
 
-        UILabel *minesCountLabel = (UILabel *) [self.view viewWithTag:kBGMinesCountViewTag];
-        NSInteger minesRemainedToOpen = self.skView.field.bombs - self.skView.flaggedMines;
+        UILabel *minesCountLabel = (UILabel *) [self
+                .view viewWithTag:kBGMinesCountViewTag];
+        NSInteger minesRemainedToOpen = self.skView.field.bombs - self.skView
+                .flaggedMines;
 
         if (touchedNode.children.count == 0 && touchedNode
                 .userData != nil && minesRemainedToOpen != 0) {
@@ -431,7 +434,8 @@ static const NSInteger kBGMinesCountViewTag = 2;
 {
     BGLog();
 
-    SKNode *compoundLayer = [self.skView.scene childNodeWithName:@"compoundLayer"];
+    SKNode *compoundLayer = [self.skView
+            .scene childNodeWithName:@"compoundLayer"];
     SKNode *grassLayer = [compoundLayer childNodeWithName:@"grassLayer"];
     SKNode *earthLayer = [compoundLayer childNodeWithName:@"earthLayer"];
 
@@ -449,23 +453,32 @@ static const NSInteger kBGMinesCountViewTag = 2;
 
 //            вектор перемещения игрового поля
             CGVector delta = CGVectorMake(-(_scrollPointPrev.x - panPoint.x),
-                                          -(_scrollPointPrev.y - panPoint.y));
+                    -(_scrollPointPrev.y - panPoint.y));
 
             CGFloat newXGrassLayerPosition = grassLayer.position.x + delta.dx;
             CGFloat newYGrassLayerPosition = grassLayer.position.y + delta.dy;
-            CGFloat maxAllowedX = self.skView.scene.size.width - grassLayer.calculateAccumulatedFrame.size.width;
-            CGFloat maxAllowedY = self.skView.scene.size.height - grassLayer.calculateAccumulatedFrame.size.height;
+            CGFloat maxAllowedX = self.skView.scene.size.width - grassLayer
+                    .calculateAccumulatedFrame.size.width;
+            CGFloat maxAllowedY = self.skView.scene.size.height - grassLayer
+                    .calculateAccumulatedFrame.size.height;
 
 //            корректируем положение левого угла игрового поля
-            if (newXGrassLayerPosition > 0) delta.dx = 0.0 - grassLayer.position.x;
-            if (newYGrassLayerPosition > 0) delta.dy = 0.0 - grassLayer.position.y;
+            if (newXGrassLayerPosition > 0)
+                delta.dx = 0.0 - grassLayer.position.x;
+            if (newYGrassLayerPosition > 0)
+                delta.dy = 0.0 - grassLayer.position.y;
 
 //            если перемещение игрового поля возможно - передвигаем
-            if (grassLayer.position.x + delta.dx <= 0.0 && grassLayer.position.y + delta.dy <= 0.0 &&
-                    grassLayer.position.x + delta.dx >= maxAllowedX && grassLayer.position.y + delta.dy >= maxAllowedY) {
+            if (grassLayer.position.x + delta.dx <= 0.0 && grassLayer.position
+                    .y + delta.dy <= 0.0 &&
+                    grassLayer.position.x + delta
+                            .dx >= maxAllowedX && grassLayer.position.y + delta
+                    .dy >= maxAllowedY) {
 
-                grassLayer.position = CGPointMake(grassLayer.position.x + delta.dx, grassLayer.position.y + delta.dy);
-                earthLayer.position = CGPointMake(earthLayer.position.x + delta.dx, earthLayer.position.y + delta.dy);
+                grassLayer.position = CGPointMake(grassLayer.position.x + delta
+                        .dx, grassLayer.position.y + delta.dy);
+                earthLayer.position = CGPointMake(earthLayer.position.x + delta
+                        .dx, earthLayer.position.y + delta.dy);
             }
 
 //            обновляем предыдущую "опорную" точку
@@ -481,22 +494,25 @@ static const NSInteger kBGMinesCountViewTag = 2;
 {
     BGLog();
 
-    SKNode *compoundNode = [self.skView.scene childNodeWithName:@"compoundLayer"];
+    SKNode *compoundNode = [self.skView
+            .scene childNodeWithName:@"compoundLayer"];
     SKNode *grassLayer = [compoundNode childNodeWithName:@"grassLayer"];
     SKNode *earthLayer = [compoundNode childNodeWithName:@"earthLayer"];
 
 //    минимальный и максимальный масштабы игрового поля
-    CGFloat minAllowedScale = [self.skView standardScaleForCols:self.skView.field.cols];
+    CGFloat minAllowedScale = [self.skView standardScaleForCols:self.skView
+            .field.cols];
     CGFloat maxAllowedScale = 2.0;
 
 //    точка зум-ина или зум-аута
     CGPoint pinchPoint = [sender locationInView:sender.view];
-    CGPoint scenePinchPoint = [self.skView.scene convertPointFromView:pinchPoint];
+    CGPoint scenePinchPoint = [self.skView
+            .scene convertPointFromView:pinchPoint];
 
     CGPoint anchorPoint = CGPointMake(scenePinchPoint.x - grassLayer.position.x,
-                                      scenePinchPoint.y - grassLayer.position.y);
+            scenePinchPoint.y - grassLayer.position.y);
     CGVector delta = CGVectorMake(anchorPoint.x - sender.scale * anchorPoint.x,
-                                  anchorPoint.y - sender.scale * anchorPoint.y);
+            anchorPoint.y - sender.scale * anchorPoint.y);
 
     if (sender.scale > 1.0 && grassLayer.xScale < maxAllowedScale) { // zoom-in
 
@@ -508,7 +524,8 @@ static const NSInteger kBGMinesCountViewTag = 2;
                 [SKAction scaleBy:sender.scale duration:0.0],
                 [SKAction moveBy:delta duration:0.0]
         ]]];
-    } else if (sender.scale < 1.0 && grassLayer.xScale > minAllowedScale) { // zoom-out
+    } else if (sender.scale < 1.0 && grassLayer
+            .xScale > minAllowedScale) { // zoom-out
 
         [grassLayer setScale:minAllowedScale];
         grassLayer.position = CGPointMake(0, 0);
@@ -560,7 +577,8 @@ static const NSInteger kBGMinesCountViewTag = 2;
 {
     BGLog();
 
-    UILabel *minesCountLabel = (UILabel *) [self.view viewWithTag:kBGMinesCountViewTag];
+    UILabel *minesCountLabel = (UILabel *) [self
+            .view viewWithTag:kBGMinesCountViewTag];
     minesCountLabel.text = [NSString stringWithFormat:@"%04d", 0];
 }
 
@@ -613,15 +631,16 @@ static const NSInteger kBGMinesCountViewTag = 2;
 //    создаем объект со счетом
     GKScore *score = [[GKScore alloc]
                                initWithLeaderboardIdentifier:leaderboardID];
-    score.value = TIMER_MAX_VALUE * ([BGGameViewController shared].skView.field.bombs - BOMBS_MIN_VALUE + 1) - timerValue;
+    score.value = TIMER_MAX_VALUE * ([BGGameViewController shared].skView.field
+            .bombs - BOMBS_MIN_VALUE + 1) - timerValue;
 
     [GKScore reportScores:@[score]
     withCompletionHandler:^(NSError *error)
-    {
+            {
 //        отправим сообщение о том, что пользователь отправил свой счет в ГЦ
 //        соберем статистику о тех, у кого ГЦ активен
-        [Flurry logEvent:@"UserSubmittedGameScore"];
-    }];
+                [Flurry logEvent:@"UserSubmittedGameScore"];
+            }];
 }
 
 @end

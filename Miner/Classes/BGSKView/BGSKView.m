@@ -43,7 +43,7 @@ static const NSInteger kBGPrime = 1001;
     self = [super initWithFrame:frame];
 
     if (self) {
-        __weak typeof (self) weakSelf = self;
+        __weak BGSKView *weakSelf = self;
 
         //        работаем с текстурами и атласами
         _tileAtlas = [SKTextureAtlas atlasNamed:@"Tiles"];
@@ -64,62 +64,64 @@ static const NSInteger kBGPrime = 1001;
                                                 _mineAnimationAtlas,
                                                 _explosionAnimationAtlas]
                         withCompletionHandler:^
-                        {
-                            //                            добавляем сцену на текущий SKView
-                            BGSKScene *gameScene = [[BGSKScene alloc]
-                                                               initWithSize:weakSelf.frame.size];
-                            gameScene.userInteractionEnabled = YES;
-                            [weakSelf presentScene:gameScene];
+                {
+                    //                            добавляем сцену на текущий SKView
+                    BGSKScene *gameScene = [[BGSKScene alloc]
+                                                       initWithSize:weakSelf
+                                                               .frame.size];
+                    gameScene.userInteractionEnabled = YES;
+                    [weakSelf presentScene:gameScene];
 
-                            //    создаем основные узлы для хранения слоёв - травы, земли
-                            [weakSelf createInitialLayers];
+                    //    создаем основные узлы для хранения слоёв - травы, земли
+                    [weakSelf createInitialLayers];
 
-                            //                            создаем сильные ссылки на текстуры (земля, цифры, трава)
-                            for (NSString *textureFullName in weakSelf.tileAtlas.textureNames) {
-                                NSString *textureName = [textureFullName componentsSeparatedByString:@"@"][0];
-                                SKTexture *texture = [weakSelf
-                                        .tileAtlas textureNamed:textureFullName];
+                    //                            создаем сильные ссылки на текстуры (земля, цифры, трава)
+                    for (NSString *textureFullName in weakSelf.tileAtlas
+                            .textureNames) {
+                        NSString *textureName = [textureFullName componentsSeparatedByString:@"@"][0];
+                        SKTexture *texture = [weakSelf
+                                .tileAtlas textureNamed:textureFullName];
 
-                                weakSelf.tileSprites[textureName] = [SKSpriteNode spriteNodeWithTexture:texture];
-                            }
+                        weakSelf.tileSprites[textureName] = [SKSpriteNode spriteNodeWithTexture:texture];
+                    }
 
-                            //                            добавляем текстуры анимации пикания бомбы
-                            for (NSUInteger animationFrame = 0; animationFrame < weakSelf
-                                    .mineAnimationAtlas.textureNames
-                                    .count; animationFrame++) {
-                                NSString *frameName = [NSString stringWithFormat:@"mine_found%04d@2x.png",
-                                                                                 animationFrame];
-                                SKTexture *texture = [weakSelf
-                                        .mineAnimationAtlas textureNamed:frameName];
-                                [weakSelf.mineAnimationTextures addObject:texture];
-                            }
+                    //                            добавляем текстуры анимации пикания бомбы
+                    for (NSUInteger animationFrame = 0; animationFrame < weakSelf
+                            .mineAnimationAtlas.textureNames
+                            .count; animationFrame++) {
+                        NSString *frameName = [NSString stringWithFormat:@"mine_found%04d@2x.png",
+                                                                         (NSInteger) animationFrame];
+                        SKTexture *texture = [weakSelf
+                                .mineAnimationAtlas textureNamed:frameName];
+                        [weakSelf.mineAnimationTextures addObject:texture];
+                    }
 
-                            //                            добавляем текстуры анимации травы
-                            for (NSUInteger animationFrame = 0; animationFrame < weakSelf
-                                    .grassAnimationAtlas.textureNames
-                                    .count; animationFrame++) {
-                                NSString *frameName = [NSString stringWithFormat:@"Grass_animation%04d@2x.png",
-                                                                                 animationFrame];
-                                SKTexture *texture = [weakSelf
-                                        .grassAnimationAtlas textureNamed:frameName];
-                                [weakSelf.grassAnimationTextures addObject:texture];
-                            }
+                    //                            добавляем текстуры анимации травы
+                    for (NSUInteger animationFrame = 0; animationFrame < weakSelf
+                            .grassAnimationAtlas.textureNames
+                            .count; animationFrame++) {
+                        NSString *frameName = [NSString stringWithFormat:@"Grass_animation%04d@2x.png",
+                                                                         (NSInteger) animationFrame];
+                        SKTexture *texture = [weakSelf
+                                .grassAnimationAtlas textureNamed:frameName];
+                        [weakSelf.grassAnimationTextures addObject:texture];
+                    }
 
-                            //                            добавляем текстуры анимации взрыва
-                            for (NSUInteger animationFrame = 0; animationFrame < weakSelf
-                                    .explosionAnimationAtlas.textureNames
-                                    .count; animationFrame++) {
-                                NSString *frameName = [NSString stringWithFormat:@"explosion_%05d@2x.png",
-                                                                                 animationFrame + 60];
+                    //                            добавляем текстуры анимации взрыва
+                    for (NSUInteger animationFrame = 0; animationFrame < weakSelf
+                            .explosionAnimationAtlas.textureNames
+                            .count; animationFrame++) {
+                        NSString *frameName = [NSString stringWithFormat:@"explosion_%05d@2x.png",
+                                                                         (NSInteger) (animationFrame + 60)];
 
-                                SKTexture *texture = [weakSelf
-                                        .explosionAnimationAtlas textureNamed:frameName];
-                                [weakSelf.explosionAnimationTextures addObject:texture];
-                            }
+                        SKTexture *texture = [weakSelf
+                                .explosionAnimationAtlas textureNamed:frameName];
+                        [weakSelf.explosionAnimationTextures addObject:texture];
+                    }
 
-                            //                            начнем игру, таймер не запускаем
-                            [weakSelf startNewGame];
-                        }];
+                    //                            начнем игру, таймер не запускаем
+                    [weakSelf startNewGame];
+                }];
     }
 
     return self;
@@ -172,7 +174,7 @@ static const NSInteger kBGPrime = 1001;
     for (NSUInteger indexCol = 0; indexCol < colsFromSettings; indexCol++) {
         for (NSUInteger indexRow = 0; indexRow < rowsFromSettings; indexRow++) {
             NSString *uniqueCellName = [NSString stringWithFormat:@"%d",
-                                                                  indexCol * kBGPrime + indexRow];
+                                                                  (NSInteger) (indexCol * kBGPrime + indexRow)];
             NSInteger fieldValue = [self.field valueForCol:indexCol
                                                        row:indexRow];
             SKSpriteNode *earthTile;
@@ -188,8 +190,8 @@ static const NSInteger kBGPrime = 1001;
                     break;
 
                 default: {
-                    NSString *earthTileName = [NSString stringWithFormat:@"earth%d",
-                                                                         fieldValue];
+                    NSString *earthTileName = [NSString stringWithFormat:@"earth%ld",
+                                                                         (long) fieldValue];
                     earthTile = [self.tileSprites[earthTileName] copy];
                 }
                     break;
@@ -212,10 +214,11 @@ static const NSInteger kBGPrime = 1001;
 {
     BGLog();
 
-    __weak typeof (self) weakSelf = self;
+    __weak typeof(self) weakSelf = self;
 
     NSUInteger cellIndex = col * kBGPrime + row;
-    NSString *uniqueCellName = [NSString stringWithFormat:@"%d", cellIndex];
+    NSString *uniqueCellName = [NSString stringWithFormat:@"%lu",
+                                                          (unsigned long) cellIndex];
 
     SKNode *compoundLayer = [self.scene childNodeWithName:@"compoundLayer"];
     SKNode *earthLayer = [compoundLayer childNodeWithName:@"earthLayer"];
@@ -226,12 +229,12 @@ static const NSInteger kBGPrime = 1001;
 
     //    анимация раскапывания
     SKAction *digAction = [SKAction runBlock:^
-    {
-        SKAction *grassDigAction = [SKAction animateWithTextures:weakSelf
-                .grassAnimationTextures
-                                                    timePerFrame:0.05];
-        [grassNode runAction:grassDigAction];
-    }];
+            {
+                SKAction *grassDigAction = [SKAction animateWithTextures:weakSelf
+                        .grassAnimationTextures
+                                                            timePerFrame:0.05];
+                [grassNode runAction:grassDigAction];
+            }];
 
     //    анимация бомбы
     SKAction *tickAction = [SKAction animateWithTextures:_mineAnimationTextures
@@ -242,11 +245,11 @@ static const NSInteger kBGPrime = 1001;
 
     //    звук взрыва
     SKAction *playExplosionMusicAction = [SKAction runBlock:^
-    {
-        [[[BGResourcePreloader shared]
-                               playerFromGameConfigForResource:@"explosion.wav"]
-                               play];
-    }];
+            {
+                [[[BGResourcePreloader shared]
+                                       playerFromGameConfigForResource:@"explosion.wav"]
+                                       play];
+            }];
 
     //    ресайзим взрыв относительно размеров поля
     if ([BGSettingsManager sharedManager].cols == 12)
@@ -268,15 +271,15 @@ static const NSInteger kBGPrime = 1001;
 
     //    действие по добавлению ноды на сцену
     SKAction *explosionNodeAddedToScene = [SKAction runBlock:^
-    {
-        [earthLayer addChild:explosionNode];
-    }];
+            {
+                [earthLayer addChild:explosionNode];
+            }];
 
     //    анимация открытия остальных бомб
     SKAction *openAllMines = [SKAction runBlock:^
-    {
-        [weakSelf openCellsWithBombs];
-    }];
+            {
+                [weakSelf openCellsWithBombs];
+            }];
 
     //    скомпоновая анимация взрыва и исчезания мины
     SKAction *waitAction = [SKAction waitForDuration:0.85];
@@ -292,9 +295,9 @@ static const NSInteger kBGPrime = 1001;
 
     //    показываем пользователю проигрышный смайл
     SKAction *showSmile = [SKAction runBlock:^
-    {
-        [weakSelf showFinalSmileIsAlive:NO];
-    }];
+            {
+                [weakSelf showFinalSmileIsAlive:NO];
+            }];
 
     //    время ожидания до конца проигрывания анимации взрыва
     SKAction *waitForExplosionToEndAction = [SKAction waitForDuration:1.0];
@@ -336,7 +339,7 @@ static const NSInteger kBGPrime = 1001;
 
         //        удаляем с верхнего слоя тайл с травой
         NSString *nodeName = [NSString stringWithFormat:@"%d",
-                                                        currentCol * kBGPrime + currentRow];
+                                                        (NSInteger) (currentCol * kBGPrime + currentRow)];
         SKNode *grassNodeToRemoveFromParent = [[[self
                 .scene childNodeWithName:@"compoundLayer"]
                        childNodeWithName:@"grassLayer"]
@@ -388,27 +391,28 @@ static const NSInteger kBGPrime = 1001;
     SKNode *compoundLayer = [self.scene childNodeWithName:@"compoundLayer"];
     SKNode *grassLayer = [compoundLayer childNodeWithName:@"grassLayer"];
     SKNode *earthLayer = [compoundLayer childNodeWithName:@"earthLayer"];
-    SKTexture *checkedMineTexture = [SKTexture textureWithImageNamed:@"checked_bomb"];
+    SKTexture *checkedMineTexture = [SKTexture textureWithImageNamed:@"mine_defused"];
 
     [grassLayer enumerateChildNodesWithName:@"*"
                                  usingBlock:^(SKNode *node, BOOL *stop)
-                                 {
-                                     NSUInteger col = [node.userData[@"col"] unsignedIntegerValue];
-                                     NSUInteger row = [node.userData[@"row"] unsignedIntegerValue];
+            {
+                NSUInteger col = [node.userData[@"col"] unsignedIntegerValue];
+                NSUInteger row = [node.userData[@"row"] unsignedIntegerValue];
 
-                                     NSInteger value = [weakSelf.field valueForCol:col
-                                                                               row:row];
+                NSInteger value = [weakSelf.field valueForCol:col
+                                                          row:row];
 
-                                     if (BGFieldBomb == value) {
-                                         if (node.children.count != 0) {
+                if (BGFieldBomb == value) {
+                    if (node.children.count != 0) {
 //                                             мина отмечена флагом, заменим спрайт под травой
-                                             SKSpriteNode *earthNode = (SKSpriteNode *) [earthLayer childNodeWithName:node.name];
-                                             earthNode.texture = checkedMineTexture;
-                                         }
+                        SKSpriteNode *earthNode = (SKSpriteNode *) [earthLayer childNodeWithName:node
+                                .name];
+                        earthNode.texture = checkedMineTexture;
+                    }
 
-                                         [node removeFromParent];
-                                     }
-                                 }];
+                    [node removeFromParent];
+                }
+            }];
 }
 
 - (BOOL)isGameFinished
@@ -418,24 +422,24 @@ static const NSInteger kBGPrime = 1001;
     SKNode *grassTilesNode = [[self.scene childNodeWithName:@"compoundLayer"]
                                           childNodeWithName:@"grassLayer"];
     __block BOOL isGameFinished = YES;
-    __weak typeof (self) weakSelf = self;
+    __weak typeof(self) weakSelf = self;
 
     [grassTilesNode enumerateChildNodesWithName:@"*"
                                      usingBlock:^(SKNode *node, BOOL *stop)
-                                     {
-                                         NSUInteger col = [node.userData[@"col"] unsignedIntegerValue];
-                                         NSUInteger row = [node.userData[@"row"] unsignedIntegerValue];
+            {
+                NSUInteger col = [node.userData[@"col"] unsignedIntegerValue];
+                NSUInteger row = [node.userData[@"row"] unsignedIntegerValue];
 
-                                         NSInteger value = [weakSelf.field valueForCol:col
-                                                                                   row:row];
+                NSInteger value = [weakSelf.field valueForCol:col
+                                                          row:row];
 
-                                         // содержит под собой мину или нет
-                                         if (node.userData == nil || value == BGFieldBomb) {
-                                         } else {
-                                             *stop = YES;
-                                             isGameFinished = NO;
-                                         }
-                                     }];
+                // содержит под собой мину или нет
+                if (node.userData == nil || value == BGFieldBomb) {
+                } else {
+                    *stop = YES;
+                    isGameFinished = NO;
+                }
+            }];
 
     //    пользователь выиграл, показываем ему картину выигрышную
     if (isGameFinished) {
@@ -490,7 +494,7 @@ static const NSInteger kBGPrime = 1001;
         for (NSUInteger indexCol = 0; indexCol < colsFromSettings; indexCol++) {
             for (NSUInteger indexRow = 0; indexRow < rowsFromSettings; indexRow++) {
                 NSString *uniqueCellName = [NSString stringWithFormat:@"%d",
-                                                                      indexCol * kBGPrime + indexRow];
+                                                                      (NSInteger) (indexCol * kBGPrime + indexRow)];
                 SKSpriteNode *grassTile = [self.tileSprites[@"grass"] copy];
                 CGFloat x = indexRow * grassTile.size.width;
                 CGFloat y = indexCol * grassTile.size.height;
