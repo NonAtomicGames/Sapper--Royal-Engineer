@@ -77,6 +77,20 @@
 		D5E39CDF18E7F87A00F25012 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D5E39CE118E7F87A00F25012 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXBuildRule section */
+		D53D2E521925315500C365C2 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			filePatterns = "*.atlas";
+			fileType = pattern.proxy;
+			isEditable = 1;
+			outputFiles = (
+				"${DERIVED_FILE_DIR}/${INPUT_FILE_BASE}.atlasc",
+			);
+			script = "${DEVELOPER_TOOLS_DIR}/../usr/bin/TextureAtlas ${INPUT_FILE_PATH} ${DERIVED_FILE_DIR}";
+		};
+/* End PBXBuildRule section */
+
 /* Begin PBXContainerItemProxy section */
 		D5D6496418D46B5100854518 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -586,6 +600,7 @@
 				D5D6493C18D46B5100854518 /* Resources */,
 			);
 			buildRules = (
+				D53D2E521925315500C365C2 /* PBXBuildRule */,
 			);
 			dependencies = (
 			);

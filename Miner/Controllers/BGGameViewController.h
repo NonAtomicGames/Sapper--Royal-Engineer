@@ -22,4 +22,7 @@
 // используется для того, чтобы ускорить загрузку и отображение содержимого сцены
 + (instancetype)shared;
 
+// Game Center
+- (void)authorizeLocalPlayer;
+
 @end

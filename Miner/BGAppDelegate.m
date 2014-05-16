@@ -3,7 +3,7 @@
 //  Miner
 //
 //  Created by AndrewShmig on 3/15/14.
-//  Copyright (c) 2014 Bleeding Games. All rights reserved.
+//  Copyright (c) 2014 Non Atomic Games. All rights reserved.
 //
 
 #import <GameKit/GameKit.h>
@@ -42,6 +42,10 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 
 //    предсоздание игрового экрана
     [BGGameViewController shared];
+
+//    запрашиваем у пользователя авторизацию в ГЦ, если надо
+    if ([BGSettingsManager sharedManager].gameCenterStatus == BGMinerGameCenterStatusOn)
+        [[BGGameViewController shared] authorizeLocalPlayer];
 
 //    предзагрузка дефолтов
     [BGSettingsManager sharedManager];
@@ -86,7 +90,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
     if ([topViewController isMemberOfClass:[BGGameViewController class]]) {
         [BGGameViewController shared].skView.scene.paused = NO;
     }
-    
+
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 
@@ -96,33 +100,6 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     [[BGSettingsManager sharedManager] save];
-}
-
-#pragma mark - Helpers
-
-- (void)authorizeLocalGameCenterPlayer
-{
-    BGLog();
-    
-    //        проверим, авторизован ли пользователь в Game Center и, если да, то
-    //        опубликуем его счет. Просить авторизоваться не будем.
-    GKLocalPlayer *localPlayer = [GKLocalPlayer localPlayer];
-    __weak UIWindow *weak = [UIApplication sharedApplication].keyWindow;
-    
-    localPlayer.authenticateHandler = ^(UIViewController *view, NSError *error)
-    {
-        NSLog(@"error: %@", error);
-        NSLog(@"view: %@", view);
-        NSLog(@"navigation: %@", weak.rootViewController.navigationController);
-        
-        if (nil != view) {
-            [weak.rootViewController.navigationController presentViewController:view
-                                                                              animated:YES
-                                                                            completion:^{
-                                                                                NSLog(@"Game Center completion block");
-                                                                            }];
-        }
-    };
 }
 
 @end

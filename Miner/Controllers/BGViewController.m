@@ -3,7 +3,7 @@
 //  Miner
 //
 //  Created by AndrewShmig on 3/15/14.
-//  Copyright (c) 2014 Bleeding Games. All rights reserved.
+//  Copyright (c) 2014 Non Atomic Games. All rights reserved.
 //
 
 #import <iAd/iAd.h>
@@ -23,23 +23,17 @@
 - (void)viewDidLoad
 {
     BGLog();
-    
+
     [super viewDidLoad];
-    
+
     self.gameViewController = [BGGameViewController shared];
 }
 
-- (void)viewWillAppear:(BOOL)animated
+- (void)viewDidAppear:(BOOL)animated
 {
     BGLog();
-    
-    [super viewWillAppear:animated];
-    
-    //    проверяем авторизацию текущего пользователя GameCenter и авторизуем, если надо
-    if ([BGSettingsManager sharedManager].gameCenterStatus == BGMinerGameCenterStatusOn) {
-        BGAppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-        [appDelegate authorizeLocalGameCenterPlayer];
-    }
+
+    [super viewDidAppear:animated];
 
     //    разрешаем на этом экране работать рекламе
     self.canDisplayBannerAds = YES;
@@ -51,8 +45,9 @@
 {
     //    проигрываем звук нажатия
     [[[BGResourcePreloader shared]
-      playerFromGameConfigForResource:@"buttonTap.mp3"] play];
-    
+                           playerFromGameConfigForResource:@"buttonTap.mp3"]
+                           play];
+
     [self.navigationController pushViewController:self.gameViewController
                                          animated:YES];
 }
@@ -61,7 +56,8 @@
 {
     //    проигрываем звук нажатия
     [[[BGResourcePreloader shared]
-      playerFromGameConfigForResource:@"buttonTap.mp3"] play];
+                           playerFromGameConfigForResource:@"buttonTap.mp3"]
+                           play];
 }
 
 @end

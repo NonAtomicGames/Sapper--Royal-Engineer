@@ -14,6 +14,7 @@
 #import "BGResourcePreloader.h"
 #import "Flurry.h"
 #import "BGSettingsManager.h"
+#import "BGAppDelegate.h"
 
 
 #define TIMER_MAX_VALUE 9999
@@ -43,7 +44,8 @@ static const NSInteger kBGMinesCountViewTag = 2;
     static dispatch_once_t once;
     static BGGameViewController *sharedInstance;
 
-    dispatch_once(&once, ^{
+    dispatch_once(&once, ^
+    {
         sharedInstance = [[self alloc] init];
     });
 
@@ -197,7 +199,7 @@ static const NSInteger kBGMinesCountViewTag = 2;
 //    засекаем сколько пользователь играет по времени
     [Flurry logEvent:@"UserIsPlaying"
       withParameters:@{
-              @"cols" : @(self.skView.field.cols),
+              @"cols"  : @(self.skView.field.cols),
               @"bombs" : @(self.skView.field.bombs)
       }
                timed:YES];
@@ -453,7 +455,7 @@ static const NSInteger kBGMinesCountViewTag = 2;
 
 //            вектор перемещения игрового поля
             CGVector delta = CGVectorMake(-(_scrollPointPrev.x - panPoint.x),
-                    -(_scrollPointPrev.y - panPoint.y));
+                                          -(_scrollPointPrev.y - panPoint.y));
 
             CGFloat newXGrassLayerPosition = grassLayer.position.x + delta.dx;
             CGFloat newYGrassLayerPosition = grassLayer.position.y + delta.dy;
@@ -510,9 +512,9 @@ static const NSInteger kBGMinesCountViewTag = 2;
             .scene convertPointFromView:pinchPoint];
 
     CGPoint anchorPoint = CGPointMake(scenePinchPoint.x - grassLayer.position.x,
-            scenePinchPoint.y - grassLayer.position.y);
+                                      scenePinchPoint.y - grassLayer.position.y);
     CGVector delta = CGVectorMake(anchorPoint.x - sender.scale * anchorPoint.x,
-            anchorPoint.y - sender.scale * anchorPoint.y);
+                                  anchorPoint.y - sender.scale * anchorPoint.y);
 
     if (sender.scale > 1.0 && grassLayer.xScale < maxAllowedScale) { // zoom-in
 
@@ -584,8 +586,10 @@ static const NSInteger kBGMinesCountViewTag = 2;
 
 - (void)sendUserScoreToGameCenter
 {
+    BGLog();
+
 //    если пользователь не авторизован, то нет смысла обрабатывать его счет
-    if (![GKLocalPlayer localPlayer].isAuthenticated)
+    if (![GKLocalPlayer localPlayer].isAuthenticated || [BGSettingsManager sharedManager].gameCenterStatus == BGMinerGameCenterStatusOff)
         return;
 
     UILabel *timerLabel = (UILabel *) [self.view viewWithTag:kBGTimerViewTag];
@@ -631,16 +635,41 @@ static const NSInteger kBGMinesCountViewTag = 2;
 //    создаем объект со счетом
     GKScore *score = [[GKScore alloc]
                                initWithLeaderboardIdentifier:leaderboardID];
-    score.value = TIMER_MAX_VALUE * ([BGGameViewController shared].skView.field
-            .bombs - BOMBS_MIN_VALUE + 1) - timerValue;
+    score.value = TIMER_MAX_VALUE * ([BGGameViewController shared].skView.field.bombs - BOMBS_MIN_VALUE + 1) - timerValue;
 
     [GKScore reportScores:@[score]
     withCompletionHandler:^(NSError *error)
-            {
+    {
+        NSLog(@"Score: %@", @(score.value));
+
 //        отправим сообщение о том, что пользователь отправил свой счет в ГЦ
 //        соберем статистику о тех, у кого ГЦ активен
-                [Flurry logEvent:@"UserSubmittedGameScore"];
-            }];
+        [Flurry logEvent:@"UserSubmittedGameScore"];
+    }];
+}
+
+#pragma mark - Game Center
+
+- (void)authorizeLocalPlayer
+{
+    BGLog();
+
+    GKLocalPlayer *localPlayer = [GKLocalPlayer localPlayer];
+    __block BGAppDelegate *delegate = (BGAppDelegate *) [UIApplication sharedApplication].delegate;
+
+    localPlayer.authenticateHandler = ^(UIViewController *authController,
+                                        NSError *error)
+    {
+        NSLog(@"GameCenter error: %@", error);
+
+        if (nil != authController) {
+            [delegate.window.rootViewController presentViewController:authController
+                                                             animated:YES
+                                                           completion:^
+                                                           {
+                                                           }];
+        }
+    };
 }
 
 @end
