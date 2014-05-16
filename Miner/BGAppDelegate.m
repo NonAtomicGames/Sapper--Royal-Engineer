@@ -6,17 +6,26 @@
 //  Copyright (c) 2014 Non Atomic Games. All rights reserved.
 //
 
-#import <GameKit/GameKit.h>
 #import "BGAppDelegate.h"
 #import "BGSettingsManager.h"
 #import "BGResourcePreloader.h"
 #import "BGSKView.h"
 #import "BGGameViewController.h"
 #import "BGLog.h"
+
 #import "Flurry.h"
+#import "iRate.h"
 
 
 @implementation BGAppDelegate
+
++ (void)initialize
+{
+    [iRate sharedInstance].appStoreID = 867507430;
+    [iRate sharedInstance].applicationName = @"Sapper: Royal Engineer";
+    [iRate sharedInstance].usesUntilPrompt = 5;
+    [iRate sharedInstance].daysUntilPrompt = 5;
+}
 
 - (BOOL)          application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
