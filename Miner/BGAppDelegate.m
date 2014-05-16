@@ -24,7 +24,7 @@
     [iRate sharedInstance].appStoreID = 867507430;
     [iRate sharedInstance].applicationName = @"Sapper: Royal Engineer";
     [iRate sharedInstance].usesUntilPrompt = 5;
-    [iRate sharedInstance].daysUntilPrompt = 5;
+    [iRate sharedInstance].daysUntilPrompt = 3;
 }
 
 - (BOOL)          application:(UIApplication *)application
