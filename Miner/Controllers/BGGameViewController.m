@@ -122,7 +122,7 @@ static const NSInteger kBGMinesCountViewTag = 2;
         UIButton *back = [[UIButton alloc]
                                     initWithFrame:CGRectMake(14, 22, backNormal
                                             .size.width, backNormal.size
-                                            .height)];
+                                                                     .height)];
         [back setImage:backNormal forState:UIControlStateNormal];
         [back setImage:backHighlighted forState:UIControlStateHighlighted];
         [back addTarget:self
@@ -665,9 +665,7 @@ static const NSInteger kBGMinesCountViewTag = 2;
         if (nil != authController) {
             [delegate.window.rootViewController presentViewController:authController
                                                              animated:YES
-                                                           completion:^
-                                                           {
-                                                           }];
+                                                           completion:nil];
         }
     };
 }

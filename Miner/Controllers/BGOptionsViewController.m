@@ -255,10 +255,6 @@
     } else {
         [BGSettingsManager sharedManager].gameCenterStatus = BGMinerGameCenterStatusOn;
 
-//        смотрим, что у нас с авторизацией в Гейм Центре
-        if (![GKLocalPlayer localPlayer].isAuthenticated)
-            [[BGGameViewController shared] authorizeLocalPlayer];
-
         //        фиксируем пользователей, которые включают гейм центр
         [Flurry logEvent:@"userTurnsGameCenterOn"];
     }
