@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		187C0A77708042E8915F7649 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DFC22088A75646AE82D54891 /* libPods.a */; };
 		1A9A00C2A54782CE35955BE3 /* back_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A042A0DD59DAA56116AD8 /* back_down@2x.png */; };
 		1A9A016CEAF98572B39B837C /* button_play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A0C08F0868B5701886F63 /* button_play@2x.png */; };
 		1A9A01853A0BB677BFCCFB05 /* buttonTap.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A04B0FAB94FABEBB139C9 /* buttonTap.mp3 */; };
@@ -17,7 +16,6 @@
 		1A9A02E36FF23270FEC10CC8 /* BGResourcePreloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A0D8241BD943D88289715 /* BGResourcePreloader.m */; };
 		1A9A031D3D0EFEBC84A17D6C /* BGNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A0BAAF5CD8C67041CF99B /* BGNavigationViewController.m */; };
 		1A9A04436954BBD988CC47E5 /* switchON.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A089200A1C5BB1D879138 /* switchON.mp3 */; };
-		1A9A04453A6D01000A900978 /* libFlurry_5.0.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A9A0C1ED78765505DEE2077 /* libFlurry_5.0.0.a */; };
 		1A9A063AD699AF425AB759A0 /* button_play_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A0F424BF4EC50A100C684 /* button_play_down@2x.png */; };
 		1A9A079893D5A5C357AFB970 /* BGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A00AC67B68FA11C11D15D /* BGViewController.m */; };
 		1A9A07A0A3CEE8B910E8AED3 /* button_options_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A0C37B949EC97ED5DD45D /* button_options_down@2x.png */; };
@@ -45,6 +43,7 @@
 		D50D896618F3D6B000617442 /* difficulty@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D50D896818F3D6B000617442 /* difficulty@2x.png */; };
 		D50D897318F3D83400617442 /* field_size@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D50D897518F3D83400617442 /* field_size@2x.png */; };
 		D50D897818F3D89600617442 /* sounds@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D50D897A18F3D89600617442 /* sounds@2x.png */; };
+		D50F9A4519263A6900AAFC81 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D50F9A4419263A6900AAFC81 /* libPods.a */; };
 		D521600418F3DBD0003247DF /* button_down_easy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D521600618F3DBD0003247DF /* button_down_easy@2x.png */; };
 		D521600918F3DC36003247DF /* button_down_hard@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D521600B18F3DC36003247DF /* button_down_hard@2x.png */; };
 		D521600E18F3DCB5003247DF /* button_down_norm@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D521601018F3DCB5003247DF /* button_down_norm@2x.png */; };
@@ -73,9 +72,15 @@
 		D5D6496118D46B5100854518 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5D6496018D46B5100854518 /* XCTest.framework */; };
 		D5D6496218D46B5100854518 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5D6494118D46B5100854518 /* Foundation.framework */; };
 		D5D6496318D46B5100854518 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5D6494518D46B5100854518 /* UIKit.framework */; };
-		D5D6498318D47A2C00854518 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5D6498218D47A2C00854518 /* SpriteKit.framework */; };
+		D5D6498318D47A2C00854518 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5D6498218D47A2C00854518 /* SpriteKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		D5E39CBB18E7EDB300F25012 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5E39CBD18E7EDB300F25012 /* Main.storyboard */; };
 		D5E39CDF18E7F87A00F25012 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D5E39CE118E7F87A00F25012 /* Localizable.strings */; };
+		D5F99E0D19263E3100725815 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5F99E0C19263E3100725815 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		D5F99E0F19263E3D00725815 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5F99E0E19263E3D00725815 /* MediaPlayer.framework */; };
+		D5F99E1119263E5D00725815 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5F99E1019263E5D00725815 /* StoreKit.framework */; };
+		D5F99F5A19263FAD00725815 /* libFlurry_5.0.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D5F99F5919263FAD00725815 /* libFlurry_5.0.0.a */; };
+		D5F99F5F19263FBC00725815 /* libFlurryAds_5.0.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D5F99F5E19263FBC00725815 /* libFlurryAds_5.0.0.a */; };
+		D5F99F6119263FFE00725815 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D5F99F6019263FFE00725815 /* libz.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -134,13 +139,11 @@
 		1A9A09FF2A24D2606048A0EB /* BGSKView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGSKView.m; sourceTree = "<group>"; };
 		1A9A0A168097146E939877B5 /* Digital.ttf */ = {isa = PBXFileReference; lastKnownFileType = file.ttf; path = Digital.ttf; sourceTree = "<group>"; };
 		1A9A0A46F498E9336A24C1C5 /* switchOFF.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = switchOFF.mp3; sourceTree = "<group>"; };
-		1A9A0AD891AE52B805469ECE /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
 		1A9A0AE117A4A76D2111CC65 /* BGSettingsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGSettingsManager.h; sourceTree = "<group>"; };
 		1A9A0B11B5D0819DBD1ECD8A /* BGUISegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGUISegmentedControl.h; sourceTree = "<group>"; };
 		1A9A0B6F52422ABC7674658E /* BGSKView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGSKView.h; sourceTree = "<group>"; };
 		1A9A0BAAF5CD8C67041CF99B /* BGNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGNavigationViewController.m; sourceTree = "<group>"; };
 		1A9A0BCD8A9200728D794515 /* BGGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGGameViewController.h; sourceTree = "<group>"; };
-		1A9A0C1ED78765505DEE2077 /* libFlurry_5.0.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_5.0.0.a; sourceTree = "<group>"; };
 		1A9A0CDAD8EB581A3C640A26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = "Miner/Resources/Images/Buttons/Base.lproj/button_options@2x.png"; sourceTree = SOURCE_ROOT; };
 		1A9A0CEE80CA0004C30D4556 /* grassTap.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = grassTap.mp3; sourceTree = "<group>"; };
 		1A9A0D4D726D2E98B003B766 /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = "Miner/Resources/Images/Buttons/Base.lproj/button_play_down@2x.png"; sourceTree = SOURCE_ROOT; };
@@ -152,13 +155,16 @@
 		1A9A0E8269320A2D346AC4CC /* BGUISegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGUISegmentedControl.m; sourceTree = "<group>"; };
 		1A9A0F1BABFA2C52CD749584 /* BGLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGLog.h; sourceTree = "<group>"; };
 		1A9A0F21405D83136B92F606 /* ru */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ru; path = "Miner/Resources/Images/Buttons/ru.lproj/button_options_down@2x.png"; sourceTree = SOURCE_ROOT; };
-		BFF93710F87F486BAD307F3D /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		D0358313F4FE482EB238BC24 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		D50D896718F3D6B000617442 /* ru */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ru; path = "ru.lproj/difficulty@2x.png"; sourceTree = "<group>"; };
 		D50D897118F3D7D600617442 /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = "Base.lproj/difficulty@2x.png"; sourceTree = "<group>"; };
 		D50D897418F3D83400617442 /* ru */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ru; path = "ru.lproj/field_size@2x.png"; sourceTree = "<group>"; };
 		D50D897618F3D83900617442 /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = "Base.lproj/field_size@2x.png"; sourceTree = "<group>"; };
 		D50D897918F3D89600617442 /* ru */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ru; path = "ru.lproj/sounds@2x.png"; sourceTree = "<group>"; };
 		D50D897B18F3D89B00617442 /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = "Base.lproj/sounds@2x.png"; sourceTree = "<group>"; };
+		D50F9A3D192635AE00AAFC81 /* libPods-iRate.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-iRate.a"; path = "Pods/build/Debug-iphoneos/libPods-iRate.a"; sourceTree = "<group>"; };
+		D50F9A3E192635AE00AAFC81 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
+		D50F9A4419263A6900AAFC81 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
 		D521600518F3DBD0003247DF /* ru */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ru; path = "ru.lproj/button_down_easy@2x.png"; sourceTree = "<group>"; };
 		D521600718F3DBD6003247DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = "Base.lproj/button_down_easy@2x.png"; sourceTree = "<group>"; };
 		D521600A18F3DC36003247DF /* ru */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ru; path = "ru.lproj/button_down_hard@2x.png"; sourceTree = "<group>"; };
@@ -203,6 +209,17 @@
 		D5E39CDC18E7F62C00F25012 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D5E39CE018E7F87A00F25012 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D5E39CE318E7F88400F25012 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D5F99E0819263C8800725815 /* libFlurry_5.0.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFlurry_5.0.0.a; path = "Miner/Flurry-iOS-5.0.0/Flurry/libFlurry_5.0.0.a"; sourceTree = "<group>"; };
+		D5F99E0A19263C9200725815 /* libFlurryAds_5.0.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFlurryAds_5.0.0.a; path = "Miner/Flurry-iOS-5.0.0/FlurryAds/libFlurryAds_5.0.0.a"; sourceTree = "<group>"; };
+		D5F99E0C19263E3100725815 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		D5F99E0E19263E3D00725815 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		D5F99E1019263E5D00725815 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		D5F99F5819263FAD00725815 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		D5F99F5919263FAD00725815 /* libFlurry_5.0.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_5.0.0.a; sourceTree = "<group>"; };
+		D5F99F5C19263FBC00725815 /* FlurryAdDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAdDelegate.h; sourceTree = "<group>"; };
+		D5F99F5D19263FBC00725815 /* FlurryAds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAds.h; sourceTree = "<group>"; };
+		D5F99F5E19263FBC00725815 /* libFlurryAds_5.0.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurryAds_5.0.0.a; sourceTree = "<group>"; };
+		D5F99F6019263FFE00725815 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		DFC22088A75646AE82D54891 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -211,16 +228,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5F99F6119263FFE00725815 /* libz.dylib in Frameworks */,
+				D5D6494618D46B5100854518 /* UIKit.framework in Frameworks */,
+				D5F99E1119263E5D00725815 /* StoreKit.framework in Frameworks */,
+				D5F99E0F19263E3D00725815 /* MediaPlayer.framework in Frameworks */,
+				D5F99E0D19263E3100725815 /* AdSupport.framework in Frameworks */,
+				D5F99F5A19263FAD00725815 /* libFlurry_5.0.0.a in Frameworks */,
+				D50F9A4519263A6900AAFC81 /* libPods.a in Frameworks */,
 				D59F3CB819122A5700E82FCD /* GameKit.framework in Frameworks */,
 				D521FEF618E8C2B3000D52C8 /* iAd.framework in Frameworks */,
+				D5F99F5F19263FBC00725815 /* libFlurryAds_5.0.0.a in Frameworks */,
 				D5D6498318D47A2C00854518 /* SpriteKit.framework in Frameworks */,
 				D5D6494418D46B5100854518 /* CoreGraphics.framework in Frameworks */,
-				D5D6494618D46B5100854518 /* UIKit.framework in Frameworks */,
 				D5D6494218D46B5100854518 /* Foundation.framework in Frameworks */,
 				1A9A07E1FFD9356FD7278706 /* Security.framework in Frameworks */,
 				1A9A0DD29325F19D4F57E583 /* SystemConfiguration.framework in Frameworks */,
-				1A9A04453A6D01000A900978 /* libFlurry_5.0.0.a in Frameworks */,
-				187C0A77708042E8915F7649 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,14 +259,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1A9A000EF5D0781645C8D10F /* Flurry */ = {
-			isa = PBXGroup;
-			children = (
-				1A9A08719032B2C08C765DE3 /* Flurry-iOS-5.0.0 */,
-			);
-			path = Flurry;
-			sourceTree = "<group>";
-		};
 		1A9A0107D436124DA0693232 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -292,15 +306,6 @@
 				1A9A08182AAE973924900A9D /* StatusButton */,
 			);
 			path = GameViewController;
-			sourceTree = "<group>";
-		};
-		1A9A04ABC5CB61B91293D295 /* Flurry */ = {
-			isa = PBXGroup;
-			children = (
-				1A9A0AD891AE52B805469ECE /* Flurry.h */,
-				1A9A0C1ED78765505DEE2077 /* libFlurry_5.0.0.a */,
-			);
-			path = Flurry;
 			sourceTree = "<group>";
 		};
 		1A9A04BE08F821907A92B72F /* BGSKView */ = {
@@ -399,14 +404,6 @@
 				1A9A0F5BB1525A748246513D /* Options */,
 			);
 			path = Buttons;
-			sourceTree = "<group>";
-		};
-		1A9A08719032B2C08C765DE3 /* Flurry-iOS-5.0.0 */ = {
-			isa = PBXGroup;
-			children = (
-				1A9A04ABC5CB61B91293D295 /* Flurry */,
-			);
-			path = "Flurry-iOS-5.0.0";
 			sourceTree = "<group>";
 		};
 		1A9A094AEBFF49A2C58101E2 /* BGLog */ = {
@@ -531,10 +528,12 @@
 		D5D6493518D46B5100854518 = {
 			isa = PBXGroup;
 			children = (
+				D5F99F5B19263FBC00725815 /* FlurryAds */,
+				D5F99F5719263FAD00725815 /* Flurry */,
 				D5D6494718D46B5100854518 /* Sapper */,
 				D5D6494018D46B5100854518 /* Frameworks */,
 				D5D6493F18D46B5100854518 /* Products */,
-				BFF93710F87F486BAD307F3D /* Pods.xcconfig */,
+				D0358313F4FE482EB238BC24 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -550,6 +549,15 @@
 		D5D6494018D46B5100854518 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D5F99F6019263FFE00725815 /* libz.dylib */,
+				D5F99E1019263E5D00725815 /* StoreKit.framework */,
+				D5F99E0E19263E3D00725815 /* MediaPlayer.framework */,
+				D5F99E0C19263E3100725815 /* AdSupport.framework */,
+				D5F99E0A19263C9200725815 /* libFlurryAds_5.0.0.a */,
+				D5F99E0819263C8800725815 /* libFlurry_5.0.0.a */,
+				D50F9A4419263A6900AAFC81 /* libPods.a */,
+				D50F9A3D192635AE00AAFC81 /* libPods-iRate.a */,
+				D50F9A3E192635AE00AAFC81 /* libPods.a */,
 				D59F3CB719122A5700E82FCD /* GameKit.framework */,
 				D521FEF518E8C2B3000D52C8 /* iAd.framework */,
 				D5D6498218D47A2C00854518 /* SpriteKit.framework */,
@@ -576,7 +584,6 @@
 				1A9A05927CCE9B4DF9AF9CFF /* Views */,
 				1A9A0107D436124DA0693232 /* Models */,
 				1A9A0464FCE9216D1855DD76 /* Resources */,
-				1A9A000EF5D0781645C8D10F /* Flurry */,
 			);
 			name = Sapper;
 			path = Miner;
@@ -594,6 +601,25 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		D5F99F5719263FAD00725815 /* Flurry */ = {
+			isa = PBXGroup;
+			children = (
+				D5F99F5819263FAD00725815 /* Flurry.h */,
+				D5F99F5919263FAD00725815 /* libFlurry_5.0.0.a */,
+			);
+			path = Flurry;
+			sourceTree = "<group>";
+		};
+		D5F99F5B19263FBC00725815 /* FlurryAds */ = {
+			isa = PBXGroup;
+			children = (
+				D5F99F5C19263FBC00725815 /* FlurryAdDelegate.h */,
+				D5F99F5D19263FBC00725815 /* FlurryAds.h */,
+				D5F99F5E19263FBC00725815 /* libFlurryAds_5.0.0.a */,
+			);
+			path = FlurryAds;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -601,11 +627,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D5D6497018D46B5100854518 /* Build configuration list for PBXNativeTarget "Miner" */;
 			buildPhases = (
-				D179A27E4CFA45B0A8801C54 /* Check Pods Manifest.lock */,
+				E0C0E8DEB0DD405CA63D6F1B /* Check Pods Manifest.lock */,
 				D5D6493A18D46B5100854518 /* Sources */,
 				D5D6493B18D46B5100854518 /* Frameworks */,
 				D5D6493C18D46B5100854518 /* Resources */,
-				9D6F8D0212B940E393216253 /* Copy Pods Resources */,
+				FBC86E2671504706883E3496 /* Copy Pods Resources */,
 			);
 			buildRules = (
 				D53D2E521925315500C365C2 /* PBXBuildRule */,
@@ -676,8 +702,6 @@
 			mainGroup = D5D6493518D46B5100854518;
 			productRefGroup = D5D6493F18D46B5100854518 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-			);
 			projectRoot = "";
 			targets = (
 				D5D6493D18D46B5100854518 /* Miner */,
@@ -748,22 +772,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		9D6F8D0212B940E393216253 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D179A27E4CFA45B0A8801C54 /* Check Pods Manifest.lock */ = {
+		E0C0E8DEB0DD405CA63D6F1B /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -776,6 +785,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FBC86E2671504706883E3496 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1047,20 +1071,39 @@
 		};
 		D5D6497118D46B5100854518 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BFF93710F87F486BAD307F3D /* Pods.xcconfig */;
+			baseConfigurationReference = D0358313F4FE482EB238BC24 /* Pods.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Miner/Miner-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"\"${PODS_ROOT}/Headers\"",
+					"\"${PODS_ROOT}/Headers/iRate\"",
+					"\"${PROJECT_DIR}/Miner/Flurry-iOS-5.0.0\"/**",
+				);
 				INFOPLIST_FILE = "Miner/Miner-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
-					"\"${PROJECT_DIR}/Miner/Flurry/Flurry iPhone SDK viPhone 5.0.0/Flurry-iOS-5.0.0/Flurry\"/**",
-					"\"${PROJECT_DIR}/Miner/Flurry/Flurry iPhone SDK viPhone 5.0.0/Flurry-iOS-5.0.0/FlurryAds\"/**",
-					"\"${PROJECT_DIR}/Miner/Flurry/Flurry-iOS-5.0.0/Flurry\"/**",
+					"\"${PROJECT_DIR}/Miner/Flurry/Flurry\"/**",
+					"\"${PROJECT_DIR}/Miner/Flurry/FlurryAds\"/**",
+					/Users/new/Downloads/Flurry,
+					iPhone,
+					SDK,
+					viPhone,
+					"5.0.0/Flurry-iOS-5.0.0/Flurry",
+					/Users/new/Downloads/Flurry,
+					iPhone,
+					SDK,
+					viPhone,
+					"5.0.0/Flurry-iOS-5.0.0/FlurryAds",
+					"$(PROJECT_DIR)/Miner/Flurry-iOS-5.0.0/Flurry",
+					"$(PROJECT_DIR)/Miner/Flurry-iOS-5.0.0/FlurryAds",
+					"$(PROJECT_DIR)/Flurry",
+					"$(PROJECT_DIR)/FlurryAds",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = Miner;
@@ -1076,20 +1119,45 @@
 		};
 		D5D6497218D46B5100854518 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BFF93710F87F486BAD307F3D /* Pods.xcconfig */;
+			baseConfigurationReference = D0358313F4FE482EB238BC24 /* Pods.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Miner/Miner-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"\"${PODS_ROOT}/Headers\"",
+					"\"${PODS_ROOT}/Headers/iRate\"",
+					"\"${PROJECT_DIR}/Miner/Flurry-iOS-5.0.0\"/**",
+				);
 				INFOPLIST_FILE = "Miner/Miner-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"\"${PROJECT_DIR}/Miner/Flurry/Flurry iPhone SDK viPhone 5.0.0/Flurry-iOS-5.0.0/Flurry\"/**",
 					"\"${PROJECT_DIR}/Miner/Flurry/Flurry iPhone SDK viPhone 5.0.0/Flurry-iOS-5.0.0/FlurryAds\"/**",
 					"\"${PROJECT_DIR}/Miner/Flurry/Flurry-iOS-5.0.0/Flurry\"/**",
+					"\"${PROJECT_DIR}/Miner/Flurry/Flurry\"/**",
+					"\"${PROJECT_DIR}/Miner/Flurry/FlurryAds\"/**",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/Miner/Flurry/Flurry",
+					"$(PROJECT_DIR)/Miner/Flurry/FlurryAds",
+					/Users/new/Downloads/Flurry,
+					iPhone,
+					SDK,
+					viPhone,
+					"5.0.0/Flurry-iOS-5.0.0/Flurry",
+					/Users/new/Downloads/Flurry,
+					iPhone,
+					SDK,
+					viPhone,
+					"5.0.0/Flurry-iOS-5.0.0/FlurryAds",
+					"$(PROJECT_DIR)/Miner/Flurry-iOS-5.0.0/Flurry",
+					"$(PROJECT_DIR)/Miner/Flurry-iOS-5.0.0/FlurryAds",
+					"$(PROJECT_DIR)/Flurry",
+					"$(PROJECT_DIR)/FlurryAds",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = Miner;

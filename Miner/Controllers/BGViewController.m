@@ -6,14 +6,11 @@
 //  Copyright (c) 2014 Non Atomic Games. All rights reserved.
 //
 
-#import <iAd/iAd.h>
-#import <GameKit/GameKit.h>
 #import "BGViewController.h"
-#import "BGSettingsManager.h"
 #import "BGLog.h"
 #import "BGResourcePreloader.h"
-#import "BGAppDelegate.h"
 #import "BGGameViewController.h"
+#import "FlurryAds.h"
 
 
 @implementation BGViewController
@@ -29,14 +26,31 @@
     self.gameViewController = [BGGameViewController shared];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    BGLog();
+
+    [super viewWillAppear:animated];
+
+    [FlurryAds fetchAndDisplayAdForSpace:@"BANNER_MAIN_VIEW"
+                                    view:self.view
+                                    size:BANNER_BOTTOM];
+}
+
 - (void)viewDidAppear:(BOOL)animated
 {
     BGLog();
 
     [super viewDidAppear:animated];
+}
 
-    //    разрешаем на этом экране работать рекламе
-    self.canDisplayBannerAds = YES;
+- (void)viewDidDisappear:(BOOL)animated
+{
+    BGLog();
+
+    [super viewDidDisappear:animated];
+
+    [FlurryAds removeAdFromSpace:@"BANNER_MAIN_VIEW"];
 }
 
 #pragma mark - Actions

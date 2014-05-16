@@ -12,10 +12,9 @@
 #import "BGSKView.h"
 #import "BGGameViewController.h"
 #import "BGLog.h"
-
-#import "Flurry.h"
 #import "iRate.h"
-
+#import "Flurry.h"
+#import "FlurryAds.h"
 
 @implementation BGAppDelegate
 
@@ -23,8 +22,8 @@
 {
     [iRate sharedInstance].appStoreID = 867507430;
     [iRate sharedInstance].applicationName = @"Sapper: Royal Engineer";
-    [iRate sharedInstance].usesUntilPrompt = 5;
-    [iRate sharedInstance].daysUntilPrompt = 3;
+    [iRate sharedInstance].usesUntilPrompt = 3;
+    [iRate sharedInstance].daysUntilPrompt = 1;
 }
 
 - (BOOL)          application:(UIApplication *)application
@@ -35,6 +34,10 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 //    собираем статистику
     [Flurry setCrashReportingEnabled:YES];
     [Flurry startSession:@"QMG6WRKZD397MK5N728Q"];
+
+//    инициализируем рекламу от Flurry
+    [FlurryAds enableTestAds:YES];
+    [FlurryAds initialize:self.window.rootViewController];
 
 //    предзагрузка звуков в фоновом режиме для избежания затормаживания
     NSArray *audioResources = @[@"switchON.mp3",
@@ -51,10 +54,6 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 
 //    предсоздание игрового экрана
     [BGGameViewController shared];
-
-//    запрашиваем у пользователя авторизацию в ГЦ, если надо
-    if ([BGSettingsManager sharedManager].gameCenterStatus == BGMinerGameCenterStatusOn)
-        [[BGGameViewController shared] authorizeLocalPlayer];
 
 //    предзагрузка дефолтов
     [BGSettingsManager sharedManager];
@@ -94,7 +93,8 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 
 //    сцена должна обновляться после выхода из бэкграунда только тогда, когда
 //    пользователь ушел в бэкграунд с игрового экрана, а не какого-то другого
-    UIViewController *topViewController = [[BGGameViewController shared].navigationController.viewControllers lastObject];
+    UIViewController *topViewController = [[BGGameViewController shared]
+            .navigationController.viewControllers lastObject];
 
     if ([topViewController isMemberOfClass:[BGGameViewController class]]) {
         [BGGameViewController shared].skView.scene.paused = NO;

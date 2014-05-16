@@ -18,6 +18,7 @@
 #import "BGGameViewController.h"
 #import "Flurry.h"
 #import "BGAppDelegate.h"
+#import "FlurryAds.h"
 
 
 @interface BGOptionsViewController ()
@@ -149,12 +150,14 @@
 
     [self.originalContentView addSubview:gameCenterImageView];
 
-    //    создаем переключатель для рекламы
+    //    создаем переключатель для Гейм Центра
     self.gameCenterSwitch = [[BGUISwitch alloc]
                                          initWithPosition:CGPointMake(181, 398)
                                                   onImage:[UIImage imageNamed:@"switch_1"]
                                                  offImage:[UIImage imageNamed:@"switch_0"]];
-    self.gameCenterSwitch.on = ([BGSettingsManager sharedManager].gameCenterStatus == BGMinerGameCenterStatusOn);
+    self.gameCenterSwitch.on = ([BGSettingsManager sharedManager]
+            .gameCenterStatus == BGMinerGameCenterStatusOn && [GKLocalPlayer localPlayer]
+            .isAuthenticated);
     self.gameCenterSwitch.tag = kBGUISwitchGameCenterTag;
     [self.gameCenterSwitch addTarget:self
                               action:@selector(gameCenterButtonTapped:)];
@@ -166,8 +169,16 @@
 {
     [super viewWillAppear:animated];
 
-    //    данный контроллер может работать с рекламой
-    self.canDisplayBannerAds = YES;
+    [FlurryAds fetchAndDisplayAdForSpace:@"BANNER_OPTIONS_VIEW"
+                                    view:self.view
+                                    size:BANNER_BOTTOM];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+
+    [FlurryAds removeAdFromSpace:@"BANNER_OPTIONS_VIEW"];
 }
 
 #pragma mark - Target actions
@@ -254,6 +265,9 @@
         [Flurry logEvent:@"UserTurnsGameCenterOff"];
     } else {
         [BGSettingsManager sharedManager].gameCenterStatus = BGMinerGameCenterStatusOn;
+
+        //    запрашиваем у пользователя авторизацию в ГЦ, если надо
+        [[BGGameViewController shared] authorizeLocalPlayer];
 
         //        фиксируем пользователей, которые включают гейм центр
         [Flurry logEvent:@"userTurnsGameCenterOn"];
