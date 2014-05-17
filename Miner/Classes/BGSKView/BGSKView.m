@@ -11,6 +11,7 @@
 #import "BGSettingsManager.h"
 #import "BGMinerField.h"
 #import "BGResourcePreloader.h"
+#import "BGGameViewController.h"
 
 
 // константа для "кодирования" координаты в одно значение
@@ -296,7 +297,7 @@ static const NSInteger kBGPrime = 1001;
     //    показываем пользователю проигрышный смайл
     SKAction *showSmile = [SKAction runBlock:^
             {
-                [weakSelf showFinalSmileIsAlive:NO];
+                [weakSelf showScoreIsAlive:NO];
             }];
 
     //    время ожидания до конца проигрывания анимации взрыва
@@ -443,7 +444,7 @@ static const NSInteger kBGPrime = 1001;
 
     //    пользователь выиграл, показываем ему картину выигрышную
     if (isGameFinished) {
-        [self showFinalSmileIsAlive:YES];
+        [self showScoreIsAlive:YES];
     }
 
     return isGameFinished;
@@ -538,21 +539,13 @@ static const NSInteger kBGPrime = 1001;
 
     [compoundLayer addChild:grassLayer];
 
-    //    создаем слой "камера"
-    SKNode *cameraLayer = [SKNode node];
-    cameraLayer.name = @"cameraLayer";
-    cameraLayer.userInteractionEnabled = YES;
-    cameraLayer.zPosition = 2;
-
-    [compoundLayer addChild:cameraLayer];
-
     //    создаем слой для хранения смайла победы/поражения
-    SKNode *smileLayer = [SKNode node];
-    smileLayer.name = @"winFailLayer";
-    smileLayer.userInteractionEnabled = YES;
-    smileLayer.zPosition = 3;
+    SKNode *scoreLayer = [SKNode node];
+    scoreLayer.name = @"scoreLayer";
+    scoreLayer.userInteractionEnabled = YES;
+    scoreLayer.zPosition = 2;
 
-    [compoundLayer addChild:smileLayer];
+    [compoundLayer addChild:scoreLayer];
 
     //    добавляем дерево на сцену
     [self.scene addChild:compoundLayer];
@@ -568,66 +561,84 @@ static const NSInteger kBGPrime = 1001;
 
     //    регулируем скейл основного узла в зависимости от размера поля
     switch (self.field.cols) {
-        case 12:
-            [grassLayer setScale:[self standardScaleForCols:12]];
-            [earthLayer setScale:[self standardScaleForCols:12]];
+        case 12: {
+            CGFloat scale = [self standardScaleForCols:12];
+            [grassLayer setScale:scale];
+            [earthLayer setScale:scale];
+        }
             break;
 
-        case 15:
-            [grassLayer setScale:[self standardScaleForCols:15]];
-            [earthLayer setScale:[self standardScaleForCols:15]];
+        case 15: {
+            CGFloat scale = [self standardScaleForCols:15];
+            [grassLayer setScale:scale];
+            [earthLayer setScale:scale];
+        }
             break;
 
-        default:
-            [grassLayer setScale:[self standardScaleForCols:24]];
-            [earthLayer setScale:[self standardScaleForCols:24]];
+        default: {
+            CGFloat scale = [self standardScaleForCols:24];
+            [grassLayer setScale:scale];
+            [earthLayer setScale:scale];
+        }
             break;
     }
 }
 
-- (void)showFinalSmileIsAlive:(BOOL)isAlive
+- (void)showScoreIsAlive:(BOOL)isAlive
 {
     BGLog();
-
-    if (![self needToShowSmileIsAlive:isAlive])
-        return;
 
     SKNode *compoundLayer = [self.scene childNodeWithName:@"compoundLayer"];
-    SKNode *winFailLayer = [compoundLayer childNodeWithName:@"winFailLayer"];
+    SKNode *scoreLayer = [compoundLayer childNodeWithName:@"scoreLayer"];
 
-    SKSpriteNode *winningSpriteNode;
+//    установим фоновую картинку
+    SKSpriteNode *scoreTable = [SKSpriteNode spriteNodeWithImageNamed:@"score_table"];
+    scoreTable
+            .userInteractionEnabled = YES; // возможность по тапу удалить/убрать плашку - BGGameViewController/tap
+    scoreTable.anchorPoint = CGPointZero;
+    scoreTable.name = @"scoreTable";
 
-    if (isAlive)
-        winningSpriteNode = [SKSpriteNode spriteNodeWithImageNamed:@"goodjob"];
-    else
-        winningSpriteNode = [SKSpriteNode spriteNodeWithImageNamed:@"failed"];
+//    добавим нужный смайл
+    NSString *imageNamed = (isAlive ? @"goodjob" : @"failed");
+    SKSpriteNode *smile = [SKSpriteNode spriteNodeWithImageNamed:imageNamed];
+    smile.anchorPoint = CGPointZero;
+    smile.position = CGPointMake(112.5, 270);
 
-    winningSpriteNode.anchorPoint = CGPointZero;
-    winningSpriteNode.name = @"smile";
+    [scoreTable addChild:smile];
 
-    [winFailLayer addChild:winningSpriteNode];
-}
+//    добавим надпись "Очки"
+    SKSpriteNode *scoreLabel = [SKSpriteNode spriteNodeWithImageNamed:@"score"];
+    scoreLabel.anchorPoint = CGPointZero;
+    scoreLabel.position = CGPointMake(122.5, 253);
 
-- (BOOL)needToShowSmileIsAlive:(BOOL)isAlive
-{
-    BGLog();
+    [scoreTable addChild:scoreLabel];
 
-    static NSUInteger failedAttempts = 0;
+//    добавим сам счет
+    UIColor *winColor = [UIColor colorWithRed:255
+                                        green:198
+                                         blue:0
+                                        alpha:1];
+    UIColor *loseColor = [UIColor redColor];
 
-    if (isAlive) {
-        failedAttempts = 0;
+    NSUInteger score = (isAlive ? [[BGGameViewController shared]
+                                                         gameScore] : 0);
 
-        return YES;
+    SKLabelNode *scoreValueLabel = [SKLabelNode labelNodeWithFontNamed:@"Digital-7 Mono"];
+    scoreValueLabel.fontSize = 27;
+    scoreValueLabel.fontColor = (score ? winColor : loseColor);
+
+    if (score == 0) {
+        scoreValueLabel.text = [NSString stringWithFormat:@"%d", score];
+        scoreValueLabel.position = CGPointMake(190, 222);
+    } else {
+        scoreValueLabel.text = [NSString stringWithFormat:@"%06d", score];
+        scoreValueLabel.position = CGPointMake(160, 222);
     }
 
-    failedAttempts++;
+    [scoreTable addChild:scoreValueLabel];
 
-    //    если пользователь проиграл два раза подряд, то после, смайл поражения не
-    //    будет отображаться
-    if (failedAttempts < 3)
-        return YES;
-    else
-        return NO;
+//    добавим табло с очками на главный экран
+    [scoreLayer addChild:scoreTable];
 }
 
 - (void)resetGameData
@@ -639,13 +650,13 @@ static const NSInteger kBGPrime = 1001;
     SKNode *compoundLayer = [self.scene childNodeWithName:@"compoundLayer"];
     SKNode *grassLayer = [compoundLayer childNodeWithName:@"grassLayer"];
     SKNode *earthLayer = [compoundLayer childNodeWithName:@"earthLayer"];
-    SKNode *winFailLayer = [compoundLayer childNodeWithName:@"winFailLayer"];
+    SKNode *scoreLayer = [compoundLayer childNodeWithName:@"scoreLayer"];
 
     [grassLayer removeAllActions];
     [grassLayer removeAllChildren];
     [earthLayer removeAllActions];
     [earthLayer removeAllChildren];
-    [winFailLayer removeAllChildren];
+    [scoreLayer removeAllChildren];
 
 //    сбрасываем масштабирование и положение
     CGFloat defaultScale = [self standardScaleForCols:self.field.cols];

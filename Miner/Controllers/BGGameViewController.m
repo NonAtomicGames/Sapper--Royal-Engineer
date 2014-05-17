@@ -315,8 +315,12 @@ static const NSInteger kBGMinesCountViewTag = 2;
     }
 
     //    удаляем картинку по тапу, чтобы была возможность рассмотреть поле и расстановку бомб
-    if ([touchedNode.name isEqualToString:@"smile"]) {
-        [touchedNode removeFromParent];
+    if ([touchedNode.name isEqualToString:@"scoreTable"] || [touchedNode.parent
+            .name isEqualToString:@"scoreTable"]) {
+        [[[[self.skView.scene childNodeWithName:@"compoundLayer"]
+                              childNodeWithName:@"scoreLayer"]
+                              childNodeWithName:@"scoreTable"]
+                              removeFromParent];
         return;
     }
 
@@ -599,9 +603,6 @@ static const NSInteger kBGMinesCountViewTag = 2;
             .gameCenterStatus == BGMinerGameCenterStatusOff)
         return;
 
-    UILabel *timerLabel = (UILabel *) [self.view viewWithTag:kBGTimerViewTag];
-    NSInteger timerValue = [timerLabel.text integerValue];
-
 //    определяем таблицу лидеров в которую необходимо отправить счет
     NSMutableString *leaderboardID = [NSMutableString string];
 
@@ -642,8 +643,7 @@ static const NSInteger kBGMinesCountViewTag = 2;
 //    создаем объект со счетом
     GKScore *score = [[GKScore alloc]
                                initWithLeaderboardIdentifier:leaderboardID];
-    score.value = TIMER_MAX_VALUE * ([BGGameViewController shared].skView.field
-            .bombs - BOMBS_MIN_VALUE + 1) - timerValue;
+    score.value = [self gameScore];
 
     [GKScore reportScores:@[score]
     withCompletionHandler:^(NSError *error)
@@ -675,6 +675,15 @@ static const NSInteger kBGMinesCountViewTag = 2;
                                                    completion:nil];
         }
     };
+}
+
+- (NSUInteger)gameScore
+{
+    UILabel *timerLabel = (UILabel *) [self.view viewWithTag:kBGTimerViewTag];
+    NSInteger timerValue = [timerLabel.text integerValue];
+
+    return (NSUInteger) (TIMER_MAX_VALUE * ([BGGameViewController shared].skView
+            .field.bombs - BOMBS_MIN_VALUE + 1) - timerValue);
 }
 
 @end
