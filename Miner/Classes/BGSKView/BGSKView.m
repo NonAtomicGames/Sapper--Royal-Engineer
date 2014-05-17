@@ -626,16 +626,10 @@ static const NSInteger kBGPrime = 1001;
     SKLabelNode *scoreValueLabel = [SKLabelNode labelNodeWithFontNamed:@"Digital-7 Mono"];
     scoreValueLabel.fontSize = 27;
     scoreValueLabel.fontColor = (score ? winColor : loseColor);
+    scoreValueLabel.text = [NSString stringWithFormat:@"%d", score];
     scoreValueLabel
             .horizontalAlignmentMode = SKLabelHorizontalAlignmentModeCenter;
-
-    if (score == 0) {
-        scoreValueLabel.text = [NSString stringWithFormat:@"%d", score];
-        scoreValueLabel.position = CGPointMake(190, 222);
-    } else {
-        scoreValueLabel.text = [NSString stringWithFormat:@"%06d", score];
-        scoreValueLabel.position = CGPointMake(160, 222);
-    }
+    scoreValueLabel.position = CGPointMake(160, 222);
 
     [scoreTable addChild:scoreValueLabel];
 
