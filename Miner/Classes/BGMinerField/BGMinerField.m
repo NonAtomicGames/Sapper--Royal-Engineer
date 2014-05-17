@@ -49,7 +49,7 @@ static const NSInteger kBGPrime = 1001;
 {
     BGLog();
 
-    //        множество клеток
+//        множество клеток
     NSMutableArray *cells = [NSMutableArray new];
 
 //        заполняем поле пустыми значениями

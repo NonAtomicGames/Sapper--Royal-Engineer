@@ -626,6 +626,8 @@ static const NSInteger kBGPrime = 1001;
     SKLabelNode *scoreValueLabel = [SKLabelNode labelNodeWithFontNamed:@"Digital-7 Mono"];
     scoreValueLabel.fontSize = 27;
     scoreValueLabel.fontColor = (score ? winColor : loseColor);
+    scoreValueLabel
+            .horizontalAlignmentMode = SKLabelHorizontalAlignmentModeCenter;
 
     if (score == 0) {
         scoreValueLabel.text = [NSString stringWithFormat:@"%d", score];

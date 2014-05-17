@@ -36,6 +36,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
     [Flurry startSession:@"QMG6WRKZD397MK5N728Q"];
 
 //    инициализируем рекламу от Flurry
+    [FlurryAds enableTestAds:YES];
     [FlurryAds initialize:self.window.rootViewController];
 
 //    предзагрузка звуков в фоновом режиме для избежания затормаживания
