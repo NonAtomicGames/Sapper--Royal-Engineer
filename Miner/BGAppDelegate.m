@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Non Atomic Games. All rights reserved.
 //
 
+#import <GameKit/GameKit.h>
 #import "BGAppDelegate.h"
 #import "BGSettingsManager.h"
 #import "BGResourcePreloader.h"
@@ -54,6 +55,15 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 
 //    предсоздание игрового экрана
     [BGGameViewController shared];
+
+//    запрашиваем авторизацию в Гейм Центре, если пользователь включил отправку
+//    счета в ГЦ, но потом осуществил выход из ГЦ
+    if ([BGSettingsManager sharedManager]
+            .gameCenterStatus == BGMinerGameCenterStatusOn &&
+            ![GKLocalPlayer localPlayer].isAuthenticated) {
+
+        [[BGGameViewController shared] authorizeLocalPlayer];
+    }
 
 //    предзагрузка дефолтов
     [BGSettingsManager sharedManager];
