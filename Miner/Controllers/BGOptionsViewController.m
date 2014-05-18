@@ -156,8 +156,7 @@
                                                   onImage:[UIImage imageNamed:@"switch_1"]
                                                  offImage:[UIImage imageNamed:@"switch_0"]];
     self.gameCenterSwitch.on = ([BGSettingsManager sharedManager]
-            .gameCenterStatus == BGMinerGameCenterStatusOn && [GKLocalPlayer localPlayer]
-            .isAuthenticated);
+            .gameCenterStatus == BGMinerGameCenterStatusOn);
     self.gameCenterSwitch.tag = kBGUISwitchGameCenterTag;
     [self.gameCenterSwitch addTarget:self
                               action:@selector(gameCenterButtonTapped:)];
