@@ -457,8 +457,7 @@ static const NSInteger kBGMinesCountViewTag = 2;
         }
             break;
 
-        case UIGestureRecognizerStateChanged:
-        case UIGestureRecognizerStateEnded: {
+        case UIGestureRecognizerStateChanged: {
 
 //            вектор перемещения игрового поля
             CGVector delta = CGVectorMake(-(_scrollPointPrev.x - panPoint.x),
