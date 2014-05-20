@@ -68,8 +68,10 @@ static const NSInteger kBGMinesCountViewTag = 2;
         [self.view addSubview:topPanelImageView];
 
 //        //    добавляем на экран SKView
+        CGFloat gameFieldHeight = [UIScreen mainScreen].bounds.size
+                .height - topPanelImageView.bounds.size.height;
         CGRect gameViewFrame = CGRectMake(0, topPanelImage.size
-                .height, 320, 480);
+                .height, 320, gameFieldHeight);
         self.skView = [[BGSKView alloc] initWithFrame:gameViewFrame];
 
         [self.view addSubview:self.skView];

@@ -36,13 +36,6 @@
 {
     [super viewDidLoad];
 
-    //    создаем фоновую вьюху и устанавливаем фоновое изображение для экрана
-    self.backgroundImageView = [[UIImageView alloc]
-                                             initWithFrame:[UIScreen mainScreen].bounds];
-    self.backgroundImageView.image = [UIImage imageNamed:@"miner_config"];
-
-    [self.originalContentView addSubview:self.backgroundImageView];
-
     //    кнопка назад
     UIImage *backNormal = [UIImage imageNamed:@"back"];
     UIImage *backHighlighted = [UIImage imageNamed:@"back_down"];
@@ -121,17 +114,25 @@
 
     [self.originalContentView addSubview:fieldDifficultySCView];
 
+//    кол-во точек, на которые надо поднять переключатели, если запускается на 4 iPhone
+    CGFloat pointsToSubstract = 0.0;
+
+    if ([UIScreen mainScreen].bounds.size.height == 480)
+        pointsToSubstract = 30;
+
     //    создаем подпись к переключателю звука
     UIImageView *soundImageView = [[UIImageView alloc]
                                                 initWithImage:[UIImage imageNamed:@"sounds"]];
     CGRect soundsBounds = soundImageView.bounds;
-    soundImageView.frame = CGRectMake(55.5, 372.5, soundsBounds.size.width, soundsBounds.size.height);
+    soundImageView
+            .frame = CGRectMake(55.5, (CGFloat) 372.5 - pointsToSubstract, soundsBounds
+            .size.width, soundsBounds.size.height);
 
     [self.originalContentView addSubview:soundImageView];
 
     //    создаем переключатель для звука
     self.soundSwitch = [[BGUISwitch alloc]
-                                    initWithPosition:CGPointMake(48, 398)
+            initWithPosition:CGPointMake(48, (CGFloat) 398.0 - pointsToSubstract)
                                              onImage:[UIImage imageNamed:@"switch_1"]
                                             offImage:[UIImage imageNamed:@"switch_0"]];
     self.soundSwitch.on = ([BGSettingsManager sharedManager]
@@ -146,13 +147,15 @@
     UIImageView *gameCenterImageView = [[UIImageView alloc]
                                                      initWithImage:[UIImage imageNamed:@"game_center"]];
     CGRect gameCenterBounds = gameCenterImageView.bounds;
-    gameCenterImageView.frame = CGRectMake(187.5, 348.5, gameCenterBounds.size.width, gameCenterBounds.size.height);
+    gameCenterImageView
+            .frame = CGRectMake(187.5, (CGFloat) 348.5 - pointsToSubstract, gameCenterBounds
+            .size.width, gameCenterBounds.size.height);
 
     [self.originalContentView addSubview:gameCenterImageView];
 
     //    создаем переключатель для Гейм Центра
     self.gameCenterSwitch = [[BGUISwitch alloc]
-                                         initWithPosition:CGPointMake(181, 398)
+            initWithPosition:CGPointMake(181, (CGFloat) 398.0 - pointsToSubstract)
                                                   onImage:[UIImage imageNamed:@"switch_1"]
                                                  offImage:[UIImage imageNamed:@"switch_0"]];
     self.gameCenterSwitch.on = ([BGSettingsManager sharedManager]

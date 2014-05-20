@@ -598,6 +598,9 @@ static const NSInteger kBGPrime = 1001;
     scoreTable.anchorPoint = CGPointZero;
     scoreTable.name = @"scoreTable";
 
+    if ([UIScreen mainScreen].bounds.size.height == 480) // iPhone 4
+        scoreTable.position = CGPointMake(0, -60);
+
 //    добавим нужный смайл
     NSString *imageNamed = (isAlive ? @"goodjob" : @"failed");
     SKSpriteNode *smile = [SKSpriteNode spriteNodeWithImageNamed:imageNamed];

@@ -49,7 +49,6 @@
 		D50D896618F3D6B000617442 /* difficulty@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D50D896818F3D6B000617442 /* difficulty@2x.png */; };
 		D50D897318F3D83400617442 /* field_size@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D50D897518F3D83400617442 /* field_size@2x.png */; };
 		D50D897818F3D89600617442 /* sounds@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D50D897A18F3D89600617442 /* sounds@2x.png */; };
-		D50F9A4519263A6900AAFC81 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D50F9A4419263A6900AAFC81 /* libPods.a */; };
 		D521600418F3DBD0003247DF /* button_down_easy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D521600618F3DBD0003247DF /* button_down_easy@2x.png */; };
 		D521600918F3DC36003247DF /* button_down_hard@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D521600B18F3DC36003247DF /* button_down_hard@2x.png */; };
 		D521600E18F3DCB5003247DF /* button_down_norm@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D521601018F3DCB5003247DF /* button_down_norm@2x.png */; };
@@ -113,6 +112,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		06B4FA0766424619B4943F06 /* Pods-Miner.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Miner.xcconfig"; path = "Pods/Pods-Miner.xcconfig"; sourceTree = "<group>"; };
 		1A9A00AC67B68FA11C11D15D /* BGViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGViewController.m; sourceTree = "<group>"; };
 		1A9A00DCCF3C22F4C56F50D7 /* game_button_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "game_button_on@2x.png"; sourceTree = "<group>"; };
 		1A9A0128D8497BDF547C9A5A /* flagTapOn.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = flagTapOn.mp3; sourceTree = "<group>"; };
@@ -163,16 +163,14 @@
 		1A9A0E8269320A2D346AC4CC /* BGUISegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGUISegmentedControl.m; sourceTree = "<group>"; };
 		1A9A0F1BABFA2C52CD749584 /* BGLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGLog.h; sourceTree = "<group>"; };
 		1A9A0F21405D83136B92F606 /* ru */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ru; path = "Miner/Resources/Images/Buttons/ru.lproj/button_options_down@2x.png"; sourceTree = SOURCE_ROOT; };
-		D0358313F4FE482EB238BC24 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		3823527A60A742338F6A34C3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEE914AE099046098FE4697A /* libPods-Miner.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Miner.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D50D896718F3D6B000617442 /* ru */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ru; path = "ru.lproj/difficulty@2x.png"; sourceTree = "<group>"; };
 		D50D897118F3D7D600617442 /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = "Base.lproj/difficulty@2x.png"; sourceTree = "<group>"; };
 		D50D897418F3D83400617442 /* ru */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ru; path = "ru.lproj/field_size@2x.png"; sourceTree = "<group>"; };
 		D50D897618F3D83900617442 /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = "Base.lproj/field_size@2x.png"; sourceTree = "<group>"; };
 		D50D897918F3D89600617442 /* ru */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ru; path = "ru.lproj/sounds@2x.png"; sourceTree = "<group>"; };
 		D50D897B18F3D89B00617442 /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = "Base.lproj/sounds@2x.png"; sourceTree = "<group>"; };
-		D50F9A3D192635AE00AAFC81 /* libPods-iRate.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-iRate.a"; path = "Pods/build/Debug-iphoneos/libPods-iRate.a"; sourceTree = "<group>"; };
-		D50F9A3E192635AE00AAFC81 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
-		D50F9A4419263A6900AAFC81 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
 		D521600518F3DBD0003247DF /* ru */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ru; path = "ru.lproj/button_down_easy@2x.png"; sourceTree = "<group>"; };
 		D521600718F3DBD6003247DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = "Base.lproj/button_down_easy@2x.png"; sourceTree = "<group>"; };
 		D521600A18F3DC36003247DF /* ru */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ru; path = "ru.lproj/button_down_hard@2x.png"; sourceTree = "<group>"; };
@@ -183,6 +181,8 @@
 		D521601618F3DDDC003247DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = "Base.lproj/difficult_default@2x.png"; sourceTree = "<group>"; };
 		D521FEF318E8B5AA000D52C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D521FEF518E8C2B3000D52C8 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		D5269FAD192B63A500192C31 /* libPods-iRate.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-iRate.a"; path = "Pods/build/Debug-iphoneos/libPods-iRate.a"; sourceTree = "<group>"; };
+		D5269FAE192B63A500192C31 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
 		D52B956B1901153D002B5316 /* Explosion.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Explosion.atlas; sourceTree = "<group>"; };
 		D52C74431905630F00C83D38 /* icon10241.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon10241.png; path = ../../icon10241.png; sourceTree = "<group>"; };
 		D538BCFA18F83EA30006FD00 /* BGOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGOptionsViewController.h; sourceTree = "<group>"; };
@@ -215,8 +215,7 @@
 		D5E39CDC18E7F62C00F25012 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D5E39CE018E7F87A00F25012 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D5E39CE318E7F88400F25012 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
-		D5F99E0819263C8800725815 /* libFlurry_5.0.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFlurry_5.0.0.a; path = "Miner/Flurry-iOS-5.0.0/Flurry/libFlurry_5.0.0.a"; sourceTree = "<group>"; };
-		D5F99E0A19263C9200725815 /* libFlurryAds_5.0.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFlurryAds_5.0.0.a; path = "Miner/Flurry-iOS-5.0.0/FlurryAds/libFlurryAds_5.0.0.a"; sourceTree = "<group>"; };
+		D5EB367D192B69700094606E /* libPods-Miner-iRate.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Miner-iRate.a"; path = "Pods/build/Debug-iphoneos/libPods-Miner-iRate.a"; sourceTree = "<group>"; };
 		D5F99E0C19263E3100725815 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		D5F99E0E19263E3D00725815 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		D5F99E1019263E5D00725815 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -226,7 +225,6 @@
 		D5F99F5D19263FBC00725815 /* FlurryAds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAds.h; sourceTree = "<group>"; };
 		D5F99F5E19263FBC00725815 /* libFlurryAds_5.0.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurryAds_5.0.0.a; sourceTree = "<group>"; };
 		D5F99F6019263FFE00725815 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		DFC22088A75646AE82D54891 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,7 +238,6 @@
 				D5F99E0F19263E3D00725815 /* MediaPlayer.framework in Frameworks */,
 				D5F99E0D19263E3100725815 /* AdSupport.framework in Frameworks */,
 				D5F99F5A19263FAD00725815 /* libFlurry_5.0.0.a in Frameworks */,
-				D50F9A4519263A6900AAFC81 /* libPods.a in Frameworks */,
 				D59F3CB819122A5700E82FCD /* GameKit.framework in Frameworks */,
 				D521FEF618E8C2B3000D52C8 /* iAd.framework in Frameworks */,
 				D5F99F5F19263FBC00725815 /* libFlurryAds_5.0.0.a in Frameworks */,
@@ -544,7 +541,7 @@
 				D5D6494718D46B5100854518 /* Sapper */,
 				D5D6494018D46B5100854518 /* Frameworks */,
 				D5D6493F18D46B5100854518 /* Products */,
-				D0358313F4FE482EB238BC24 /* Pods.xcconfig */,
+				06B4FA0766424619B4943F06 /* Pods-Miner.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -560,15 +557,13 @@
 		D5D6494018D46B5100854518 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D5EB367D192B69700094606E /* libPods-Miner-iRate.a */,
+				D5269FAD192B63A500192C31 /* libPods-iRate.a */,
+				D5269FAE192B63A500192C31 /* libPods.a */,
 				D5F99F6019263FFE00725815 /* libz.dylib */,
 				D5F99E1019263E5D00725815 /* StoreKit.framework */,
 				D5F99E0E19263E3D00725815 /* MediaPlayer.framework */,
 				D5F99E0C19263E3100725815 /* AdSupport.framework */,
-				D5F99E0A19263C9200725815 /* libFlurryAds_5.0.0.a */,
-				D5F99E0819263C8800725815 /* libFlurry_5.0.0.a */,
-				D50F9A4419263A6900AAFC81 /* libPods.a */,
-				D50F9A3D192635AE00AAFC81 /* libPods-iRate.a */,
-				D50F9A3E192635AE00AAFC81 /* libPods.a */,
 				D59F3CB719122A5700E82FCD /* GameKit.framework */,
 				D521FEF518E8C2B3000D52C8 /* iAd.framework */,
 				D5D6498218D47A2C00854518 /* SpriteKit.framework */,
@@ -578,7 +573,8 @@
 				D5D6496018D46B5100854518 /* XCTest.framework */,
 				1A9A06D4E6DDD557A60903D6 /* Security.framework */,
 				1A9A03D1DAF6E1BEE5396866 /* SystemConfiguration.framework */,
-				DFC22088A75646AE82D54891 /* libPods.a */,
+				3823527A60A742338F6A34C3 /* libPods.a */,
+				CEE914AE099046098FE4697A /* libPods-Miner.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -638,11 +634,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D5D6497018D46B5100854518 /* Build configuration list for PBXNativeTarget "Miner" */;
 			buildPhases = (
-				E0C0E8DEB0DD405CA63D6F1B /* Check Pods Manifest.lock */,
+				8D62B3669B2440878F469C7A /* Check Pods Manifest.lock */,
 				D5D6493A18D46B5100854518 /* Sources */,
 				D5D6493B18D46B5100854518 /* Frameworks */,
 				D5D6493C18D46B5100854518 /* Resources */,
-				FBC86E2671504706883E3496 /* Copy Pods Resources */,
+				05F0B99EDDB94B589B45A12D /* Copy Pods Resources */,
 			);
 			buildRules = (
 				D53D2E521925315500C365C2 /* PBXBuildRule */,
@@ -785,7 +781,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		E0C0E8DEB0DD405CA63D6F1B /* Check Pods Manifest.lock */ = {
+		05F0B99EDDB94B589B45A12D /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-Miner-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8D62B3669B2440878F469C7A /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -798,21 +809,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		FBC86E2671504706883E3496 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1075,9 +1071,10 @@
 		};
 		D5D6497118D46B5100854518 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D0358313F4FE482EB238BC24 /* Pods.xcconfig */;
+			baseConfigurationReference = 06B4FA0766424619B4943F06 /* Pods-Miner.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1090,7 +1087,7 @@
 					"\"${PROJECT_DIR}/Miner/Flurry-iOS-5.0.0\"/**",
 				);
 				INFOPLIST_FILE = "Miner/Miner-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"\"${PROJECT_DIR}/Miner/Flurry/Flurry\"/**",
 					"\"${PROJECT_DIR}/Miner/Flurry/FlurryAds\"/**",
@@ -1108,28 +1105,30 @@
 					"$(PROJECT_DIR)/Miner/Flurry-iOS-5.0.0/FlurryAds",
 					"$(PROJECT_DIR)/Flurry",
 					"$(PROJECT_DIR)/FlurryAds",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
 				);
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = Miner;
 				PROVISIONING_PROFILE = "";
 				SPRITEKIT_TEXTURE_ATLAS_FORMAT = RGBA8888_PNG;
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
-				VALID_ARCHS = "armv7s armv7 arm64";
+				VALID_ARCHS = "armv7s armv7 arm64 armv6";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
 		D5D6497218D46B5100854518 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D0358313F4FE482EB238BC24 /* Pods.xcconfig */;
+			baseConfigurationReference = 06B4FA0766424619B4943F06 /* Pods-Miner.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Miner/Miner-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -1138,7 +1137,7 @@
 					"\"${PROJECT_DIR}/Miner/Flurry-iOS-5.0.0\"/**",
 				);
 				INFOPLIST_FILE = "Miner/Miner-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"\"${PROJECT_DIR}/Miner/Flurry/Flurry iPhone SDK viPhone 5.0.0/Flurry-iOS-5.0.0/Flurry\"/**",
 					"\"${PROJECT_DIR}/Miner/Flurry/Flurry iPhone SDK viPhone 5.0.0/Flurry-iOS-5.0.0/FlurryAds\"/**",
@@ -1163,14 +1162,14 @@
 					"$(PROJECT_DIR)/Flurry",
 					"$(PROJECT_DIR)/FlurryAds",
 				);
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = Miner;
 				PROVISIONING_PROFILE = "";
 				SPRITEKIT_TEXTURE_ATLAS_FORMAT = RGBA8888_PNG;
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
-				VALID_ARCHS = "armv7s armv7 arm64";
+				VALID_ARCHS = "armv7s armv7 arm64 armv6";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

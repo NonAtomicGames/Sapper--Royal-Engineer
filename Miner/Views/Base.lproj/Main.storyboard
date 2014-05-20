@@ -95,6 +95,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="LIM-B9-1Ar" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" image="miner_config@2x.png">
+                                <rect key="frame" x="0" y="0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
                     </view>
                     <navigationItem key="navigationItem" id="nQe-VY-s4c"/>
                 </viewController>
@@ -109,6 +115,7 @@
         <image name="button_play.png" width="198" height="46"/>
         <image name="button_play_down.png" width="198" height="46"/>
         <image name="miner_main.png" width="320" height="568"/>
+        <image name="miner_config@2x.png" width="640" height="1136"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

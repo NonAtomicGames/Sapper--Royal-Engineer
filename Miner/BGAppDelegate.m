@@ -13,7 +13,7 @@
 #import "BGSKView.h"
 #import "BGGameViewController.h"
 #import "BGLog.h"
-#import "iRate.h"
+//#import "iRate.h"
 #import "Flurry.h"
 #import "FlurryAds.h"
 
@@ -21,10 +21,10 @@
 
 + (void)initialize
 {
-    [iRate sharedInstance].appStoreID = 867507430;
-    [iRate sharedInstance].applicationName = @"Sapper: Royal Engineer";
-    [iRate sharedInstance].usesUntilPrompt = 3;
-    [iRate sharedInstance].daysUntilPrompt = 1;
+//    [iRate sharedInstance].appStoreID = 867507430;
+//    [iRate sharedInstance].applicationName = @"Sapper: Royal Engineer";
+//    [iRate sharedInstance].usesUntilPrompt = 3;
+//    [iRate sharedInstance].daysUntilPrompt = 1;
 }
 
 - (BOOL)          application:(UIApplication *)application
