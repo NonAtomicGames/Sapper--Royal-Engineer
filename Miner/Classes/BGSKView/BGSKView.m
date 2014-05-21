@@ -8,7 +8,7 @@
 
 #import "BGSKView.h"
 #import "BGLog.h"
-#import "BGSettingsManager.h"
+#import "NAGSettingsManager.h"
 #import "BGMinerField.h"
 #import "BGResourcePreloader.h"
 #import "BGGameViewController.h"
@@ -135,11 +135,19 @@ static const NSInteger kBGPrime = 1001;
     BGLog();
 
     //    генерируем каркас игрового поля
+    NSUInteger cols = [[NAGSettingsManager shared]
+                                           unsignedIntegerValueForSettingsPath:@"game.settings.cols"];
+    NSUInteger rows = [[NAGSettingsManager shared]
+                                           unsignedIntegerValueForSettingsPath:@"game.settings.rows"];
+    NSUInteger level = [[NAGSettingsManager shared]
+                                            unsignedIntegerValueForSettingsPath:@"game.settings.level"];
+
     _field = [[BGMinerField alloc]
-                            initWithCols:[BGSettingsManager sharedManager].cols
-                                    rows:[BGSettingsManager sharedManager].rows
-                                   bombs:[BGSettingsManager sharedManager]
-                                           .bombs];
+                            initWithCols:cols
+                                    rows:rows
+                                   bombs:[self randomNumberOfBombsForRows:rows
+                                                                     cols:cols
+                                                                    level:level]];
 
     //    сбрасываем игровые параметры на начальные состояния
     [self resetGameData];
@@ -253,9 +261,11 @@ static const NSInteger kBGPrime = 1001;
             }];
 
     //    ресайзим взрыв относительно размеров поля
-    if ([BGSettingsManager sharedManager].cols == 12)
+    if ([[NAGSettingsManager shared]
+                             integerValueForSettingsPath:@"game.settings.cols"] == 12)
         explosionNode.size = CGSizeMake(250, 250);
-    else if ([BGSettingsManager sharedManager].cols == 15)
+    else if ([[NAGSettingsManager shared]
+                                  integerValueForSettingsPath:@"game.settings.cols"] == 15)
         explosionNode.size = CGSizeMake(200, 200);
     else
         explosionNode.size = CGSizeMake(150, 150);
@@ -496,11 +506,32 @@ static const NSInteger kBGPrime = 1001;
             for (NSUInteger indexRow = 0; indexRow < rowsFromSettings; indexRow++) {
                 NSString *uniqueCellName = [NSString stringWithFormat:@"%d",
                                                                       (NSInteger) (indexCol * kBGPrime + indexRow)];
-                SKSpriteNode *grassTile = [self.tileSprites[@"grass"] copy];
-                CGFloat x = indexRow * grassTile.size.width;
-                CGFloat y = indexCol * grassTile.size.height;
 
-                grassTile.anchorPoint = CGPointZero;
+                sranddev();
+                NSString *tileName = [NSString stringWithFormat:@"grass1"];
+
+                SKSpriteNode *grassTile = [self.tileSprites[tileName] copy];
+                CGFloat x = indexRow * (grassTile.size.width - 15);
+                CGFloat y = indexCol * (grassTile.size.width - 15);
+
+                NSArray *colors = @[
+                        [SKColor colorWithRed:0.23
+                                        green:0.45
+                                         blue:0.1
+                                        alpha:1.0],
+                        [SKColor colorWithRed:0.27
+                                        green:0.36
+                                         blue:0.12
+                                        alpha:1.0],
+                        [SKColor colorWithRed:0.56
+                                        green:0.77
+                                         blue:0.12
+                                        alpha:1.0]
+                ];
+                grassTile.color = colors[arc4random() % colors.count];
+                grassTile.colorBlendFactor = 1.0;
+
+                grassTile.anchorPoint = CGPointMake(0.1, 0.1);
                 grassTile.position = CGPointMake(x, y);
                 grassTile.name = uniqueCellName;
                 grassTile.userData = [@{
@@ -687,6 +718,19 @@ static const NSInteger kBGPrime = 1001;
     }
 
     return scale;
+}
+
+- (NSUInteger)randomNumberOfBombsForRows:(NSUInteger)rows
+                                    cols:(NSUInteger)cols
+                                   level:(NSUInteger)level
+{
+    sranddev();
+
+    NSUInteger minBombs = (rows < cols) ? rows : cols;
+    NSUInteger maxBombs = 2ul * minBombs;
+    NSUInteger bombs = arc4random() % (maxBombs - minBombs + 1) + level * minBombs;
+
+    return bombs;
 }
 
 @end

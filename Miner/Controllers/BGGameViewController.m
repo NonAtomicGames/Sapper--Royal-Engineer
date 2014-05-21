@@ -13,7 +13,7 @@
 #import "BGSKView.h"
 #import "BGResourcePreloader.h"
 #import "Flurry.h"
-#import "BGSettingsManager.h"
+#import "NAGSettingsManager.h"
 #import "BGAppDelegate.h"
 
 
@@ -599,24 +599,25 @@ static const NSInteger kBGMinesCountViewTag = 2;
     BGLog();
 
 //    если пользователь не авторизован, то нет смысла обрабатывать его счет
-    if (![GKLocalPlayer localPlayer]
-            .isAuthenticated || [BGSettingsManager sharedManager]
-            .gameCenterStatus == BGMinerGameCenterStatusOff)
+    if (![GKLocalPlayer localPlayer].isAuthenticated ||
+            ![[NAGSettingsManager shared]
+                                  boolValueForSettingsPath:@"game.settings.gameCenterOn"])
         return;
 
 //    определяем таблицу лидеров в которую необходимо отправить счет
     NSMutableString *leaderboardID = [NSMutableString string];
 
-    switch ([BGSettingsManager sharedManager].level) {
-        case BGMinerLevelOne:
+    switch ([[NAGSettingsManager shared]
+                                 integerValueForSettingsPath:@"game.settings.level"]) {
+        case 1:
             [leaderboardID appendString:@"easy"];
             break;
 
-        case BGMinerLevelTwo:
+        case 2:
             [leaderboardID appendString:@"norm"];
             break;
 
-        case BGMinerLevelThree:
+        case 3:
             [leaderboardID appendString:@"hard"];
             break;
 
@@ -624,22 +625,21 @@ static const NSInteger kBGMinesCountViewTag = 2;
             break;
     }
 
-    switch ([BGSettingsManager sharedManager].cols) {
-        case kSmallFieldCols:
-            [leaderboardID appendString:@"12x8"];
-            break;
+    NSInteger smallFieldCols = [[NAGSettingsManager shared]
+                                                    integerValueForSettingsPath:@"game.field.small.cols"];
+    NSInteger mediumFieldCols = [[NAGSettingsManager shared]
+                                                     integerValueForSettingsPath:@"game.field.medium.cols"];
+    NSInteger bigFieldCols = [[NAGSettingsManager shared]
+                                                  integerValueForSettingsPath:@"game.field.big.cols"];
+    NSInteger currentCols = [[NAGSettingsManager shared]
+                                                 integerValueForSettingsPath:@"game.settings.cols"];
 
-        case kMediumFieldCols:
-            [leaderboardID appendString:@"15x10"];
-            break;
-
-        case kBigFieldCols:
-            [leaderboardID appendString:@"24x16"];
-            break;
-
-        default:
-            break;
-    }
+    if (currentCols == smallFieldCols)
+        [leaderboardID appendString:@"12x8"];
+    else if (currentCols == mediumFieldCols)
+        [leaderboardID appendString:@"15x10"];
+    else if (currentCols == bigFieldCols)
+        [leaderboardID appendString:@"24x16"];
 
 //    создаем объект со счетом
     GKScore *score = [[GKScore alloc]

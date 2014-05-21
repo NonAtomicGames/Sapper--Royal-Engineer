@@ -10,7 +10,7 @@
 #import <GameKit/GameKit.h>
 #import "BGOptionsViewController.h"
 #import "BGUISwitch.h"
-#import "BGSettingsManager.h"
+#import "NAGSettingsManager.h"
 #import "BGResourcePreloader.h"
 #import "BGUISegmentedControl.h"
 #import "BGLog.h"
@@ -70,9 +70,13 @@
     [fieldSizeSCView addNewSegmentImage:[UIImage imageNamed:@"button_down_1510"]];
     [fieldSizeSCView addNewSegmentImage:[UIImage imageNamed:@"button_down_2416"]];
 
-    if ([BGSettingsManager sharedManager].cols == kSmallFieldCols)
+    NSInteger currentCols = [[NAGSettingsManager shared]
+                                                 integerValueForSettingsPath:@"game.settings.cols"];
+    if (currentCols == [[NAGSettingsManager shared]
+                                            integerValueForSettingsPath:@"game.field.small.cols"])
         fieldSizeSCView.selectedSegmentIndex = 0;
-    else if ([BGSettingsManager sharedManager].cols == kMediumFieldCols)
+    else if (currentCols == [[NAGSettingsManager shared]
+                                                 integerValueForSettingsPath:@"game.field.medium.cols"])
         fieldSizeSCView.selectedSegmentIndex = 1;
     else
         fieldSizeSCView.selectedSegmentIndex = 2;
@@ -102,9 +106,11 @@
     [fieldDifficultySCView addNewSegmentImage:[UIImage imageNamed:@"button_down_norm"]];
     [fieldDifficultySCView addNewSegmentImage:[UIImage imageNamed:@"button_down_hard"]];
 
-    if ([BGSettingsManager sharedManager].level == BGMinerLevelOne)
+    if ([[NAGSettingsManager shared]
+                             integerValueForSettingsPath:@"game.settings.level"] == 1)
         fieldDifficultySCView.selectedSegmentIndex = 0; // easy
-    else if ([BGSettingsManager sharedManager].level == BGMinerLevelTwo)
+    else if ([[NAGSettingsManager shared]
+                                  integerValueForSettingsPath:@"game.settings.level"] == 2)
         fieldDifficultySCView.selectedSegmentIndex = 1; // norm
     else
         fieldDifficultySCView.selectedSegmentIndex = 2; // hard
@@ -132,11 +138,11 @@
 
     //    создаем переключатель для звука
     self.soundSwitch = [[BGUISwitch alloc]
-            initWithPosition:CGPointMake(48, (CGFloat) 398.0 - pointsToSubstract)
+                                    initWithPosition:CGPointMake(48, (CGFloat) 398.0 - pointsToSubstract)
                                              onImage:[UIImage imageNamed:@"switch_1"]
                                             offImage:[UIImage imageNamed:@"switch_0"]];
-    self.soundSwitch.on = ([BGSettingsManager sharedManager]
-            .soundStatus == BGMinerSoundStatusOn);
+    self.soundSwitch.on = [[NAGSettingsManager shared]
+                                               boolValueForSettingsPath:@"game.settings.soundsOn"];
     self.soundSwitch.tag = kBGUISwitchSoundTag;
     [self.soundSwitch addTarget:self
                          action:@selector(soundButtonTapped:)];
@@ -155,11 +161,11 @@
 
     //    создаем переключатель для Гейм Центра
     self.gameCenterSwitch = [[BGUISwitch alloc]
-            initWithPosition:CGPointMake(181, (CGFloat) 398.0 - pointsToSubstract)
+                                         initWithPosition:CGPointMake(181, (CGFloat) 398.0 - pointsToSubstract)
                                                   onImage:[UIImage imageNamed:@"switch_1"]
                                                  offImage:[UIImage imageNamed:@"switch_0"]];
-    self.gameCenterSwitch.on = ([BGSettingsManager sharedManager]
-            .gameCenterStatus == BGMinerGameCenterStatusOn);
+    self.gameCenterSwitch.on = [[NAGSettingsManager shared]
+                                                    boolValueForSettingsPath:@"game.settings.gameCenterOn"];
     self.gameCenterSwitch.tag = kBGUISwitchGameCenterTag;
     [self.gameCenterSwitch addTarget:self
                               action:@selector(gameCenterButtonTapped:)];
@@ -191,9 +197,9 @@
 
     //    изменяем сложность игры
     NSUInteger selected = [((NSNumber *) newlySelectedIndexNumber) unsignedIntegerValue] + 1;
-    BGMinerLevel newLevel = (BGMinerLevel) selected;
 
-    [BGSettingsManager sharedManager].level = newLevel;
+    [[NAGSettingsManager shared] setValue:@(selected)
+                          forSettingsPath:@"game.settings.level"];
 
     //    обновим поле
     [[BGGameViewController shared].skView startNewGame];
@@ -212,23 +218,31 @@
         default:
 
         case 0: // размер поля 12х8
-            cols = kSmallFieldCols;
-            rows = kSmallFieldRows;
+            cols = [[NAGSettingsManager shared]
+                                        unsignedIntegerValueForSettingsPath:@"game.field.small.cols"];
+            rows = [[NAGSettingsManager shared]
+                                        unsignedIntegerValueForSettingsPath:@"game.field.small.rows"];
             break;
 
         case 1: // размер поля 15х10
-            cols = kMediumFieldCols;
-            rows = kMediumFieldRows;
+            cols = [[NAGSettingsManager shared]
+                                        unsignedIntegerValueForSettingsPath:@"game.field.medium.cols"];
+            rows = [[NAGSettingsManager shared]
+                                        unsignedIntegerValueForSettingsPath:@"game.field.medium.rows"];
             break;
 
         case 2: // размер поля 24х16
-            cols = kBigFieldCols;
-            rows = kBigFieldRows;
+            cols = [[NAGSettingsManager shared]
+                                        unsignedIntegerValueForSettingsPath:@"game.field.big.cols"];
+            rows = [[NAGSettingsManager shared]
+                                        unsignedIntegerValueForSettingsPath:@"game.field.big.rows"];
             break;
     }
 
-    [BGSettingsManager sharedManager].cols = cols;
-    [BGSettingsManager sharedManager].rows = rows;
+    [[NAGSettingsManager shared] setValue:@(cols)
+                          forSettingsPath:@"game.settings.cols"];
+    [[NAGSettingsManager shared] setValue:@(rows)
+                          forSettingsPath:@"game.settings.rows"];
 
     //    обновим поле
     [[BGGameViewController shared].skView startNewGame];
@@ -239,15 +253,24 @@
     BGLog();
 
     //    при переключении тумблера звука меняем настройки
-    BGMinerSoundStatus soundStatus = [BGSettingsManager sharedManager].soundStatus;
 
-    if (soundStatus == BGMinerSoundStatusOn && self.soundSwitch.activeRegion == BGUISwitchLeftRegion) {
-        [BGSettingsManager sharedManager].soundStatus = BGMinerSoundStatusOff;
+    if ([[NAGSettingsManager shared]
+                             boolValueForSettingsPath:@"game.settings.soundsOn"] && self
+            .soundSwitch
+            .activeRegion == BGUISwitchLeftRegion) {
+
+        [[NAGSettingsManager shared] setValue:@NO
+                              forSettingsPath:@"game.settings.soundsOn"];
 
         //        фиксируем пользователей, которые играют без звука
         [Flurry logEvent:@"UserTurnsSoundsOff"];
-    } else if (soundStatus == BGMinerSoundStatusOff && self.soundSwitch.activeRegion == BGUISwitchRightRegion) {
-        [BGSettingsManager sharedManager].soundStatus = BGMinerSoundStatusOn;
+    } else if (![[NAGSettingsManager shared]
+                                     boolValueForSettingsPath:@"game.settings.soundsOn"] && self
+            .soundSwitch
+            .activeRegion == BGUISwitchRightRegion) {
+
+        [[NAGSettingsManager shared] setValue:@YES
+                              forSettingsPath:@"game.settings.soundsOn"];
 
         //        фиксируем пользователей, которые играют со звуком
         [Flurry logEvent:@"UserTurnsSoundsOn"];
@@ -258,15 +281,20 @@
 {
     BGLog();
 
-    BGMinerGameCenterStatus gcStatus = [BGSettingsManager sharedManager].gameCenterStatus;
+    if ([[NAGSettingsManager shared]
+                             boolValueForSettingsPath:@"game.settings.soundsOn"] && self
+            .gameCenterSwitch
+            .activeRegion == BGUISwitchLeftRegion) {
 
-    if (gcStatus == BGMinerGameCenterStatusOn && self.gameCenterSwitch.activeRegion == BGUISwitchLeftRegion) {
-        [BGSettingsManager sharedManager].gameCenterStatus = BGMinerGameCenterStatusOff;
+        [[NAGSettingsManager shared] setValue:@NO
+                              forSettingsPath:@"game.settings.gameCenterOn"];
 
         //        фиксируем пользователей, которые выключают гейм центр
         [Flurry logEvent:@"UserTurnsGameCenterOff"];
     } else {
-        [BGSettingsManager sharedManager].gameCenterStatus = BGMinerGameCenterStatusOn;
+
+        [[NAGSettingsManager shared] setValue:@YES
+                              forSettingsPath:@"game.settings.gameCenterOn"];
 
         //    запрашиваем у пользователя авторизацию в ГЦ, если надо
         [[BGGameViewController shared] authorizeLocalPlayer];

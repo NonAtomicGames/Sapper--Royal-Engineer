@@ -8,7 +8,7 @@
 
 #import <GameKit/GameKit.h>
 #import "BGAppDelegate.h"
-#import "BGSettingsManager.h"
+#import "NAGSettingsManager.h"
 #import "BGResourcePreloader.h"
 #import "BGSKView.h"
 #import "BGGameViewController.h"
@@ -21,10 +21,40 @@
 
 + (void)initialize
 {
+//    напоминалка для оценки приложения
 //    [iRate sharedInstance].appStoreID = 867507430;
 //    [iRate sharedInstance].applicationName = @"Sapper: Royal Engineer";
 //    [iRate sharedInstance].usesUntilPrompt = 3;
 //    [iRate sharedInstance].daysUntilPrompt = 1;
+
+//    настройках менеджера настроек
+    [[NAGSettingsManager shared] createDefaultSettingsFromDictionary:@{
+            @"game" : @{
+                    @"settings" : @{
+                            @"soundsOn"     : @YES,
+                            @"gameCenterOn" : @YES,
+                            @"level"        : @1,
+                            @"cols"         : @12,
+                            @"rows"         : @8
+                    },
+                    @"field"    : @{
+                            @"small"  : @{
+                                    @"cols" : @12,
+                                    @"rows" : @8
+                            },
+                            @"medium" : @{
+                                    @"cols" : @15,
+                                    @"rows" : @10
+                            },
+                            @"big"    : @{
+                                    @"cols" : @24,
+                                    @"rows" : @16
+                            }
+                    }
+            }
+    }];
+
+    [[NAGSettingsManager shared] resetToDefaultSettingsIfNoneExists];
 }
 
 - (BOOL)          application:(UIApplication *)application
@@ -57,15 +87,12 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 
 //    запрашиваем авторизацию в Гейм Центре, если пользователь включил отправку
 //    счета в ГЦ, но потом осуществил выход из ГЦ
-    if ([BGSettingsManager sharedManager]
-            .gameCenterStatus == BGMinerGameCenterStatusOn &&
+    if ([[NAGSettingsManager shared]
+                             boolValueForSettingsPath:@"game.settings.gameCenterOn"] &&
             ![GKLocalPlayer localPlayer].isAuthenticated) {
 
         [[BGGameViewController shared] authorizeLocalPlayer];
     }
-
-//    предзагрузка дефолтов
-    [BGSettingsManager sharedManager];
 
     // Override point for customization after application launch.
     return YES;
@@ -82,8 +109,6 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
     BGLog();
-
-    [[BGSettingsManager sharedManager] save];
 
 //    останавливаем обновление сцены в фоновом режиме
     [BGGameViewController shared].skView.scene.paused = YES;
@@ -115,9 +140,6 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     BGLog();
-
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    [[BGSettingsManager sharedManager] save];
 }
 
 @end
