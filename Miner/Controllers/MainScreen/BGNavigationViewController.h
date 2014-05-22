@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Bleeding Games. All rights reserved.
 //
 
-@import UIKit;
+#import <Foundation/Foundation.h>
 
 
 @interface BGNavigationViewController : UINavigationController

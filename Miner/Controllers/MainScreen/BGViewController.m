@@ -7,8 +7,8 @@
 //
 
 #import "BGViewController.h"
-#import "BGLog.h"
-#import "BGResourcePreloader.h"
+#import "NAGLog.h"
+#import "NAGResourcePreloader.h"
 #import "BGGameViewController.h"
 #import "FlurryAds.h"
 
@@ -58,9 +58,9 @@
 - (IBAction)playButtonTapped:(id)sender
 {
     //    проигрываем звук нажатия
-    [[[BGResourcePreloader shared]
-                           playerFromGameConfigForResource:@"buttonTap.mp3"]
-                           play];
+    [[[NAGResourcePreloader shared]
+                            playerFromGameConfigForResource:@"buttonTap.mp3"]
+                            play];
 
     [self.navigationController pushViewController:self.gameViewController
                                          animated:YES];
@@ -69,9 +69,9 @@
 - (IBAction)configButtonTapped:(id)sender
 {
     //    проигрываем звук нажатия
-    [[[BGResourcePreloader shared]
-                           playerFromGameConfigForResource:@"buttonTap.mp3"]
-                           play];
+    [[[NAGResourcePreloader shared]
+                            playerFromGameConfigForResource:@"buttonTap.mp3"]
+                            play];
 }
 
 @end

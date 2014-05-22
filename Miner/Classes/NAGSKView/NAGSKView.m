@@ -1,16 +1,16 @@
 //
-//  BGSKView.m
+//  NAGSKView.m
 //  Miner
 //
 //  Created by AndrewShmig on 4/12/14.
 //  Copyright (c) 2014 Russian Bleeding Games. All rights reserved.
 //
 
-#import "BGSKView.h"
-#import "BGLog.h"
+#import "NAGSKView.h"
+#import "NAGLog.h"
 #import "NAGSettingsManager.h"
-#import "BGMinerField.h"
-#import "BGResourcePreloader.h"
+#import "NAGMinerField.h"
+#import "NAGResourcePreloader.h"
 #import "BGGameViewController.h"
 
 
@@ -26,14 +26,14 @@ static const NSInteger kBGPrime = 1001;
 @end
 
 
-@interface BGSKView ()
+@interface NAGSKView ()
 @property NSMutableArray *mineAnimationTextures;
 @property NSMutableArray *grassAnimationTextures;
 @property NSMutableArray *explosionAnimationTextures;
 @end
 
 
-@implementation BGSKView
+@implementation NAGSKView
 
 #pragma mark - Init
 
@@ -44,7 +44,7 @@ static const NSInteger kBGPrime = 1001;
     self = [super initWithFrame:frame];
 
     if (self) {
-        __weak BGSKView *weakSelf = self;
+        __weak NAGSKView *weakSelf = self;
 
         //        работаем с текстурами и атласами
         _tileAtlas = [SKTextureAtlas atlasNamed:@"Tiles"];
@@ -142,12 +142,12 @@ static const NSInteger kBGPrime = 1001;
     NSUInteger level = [[NAGSettingsManager shared]
                                             unsignedIntegerValueForSettingsPath:@"game.settings.level"];
 
-    _field = [[BGMinerField alloc]
-                            initWithCols:cols
-                                    rows:rows
-                                   bombs:[self randomNumberOfBombsForRows:rows
-                                                                     cols:cols
-                                                                    level:level]];
+    _field = [[NAGMinerField alloc]
+                             initWithCols:cols
+                                     rows:rows
+                                    bombs:[self randomNumberOfBombsForRows:rows
+                                                                      cols:cols
+                                                                     level:level]];
 
     //    сбрасываем игровые параметры на начальные состояния
     [self resetGameData];
@@ -255,9 +255,9 @@ static const NSInteger kBGPrime = 1001;
     //    звук взрыва
     SKAction *playExplosionMusicAction = [SKAction runBlock:^
             {
-                [[[BGResourcePreloader shared]
-                                       playerFromGameConfigForResource:@"explosion.wav"]
-                                       play];
+                [[[NAGResourcePreloader shared]
+                                        playerFromGameConfigForResource:@"explosion.wav"]
+                                        play];
             }];
 
     //    ресайзим взрыв относительно размеров поля
@@ -398,7 +398,7 @@ static const NSInteger kBGPrime = 1001;
 {
     BGLog();
 
-    __weak BGSKView *weakSelf = self;
+    __weak NAGSKView *weakSelf = self;
     SKNode *compoundLayer = [self.scene childNodeWithName:@"compoundLayer"];
     SKNode *grassLayer = [compoundLayer childNodeWithName:@"grassLayer"];
     SKNode *earthLayer = [compoundLayer childNodeWithName:@"earthLayer"];
@@ -508,28 +508,27 @@ static const NSInteger kBGPrime = 1001;
                                                                       (NSInteger) (indexCol * kBGPrime + indexRow)];
 
                 sranddev();
-                NSString *tileName = [NSString stringWithFormat:@"grass1"];
+                NSInteger rndIndex = arc4random() % 2 + 1;
+                NSString *tileName = [NSString stringWithFormat:@"grass%d",
+                                                                rndIndex];
 
                 SKSpriteNode *grassTile = [self.tileSprites[tileName] copy];
                 CGFloat x = indexRow * (grassTile.size.width - 15);
                 CGFloat y = indexCol * (grassTile.size.width - 15);
 
                 NSArray *colors = @[
-                        [SKColor colorWithRed:0.23
-                                        green:0.45
-                                         blue:0.1
+                        [SKColor colorWithHue:0.15
+                                   saturation:1.0
+                                   brightness:1.0
                                         alpha:1.0],
-                        [SKColor colorWithRed:0.27
-                                        green:0.36
-                                         blue:0.12
-                                        alpha:1.0],
-                        [SKColor colorWithRed:0.56
-                                        green:0.77
+                        [SKColor colorWithRed:0.66
+                                        green:0.87
                                          blue:0.12
                                         alpha:1.0]
                 ];
+
                 grassTile.color = colors[arc4random() % colors.count];
-                grassTile.colorBlendFactor = 1.0;
+                grassTile.colorBlendFactor = arc4random() % 2;
 
                 grassTile.anchorPoint = CGPointMake(0.1, 0.1);
                 grassTile.position = CGPointMake(x, y);
@@ -654,8 +653,8 @@ static const NSInteger kBGPrime = 1001;
                                         alpha:1];
     UIColor *loseColor = [UIColor redColor];
 
-    NSUInteger score = (isAlive ? [[BGGameViewController shared]
-                                                         gameScore] : 0);
+    NSInteger score = (isAlive ? [[BGGameViewController shared]
+                                                        gameScore] : 0);
 
     SKLabelNode *scoreValueLabel = [SKLabelNode labelNodeWithFontNamed:@"Digital-7 Mono"];
     scoreValueLabel.fontSize = 27;

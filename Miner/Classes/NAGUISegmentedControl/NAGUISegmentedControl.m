@@ -17,15 +17,15 @@
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 //
 
-#import "BGUISegmentedControl.h"
-#import "BGLog.h"
-#import "BGResourcePreloader.h"
+#import "NAGUISegmentedControl.h"
+#import "NAGLog.h"
+#import "NAGResourcePreloader.h"
 
 
 #define METAL_BORDER_WIDTH 4.5
 
 
-@implementation BGUISegmentedControl
+@implementation NAGUISegmentedControl
 {
     NSMutableArray *_selectedSegments;
     SEL _action;
@@ -120,9 +120,9 @@
             if (self.selectedSegmentIndex != i) {
                 //    проигрываем звук нажатия - единожды и только на новом
                 //                значении
-                [[[BGResourcePreloader shared]
-                                       playerFromGameConfigForResource:@"buttonTap.mp3"]
-                                       play];
+                [[[NAGResourcePreloader shared]
+                                        playerFromGameConfigForResource:@"buttonTap.mp3"]
+                                        play];
             }
 
             self.selectedSegmentIndex = i;

@@ -8,10 +8,10 @@
 
 #import <GameKit/GameKit.h>
 #import "BGGameViewController.h"
-#import "BGMinerField.h"
-#import "BGLog.h"
-#import "BGSKView.h"
-#import "BGResourcePreloader.h"
+#import "NAGMinerField.h"
+#import "NAGLog.h"
+#import "NAGSKView.h"
+#import "NAGResourcePreloader.h"
 #import "Flurry.h"
 #import "NAGSettingsManager.h"
 #import "BGAppDelegate.h"
@@ -72,7 +72,7 @@ static const NSInteger kBGMinesCountViewTag = 2;
                 .height - topPanelImageView.bounds.size.height;
         CGRect gameViewFrame = CGRectMake(0, topPanelImage.size
                 .height, 320, gameFieldHeight);
-        self.skView = [[BGSKView alloc] initWithFrame:gameViewFrame];
+        self.skView = [[NAGSKView alloc] initWithFrame:gameViewFrame];
 
         [self.view addSubview:self.skView];
 
@@ -264,9 +264,9 @@ static const NSInteger kBGMinesCountViewTag = 2;
     BGLog();
 
     //    проигрываем нажатие на кнопку
-    [[[BGResourcePreloader shared]
-                           playerFromGameConfigForResource:@"buttonTap.mp3"]
-                           play];
+    [[[NAGResourcePreloader shared]
+                            playerFromGameConfigForResource:@"buttonTap.mp3"]
+                            play];
 
     //  сбрасываем старые значения
     [self destroyGameTimer];
@@ -290,9 +290,9 @@ static const NSInteger kBGMinesCountViewTag = 2;
     self.skView.paused = YES;
 
     //    проигрываем нажатие на кнопку
-    [[[BGResourcePreloader shared]
-                           playerFromGameConfigForResource:@"buttonTap.mp3"]
-                           play];
+    [[[NAGResourcePreloader shared]
+                            playerFromGameConfigForResource:@"buttonTap.mp3"]
+                            play];
 
     //    возвращаемся на главный экран
     [self.navigationController popViewControllerAnimated:YES];
@@ -342,9 +342,9 @@ static const NSInteger kBGMinesCountViewTag = 2;
         }
 
         //    проигрываем откапывание ячейки
-        [[[BGResourcePreloader shared]
-                               playerFromGameConfigForResource:@"grassTap.mp3"]
-                               play];
+        [[[NAGResourcePreloader shared]
+                                playerFromGameConfigForResource:@"grassTap.mp3"]
+                                play];
 
         //        проверим значение, которое на поле
         switch (value) {
@@ -404,9 +404,9 @@ static const NSInteger kBGMinesCountViewTag = 2;
         if (touchedNode.children.count == 0 && touchedNode
                 .userData != nil && minesRemainedToOpen != 0) {
             //    проигрываем установку флажка
-            [[[BGResourcePreloader shared]
-                                   playerFromGameConfigForResource:@"flagTapOn.mp3"]
-                                   play];
+            [[[NAGResourcePreloader shared]
+                                    playerFromGameConfigForResource:@"flagTapOn.mp3"]
+                                    play];
 
             //        устанавливаем флаг
             SKSpriteNode *flagTile = [self.skView.tileSprites[@"flag"] copy];
@@ -420,9 +420,9 @@ static const NSInteger kBGMinesCountViewTag = 2;
             self.skView.flaggedMines++;
         } else if ([touchedNode.name isEqualToString:@"flag"]) {
             //    проигрываем снятие флажка
-            [[[BGResourcePreloader shared]
-                                   playerFromGameConfigForResource:@"flagTapOff.mp3"]
-                                   play];
+            [[[NAGResourcePreloader shared]
+                                    playerFromGameConfigForResource:@"flagTapOff.mp3"]
+                                    play];
 
             //        снимаем флаг
             [touchedNode removeFromParent];

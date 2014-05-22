@@ -9,11 +9,10 @@
 #import <GameKit/GameKit.h>
 #import "BGAppDelegate.h"
 #import "NAGSettingsManager.h"
-#import "BGResourcePreloader.h"
-#import "BGSKView.h"
+#import "NAGResourcePreloader.h"
+#import "NAGSKView.h"
 #import "BGGameViewController.h"
-#import "BGLog.h"
-//#import "iRate.h"
+#import "NAGLog.h"
 #import "Flurry.h"
 #import "FlurryAds.h"
 
@@ -21,12 +20,6 @@
 
 + (void)initialize
 {
-//    напоминалка для оценки приложения
-//    [iRate sharedInstance].appStoreID = 867507430;
-//    [iRate sharedInstance].applicationName = @"Sapper: Royal Engineer";
-//    [iRate sharedInstance].usesUntilPrompt = 3;
-//    [iRate sharedInstance].daysUntilPrompt = 1;
-
 //    настройках менеджера настроек
     [[NAGSettingsManager shared] createDefaultSettingsFromDictionary:@{
             @"game" : @{
@@ -79,7 +72,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
                                 @"explosion.wav"];
 
     for (NSString *audioName in audioResources) {
-        [[BGResourcePreloader shared] preloadAudioResource:audioName];
+        [[NAGResourcePreloader shared] preloadAudioResource:audioName];
     }
 
 //    предсоздание игрового экрана

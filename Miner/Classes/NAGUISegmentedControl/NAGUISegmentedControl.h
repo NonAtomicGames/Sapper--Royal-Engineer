@@ -20,7 +20,7 @@
 @import Foundation;
 
 
-@interface BGUISegmentedControl : UIView
+@interface NAGUISegmentedControl : UIView
 
 @property (nonatomic) UIImage *backgroundImage;
 @property (nonatomic) NSUInteger selectedSegmentIndex;

@@ -9,12 +9,12 @@
 #import <iAd/iAd.h>
 #import <GameKit/GameKit.h>
 #import "BGOptionsViewController.h"
-#import "BGUISwitch.h"
+#import "NAGUISwitch.h"
 #import "NAGSettingsManager.h"
-#import "BGResourcePreloader.h"
-#import "BGUISegmentedControl.h"
-#import "BGLog.h"
-#import "BGSKView.h"
+#import "NAGResourcePreloader.h"
+#import "NAGUISegmentedControl.h"
+#import "NAGLog.h"
+#import "NAGSKView.h"
 #import "BGGameViewController.h"
 #import "Flurry.h"
 #import "BGAppDelegate.h"
@@ -23,8 +23,8 @@
 
 @interface BGOptionsViewController ()
 @property (nonatomic) UIImageView *backgroundImageView;
-@property (nonatomic) BGUISwitch *soundSwitch;
-@property (nonatomic) BGUISwitch *gameCenterSwitch;
+@property (nonatomic) NAGUISwitch *soundSwitch;
+@property (nonatomic) NAGUISwitch *gameCenterSwitch;
 @end
 
 
@@ -63,8 +63,8 @@
     UIImage *backgroundImageFieldSize = [UIImage imageNamed:@"field_deafult"];
     CGRect frameFieldSize = CGRectMake(35, 97, backgroundImageFieldSize.size
             .width, backgroundImageFieldSize.size.height);
-    BGUISegmentedControl *fieldSizeSCView = [[BGUISegmentedControl alloc]
-                                                                   initWithFrame:frameFieldSize];
+    NAGUISegmentedControl *fieldSizeSCView = [[NAGUISegmentedControl alloc]
+                                                                     initWithFrame:frameFieldSize];
     fieldSizeSCView.backgroundImage = backgroundImageFieldSize;
     [fieldSizeSCView addNewSegmentImage:[UIImage imageNamed:@"button_down_128"]];
     [fieldSizeSCView addNewSegmentImage:[UIImage imageNamed:@"button_down_1510"]];
@@ -99,8 +99,8 @@
     UIImage *backgroundImageDifficulty = [UIImage imageNamed:@"difficult_default"];
     CGRect frame = CGRectMake(35, 195, backgroundImageDifficulty.size
             .width, backgroundImageDifficulty.size.height);
-    BGUISegmentedControl *fieldDifficultySCView = [[BGUISegmentedControl alloc]
-                                                                         initWithFrame:frame];
+    NAGUISegmentedControl *fieldDifficultySCView = [[NAGUISegmentedControl alloc]
+                                                                           initWithFrame:frame];
     fieldDifficultySCView.backgroundImage = backgroundImageDifficulty;
     [fieldDifficultySCView addNewSegmentImage:[UIImage imageNamed:@"button_down_easy"]];
     [fieldDifficultySCView addNewSegmentImage:[UIImage imageNamed:@"button_down_norm"]];
@@ -137,10 +137,10 @@
     [self.originalContentView addSubview:soundImageView];
 
     //    создаем переключатель для звука
-    self.soundSwitch = [[BGUISwitch alloc]
-                                    initWithPosition:CGPointMake(48, (CGFloat) 398.0 - pointsToSubstract)
-                                             onImage:[UIImage imageNamed:@"switch_1"]
-                                            offImage:[UIImage imageNamed:@"switch_0"]];
+    self.soundSwitch = [[NAGUISwitch alloc]
+                                     initWithPosition:CGPointMake(48, (CGFloat) 398.0 - pointsToSubstract)
+                                              onImage:[UIImage imageNamed:@"switch_1"]
+                                             offImage:[UIImage imageNamed:@"switch_0"]];
     self.soundSwitch.on = [[NAGSettingsManager shared]
                                                boolValueForSettingsPath:@"game.settings.soundsOn"];
     self.soundSwitch.tag = kBGUISwitchSoundTag;
@@ -160,10 +160,10 @@
     [self.originalContentView addSubview:gameCenterImageView];
 
     //    создаем переключатель для Гейм Центра
-    self.gameCenterSwitch = [[BGUISwitch alloc]
-                                         initWithPosition:CGPointMake(181, (CGFloat) 398.0 - pointsToSubstract)
-                                                  onImage:[UIImage imageNamed:@"switch_1"]
-                                                 offImage:[UIImage imageNamed:@"switch_0"]];
+    self.gameCenterSwitch = [[NAGUISwitch alloc]
+                                          initWithPosition:CGPointMake(181, (CGFloat) 398.0 - pointsToSubstract)
+                                                   onImage:[UIImage imageNamed:@"switch_1"]
+                                                  offImage:[UIImage imageNamed:@"switch_0"]];
     self.gameCenterSwitch.on = [[NAGSettingsManager shared]
                                                     boolValueForSettingsPath:@"game.settings.gameCenterOn"];
     self.gameCenterSwitch.tag = kBGUISwitchGameCenterTag;
@@ -306,9 +306,9 @@
 
 - (void)back:(id)sender
 {
-    [[[BGResourcePreloader shared]
-                           playerFromGameConfigForResource:@"buttonTap.mp3"]
-                           play];
+    [[[NAGResourcePreloader shared]
+                            playerFromGameConfigForResource:@"buttonTap.mp3"]
+                            play];
 
     [self.navigationController popViewControllerAnimated:YES];
 }

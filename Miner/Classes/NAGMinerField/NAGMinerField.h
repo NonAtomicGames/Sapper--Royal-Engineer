@@ -1,18 +1,19 @@
 //
-//  BGMinerField.h
+//  NAGMinerField.h
 //  Miner
 //
 //  Created by AndrewShmig on 3/15/14.
 //  Copyright (c) 2014 Bleeding Games. All rights reserved.
 //
 
-typedef NS_ENUM(NSInteger, BGMinerFieldValue){
+typedef NS_ENUM(NSInteger, BGMinerFieldValue)
+{
     BGFieldBomb = -1,
     BGFieldEmpty = 0
 };
 
 
-@interface BGMinerField : NSObject
+@interface NAGMinerField : NSObject
 
 @property (nonatomic, readonly) NSUInteger rows;
 @property (nonatomic, readonly) NSUInteger cols;

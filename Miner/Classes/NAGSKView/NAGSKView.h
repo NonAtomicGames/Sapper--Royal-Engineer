@@ -1,5 +1,5 @@
 //
-//  BGSKView.h
+//  NAGSKView.h
 //  Miner
 //
 //  Created by AndrewShmig on 4/12/14.
@@ -9,10 +9,10 @@
 @import SpriteKit;
 
 
-@class BGMinerField;
+@class NAGMinerField;
 
 
-@interface BGSKView : SKView
+@interface NAGSKView : SKView
 
 // атлас с текстурами для поля
 @property (nonatomic, strong, readonly) SKTextureAtlas *tileAtlas;
@@ -23,7 +23,7 @@
 // словарь с сильными ссылками на все экземпляры спрайтов
 @property (nonatomic, strong, readonly) NSMutableDictionary *tileSprites;
 // игровое поле
-@property (nonatomic, strong, readonly) BGMinerField *field;
+@property (nonatomic, strong, readonly) NAGMinerField *field;
 // кол-во отмеченых мин
 @property (nonatomic, assign, readwrite) NSInteger flaggedMines;
 

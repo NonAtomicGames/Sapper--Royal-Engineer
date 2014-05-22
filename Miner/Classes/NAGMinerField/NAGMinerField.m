@@ -1,20 +1,20 @@
 //
-//  BGMinerField.m
+//  NAGMinerField.m
 //  Miner
 //
 //  Created by AndrewShmig on 3/15/14.
 //  Copyright (c) 2014 Non Atomic Games. All rights reserved.
 //
 
-#import "BGMinerField.h"
-#import "BGLog.h"
+#import "NAGMinerField.h"
+#import "NAGLog.h"
 
 
 // константа для "кодирования" координаты в одно значение
 static const NSInteger kBGPrime = 1001;
 
 
-@implementation BGMinerField
+@implementation NAGMinerField
 {
     NSMutableArray *_field;
     NSArray *_x, *_y;

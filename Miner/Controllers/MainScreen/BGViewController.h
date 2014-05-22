@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Bleeding Games. All rights reserved.
 //
 
-@import UIKit;
-@import SpriteKit;
+#import <Foundation/Foundation.h>
+#import <SpriteKit/SpriteKit.h>
 
 
 @class BGGameViewController;

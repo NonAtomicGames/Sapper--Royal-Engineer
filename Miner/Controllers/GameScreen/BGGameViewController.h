@@ -10,13 +10,13 @@
 @import SpriteKit;
 
 
-@class BGSKView;
+@class NAGSKView;
 
 
 @interface BGGameViewController : UIViewController
 
 // вьюха для отображения игровой сцены
-@property (nonatomic, strong) BGSKView *skView;
+@property (nonatomic, strong) NAGSKView *skView;
 
 // уникальный объект игрового экрана
 // используется для того, чтобы ускорить загрузку и отображение содержимого сцены
