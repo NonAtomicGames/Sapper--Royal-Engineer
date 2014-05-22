@@ -13,13 +13,23 @@
 #import "NAGSKView.h"
 #import "BGGameViewController.h"
 #import "NAGLog.h"
+#import "iRate.h"
 #import "Flurry.h"
 #import "FlurryAds.h"
+
 
 @implementation BGAppDelegate
 
 + (void)initialize
 {
+//    настраиваем окно с вопросом об оценке приложения
+    [iRate sharedInstance];
+    [iRate sharedInstance].appStoreID = 867507430;
+    [iRate sharedInstance].applicationName = @"Sapper: Royal Engineer";
+    [iRate sharedInstance].daysUntilPrompt = 2;
+    [iRate sharedInstance].usesUntilPrompt = 3;
+    [iRate sharedInstance].promptForNewVersionIfUserRated = YES;
+
 //    настройках менеджера настроек
     [[NAGSettingsManager shared] createDefaultSettingsFromDictionary:@{
             @"game" : @{

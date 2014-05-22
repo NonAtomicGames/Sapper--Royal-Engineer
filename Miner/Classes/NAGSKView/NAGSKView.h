@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Russian Bleeding Games. All rights reserved.
 //
 
-@import SpriteKit;
+#import <SpriteKit/SpriteKit.h>
 
 
 @class NAGMinerField;
