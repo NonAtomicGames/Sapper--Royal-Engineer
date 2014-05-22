@@ -1830,7 +1830,7 @@
 					"\"${PROJECT_DIR}/Miner\"/**",
 					"\"${PROJECT_DIR}/Pods\"/**",
 				);
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = Miner;
 				PROVISIONING_PROFILE = "";
 				SPRITEKIT_TEXTURE_ATLAS_FORMAT = RGBA8888_PNG;

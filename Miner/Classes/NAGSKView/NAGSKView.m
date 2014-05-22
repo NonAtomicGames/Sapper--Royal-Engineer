@@ -236,14 +236,10 @@ static const NSInteger kBGPrime = 1001;
     SKSpriteNode *mineNode = (SKSpriteNode *) [earthLayer childNodeWithName:uniqueCellName];
     SKSpriteNode *grassNode = (SKSpriteNode *) [grassLayer childNodeWithName:uniqueCellName];
 
-    //    анимация раскапывания
-    SKAction *digAction = [SKAction runBlock:^
-            {
-                SKAction *grassDigAction = [SKAction animateWithTextures:weakSelf
-                        .grassAnimationTextures
-                                                            timePerFrame:0.05];
-                [grassNode runAction:grassDigAction];
-            }];
+//    убираем тайл с травой с экрана
+    SKAction *removeGrassNodeAction = [SKAction runBlock:^{
+        [grassNode removeFromParent];
+    }];
 
     //    анимация бомбы
     SKAction *tickAction = [SKAction animateWithTextures:_mineAnimationTextures
@@ -293,13 +289,13 @@ static const NSInteger kBGPrime = 1001;
             }];
 
     //    скомпоновая анимация взрыва и исчезания мины
-    SKAction *waitAction = [SKAction waitForDuration:0.85];
+    SKAction *waitAction = [SKAction waitForDuration:0.70];
     SKAction *sequenceExplosionAction = [SKAction sequence:@[waitAction,
                                                              explosionNodeAddedToScene,
                                                              playExplosionMusicAction]];
 
     //    совместная анимация
-    SKAction *compoundAction = [SKAction sequence:@[digAction,
+    SKAction *compoundAction = [SKAction sequence:@[removeGrassNodeAction,
                                                     tickAction,
                                                     openAllMines]];
     [mineNode runAction:compoundAction];
@@ -323,13 +319,6 @@ static const NSInteger kBGPrime = 1001;
                              row:(NSUInteger)row
 {
     BGLog();
-
-    //    анимация "откапывания"
-    SKAction *removeFromParent = [SKAction removeFromParent];
-    SKAction *digAnimation = [SKAction animateWithTextures:_grassAnimationTextures
-                                              timePerFrame:0.05];
-    SKAction *compoundDigAnimation = [SKAction sequence:@[digAnimation,
-                                                          removeFromParent]];
 
     //    определяем все ячейки, которые необходимо открыть
     NSMutableSet *usedCells = [NSMutableSet new];
@@ -363,7 +352,7 @@ static const NSInteger kBGPrime = 1001;
 
         //        удаляем из родительской ноды
         grassNodeToRemoveFromParent.userData = nil;
-        [grassNodeToRemoveFromParent runAction:compoundDigAnimation];
+        [grassNodeToRemoveFromParent runAction:[SKAction removeFromParent]];
 
         //        нет смысла продолжать открывать клетки, если текущий тайл с цифрой
         NSInteger value = [self.field valueForCol:currentCol
