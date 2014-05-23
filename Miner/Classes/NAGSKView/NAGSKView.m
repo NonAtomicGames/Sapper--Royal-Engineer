@@ -518,7 +518,6 @@ static const NSInteger kBGPrime = 1001;
 
                 grassTile.color = colors[arc4random() % colors.count];
                 grassTile.colorBlendFactor = arc4random() % 2;
-
                 grassTile.anchorPoint = CGPointMake(0.1, 0.1);
                 grassTile.position = CGPointMake(x, y);
                 grassTile.name = uniqueCellName;
