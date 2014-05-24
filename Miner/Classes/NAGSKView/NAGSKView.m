@@ -206,12 +206,13 @@ static const NSInteger kBGPrime = 1001;
                     break;
             }
 
-            CGFloat x = indexRow * earthTile.size.width;
-            CGFloat y = indexCol * earthTile.size.height;
+            CGFloat x = indexRow * (earthTile.size.width - 15);
+            CGFloat y = indexCol * (earthTile.size.height - 15);
 
             earthTile.anchorPoint = CGPointZero;
             earthTile.position = CGPointMake(x, y);
             earthTile.name = uniqueCellName;
+            earthTile.anchorPoint = CGPointMake(.1, .1);
 
             [earthLayer addChild:earthTile];
         }
@@ -223,96 +224,9 @@ static const NSInteger kBGPrime = 1001;
 {
     BGLog();
 
-    __weak typeof(self) weakSelf = self;
+//    TODO: 1) анимация взрыва 2) открытие всех бомб 3) отображение счета
 
-    NSUInteger cellIndex = col * kBGPrime + row;
-    NSString *uniqueCellName = [NSString stringWithFormat:@"%lu",
-                                                          (unsigned long) cellIndex];
-
-    SKNode *compoundLayer = [self.scene childNodeWithName:@"compoundLayer"];
-    SKNode *earthLayer = [compoundLayer childNodeWithName:@"earthLayer"];
-    SKNode *grassLayer = [compoundLayer childNodeWithName:@"grassLayer"];
-
-    SKSpriteNode *mineNode = (SKSpriteNode *) [earthLayer childNodeWithName:uniqueCellName];
-    SKSpriteNode *grassNode = (SKSpriteNode *) [grassLayer childNodeWithName:uniqueCellName];
-
-//    убираем тайл с травой с экрана
-    SKAction *removeGrassNodeAction = [SKAction runBlock:^{
-        [grassNode removeFromParent];
-    }];
-
-    //    анимация бомбы
-    SKAction *tickAction = [SKAction animateWithTextures:_mineAnimationTextures
-                                            timePerFrame:0.05];
-
-    //   нода с анимацией взрыва
-    SKSpriteNode *explosionNode = [SKSpriteNode spriteNodeWithTexture:_explosionAnimationTextures[0]];
-
-    //    звук взрыва
-    SKAction *playExplosionMusicAction = [SKAction runBlock:^
-            {
-                [[[NAGResourcePreloader shared]
-                                        playerFromGameConfigForResource:@"explosion.wav"]
-                                        play];
-            }];
-
-    //    ресайзим взрыв относительно размеров поля
-    if ([[NAGSettingsManager shared]
-                             integerValueForSettingsPath:@"game.settings.cols"] == 12)
-        explosionNode.size = CGSizeMake(250, 250);
-    else if ([[NAGSettingsManager shared]
-                                  integerValueForSettingsPath:@"game.settings.cols"] == 15)
-        explosionNode.size = CGSizeMake(200, 200);
-    else
-        explosionNode.size = CGSizeMake(150, 150);
-
-    //     позиционируем взрыв
-    CGPoint point = mineNode.position;
-    explosionNode.position = CGPointMake(point.x + 13, point.y + 20);
-    explosionNode.zPosition = 2;
-
-    SKAction *explosionAction = [SKAction animateWithTextures:_explosionAnimationTextures
-                                                 timePerFrame:0.025];
-    [explosionNode runAction:[SKAction sequence:@[explosionAction,
-                                                  [SKAction removeFromParent]]]];
-
-    //    действие по добавлению ноды на сцену
-    SKAction *explosionNodeAddedToScene = [SKAction runBlock:^
-            {
-                [earthLayer addChild:explosionNode];
-            }];
-
-    //    анимация открытия остальных бомб
-    SKAction *openAllMines = [SKAction runBlock:^
-            {
-                [weakSelf openCellsWithBombs];
-            }];
-
-    //    скомпоновая анимация взрыва и исчезания мины
-    SKAction *waitAction = [SKAction waitForDuration:0.70];
-    SKAction *sequenceExplosionAction = [SKAction sequence:@[waitAction,
-                                                             explosionNodeAddedToScene,
-                                                             playExplosionMusicAction]];
-
-    //    совместная анимация
-    SKAction *compoundAction = [SKAction sequence:@[removeGrassNodeAction,
-                                                    tickAction,
-                                                    openAllMines]];
-    [mineNode runAction:compoundAction];
-
-    //    показываем пользователю проигрышный смайл
-    SKAction *showSmile = [SKAction runBlock:^
-            {
-                [weakSelf showScoreIsAlive:NO];
-            }];
-
-    //    время ожидания до конца проигрывания анимации взрыва
-    SKAction *waitForExplosionToEndAction = [SKAction waitForDuration:1.0];
-
-    //    запускаем действия
-    [earthLayer runAction:[SKAction sequence:@[sequenceExplosionAction,
-                                               waitForExplosionToEndAction,
-                                               showSmile]]];
+    [self openCellsWithBombs];
 }
 
 - (void)openCellsFromCellWithCol:(NSUInteger)col
@@ -545,27 +459,22 @@ static const NSInteger kBGPrime = 1001;
     SKNode *earthLayer = [SKNode node];
     earthLayer.name = @"earthLayer";
     earthLayer.userInteractionEnabled = NO;
-    earthLayer.zPosition = 0;
-
-    [compoundLayer addChild:earthLayer];
 
     //    создаем слой для хранения тайлов с травой
     SKNode *grassLayer = [SKNode node];
     grassLayer.name = @"grassLayer";
     grassLayer.userInteractionEnabled = YES;
-    grassLayer.zPosition = 1;
-
-    [compoundLayer addChild:grassLayer];
 
     //    создаем слой для хранения смайла победы/поражения
     SKNode *scoreLayer = [SKNode node];
     scoreLayer.name = @"scoreLayer";
     scoreLayer.userInteractionEnabled = YES;
-    scoreLayer.zPosition = 2;
-
-    [compoundLayer addChild:scoreLayer];
 
     //    добавляем дерево на сцену
+    [compoundLayer addChild:earthLayer];
+    [compoundLayer addChild:grassLayer];
+    [compoundLayer addChild:scoreLayer];
+
     [self.scene addChild:compoundLayer];
 }
 
@@ -615,6 +524,7 @@ static const NSInteger kBGPrime = 1001;
             .userInteractionEnabled = YES; // возможность по тапу удалить/убрать плашку - BGGameViewController/tap
     scoreTable.anchorPoint = CGPointZero;
     scoreTable.name = @"scoreTable";
+    scoreTable.zPosition = scoreLayer.zPosition + 1;
 
     if ([UIScreen mainScreen].bounds.size.height == 480) // iPhone 4
         scoreTable.position = CGPointMake(0, -60);

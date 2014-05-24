@@ -16,7 +16,6 @@
 		1A9A00D6B63846BE88257691 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A02790DAA8C74AC969C93 /* Localizable.strings */; };
 		1A9A0132817F769006F9FEEF /* score@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A0DD4451E39418183FFD1 /* score@2x.png */; };
 		1A9A015861C86F4FA454BCA9 /* button_down_1510@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A0948F17032AF6DED5E90 /* button_down_1510@2x.png */; };
-		1A9A01641CDA9BD10F317A45 /* GrassAnimation.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A042BFEC5366841FB4F2D /* GrassAnimation.atlas */; };
 		1A9A01853A0BB677BFCCFB05 /* buttonTap.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A04B0FAB94FABEBB139C9 /* buttonTap.mp3 */; };
 		1A9A0185E54C1DC07DBCA80A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A00D8896F95C65F8FC1BC /* Localizable.strings */; };
 		1A9A01B9DFED993B963F6688 /* top_game@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A098CC6247713BE9E6378 /* top_game@2x.png */; };
@@ -37,13 +36,11 @@
 		1A9A049606B80AE4DA24FD40 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A0E53614DC9E035BE7E8F /* Localizable.strings */; };
 		1A9A049CF8AEDE653A093705 /* difficult_default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A049A17A78B85C5B6BEDB /* difficult_default@2x.png */; };
 		1A9A04D21A1DFF48A6A1C585 /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A04811EB506ADF5BD1482 /* iRate.m */; };
-		1A9A04D379C29A8D9C482491 /* MineAnimation.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A0A24750D5F4BBBEA3ACC /* MineAnimation.atlas */; };
 		1A9A057CC4EB0FA2AE731F68 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A010356B1EAC27CF65EB8 /* Localizable.strings */; };
 		1A9A058A4453EED6021CD23B /* libFlurryAds_5.0.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A9A03593B498028086A1F4E /* libFlurryAds_5.0.0.a */; };
 		1A9A05CEBD40F12E6775C71E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A07E5BF63917C6F974781 /* Localizable.strings */; };
 		1A9A060797A418A8D0777170 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A069031EC2A7138837158 /* Localizable.strings */; };
 		1A9A0632BE25A04413BFFBD3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A08227897EC34C9D90675 /* Localizable.strings */; };
-		1A9A06599755A6C8E7AF947A /* Explosion.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A08D4EEFDB8F5B1AC3AC4 /* Explosion.atlas */; };
 		1A9A066F3385594CE787529F /* libFlurry_5.0.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A9A02BF190D094879605BC9 /* libFlurry_5.0.0.a */; };
 		1A9A068CEE057ED2C4E491C1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A0F1C4FCD33E89AE0843C /* Localizable.strings */; };
 		1A9A06CD10713BDF2EE55A60 /* BGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A0A4A43C16AB0531403B3 /* BGViewController.m */; };
@@ -174,7 +171,6 @@
 		1A9A03E6ECC4D69A6423A961 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = file.md; path = README.md; sourceTree = "<group>"; };
 		1A9A03FA851D6392A39D6AB6 /* de-AT */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = "de-AT"; path = Localizable.strings; sourceTree = "<group>"; };
 		1A9A040C89E8917364C152FD /* nl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = nl; path = Localizable.strings; sourceTree = "<group>"; };
-		1A9A042BFEC5366841FB4F2D /* GrassAnimation.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = GrassAnimation.atlas; sourceTree = "<group>"; };
 		1A9A04811EB506ADF5BD1482 /* iRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iRate.m; sourceTree = "<group>"; };
 		1A9A049EAB4DB613391FBFDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = "Miner/Resources/Images/DifficultyPanel/Base.lproj/button_down_easy@2x.png"; sourceTree = SOURCE_ROOT; };
 		1A9A04B0FAB94FABEBB139C9 /* buttonTap.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = buttonTap.mp3; sourceTree = "<group>"; };
@@ -210,7 +206,6 @@
 		1A9A08B67E8B6D18E502688A /* NAGSKView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAGSKView.m; sourceTree = "<group>"; };
 		1A9A08CC0DE9222155D57607 /* de */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = de; path = Localizable.strings; sourceTree = "<group>"; };
 		1A9A08CD20FD085D3DEED212 /* ko */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = ko; path = Localizable.strings; sourceTree = "<group>"; };
-		1A9A08D4EEFDB8F5B1AC3AC4 /* Explosion.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Explosion.atlas; sourceTree = "<group>"; };
 		1A9A090E5ABA224ED3091D3E /* th */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = th; path = Localizable.strings; sourceTree = "<group>"; };
 		1A9A091262A3E9E45E2C5D90 /* ru */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ru; path = "ru.lproj/button_play@2x.png"; sourceTree = "<group>"; };
 		1A9A092EC53E0AA6BBAA2DC8 /* button_down_128@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_down_128@2x.png"; sourceTree = "<group>"; };
@@ -222,7 +217,6 @@
 		1A9A09F5CD625B44E176548D /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = "Base.lproj/button_options_down@2x.png"; sourceTree = "<group>"; };
 		1A9A09F73356426668E799D7 /* libFlurryAds_5.0.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurryAds_5.0.0.a; sourceTree = "<group>"; };
 		1A9A0A168097146E939877B5 /* Digital.ttf */ = {isa = PBXFileReference; lastKnownFileType = file.ttf; path = Digital.ttf; sourceTree = "<group>"; };
-		1A9A0A24750D5F4BBBEA3ACC /* MineAnimation.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = MineAnimation.atlas; sourceTree = "<group>"; };
 		1A9A0A2C5881C7B49853441F /* BGOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGOptionsViewController.m; sourceTree = "<group>"; };
 		1A9A0A46F498E9336A24C1C5 /* switchOFF.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = switchOFF.mp3; sourceTree = "<group>"; };
 		1A9A0A4A43C16AB0531403B3 /* BGViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGViewController.m; sourceTree = "<group>"; };
@@ -926,9 +920,6 @@
 			isa = PBXGroup;
 			children = (
 				1A9A0F84866F3D6B429F2283 /* Tiles.atlas */,
-				1A9A08D4EEFDB8F5B1AC3AC4 /* Explosion.atlas */,
-				1A9A0A24750D5F4BBBEA3ACC /* MineAnimation.atlas */,
-				1A9A042BFEC5366841FB4F2D /* GrassAnimation.atlas */,
 			);
 			name = Atlases;
 			path = Controls/GameViewController;
@@ -1206,9 +1197,6 @@
 				1A9A01B9DFED993B963F6688 /* top_game@2x.png in Resources */,
 				1A9A0FBD797B1D63A0C94904 /* miner_main@2x.png in Resources */,
 				1A9A0AAD5462A8D6653CE556 /* Tiles.atlas in Resources */,
-				1A9A06599755A6C8E7AF947A /* Explosion.atlas in Resources */,
-				1A9A04D379C29A8D9C482491 /* MineAnimation.atlas in Resources */,
-				1A9A01641CDA9BD10F317A45 /* GrassAnimation.atlas in Resources */,
 				1A9A04249B36C15F13B94CE2 /* button_play@2x.png in Resources */,
 				1A9A00727933BD393EAC06E0 /* button_play_down@2x.png in Resources */,
 				1A9A0F38CC8925F7AEF165BE /* button_options@2x.png in Resources */,

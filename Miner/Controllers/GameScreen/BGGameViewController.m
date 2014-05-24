@@ -413,6 +413,7 @@ static const NSInteger kBGMinesCountViewTag = 2;
             flagTile.anchorPoint = CGPointZero;
             flagTile.size = touchedNode.size;
             flagTile.name = @"flag";
+            flagTile.zPosition = touchedNode.zPosition + 1;
 
             [touchedNode addChild:flagTile];
 
