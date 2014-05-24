@@ -18,14 +18,4 @@
 // вьюха для отображения игровой сцены
 @property (nonatomic, strong) NAGSKView *skView;
 
-// уникальный объект игрового экрана
-// используется для того, чтобы ускорить загрузку и отображение содержимого сцены
-+ (instancetype)shared;
-
-// Game Center
-- (void)authorizeLocalPlayer;
-
-// player score
-- (NSUInteger)gameScore;
-
 @end

@@ -6,12 +6,9 @@
 //  Copyright (c) 2014 Non Atomic Games. All rights reserved.
 //
 
-#import <GameKit/GameKit.h>
 #import "BGAppDelegate.h"
 #import "NAGSettingsManager.h"
 #import "NAGResourcePreloader.h"
-#import "NAGSKView.h"
-#import "BGGameViewController.h"
 #import "NAGLog.h"
 #import "iRate.h"
 #import "Flurry.h"
@@ -85,18 +82,6 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
         [[NAGResourcePreloader shared] preloadAudioResource:audioName];
     }
 
-//    предсоздание игрового экрана
-    [BGGameViewController shared];
-
-//    запрашиваем авторизацию в Гейм Центре, если пользователь включил отправку
-//    счета в ГЦ, но потом осуществил выход из ГЦ
-    if ([[NAGSettingsManager shared]
-                             boolValueForSettingsPath:@"game.settings.gameCenterOn"] &&
-            ![GKLocalPlayer localPlayer].isAuthenticated) {
-
-        [[BGGameViewController shared] authorizeLocalPlayer];
-    }
-
     // Override point for customization after application launch.
     return YES;
 }
@@ -112,9 +97,6 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
     BGLog();
-
-//    останавливаем обновление сцены в фоновом режиме
-    [BGGameViewController shared].skView.scene.paused = YES;
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -127,15 +109,6 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     BGLog();
-
-//    сцена должна обновляться после выхода из бэкграунда только тогда, когда
-//    пользователь ушел в бэкграунд с игрового экрана, а не какого-то другого
-    UIViewController *topViewController = [[BGGameViewController shared]
-            .navigationController.viewControllers lastObject];
-
-    if ([topViewController isMemberOfClass:[BGGameViewController class]]) {
-        [BGGameViewController shared].skView.scene.paused = NO;
-    }
 
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }

@@ -7,17 +7,13 @@
 //
 
 #import <iAd/iAd.h>
-#import <GameKit/GameKit.h>
 #import "BGOptionsViewController.h"
 #import "NAGUISwitch.h"
 #import "NAGSettingsManager.h"
 #import "NAGResourcePreloader.h"
 #import "NAGUISegmentedControl.h"
 #import "NAGLog.h"
-#import "NAGSKView.h"
-#import "BGGameViewController.h"
 #import "Flurry.h"
-#import "BGAppDelegate.h"
 #import "FlurryAds.h"
 
 
@@ -200,9 +196,6 @@
 
     [[NAGSettingsManager shared] setValue:@(selected)
                           forSettingsPath:@"game.settings.level"];
-
-    //    обновим поле
-    [[BGGameViewController shared].skView startNewGame];
 }
 
 - (void)fieldSizeChanged:(id)newlySelectedIndexNumber
@@ -243,9 +236,6 @@
                           forSettingsPath:@"game.settings.cols"];
     [[NAGSettingsManager shared] setValue:@(rows)
                           forSettingsPath:@"game.settings.rows"];
-
-    //    обновим поле
-    [[BGGameViewController shared].skView startNewGame];
 }
 
 - (void)soundButtonTapped:(id)sender
@@ -296,8 +286,7 @@
         [[NAGSettingsManager shared] setValue:@YES
                               forSettingsPath:@"game.settings.gameCenterOn"];
 
-        //    запрашиваем у пользователя авторизацию в ГЦ, если надо
-        [[BGGameViewController shared] authorizeLocalPlayer];
+//        TODO: здесь должно быть отображение окна авторизации в ГЦ
 
         //        фиксируем пользователей, которые включают гейм центр
         [Flurry logEvent:@"userTurnsGameCenterOn"];

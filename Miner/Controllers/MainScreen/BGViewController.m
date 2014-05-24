@@ -17,15 +17,6 @@
 
 #pragma mark - View
 
-- (void)viewDidLoad
-{
-    BGLog();
-
-    [super viewDidLoad];
-
-    self.gameViewController = [BGGameViewController shared];
-}
-
 - (void)viewWillAppear:(BOOL)animated
 {
     BGLog();
