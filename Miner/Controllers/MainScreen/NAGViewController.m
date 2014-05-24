@@ -1,19 +1,19 @@
 //
-//  BGViewController.m
+//  NAGViewController.m
 //  Miner
 //
 //  Created by AndrewShmig on 3/15/14.
 //  Copyright (c) 2014 Non Atomic Games. All rights reserved.
 //
 
-#import "BGViewController.h"
+#import "NAGViewController.h"
 #import "NAGLog.h"
 #import "NAGResourcePreloader.h"
-#import "BGGameViewController.h"
+#import "NAGGameViewController.h"
 #import "FlurryAds.h"
 
 
-@implementation BGViewController
+@implementation NAGViewController
 
 #pragma mark - View
 

@@ -1,19 +1,19 @@
 //
-//  BGNavigationViewController.m
+//  NAGNavigationViewController.m
 //  Miner
 //
 //  Created by AndrewShmig on 3/15/14.
 //  Copyright (c) 2014 Bleeding Games. All rights reserved.
 //
 
-#import "BGNavigationViewController.h"
+#import "NAGNavigationViewController.h"
 
 
-@interface BGNavigationViewController ()
+@interface NAGNavigationViewController ()
 @end
 
 
-@implementation BGNavigationViewController
+@implementation NAGNavigationViewController
 
 - (NSUInteger)supportedInterfaceOrientations
 {

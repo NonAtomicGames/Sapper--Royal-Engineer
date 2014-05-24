@@ -8,7 +8,7 @@
         <!--Navigation View Controller-->
         <scene sceneID="CK7-DQ-God">
             <objects>
-                <navigationController definesPresentationContext="YES" navigationBarHidden="YES" id="i72-1Q-rCP" customClass="BGNavigationViewController" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" navigationBarHidden="YES" id="i72-1Q-rCP" customClass="NAGNavigationViewController" sceneMemberID="viewController">
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -31,7 +31,7 @@
         <!--View Controller-->
         <scene sceneID="IoT-LJ-u6k">
             <objects>
-                <viewController id="gab-HH-5bJ" customClass="BGViewController" sceneMemberID="viewController">
+                <viewController id="gab-HH-5bJ" customClass="NAGViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="r8J-jp-1rf"/>
                         <viewControllerLayoutGuide type="bottom" id="kPi-sv-ScH"/>
@@ -86,7 +86,7 @@
         <!--Options View Controller-->
         <scene sceneID="v4U-lL-P8O">
             <objects>
-                <viewController id="Uzu-Tl-DeP" customClass="BGOptionsViewController" sceneMemberID="viewController">
+                <viewController id="Uzu-Tl-DeP" customClass="NAGOptionsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ViM-J9-XMj"/>
                         <viewControllerLayoutGuide type="bottom" id="X9m-8E-Ful"/>

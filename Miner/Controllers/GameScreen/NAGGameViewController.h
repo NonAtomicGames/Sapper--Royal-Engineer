@@ -1,5 +1,5 @@
 //
-//  BGGameViewController.h
+//  NAGGameViewController.h
 //  Miner
 //
 //  Created by AndrewShmig on 3/15/14.
@@ -13,7 +13,7 @@
 @class NAGSKView;
 
 
-@interface BGGameViewController : UIViewController
+@interface NAGGameViewController : UIViewController
 
 // вьюха для отображения игровой сцены
 @property (nonatomic, strong) NAGSKView *skView;

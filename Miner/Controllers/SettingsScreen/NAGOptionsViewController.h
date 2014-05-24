@@ -1,5 +1,5 @@
 //
-//  BGOptionsViewController.h
+//  NAGOptionsViewController.h
 //  Miner
 //
 //  Created by AndrewShmig on 3/15/14.
@@ -10,5 +10,5 @@
 @import AVFoundation;
 
 
-@interface BGOptionsViewController : UIViewController <AVAudioPlayerDelegate>
+@interface NAGOptionsViewController : UIViewController <AVAudioPlayerDelegate>
 @end

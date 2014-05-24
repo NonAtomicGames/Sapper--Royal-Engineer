@@ -1,5 +1,5 @@
 //
-//  BGNavigationViewController.h
+//  NAGNavigationViewController.h
 //  Miner
 //
 //  Created by AndrewShmig on 3/15/14.
@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 
-@interface BGNavigationViewController : UINavigationController
+@interface NAGNavigationViewController : UINavigationController
 @end

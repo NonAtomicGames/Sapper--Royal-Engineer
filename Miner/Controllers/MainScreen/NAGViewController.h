@@ -1,5 +1,5 @@
 //
-//  BGViewController.h
+//  NAGViewController.h
 //  Miner
 //
 //  Created by AndrewShmig on 3/15/14.
@@ -10,12 +10,12 @@
 #import <SpriteKit/SpriteKit.h>
 
 
-@class BGGameViewController;
+@class NAGGameViewController;
 
 
-@interface BGViewController : UIViewController
+@interface NAGViewController : UIViewController
 
-@property (nonatomic, strong) BGGameViewController *gameViewController;
+@property (nonatomic, strong) NAGGameViewController *gameViewController;
 
 - (IBAction)playButtonTapped:(id)sender;
 

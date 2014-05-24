@@ -1,12 +1,12 @@
 //
-//  BGGameViewController.m
+//  NAGGameViewController.m
 //  Miner
 //
 //  Created by AndrewShmig on 3/15/14.
 //  Copyright (c) 2014 Bleeding Games. All rights reserved.
 //
 
-#import "BGGameViewController.h"
+#import "NAGGameViewController.h"
 #import "NAGSKView.h"
 
 
@@ -16,7 +16,7 @@ static const NSInteger kBGMinesCountViewTag = 2;
 
 
 // основная реализация
-@implementation BGGameViewController
+@implementation NAGGameViewController
 
 #pragma mark - Init
 

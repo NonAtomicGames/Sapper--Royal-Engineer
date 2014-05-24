@@ -1,5 +1,5 @@
 //
-//  BGOptionsViewController.m
+//  NAGOptionsViewController.m
 //  Miner
 //
 //  Created by AndrewShmig on 3/15/14.
@@ -7,7 +7,7 @@
 //
 
 #import <iAd/iAd.h>
-#import "BGOptionsViewController.h"
+#import "NAGOptionsViewController.h"
 #import "NAGUISwitch.h"
 #import "NAGSettingsManager.h"
 #import "NAGResourcePreloader.h"
@@ -17,14 +17,14 @@
 #import "FlurryAds.h"
 
 
-@interface BGOptionsViewController ()
+@interface NAGOptionsViewController ()
 @property (nonatomic) UIImageView *backgroundImageView;
 @property (nonatomic) NAGUISwitch *soundSwitch;
 @property (nonatomic) NAGUISwitch *gameCenterSwitch;
 @end
 
 
-@implementation BGOptionsViewController
+@implementation NAGOptionsViewController
 
 #pragma mark - View
 
