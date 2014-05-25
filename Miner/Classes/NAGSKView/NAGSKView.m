@@ -7,7 +7,22 @@
 //
 
 #import "NAGSKView.h"
+#import "NAGGameScene.h"
+
 
 @implementation NAGSKView
+
+- (id)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+
+    if (self) {
+        NAGGameScene *gameScene = [[NAGGameScene alloc]
+                                                 initWithSize:self.bounds.size];
+        [self presentScene:gameScene];
+    }
+
+    return self;
+}
 
 @end
