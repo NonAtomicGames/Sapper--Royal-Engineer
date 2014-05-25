@@ -10,12 +10,7 @@
 #import <SpriteKit/SpriteKit.h>
 
 
-@class NAGGameViewController;
-
-
 @interface NAGViewController : UIViewController
-
-@property (nonatomic, strong) NAGGameViewController *gameViewController;
 
 - (IBAction)playButtonTapped:(id)sender;
 

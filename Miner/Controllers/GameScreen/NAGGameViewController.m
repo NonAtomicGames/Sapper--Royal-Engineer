@@ -143,4 +143,11 @@ static const NSInteger kBGMinesCountViewTag = 2;
     return self;
 }
 
+#pragma mark - Actions
+
+- (void)back:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 @end

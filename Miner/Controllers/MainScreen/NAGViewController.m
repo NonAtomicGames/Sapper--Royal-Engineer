@@ -11,6 +11,7 @@
 #import "NAGResourcePreloader.h"
 #import "NAGGameViewController.h"
 #import "FlurryAds.h"
+#import "NAGOptionsViewController.h"
 
 
 @implementation NAGViewController
@@ -53,7 +54,7 @@
                             playerFromGameConfigForResource:@"buttonTap.mp3"]
                             play];
 
-    [self.navigationController pushViewController:self.gameViewController
+    [self.navigationController pushViewController:[NAGGameViewController new]
                                          animated:YES];
 }
 

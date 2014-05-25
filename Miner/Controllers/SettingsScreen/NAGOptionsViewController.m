@@ -18,7 +18,6 @@
 
 
 @interface NAGOptionsViewController ()
-@property (nonatomic) UIImageView *backgroundImageView;
 @property (nonatomic) NAGUISwitch *soundSwitch;
 @property (nonatomic) NAGUISwitch *gameCenterSwitch;
 @end
