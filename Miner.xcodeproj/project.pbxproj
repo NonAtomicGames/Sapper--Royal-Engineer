@@ -32,6 +32,7 @@
 		1A9A02E36FF23270FEC10CC8 /* NAGResourcePreloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A0D8241BD943D88289715 /* NAGResourcePreloader.m */; };
 		1A9A02E4E2D19A56575A04D8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A08B121A0D2C9C74523C4 /* Localizable.strings */; };
 		1A9A030240C207431A823891 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A013186D60BBCB1A0A4FF /* Localizable.strings */; };
+		1A9A03B08C068D9D8BD9ABCF /* NAGResourcePreloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A009485AB42207C4F0F4E /* NAGResourcePreloader.m */; };
 		1A9A03EA7BFA1B76E0EF3565 /* NAGOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A0A2C5881C7B49853441F /* NAGOptionsViewController.m */; };
 		1A9A03FE5B6FAA76B5059D30 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A09D45C4B40800C511486 /* Localizable.strings */; };
 		1A9A04249B36C15F13B94CE2 /* button_play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A0B2D923CFADB13058BB0 /* button_play@2x.png */; };
@@ -158,6 +159,7 @@
 		1A9A0064AED1B657021B8702 /* NAGGameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAGGameScene.m; sourceTree = "<group>"; };
 		1A9A008BA3E0E3237B74DA69 /* NAGMineTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAGMineTile.m; sourceTree = "<group>"; };
 		1A9A008FC38107E2DB73FCE2 /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@2x.png"; sourceTree = "<group>"; };
+		1A9A009485AB42207C4F0F4E /* NAGResourcePreloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAGResourcePreloader.m; sourceTree = "<group>"; };
 		1A9A00B5B9DF5D8D09120772 /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = "Base.lproj/button_options@2x.png"; sourceTree = "<group>"; };
 		1A9A00D8AC92563723848390 /* FlurryAdDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAdDelegate.h; sourceTree = "<group>"; };
 		1A9A0106BF3CF21FEA4C89FA /* sv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = sv; path = Localizable.strings; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 		1A9A0C501CFCCF10590D6191 /* NAGFlagLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAGFlagLayer.m; sourceTree = "<group>"; };
 		1A9A0C5A60E94D5047202A6C /* ru */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = ru; path = Localizable.strings; sourceTree = "<group>"; };
 		1A9A0C77CB64CEF4B1ED2CCE /* NAGGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAGGameViewController.m; sourceTree = "<group>"; };
+		1A9A0C79DD26BACC41BB09D2 /* NAGResourcePreloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAGResourcePreloader.h; sourceTree = "<group>"; };
 		1A9A0C833D1611C514CA2A97 /* iRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iRate.h; sourceTree = "<group>"; };
 		1A9A0C8FC1C06EB621E4DE15 /* ru */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ru; path = "ru.lproj/button_options@2x.png"; sourceTree = "<group>"; };
 		1A9A0CA34FD4C75939A6A161 /* ur-PK */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = "ur-PK"; path = Localizable.strings; sourceTree = "<group>"; };
@@ -552,7 +555,7 @@
 				1A9A094AEBFF49A2C58101E2 /* NAGLog */,
 				1A9A06AA007B4A1F4A11BC77 /* NAGUtilityLibrary */,
 				1A9A0EE9854942C6117B48E6 /* NAGSKView */,
-				1A9A077D2241193A80BF736B /* NAGResourcePreloader */,
+				1A9A091E0C7E5B37764E5CAB /* NAGResourcePreloader */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -683,13 +686,6 @@
 			path = NAGMinerField;
 			sourceTree = "<group>";
 		};
-		1A9A077D2241193A80BF736B /* NAGResourcePreloader */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = NAGResourcePreloader;
-			sourceTree = "<group>";
-		};
 		1A9A078DC21BEE484DC5D0C6 /* el.lproj */ = {
 			isa = PBXGroup;
 			children = (
@@ -783,6 +779,15 @@
 				1A9A0C5B016F0B1D8914EAD1 /* NAGFieldLayer */,
 			);
 			path = Layers;
+			sourceTree = "<group>";
+		};
+		1A9A091E0C7E5B37764E5CAB /* NAGResourcePreloader */ = {
+			isa = PBXGroup;
+			children = (
+				1A9A0C79DD26BACC41BB09D2 /* NAGResourcePreloader.h */,
+				1A9A009485AB42207C4F0F4E /* NAGResourcePreloader.m */,
+			);
+			path = NAGResourcePreloader;
 			sourceTree = "<group>";
 		};
 		1A9A09393F07C3D3FCEFA28F /* en.lproj */ = {
@@ -1452,6 +1457,7 @@
 				1A9A02B7CD7EE6E605675BAC /* NAGFlagLayer.m in Sources */,
 				1A9A05160B0BD5609713B84B /* NAGGrassLayer.m in Sources */,
 				1A9A0E78229E28838C017548 /* NAGScorePanelLayer.m in Sources */,
+				1A9A03B08C068D9D8BD9ABCF /* NAGResourcePreloader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
