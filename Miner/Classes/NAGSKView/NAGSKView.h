@@ -9,8 +9,5 @@
 @import SpriteKit;
 
 
-@class NAGGameScene;
-
-
 @interface NAGSKView : SKView
 @end
