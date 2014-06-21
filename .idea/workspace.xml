@@ -1,0 +1,1169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="4eb93502-bf54-45b8-8287-e0ef4bcebfdd" name="Default" comment="+добавлен предзагрузчик ресурсов" />
+    <list id="a6a5ed42-4584-4f47-896b-1ee9c8b8a820" name="Reverts" comment="" />
+    <ignored path="Miner.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DaemonCodeAnalyzer">
+    <disable_hints />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="iphonesimulator_iPhone_Retina__4_inch__7.1" />
+  <component name="FavoritesManager">
+    <favorites_list name="Miner" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf />
+  </component>
+  <component name="FindManager">
+    <FindUsagesManager>
+      <setting name="OPEN_NEW_TAB" value="false" />
+    </FindUsagesManager>
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="AndrewShmig" />
+      </list>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+  </component>
+  <component name="GitLogSettings">
+    <option name="myStructureFilterPaths" />
+    <option name="myDateState">
+      <MyDateState />
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="changedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/Miner/Classes/BGSKView/BGSKView.h" />
+        <option value="$PROJECT_DIR$/Miner/Controllers/BGGameViewController.h" />
+        <option value="$PROJECT_DIR$/Miner/Controllers/BGViewController.m" />
+        <option value="$PROJECT_DIR$/FlurryAds/FlurryAds.h" />
+        <option value="$PROJECT_DIR$/Miner/Classes/BGMinerField/BGMinerField.m" />
+        <option value="$PROJECT_DIR$/Miner/Views/Base.lproj/Main.storyboard" />
+        <option value="$PROJECT_DIR$/NAGUtilityLibrary/NAGSettingsManager/NAGSettingsManager.h" />
+        <option value="$PROJECT_DIR$/Miner/Controllers/BGGameViewController.m" />
+        <option value="$PROJECT_DIR$/Miner/Controllers/BGOptionsViewController.m" />
+        <option value="$PROJECT_DIR$/Miner/Classes/BGAudioPreloader/BGResourcePreloader.m" />
+        <option value="$PROJECT_DIR$/Miner/Classes/BGSKView/BGSKView.m" />
+        <option value="$PROJECT_DIR$/Miner/MainScreen/BGViewController.h" />
+        <option value="$PROJECT_DIR$/Miner/GameScreen/BGGameViewController.h" />
+        <option value="$PROJECT_DIR$/Miner/MainScreen/BGNavigationViewController.h" />
+        <option value="$PROJECT_DIR$/Miner/SettingsScreen/BGOptionsViewController.h" />
+        <option value="$PROJECT_DIR$/Miner/Classes/NAGAudioPreloader/NAGResourcePreloader.h" />
+        <option value="$PROJECT_DIR$/Miner/Classes/NAGMinerField/NAGMinerField.h" />
+        <option value="$PROJECT_DIR$/Miner/Classes/NAGUISegmentedControl/NAGUISegmentedControl.h" />
+        <option value="$PROJECT_DIR$/Miner/Classes/NAGUISwitch/NAGUISwitch.h" />
+        <option value="$PROJECT_DIR$/Miner/Controllers/SettingsScreen/BGOptionsViewController.h" />
+        <option value="$PROJECT_DIR$/Miner/Controllers/MainScreen/BGViewController.h" />
+        <option value="$PROJECT_DIR$/Miner/Controllers/MainScreen/BGNavigationViewController.h" />
+        <option value="$PROJECT_DIR$/Podfile" />
+        <option value="$PROJECT_DIR$/Miner/Controllers/GameScreen/BGGameViewController.h" />
+        <option value="$PROJECT_DIR$/Miner/Controllers/SettingsScreen/BGOptionsViewController.m" />
+        <option value="$PROJECT_DIR$/Miner/Controllers/GameScreen/BGGameViewController.m" />
+        <option value="$PROJECT_DIR$/Miner/Controllers/MainScreen/BGViewController.m" />
+        <option value="$PROJECT_DIR$/Miner/BGAppDelegate.m" />
+        <option value="$PROJECT_DIR$/Miner/Controllers/GameScreen/NAGGameViewController.h" />
+        <option value="$PROJECT_DIR$/Miner/Controllers/SettingsScreen/NAGOptionsViewController.h" />
+        <option value="$PROJECT_DIR$/Miner/Controllers/MainScreen/NAGNavigationViewController.h" />
+        <option value="$PROJECT_DIR$/Miner/Controllers/MainScreen/NAGViewController.h" />
+        <option value="$PROJECT_DIR$/Miner/Controllers/SettingsScreen/NAGOptionsViewController.m" />
+        <option value="$PROJECT_DIR$/Miner/Storyboards/Base.lproj/Main.storyboard" />
+        <option value="$PROJECT_DIR$/Miner/Controllers/MainScreen/NAGViewController.m" />
+        <option value="$PROJECT_DIR$/Miner/Controllers/GameScreen/NAGGameViewController.m" />
+        <option value="$PROJECT_DIR$/Miner/Classes/NAGSKView/NAGGameScene/NAGGameScene.h" />
+        <option value="$PROJECT_DIR$/Miner/Classes/NAGSKView/NAGGameScene/NAGGameScene.m" />
+        <option value="$PROJECT_DIR$/Miner/Classes/NAGSKView/NAGGameScene/Tiles/NAGEarthNumberTile/NAGEarthNumberTile.h" />
+        <option value="$PROJECT_DIR$/Miner/Classes/NAGSKView/NAGGameScene/Tiles/NAGEarthTile/NAGEarthTile.h" />
+        <option value="$PROJECT_DIR$/Miner/Classes/NAGSKView/NAGGameScene/Tiles/NAGFlagTile/NAGFlagTile.h" />
+        <option value="$PROJECT_DIR$/Miner/Classes/NAGSKView/NAGGameScene/Tiles/NAGGrassTile/NAGGrassTile.h" />
+        <option value="$PROJECT_DIR$/Miner/Classes/NAGSKView/NAGGameScene/Tiles/NAGMineTile/NAGMineTile.h" />
+        <option value="$PROJECT_DIR$/Miner/Classes/NAGSKView/NAGGameScene/Layers/NAGEarthLayer/NAGEarthLayer.h" />
+        <option value="$PROJECT_DIR$/Miner/Classes/NAGSKView/NAGGameScene/Layers/NAGFieldLayer/NAGFieldLayer.h" />
+        <option value="$PROJECT_DIR$/Miner/Classes/NAGSKView/NAGGameScene/Layers/NAGFlagLayer/NAGFlagLayer.h" />
+        <option value="$PROJECT_DIR$/Miner/Classes/NAGSKView/NAGGameScene/Layers/NAGGrassLayer/NAGGrassLayer.h" />
+        <option value="$PROJECT_DIR$/Miner/Classes/NAGSKView/NAGGameScene/Layers/NAGScorePanelLayer/NAGScorePanelLayer.h" />
+        <option value="$PROJECT_DIR$/Miner/Classes/NAGSKView/NAGSKView.h" />
+        <option value="$PROJECT_DIR$/Miner/Classes/NAGSKView/NAGSKView.m" />
+        <option value="$PROJECT_DIR$/Miner/Classes/NAGResourcePreloader/NAGResourcePreloader.m" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="y" value="22" />
+    <option name="width" value="1440" />
+    <option name="height" value="874" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>C/C++</id>
+          </State>
+          <State>
+            <id>Data flow analysisC/C++</id>
+          </State>
+          <State>
+            <id>GeneralObjective-C</id>
+          </State>
+          <State>
+            <id>Objective-C</id>
+          </State>
+          <State>
+            <id>Type checksC/C++</id>
+          </State>
+          <State>
+            <id>Unused codeC/C++</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>OCUnusedMethodInspection</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="2" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectReloadState">
+    <option name="STATE" value="0" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="Cidr.FilesView">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Miner" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$1$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Miner" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$1$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Miner" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Miner" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$1$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Miner" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Miner" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Miner" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Sapper" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Miner" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Sapper" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Controllers" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Miner" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Sapper" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Classes" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Miner" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Sapper" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Classes" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NAGSKView" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Miner" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Sapper" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Classes" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NAGSKView" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NAGGameScene" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Miner" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Products" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Miner" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="146" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="147" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="146" />
+    <property name="recentsLimit" value="5" />
+    <property name="options.lastSelected" value="com.jetbrains.cidr.cocoapods.CocoaPodsConfigurable" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../iRate/iRate" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="151" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="945" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="945" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="151" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="147" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
+    <property name="restartRequiresConfirmation" value="true" />
+    <property name="OBJC.PRESERVED_TARGET_SELECTION" value="Miner" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
+    <property name="UI_DESIGNER_EDITOR_MODE.PaletteToolWindowManager.WIDTH" value="192" />
+  </component>
+  <component name="RunManager" selected="Application.Sapper">
+    <configuration default="true" type="AppleRunConfiguration" factoryName="Application" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="Miner" TARGET_NAME="Miner" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Miner" RUN_TARGET_NAME="Miner" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
+      <envs />
+      <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
+        <REVEAL_SETTINGS autoInject="false" autoInstall="true" />
+      </EXTENSION>
+      <method />
+    </configuration>
+    <configuration default="true" type="OCUnitRunConfiguration" factoryName="XCTest/Kiwi" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="Miner" TARGET_NAME="MinerTests" CONFIG_NAME="Debug" TEST_MODE="SUITE_TEST">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="OCGoogleTestRunConfigurationType" factoryName="Google Test" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="Miner" TARGET_NAME="Miner" CONFIG_NAME="Debug" TEST_MODE="SUITE_TEST">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="Sapper" type="AppleRunConfiguration" factoryName="Application" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="Miner" TARGET_NAME="Miner" CONFIG_NAME="Debug" SCHEME_NAME="Sapper" RUN_TARGET_PROJECT_NAME="Miner" RUN_TARGET_NAME="Miner" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
+      <envs />
+      <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
+        <REVEAL_SETTINGS autoInject="false" autoInstall="true" />
+      </EXTENSION>
+      <RunnerSettings RunnerId="AppRunner" />
+      <ConfigurationWrapper RunnerId="AppRunner" />
+      <method />
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="Application.Sapper" />
+    </list>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration" myUseAcceleration="nothing">
+    <configuration useDefault="false">$USER_HOME$/.subversion</configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4eb93502-bf54-45b8-8287-e0ef4bcebfdd" name="Default" comment="" />
+      <changelist id="a6a5ed42-4584-4f47-896b-1ee9c8b8a820" name="Reverts" comment="" />
+      <created>1394887916070</created>
+      <option name="number" value="Default" />
+      <updated>1394887916070</updated>
+    </task>
+    <task id="LOCAL-00001" summary="update">
+      <created>1396078733990</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1396078733990</updated>
+    </task>
+    <task id="LOCAL-00002" summary="BGGameScene added + some fixes">
+      <created>1396083379214</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1396083379214</updated>
+    </task>
+    <task id="LOCAL-00003" summary="localizations + new UI elements were added to Settings view">
+      <created>1396194964113</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1396194964114</updated>
+    </task>
+    <task id="LOCAL-00004" summary="localizations + new UI elements were added to Settings view + adbanner">
+      <created>1396276149050</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1396276149051</updated>
+    </task>
+    <task id="LOCAL-00005" summary="добавлены настройки на экран опций (их загрузка из предыдущего состояния, их сохранение)">
+      <created>1396289954901</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1396289954901</updated>
+    </task>
+    <task id="LOCAL-00006" summary="удалили лишний логгер">
+      <created>1396298459216</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1396298459216</updated>
+    </task>
+    <task id="LOCAL-00007" summary="добавил логгер настрок при старте приложения">
+      <created>1396299315101</created>
+      <option name="number" value="00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1396299315101</updated>
+    </task>
+    <task id="LOCAL-00008" summary="добавил логгер настрок при старте приложения">
+      <created>1396299454960</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1396299454960</updated>
+    </task>
+    <task id="LOCAL-00009" summary="экран настроек переписан заново, без использования сторибордов&#10;добавлены изображения переключателя, фоновое изображение&#10;">
+      <created>1396555068501</created>
+      <option name="number" value="00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1396555068501</updated>
+    </task>
+    <task id="LOCAL-00010" summary="реализовал переключение тумблера правильным образом">
+      <created>1396639197978</created>
+      <option name="number" value="00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1396639197978</updated>
+    </task>
+    <task id="LOCAL-00011" summary="перенёс проигрывание переключений тумблера в класс BGUISwitch">
+      <created>1396641051967</created>
+      <option name="number" value="00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1396641051967</updated>
+    </task>
+    <task id="LOCAL-00012" summary="улучшил работу с баннерами">
+      <created>1396714209064</created>
+      <option name="number" value="00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1396714209064</updated>
+    </task>
+    <task id="LOCAL-00013" summary="исправил лаг при первичном проигрывании звуков при переключении тумблеров. звуки теперь подгружаются в делегате приложения.">
+      <created>1396730144984</created>
+      <option name="number" value="00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1396730144984</updated>
+    </task>
+    <task id="LOCAL-00014" summary="реализовал переключение сложности игры">
+      <created>1396815725555</created>
+      <option name="number" value="00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1396815725555</updated>
+    </task>
+    <task id="LOCAL-00015" summary="исправил методы для работы с ретиной">
+      <created>1396843287134</created>
+      <option name="number" value="00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1396843287134</updated>
+    </task>
+    <task id="LOCAL-00016" summary="исправлены изображения с ретиной">
+      <created>1397110622838</created>
+      <option name="number" value="00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1397110622838</updated>
+    </task>
+    <task id="LOCAL-00017" summary="реализовано открытие поля, его заполнение">
+      <created>1397135089638</created>
+      <option name="number" value="00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1397135089638</updated>
+    </task>
+    <task id="LOCAL-00018" summary="реализованы надписи с кол-вом мин, прошедшее время, реструктуризован код">
+      <created>1397212862507</created>
+      <option name="number" value="00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1397212862507</updated>
+    </task>
+    <task id="LOCAL-00019" summary="добавлен класс подгрузки текстур">
+      <created>1397220503283</created>
+      <option name="number" value="00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1397220503283</updated>
+    </task>
+    <task id="LOCAL-00020" summary="обновлены изображения, удалили экран рекордов">
+      <created>1397231157259</created>
+      <option name="number" value="00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1397231157259</updated>
+    </task>
+    <task id="LOCAL-00021" summary="добавил изображения для кнопки статуса на экране игры (стандартная, проиграл, выиграл)&#10;реструктуризовал проект">
+      <created>1397231387406</created>
+      <option name="number" value="00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1397231387406</updated>
+    </task>
+    <task id="LOCAL-00022" summary="+подкорректирована подгрузка атласов (нужно еще тестирование) +реализована вся логика игры (без анимации взрыва)">
+      <created>1397244358117</created>
+      <option name="number" value="00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1397244358117</updated>
+    </task>
+    <task id="LOCAL-00023" summary="подредактировал предзагрузку спрайтов игрового поля">
+      <created>1397283646676</created>
+      <option name="number" value="00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1397283646676</updated>
+    </task>
+    <task id="LOCAL-00024" summary="подредактировал предзагрузку спрайтов игрового поля">
+      <created>1397293634684</created>
+      <option name="number" value="00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1397293634684</updated>
+    </task>
+    <task id="LOCAL-00025" summary="убрал подвисание при открытии игрового экрана, изменил структуру проекта и логику игры раскидал по нескольким классам">
+      <created>1397328517857</created>
+      <option name="number" value="00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1397328517857</updated>
+    </task>
+    <task id="LOCAL-00026" summary="+исправил ошибку с определением статуса игры - выиграна ли она или проиграна +добавлены звуки для флага, лопаты и остальных кнопок">
+      <created>1397370180732</created>
+      <option name="number" value="00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1397370180733</updated>
+    </task>
+    <task id="LOCAL-00027" summary="+подкорректирована работа со звуками +проверка кол-ва оставшихся тайлов с травой улучшена">
+      <created>1397384138969</created>
+      <option name="number" value="00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1397384138969</updated>
+    </task>
+    <task id="LOCAL-00028" summary="+ускорил ответную реакцию на выставление флажка в игре">
+      <created>1397483467103</created>
+      <option name="number" value="00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1397483467103</updated>
+    </task>
+    <task id="LOCAL-00029" summary="+реализовано заполнение слоя с травой">
+      <created>1397574754648</created>
+      <option name="number" value="00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1397574754648</updated>
+    </task>
+    <task id="LOCAL-00030" summary="+реализовано заполнение слоя с бомбами/цифрами/землей">
+      <created>1397577822417</created>
+      <option name="number" value="00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1397577822417</updated>
+    </task>
+    <task id="LOCAL-00031" summary="+исправил ошибку с отображением взрыва после сброса игры (начало новой)">
+      <created>1397580286149</created>
+      <option name="number" value="00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1397580286149</updated>
+    </task>
+    <task id="LOCAL-00032" summary="+обновлена кнопка &quot;ресет&quot; на экране игры">
+      <created>1397585372269</created>
+      <option name="number" value="00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1397585372269</updated>
+    </task>
+    <task id="LOCAL-00033" summary="+переименовал метод генерации поля с исключением одной клетки +реструктуризировал немного код во избежание длинных строк">
+      <created>1397618971736</created>
+      <option name="number" value="00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1397618971736</updated>
+    </task>
+    <task id="LOCAL-00034" summary="+добавил возможность по нажатию на смайлы убрать их +реализовал отображение проигрышных смайлов только 2 раза, восстанавливается отображение после выигрыша. Выигрышный смайл отображается всегда.">
+      <created>1397753073235</created>
+      <option name="number" value="00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1397753073235</updated>
+    </task>
+    <task id="LOCAL-00035" summary="+/- исправлена ошибка с блокировкой поля (проставление и снятие флагов)">
+      <created>1397753852368</created>
+      <option name="number" value="00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1397753852368</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Изменение структуры логики экранов">
+      <created>1397761384743</created>
+      <option name="number" value="00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1397761384743</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Изменил связь между игровым контроллером и вьюхой отображения игры. Теперь вьюха принадлежит контроллеру, а не наоборот.">
+      <created>1397762357106</created>
+      <option name="number" value="00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1397762357106</updated>
+    </task>
+    <task id="LOCAL-00038" summary="добавлены ТУДУ таски">
+      <created>1397768347716</created>
+      <option name="number" value="00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1397768347716</updated>
+    </task>
+    <task id="LOCAL-00039" summary="добавлены ТУДУ таски">
+      <created>1397768667929</created>
+      <option name="number" value="00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1397768667929</updated>
+    </task>
+    <task id="LOCAL-00040" summary="+добавлены комментарии класса BGGameViewController">
+      <created>1397808396343</created>
+      <option name="number" value="00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1397808396343</updated>
+    </task>
+    <task id="LOCAL-00041" summary="+завершены все TODO">
+      <created>1397825508317</created>
+      <option name="number" value="00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1397825508317</updated>
+    </task>
+    <task id="LOCAL-00042" summary="+переформатирование">
+      <created>1398598274444</created>
+      <option name="number" value="00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1398598274444</updated>
+    </task>
+    <task id="LOCAL-00043" summary="+добавил аналитику от Flurry для отслеживания действий пользователя">
+      <created>1398925695642</created>
+      <option name="number" value="00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1398925695642</updated>
+    </task>
+    <task id="LOCAL-00044" summary="+исправил формулу вычисления кол-ва очков, которые набрал пользователь">
+      <created>1399139057255</created>
+      <option name="number" value="00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1399139057255</updated>
+    </task>
+    <task id="LOCAL-00045" summary="+реализован скролл игрового поля">
+      <created>1399381184871</created>
+      <option name="number" value="00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1399381184871</updated>
+    </task>
+    <task id="LOCAL-00046" summary="+добавлены пару ТУДУшек">
+      <created>1399456484517</created>
+      <option name="number" value="00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1399456484517</updated>
+    </task>
+    <task id="LOCAL-00047" summary="+добавлены файлы, которые отсутствовали в репозитории локальном">
+      <created>1399456563285</created>
+      <option name="number" value="00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1399456563285</updated>
+    </task>
+    <task id="LOCAL-00048" summary="+увеличение игрового поля реализовано +начата реализация метода фиксирования игрового поля на сцене (требуется доработка)">
+      <created>1399494932041</created>
+      <option name="number" value="00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1399494932041</updated>
+    </task>
+    <task id="LOCAL-00049" summary="+переписал метод скролла игрового поля (надо доработать привязку к границам экрана)">
+      <created>1399578112216</created>
+      <option name="number" value="00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1399578112216</updated>
+    </task>
+    <task id="LOCAL-00050" summary="+реализован метод прокрутки игрового поля">
+      <created>1399630344408</created>
+      <option name="number" value="00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1399630344409</updated>
+    </task>
+    <task id="LOCAL-00051" summary="+реализован зум-аут и зум-ин &#10;+сброс игровых данных подкорректирован с учетом зумов&#10;">
+      <created>1399643503758</created>
+      <option name="number" value="00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1399643503758</updated>
+    </task>
+    <task id="LOCAL-00052" summary="+добавлены ТУДУшечки">
+      <created>1399795496977</created>
+      <option name="number" value="00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1399795496978</updated>
+    </task>
+    <task id="LOCAL-00053" summary="+реализовал изменение текстуры мины, которая была отмечена пользователем посредством выставления флажка на траве">
+      <created>1400084670912</created>
+      <option name="number" value="00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1400084670912</updated>
+    </task>
+    <task id="LOCAL-00054" summary="+реализовал поддержку Гейм Центра">
+      <created>1400217624977</created>
+      <option name="number" value="00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1400217624977</updated>
+    </task>
+    <task id="LOCAL-00055" summary="+маленький фикс для гейм центра">
+      <created>1400217829048</created>
+      <option name="number" value="00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1400217829049</updated>
+    </task>
+    <task id="LOCAL-00056" summary="+добавлена возможности оценки приложения пользователем">
+      <created>1400222160778</created>
+      <option name="number" value="00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1400222160778</updated>
+    </task>
+    <task id="LOCAL-00057" summary="+изменил кол-во дней после которых будет запрашиваться повторно просьба оценить приложение">
+      <created>1400222319776</created>
+      <option name="number" value="00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1400222319776</updated>
+    </task>
+    <task id="LOCAL-00058" summary="+добавлена реклама от Flurry&#10;+реализован плавный зум аут игрового поля&#10;+переключатель гейм центра исправлен, по умолчанию он отключен&#10;+скоректированы настройки отображения окна запроса пользовательской оценки">
+      <created>1400265251065</created>
+      <option name="number" value="00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1400265251066</updated>
+    </task>
+    <task id="LOCAL-00059" summary="+реализовано отображение плашки со счетом">
+      <created>1400321300326</created>
+      <option name="number" value="00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1400321300326</updated>
+    </task>
+    <task id="LOCAL-00060" summary="+добавлено выравниение надписи с финальным счетом на плашке">
+      <created>1400345130670</created>
+      <option name="number" value="00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1400345130670</updated>
+    </task>
+    <task id="LOCAL-00061" summary="+добавлено выравниение надписи с финальным счетом на плашке">
+      <created>1400345152923</created>
+      <option name="number" value="00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1400345152923</updated>
+    </task>
+    <task id="LOCAL-00062" summary="+надпись с очками центрирована">
+      <created>1400353645714</created>
+      <option name="number" value="00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1400353645714</updated>
+    </task>
+    <task id="LOCAL-00063" summary="+добавлен запрос авторизации в ГЦ, если в настройках ГЦ включен, но по каким-то причинам пользователь деавторизован">
+      <created>1400397466171</created>
+      <option name="number" value="00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1400397466171</updated>
+    </task>
+    <task id="LOCAL-00064" summary="+маленкий фикс с переключателем ГЦ">
+      <created>1400401809616</created>
+      <option name="number" value="00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1400401809616</updated>
+    </task>
+    <task id="LOCAL-00065" summary="+убрал отображение тестовой рекламы">
+      <created>1400407752628</created>
+      <option name="number" value="00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1400407752628</updated>
+    </task>
+    <task id="LOCAL-00066" summary="+обновили плашку со счетом (на изображении убрали серые цифры)">
+      <created>1400430682140</created>
+      <option name="number" value="00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1400430682140</updated>
+    </task>
+    <task id="LOCAL-00067" summary="+добавлена поддержка iPhone 4">
+      <created>1400585003415</created>
+      <option name="number" value="00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1400585003415</updated>
+    </task>
+    <task id="LOCAL-00068" summary="+подкорректирован скролл">
+      <created>1400585651836</created>
+      <option name="number" value="00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1400585651836</updated>
+    </task>
+    <task id="LOCAL-00069" summary="+внедрен новый менеджер настроек">
+      <created>1400702763874</created>
+      <option name="number" value="00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1400702763875</updated>
+    </task>
+    <task id="LOCAL-00070" summary="+изменена структура проекта">
+      <created>1400764610824</created>
+      <option name="number" value="00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1400764610824</updated>
+    </task>
+    <task id="LOCAL-00071" summary="+добавлен модуль оценки приложения iRate">
+      <created>1400772409765</created>
+      <option name="number" value="00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1400772409765</updated>
+    </task>
+    <task id="LOCAL-00072" summary="+добавлены файлы, которые почему-то оказались вне системы контроля версий">
+      <created>1400772469461</created>
+      <option name="number" value="00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1400772469462</updated>
+    </task>
+    <task id="LOCAL-00073" summary="+убрал анимацию откапывания травы">
+      <created>1400773096143</created>
+      <option name="number" value="00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1400773096144</updated>
+    </task>
+    <task id="LOCAL-00074" summary="+добавлены новые тайлы с травой и землей">
+      <created>1400833323785</created>
+      <option name="number" value="00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1400833323785</updated>
+    </task>
+    <task id="LOCAL-00075" summary="+реализовано корректное отображение флажков (поверх травы)">
+      <created>1400923574792</created>
+      <option name="number" value="00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1400923574792</updated>
+    </task>
+    <task id="LOCAL-00076" summary="+глобальная реструктуризация проекта (удалены методы, изменена будет схема взаимодействия контроллеров и классов игровых и тд)">
+      <created>1400928180658</created>
+      <option name="number" value="00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1400928180659</updated>
+    </task>
+    <task id="LOCAL-00077" summary="+обновлены префиксы классов">
+      <created>1400928871625</created>
+      <option name="number" value="00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1400928871625</updated>
+    </task>
+    <task id="LOCAL-00078" summary="+с главного экрана открывает экран настроек и игровой экран&#10;+на игровом экране работает кнопка &quot;Назад&quot;">
+      <created>1401015029465</created>
+      <option name="number" value="00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1401015029466</updated>
+    </task>
+    <task id="LOCAL-00079" summary="+добавлены основные составляющие игры (классы тайлов, слоёв, сцены и тд)">
+      <created>1401016417258</created>
+      <option name="number" value="00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1401016417259</updated>
+    </task>
+    <task id="LOCAL-00080" summary="+убрал ненужный форвард декларэйшн">
+      <created>1401089573951</created>
+      <option name="number" value="00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1401089573951</updated>
+    </task>
+    <task id="LOCAL-00081" summary="+добавлен предзагрузчик ресурсов">
+      <created>1401090198054</created>
+      <option name="number" value="00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1401090198054</updated>
+    </task>
+    <option name="localTasksCounter" value="82" />
+    <servers />
+  </component>
+  <component name="TodoView" selected-index="0">
+    <todo-panel id="selected-file">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+    <todo-panel id="default-changelist">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="22" width="1440" height="874" extended-state="6" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4870041" sideWeight="0.63284004" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32968536" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32103825" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24242425" sideWeight="0.69821674" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5745554" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20930232" sideWeight="0.2915601" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4883721" sideWeight="0.36715996" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29411766" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32692307" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32352942" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2915601" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.71666664" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32948717" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24276641" sideWeight="0.2871795" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32820514" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32736573" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32948717" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24276641" sideWeight="0.6730769" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32692307" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="myTodoPanelSettings">
+      <TodoPanelSettings />
+    </option>
+    <option name="SHOW_FILE_HISTORY_DETAILS" value="false" />
+    <MESSAGE value="+добавлена возможности оценки приложения пользователем" />
+    <MESSAGE value="+изменил кол-во дней после которых будет запрашиваться повторно просьба оценить приложение" />
+    <MESSAGE value="+добавлена реклама от Flurry&#10;+реализован плавный зум аут игрового поля&#10;+переключатель гейм центра исправлен, по умолчанию он отключен&#10;+скоректированы настройки отображения окна запроса пользовательской оценки" />
+    <MESSAGE value="+реализовано отображение плашки со счетом" />
+    <MESSAGE value="+добавлено выравниение надписи с финальным счетом на плашке" />
+    <MESSAGE value="+надпись с очками центрирована" />
+    <MESSAGE value="+добавлен запрос авторизации в ГЦ, если в настройках ГЦ включен, но по каким-то причинам пользователь деавторизован" />
+    <MESSAGE value="+маленкий фикс с переключателем ГЦ" />
+    <MESSAGE value="+убрал отображение тестовой рекламы" />
+    <MESSAGE value="+обновили плашку со счетом (на изображении убрали серые цифры)" />
+    <MESSAGE value="+добавлена поддержка iPhone 4" />
+    <MESSAGE value="+подкорректирован скролл" />
+    <MESSAGE value="+внедрен новый менеджер настроек" />
+    <MESSAGE value="+изменена структура проекта" />
+    <MESSAGE value="+добавлен модуль оценки приложения iRate" />
+    <MESSAGE value="+добавлены файлы, которые почему-то оказались вне системы контроля версий" />
+    <MESSAGE value="+убрал анимацию откапывания травы" />
+    <MESSAGE value="+добавлены новые тайлы с травой и землей" />
+    <MESSAGE value="+реализовано корректное отображение флажков (поверх травы)" />
+    <MESSAGE value="+глобальная реструктуризация проекта (удалены методы, изменена будет схема взаимодействия контроллеров и классов игровых и тд)" />
+    <MESSAGE value="+обновлены префиксы классов" />
+    <MESSAGE value="+с главного экрана открывает экран настроек и игровой экран&#10;+на игровом экране работает кнопка &quot;Назад&quot;" />
+    <MESSAGE value="+добавлены основные составляющие игры (классы тайлов, слоёв, сцены и тд)" />
+    <MESSAGE value="+убрал ненужный форвард декларэйшн" />
+    <MESSAGE value="+добавлен предзагрузчик ресурсов" />
+    <option name="LAST_COMMIT_MESSAGE" value="+добавлен предзагрузчик ресурсов" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="8" />
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Miner/Classes/NAGSKView/NAGSKView.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="10935">
+          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Miner/Resources/Images/Controls/Buttons/Switcher/switch_0@2x.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Miner/Resources/Images/Controls/ru.lproj/button_play_down@2x.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Miner/Resources/Images/Backgrounds/miner_main@2x.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Miner/Resources/Images/Controls/Buttons/StatusButton/game_button_off@2x.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Miner/Resources/Images/Controls/ru.lproj/button_options@2x.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Miner/Resources/Images/Controls/ru.lproj/button_play@2x.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Miner/Resources/Images/Other/top_game@2x.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Miner/Resources/Images/Labels/ru.lproj/field_size@2x.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Miner/Classes/NAGUtilityLibrary/NAGSettingsManager/NAGSettingsManager.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.25604552" vertical-offset="0" max-vertical-offset="1290">
+          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Miner/Classes/NAGUtilityLibrary/NAGSettingsManager/NAGSettingsManager.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.021337127" vertical-offset="285" max-vertical-offset="1275">
+          <caret line="20" column="66" selection-start-line="20" selection-start-column="66" selection-end-line="20" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Miner/Resources/Images/Controls/GameViewController/Tiles.atlas/grass1@2x.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Miner/Resources/Images/Controls/GameViewController/Tiles.atlas/grass2@2x.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Miner/main.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.21306819" vertical-offset="0" max-vertical-offset="704">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Miner/Classes/NAGMinerField/NAGMinerField.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2549575" vertical-offset="0" max-vertical-offset="706">
+          <caret line="18" column="43" selection-start-line="18" selection-start-column="43" selection-end-line="18" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="appcode.project-settings://f0714dcf">
+      <provider selected="true" editor-type-id="AppCode.ProjectSettings">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Miner/Classes/NAGAudioPreloader/NAGResourcePreloader.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3580902" vertical-offset="0" max-vertical-offset="754">
+          <caret line="24" column="54" selection-start-line="24" selection-start-column="54" selection-end-line="24" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Miner/BGAppDelegate.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.20424403" vertical-offset="26" max-vertical-offset="1905">
+          <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/include/objc/NSObject.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33289126" vertical-offset="604" max-vertical-offset="1575">
+          <caret line="60" column="6" selection-start-line="60" selection-start-column="6" selection-end-line="60" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Miner/Storyboards/Base.lproj/Main.storyboard">
+      <provider selected="true" editor-type-id="appcode-designer">
+        <state ui-designer-zoom="1.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Miner/Classes/NAGMinerField/NAGMinerField.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.38594165" vertical-offset="939" max-vertical-offset="1800">
+          <caret line="82" column="42" selection-start-line="82" selection-start-column="42" selection-end-line="82" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Miner/Classes/NAGSKView/NAGSKView.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.17857143" vertical-offset="0" max-vertical-offset="756">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Miner/Classes/NAGSKView/NAGSKView.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.41777188" vertical-offset="0" max-vertical-offset="754">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Miner/Classes/NAGResourcePreloader/NAGResourcePreloader.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.198939" vertical-offset="0" max-vertical-offset="754">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
+
