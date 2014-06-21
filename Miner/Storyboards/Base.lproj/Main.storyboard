@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="i72-1Q-rCP">
+    <dependencies>
+        <deployment version="1792" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation View Controller-->
+        <scene sceneID="CK7-DQ-God">
+            <objects>
+                <navigationController definesPresentationContext="YES" navigationBarHidden="YES" id="i72-1Q-rCP" customClass="NAGNavigationViewController" sceneMemberID="viewController">
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="IXd-Ps-I0b">
+                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="p47-S5-upN">
+                        <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="gab-HH-5bJ" kind="relationship" relationship="rootViewController" id="NxL-at-Ys4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="THq-N1-H3p" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="21" y="55"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="IoT-LJ-u6k">
+            <objects>
+                <viewController id="gab-HH-5bJ" customClass="NAGViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="r8J-jp-1rf"/>
+                        <viewControllerLayoutGuide type="bottom" id="kPi-sv-ScH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Mhh-Xu-yIZ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="miner_main.png" translatesAutoresizingMaskIntoConstraints="NO" id="ceY-sN-bT9">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" none="YES" image="YES" notEnabled="YES"/>
+                                </accessibility>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dir-65-VUE">
+                                <rect key="frame" x="60" y="229" width="198" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="button_play.png">
+                                    <color key="titleColor" red="0.050980396568775177" green="0.023529414087533951" blue="0.011764707043766975" alpha="1" colorSpace="deviceRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="button_play_down.png"/>
+                                <connections>
+                                    <action selector="playButtonTapped:" destination="GxD-n6-ntH" eventType="touchUpInside" id="y4T-Ty-AEO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O0l-JG-b4Z">
+                                <rect key="frame" x="60" y="294" width="198" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="button_options.png">
+                                    <color key="titleColor" red="0.058823533356189728" green="0.027450982481241226" blue="0.015686275437474251" alpha="1" colorSpace="deviceRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="button_options_down.png"/>
+                                <connections>
+                                    <action selector="configButtonTapped:" destination="gab-HH-5bJ" eventType="touchUpInside" id="LAE-PH-c8N"/>
+                                    <segue destination="Uzu-Tl-DeP" kind="push" identifier="OptionsSegue" id="xZ1-SH-bvB"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="rvP-dh-chP"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GxD-n6-ntH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="441" y="56"/>
+        </scene>
+        <!--Options View Controller-->
+        <scene sceneID="v4U-lL-P8O">
+            <objects>
+                <viewController id="Uzu-Tl-DeP" customClass="NAGOptionsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ViM-J9-XMj"/>
+                        <viewControllerLayoutGuide type="bottom" id="X9m-8E-Ful"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JRO-BG-StA">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="LIM-B9-1Ar" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" image="miner_config@2x.png">
+                                <rect key="frame" x="0" y="0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                    </view>
+                    <navigationItem key="navigationItem" id="nQe-VY-s4c"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="my6-KR-pHd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1409" y="189"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="button_options.png" width="198" height="46"/>
+        <image name="button_options_down.png" width="198" height="46"/>
+        <image name="button_play.png" width="198" height="46"/>
+        <image name="button_play_down.png" width="198" height="46"/>
+        <image name="miner_main.png" width="320" height="568"/>
+        <image name="miner_config@2x.png" width="640" height="1136"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
